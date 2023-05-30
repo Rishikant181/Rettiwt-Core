@@ -6,7 +6,9 @@
 	"scripts": {
 		"build": "tsc",
 		"start": "node ./dist/test.js",
-		"debug": "nodemon ./dist/test.js --inspect=0.0.0.0:9229"
+		"debug": "nodemon ./dist/test.js --inspect=0.0.0.0:9229",
+		"lint": "eslint .",
+		"format": "prettier --write ."
 	},
 	"repository": {
 		"type": "git",
@@ -19,6 +21,7 @@
 	},
 	"homepage": "https://github.com/Rishikant181/Rettiwt-Core#readme",
 	"devDependencies": {
+		"@types/node": "^20.2.5",
 		"@typescript-eslint/eslint-plugin": "5.59.8",
 		"@typescript-eslint/parser": "5.59.8",
 		"eslint": "8.41.0",
