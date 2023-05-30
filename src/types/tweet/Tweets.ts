@@ -1,4 +1,4 @@
-export default interface Root {
+export interface Root {
 	globalObjects: GlobalObjects;
 	timeline: Timeline;
 }
