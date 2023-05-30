@@ -96,9 +96,9 @@ export class Query implements IQuery {
 		 * Then it formats each parameter key value pair as 'key=value'.
 		 * Then it joins the list of all formatted parameters using '&' as a separator.
 		 */
-		return Object.keys(this)
-			.filter((key) => this[key as keyof this])
-			.map((key) => `${key}=${String(this[key as keyof this])}`)
+		return Object.entries(this)
+			.filter(([, value]) => value)
+			.map(([key, value]) => `${key}=${value as string}`)
 			.join('&');
 	}
 }
