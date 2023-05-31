@@ -29,5 +29,8 @@
 		"prettier": "2.8.8",
 		"typedoc": "0.24.7",
 		"typescript": "5.0.4"
+	},
+	"dependencies": {
+		"class-validator": "^0.14.0"
 	}
 }

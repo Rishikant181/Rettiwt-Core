@@ -1,5 +1,5 @@
 // TYPES
-import { IArgs } from '../types/request/Query';
+import { IArgs } from '../types/request/Args';
 
 /**
  * User set query paramters that are used to specify the data that is requested.

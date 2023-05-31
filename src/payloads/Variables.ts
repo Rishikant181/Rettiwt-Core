@@ -2,7 +2,7 @@
 import { Args } from './Args';
 
 // TYPES
-import { IVariables } from '../types/request/Query';
+import { IVariables } from '../types/request/Variables';
 
 // ENUMS
 import { EResourceType } from '../enums/Resources';
