@@ -6,11 +6,16 @@ import { Args } from '../payloads/Args';
 // TYPES
 import { IQuery } from '../../types/request/params/Query';
 
+// MODELS
+import { TweetFilter } from '../payloads/TweetFilter';
+
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
 /**
  * User set URL query paramters that can be used to customize the format in which data is received.
+ * 
+ * @public
  */
 export class Query implements IQuery {
 	/* eslint-disable */
@@ -75,8 +80,8 @@ export class Query implements IQuery {
 		 * Only the endpoint for fetching tweets (using advanced search) requires the parameters defined in this class.
 		 * All other endpoints required only 'variables' and 'features' fields.
 		 */
-		if (resourceType == EResourceType.TWEETS) {
-			this.q = encodeURIComponent(args.query ?? '');
+		if (resourceType == EResourceType.TWEETS && args.filter) {
+			this.q = encodeURIComponent(new TweetFilter(args.filter).toString() ?? '');
 			this.count = args.count;
 			this.cursor = args.cursor;
 		} else {

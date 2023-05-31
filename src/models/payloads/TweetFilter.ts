@@ -9,8 +9,6 @@ import { EErrors } from '../../enums/Errors';
 
 /**
  * The filter to be used for fetching tweets from Twitter.
- * 
- * @internal
  */
 export class TweetFilter implements ITweetFilter {
     /** The list of words to search. */
@@ -96,7 +94,7 @@ export class TweetFilter implements ITweetFilter {
     links?: boolean;
 
     /**
-     * @param this The incoming this in JSON format.
+     * @param filter The filter in JSON format.
      */
     constructor(filter: TweetFilter) {
         this.endDate = filter.endDate;

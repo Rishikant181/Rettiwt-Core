@@ -1,5 +1,6 @@
 // Exporting enums
 export { EResourceType } from './enums/Resources';
+export { EErrors } from './enums/Errors';
 
 // Exporting classes
 export { Url } from './Url';
@@ -32,12 +33,3 @@ export { IVariables } from './types/request/payloads/Variables';
 
 // Exporting param types
 export { IQuery } from './types/request/params/Query';
-
-// Exporting payload models
-export { Args } from './models/payloads/Args';
-export { Features } from './models/payloads/Features';
-export { TweetFilter } from './models/payloads/TweetFilter';
-export { Variables } from './models/payloads/Variables';
-
-// Exporting param models
-export { Query } from './models/params/Query';

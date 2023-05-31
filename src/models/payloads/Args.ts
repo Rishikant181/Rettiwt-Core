@@ -1,16 +1,19 @@
 // TYPES
 import { IArgs } from '../../types/request/payloads/Args';
 
+// MODELS
+import { TweetFilter } from './TweetFilter';
+
 /**
  * User set query paramters that are used to specify the data that is requested.
  */
 export class Args implements IArgs {
 	/**
-	 * The query string for filtering the data.
+	 * The filter for filtering the data.
 	 * 
 	 * @remarks Works only while fetching tweets using the 'TWEETS' resource.
 	 */
-	query?: string;
+	filter?: TweetFilter;
 
 	/**
 	 * The 'id of the target resource.
