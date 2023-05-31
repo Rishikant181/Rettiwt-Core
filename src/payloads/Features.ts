@@ -2,7 +2,7 @@
 import { IFeatures } from '../types/request/Query';
 
 /**
- * The additional features that may be fetched while making requests to Twitter API.
+ * Parameters for customizing the raw response, that must be sent as a URL-encoded, stringified-JSON.
  */
 export class Features implements IFeatures {
 	/* eslint-disable */

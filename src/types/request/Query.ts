@@ -1,10 +1,41 @@
+/**
+ * User set query paramters that are used to specify the data that is requested.
+ * 
+ * @public
+ */
 export interface IArgs {
+	/**
+	 * The query string for filtering the data.
+	 * 
+	 * @remarks Works only while fetching tweets using the 'TWEETS' resource.
+	 */
 	query?: string;
+
+	/**
+	 * The 'rest_id' of the target resource.
+	 */
 	id?: string;
+
+	/**
+	 * The number of data items to fetch.
+	 * 
+	 * @remarks Works only for cursored lists and must meet the following criteria:
+	 * 		- Must be >= 20 (when no cursor is supplied) and <= 100 for data related to tweets (expcept for 'TWEETS' resource, for which it must be <= 20).
+	 * 		- Must be >= 40 (when no cursor is supplied) and <= 100 for data related to users.
+	 */
 	count?: number;
+
+	/**
+	 * The cursor string to the batch of data to fetch.
+	 */
 	cursor?: string;
 }
 
+/**
+ * Mandatory variables that must be sent as a URL-encoded, stringified-JSON.
+ * 
+ * @public
+ */
 export interface IVariables {
 	tweetId?: string;
 	focalTweetId?: string;
@@ -28,6 +59,11 @@ export interface IVariables {
 	withClientEventToken: boolean;
 }
 
+/**
+ * Parameters for customizing the raw response, that must be sent as a URL-encoded, stringified-JSON.
+ * 
+ * @public
+ */
 export interface IFeatures {
 	graphql_is_translatable_rweb_tweet_is_translatable_enabled: boolean;
 	interactive_text_enabled: boolean;
@@ -47,6 +83,11 @@ export interface IFeatures {
 	view_counts_public_visibility_enabled: boolean;
 }
 
+/**
+ * User set URL query paramters that can be used to customize the format in which data is received.
+ * 
+ * @public
+ */
 export interface IQuery {
 	cards_platform?: string;
 	count?: number;

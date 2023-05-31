@@ -1,3 +1,8 @@
+/**
+ * The raw data received when fetching the retweets of a given tweet.
+ * 
+ * @public
+ */
 export interface Root {
 	data: Data;
 }
@@ -58,7 +63,7 @@ export interface Result {
 	reason?: string;
 }
 
-export interface AffiliatesHighlightedLabel {}
+export interface AffiliatesHighlightedLabel { }
 
 export interface Legacy {
 	blocked_by: boolean;

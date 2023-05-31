@@ -10,7 +10,7 @@ import { IQuery } from '../types/request/Query';
 import { EResourceType } from '../enums/Resources';
 
 /**
- * The URL query parameters that must be sent while making requests to Twitter API.
+ * User set URL query paramters that can be used to customize the format in which data is received.
  */
 export class Query implements IQuery {
 	/* eslint-disable */

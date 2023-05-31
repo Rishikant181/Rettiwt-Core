@@ -8,7 +8,7 @@ import { IVariables } from '../types/request/Query';
 import { EResourceType } from '../enums/Resources';
 
 /**
- * The variables that must be sent as payload while making requests to Twitter API.
+ * Mandatory variables that must be sent as a URL-encoded, stringified-JSON.
  */
 export class Variables implements IVariables {
 	/* eslint-disable */

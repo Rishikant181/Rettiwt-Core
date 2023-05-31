@@ -6,20 +6,22 @@ import { Args } from './payloads/Args';
 import { Query } from './params/Query';
 
 /**
- * A class that deals with generation of URLs to various resources on Twitter.
+ * A class that represents the URL to a single resource on Twitter.
+ * 
+ * @public
  */
 export class Url {
 	/** The base Twitter API url. */
 	private baseUrl: string = 'https://api.twitter.com';
 
 	/** The fully initialized target resource URL. */
-	public fullUrl: string;
+	private fullUrl: string;
 
 	/**
-	 * Initializes a URL for fetching the specified resource, using the given arguments.
+	 * Initializes a URL for fetching the specified resource, using the given parameters.
 	 *
 	 * @param resourceType The type of resource to fetch.
-	 * @param args Any additional arguments.
+	 * @param args Any additional user-set parameters.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
 		/**
