@@ -1,5 +1,5 @@
 // TYPES
-import { IArgs } from '../types/request/Args';
+import { IArgs } from '../../types/request/payloads/Args';
 
 /**
  * User set query paramters that are used to specify the data that is requested.
@@ -13,7 +13,7 @@ export class Args implements IArgs {
 	query?: string;
 
 	/**
-	 * The 'rest_id' of the target resource.
+	 * The 'id of the target resource.
 	 */
 	id?: string;
 

@@ -5,7 +5,7 @@ export { EResourceType } from './enums/Resources';
 export { Url } from './Url';
 
 // Exporting custom types
-export * from './types/request/Query';
+export * from './types/request/params/Query';
 
 // Exporting raw types related to tweets
 export { Root as ITweetLikesResponse } from './types/tweet/Favouriters';
@@ -23,3 +23,21 @@ export { Root as IUserDetailsResponse } from './types/user/User';
 // Exporting base raw types
 export { Result as IRawTweet } from './types/tweet/Tweet';
 export { Result as IRawUser } from './types/user/User';
+
+// Exporting payload types
+export { IArgs } from './types/request/payloads/Args';
+export { IFeatures } from './types/request/payloads/Features';
+export { ITweetFilter } from './types/request/payloads/TweetFilter';
+export { IVariables } from './types/request/payloads/Variables';
+
+// Exporting param types
+export { IQuery } from './types/request/params/Query';
+
+// Exporting payload models
+export { Args } from './models/payloads/Args';
+export { Features } from './models/payloads/Features';
+export { TweetFilter } from './models/payloads/TweetFilter';
+export { Variables } from './models/payloads/Variables';
+
+// Exporting param models
+export { Query } from './models/params/Query';

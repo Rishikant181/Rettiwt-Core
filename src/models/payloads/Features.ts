@@ -1,5 +1,5 @@
 // TYPES
-import { IFeatures } from '../types/request/Features';
+import { IFeatures } from '../../types/request/payloads/Features';
 
 /**
  * Parameters for customizing the raw response, that must be sent as a URL-encoded, stringified-JSON.

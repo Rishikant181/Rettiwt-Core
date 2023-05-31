@@ -2,10 +2,10 @@
 import { IsArray, IsBoolean, IsNumberString, IsString, IsOptional, IsDateString, validateSync } from 'class-validator';
 
 // TYPES
-import { ITweetFilter } from '../types/request/TweetFilter';
+import { ITweetFilter } from '../../types/request/payloads/TweetFilter';
 
 // ENUMS
-import { EErrors } from '../enums/Errors';
+import { EErrors } from '../../enums/Errors';
 
 /**
  * The filter to be used for fetching tweets from Twitter.

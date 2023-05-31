@@ -4,10 +4,10 @@ import { Features } from '../payloads/Features';
 import { Args } from '../payloads/Args';
 
 // TYPES
-import { IQuery } from '../types/request/Query';
+import { IQuery } from '../../types/request/params/Query';
 
 // ENUMS
-import { EResourceType } from '../enums/Resources';
+import { EResourceType } from '../../enums/Resources';
 
 /**
  * User set URL query paramters that can be used to customize the format in which data is received.

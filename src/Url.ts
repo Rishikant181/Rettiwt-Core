@@ -2,8 +2,8 @@
 import { EResourceType } from './enums/Resources';
 
 // PAYLOADS
-import { Args } from './payloads/Args';
-import { Query } from './params/Query';
+import { Args } from './models/payloads/Args';
+import { Query } from './models/params/Query';
 
 /**
  * A class that represents the URL to a single resource on Twitter.

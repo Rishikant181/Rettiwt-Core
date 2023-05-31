@@ -2,10 +2,10 @@
 import { Args } from './Args';
 
 // TYPES
-import { IVariables } from '../types/request/Variables';
+import { IVariables } from '../../types/request/payloads/Variables';
 
 // ENUMS
-import { EResourceType } from '../enums/Resources';
+import { EResourceType } from '../../enums/Resources';
 
 /**
  * Mandatory variables that must be sent as a URL-encoded, stringified-JSON.
