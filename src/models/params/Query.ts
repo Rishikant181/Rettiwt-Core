@@ -14,7 +14,7 @@ import { EResourceType } from '../../enums/Resources';
 
 /**
  * User set URL query paramters that can be used to customize the format in which data is received.
- * 
+ *
  * @public
  */
 export class Query implements IQuery {

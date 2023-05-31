@@ -1,6 +1,6 @@
 /**
  * The raw data received when fetching the details of a given tweet.
- * 
+ *
  * @public
  */
 export interface Root {
@@ -51,7 +51,7 @@ export interface TweetResults {
 
 /**
  * Represents the raw data of a single tweet.
- * 
+ *
  * @public
  */
 export interface Result {
@@ -83,7 +83,7 @@ export interface Result2 {
 	super_following: boolean;
 }
 
-export interface AffiliatesHighlightedLabel { }
+export interface AffiliatesHighlightedLabel {}
 
 export interface Legacy {
 	blocked_by: boolean;
@@ -189,7 +189,7 @@ export interface Rgb2 {
 	red: number;
 }
 
-export interface UnmentionInfo { }
+export interface UnmentionInfo {}
 
 export interface Legacy2 {
 	created_at: string;
@@ -471,7 +471,7 @@ export interface Result4 {
 	professional?: Professional;
 }
 
-export interface AffiliatesHighlightedLabel2 { }
+export interface AffiliatesHighlightedLabel2 {}
 
 export interface Legacy3 {
 	blocked_by: boolean;
@@ -608,7 +608,7 @@ export interface Category {
 	name: string;
 }
 
-export interface UnmentionInfo2 { }
+export interface UnmentionInfo2 {}
 
 export interface Legacy4 {
 	created_at: string;

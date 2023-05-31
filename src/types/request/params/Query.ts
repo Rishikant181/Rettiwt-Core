@@ -1,6 +1,6 @@
 /**
  * User set URL query paramters that can be used to customize the format in which data is received.
- * 
+ *
  * @public
  */
 export interface IQuery {

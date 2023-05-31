@@ -1,6 +1,6 @@
 /**
  * The raw data received when fetching the liked tweets of the given user.
- * 
+ *
  * @public
  */
 export interface Root {
@@ -85,7 +85,7 @@ export interface Result3 {
 	professional?: Professional;
 }
 
-export interface AffiliatesHighlightedLabel { }
+export interface AffiliatesHighlightedLabel {}
 
 export interface Legacy {
 	blocked_by: boolean;
@@ -571,7 +571,7 @@ export interface Result4 {
 	legacy: Legacy3;
 }
 
-export interface AffiliatesHighlightedLabel2 { }
+export interface AffiliatesHighlightedLabel2 {}
 
 export interface Legacy3 {
 	blocked_by: boolean;
@@ -782,7 +782,7 @@ export interface UserRef {
 	legacy: Legacy5;
 }
 
-export interface AffiliatesHighlightedLabel3 { }
+export interface AffiliatesHighlightedLabel3 {}
 
 export interface Legacy5 {
 	blocked_by: boolean;
@@ -929,7 +929,7 @@ export interface Result6 {
 	professional?: Professional2;
 }
 
-export interface AffiliatesHighlightedLabel4 { }
+export interface AffiliatesHighlightedLabel4 {}
 
 export interface Legacy6 {
 	blocked_by: boolean;
@@ -1101,7 +1101,7 @@ export interface Medum3 {
 	original_info: OriginalInfo3;
 }
 
-export interface Features3 { }
+export interface Features3 {}
 
 export interface Sizes3 {
 	large: Large5;
@@ -1196,7 +1196,7 @@ export interface ExtMediaAvailability2 {
 	status: string;
 }
 
-export interface Features4 { }
+export interface Features4 {}
 
 export interface Sizes4 {
 	large: Large6;

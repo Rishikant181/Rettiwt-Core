@@ -1,6 +1,6 @@
 /**
  * The raw data received when fetching the followers of the given user.
- * 
+ *
  * @public
  */
 export interface Root {
@@ -71,7 +71,7 @@ export interface Result2 {
 	professional?: Professional;
 }
 
-export interface AffiliatesHighlightedLabel { }
+export interface AffiliatesHighlightedLabel {}
 
 export interface Legacy {
 	blocked_by: boolean;

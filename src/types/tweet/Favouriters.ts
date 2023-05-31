@@ -1,6 +1,6 @@
 /**
  * The raw data received when fetching the likes of a given tweet.
- * 
+ *
  * @public
  */
 export interface Root {
@@ -62,7 +62,7 @@ export interface Result {
 	super_following: boolean;
 }
 
-export interface AffiliatesHighlightedLabel { }
+export interface AffiliatesHighlightedLabel {}
 
 export interface Legacy {
 	blocked_by: boolean;

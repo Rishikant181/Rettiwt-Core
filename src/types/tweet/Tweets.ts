@@ -1,6 +1,6 @@
 /**
  * The raw data received when fetching the list of tweets matching a given filter.
- * 
+ *
  * @public
  */
 export interface Root {
@@ -87,7 +87,7 @@ export interface R {
 	ok: Ok;
 }
 
-export interface Ok { }
+export interface Ok {}
 
 export interface SuperFollowMetadata {
 	r: R2;
@@ -98,7 +98,7 @@ export interface R2 {
 	ok: Ok2;
 }
 
-export interface Ok2 { }
+export interface Ok2 {}
 
 export interface Users {
 	[key: string]: User;
@@ -285,21 +285,21 @@ export interface R7 {
 	ok: Ok4;
 }
 
-export interface Ok4 { }
+export interface Ok4 {}
 
-export interface Moments { }
+export interface Moments {}
 
-export interface Cards { }
+export interface Cards {}
 
-export interface Places { }
+export interface Places {}
 
-export interface Media { }
+export interface Media {}
 
-export interface Broadcasts { }
+export interface Broadcasts {}
 
-export interface Topics { }
+export interface Topics {}
 
-export interface Lists { }
+export interface Lists {}
 
 export interface Timeline {
 	id: string;

@@ -7,7 +7,7 @@ import { Query } from './models/params/Query';
 
 /**
  * A class that represents the URL to a single resource on Twitter.
- * 
+ *
  * @public
  */
 export class Url {

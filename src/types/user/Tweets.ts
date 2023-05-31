@@ -1,6 +1,6 @@
 /**
  * The raw data received when fetching the tweets made by the given user.
- * 
+ *
  * @public
  */
 export interface Root {
@@ -178,7 +178,7 @@ export interface Description {
 	urls: any[];
 }
 
-export interface UnmentionData { }
+export interface UnmentionData {}
 
 export interface EditControl {
 	edit_tweet_ids: string[];
@@ -445,7 +445,7 @@ export interface Category {
 	icon_name: string;
 }
 
-export interface UnmentionData2 { }
+export interface UnmentionData2 {}
 
 export interface EditControl2 {
 	edit_tweet_ids: string[];
@@ -791,7 +791,7 @@ export interface Result7 {
 	verified_phone_status: boolean;
 }
 
-export interface AffiliatesHighlightedLabel2 { }
+export interface AffiliatesHighlightedLabel2 {}
 
 export interface Legacy6 {
 	following: boolean;
@@ -959,7 +959,7 @@ export interface Result8 {
 	verified_phone_status: boolean;
 }
 
-export interface AffiliatesHighlightedLabel3 { }
+export interface AffiliatesHighlightedLabel3 {}
 
 export interface Legacy7 {
 	following: boolean;
@@ -1136,7 +1136,7 @@ export interface Result9 {
 	verified_phone_status: boolean;
 }
 
-export interface AffiliatesHighlightedLabel4 { }
+export interface AffiliatesHighlightedLabel4 {}
 
 export interface Legacy9 {
 	following: boolean;
@@ -1243,7 +1243,7 @@ export interface Result11 {
 	super_follow_eligible?: boolean;
 }
 
-export interface AffiliatesHighlightedLabel5 { }
+export interface AffiliatesHighlightedLabel5 {}
 
 export interface Legacy10 {
 	following?: boolean;
@@ -1312,7 +1312,7 @@ export interface Category2 {
 	icon_name: string;
 }
 
-export interface UnmentionData3 { }
+export interface UnmentionData3 {}
 
 export interface EditControl3 {
 	edit_tweet_ids: string[];
@@ -1624,7 +1624,7 @@ export interface Description7 {
 	urls: any[];
 }
 
-export interface UnmentionData4 { }
+export interface UnmentionData4 {}
 
 export interface EditControl4 {
 	edit_tweet_ids: string[];
