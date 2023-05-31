@@ -56,3 +56,26 @@ Where,
 -   <tweet_id> is the 'rest_id' of the Tweet whose likes are to be fetched.
 -   <count> is the number of data items to fetch.
 -   <cursor> is the cursor to the batch of data items to fetch.
+
+### 3. Getting the URL to fetch tweets using a filter to get tweets from specific users and containing specific words
+
+```
+import { Url } from './src/index';
+import { EResourceType } from './src/index';
+
+const url = new Url(EResourceType.TWEET_LIKES, {
+    count: <count>,
+    cursor: '<cursor>',
+    filter: {
+        fromUsers: ['<user_name_1>', '<user_name_2>'],
+        words: ['<word_1>', '<word_2>'],
+    }
+}).toString();
+```
+
+Where,
+
+-   <user_name_1>, <user_name_2>, .......... are the different usernames whose tweets are requried.
+-   <word_1>, <word_2>, ........... are the different words that must be in the tweets.
+
+Apart from this, other filters are also available.
