@@ -28,8 +28,7 @@ The following examples will help you to get started with using the library:
 ### 1. Getting the URL to fetch the details of a Twitter user
 
 ```
-import { Url } from './src/index';
-import { EResourceType } from './src/index';
+import { Url, EResourceType } from 'rettiwt-core';
 
 const url = new Url(EResourceType.USER_DETAILS, {
     id: 'user_name'
@@ -41,8 +40,7 @@ Where, user_name is the user name of the Twitter user whose details are to be fe
 ### 2. Getting the URL to fetch the list of likes of a given tweet
 
 ```
-import { Url } from './src/index';
-import { EResourceType } from './src/index';
+import { Url, EResourceType } from 'rettiwt-core';
 
 const url = new Url(EResourceType.TWEET_LIKES, {
     id: 'tweet_id',
@@ -60,8 +58,7 @@ Where,
 ### 3. Getting the URL to fetch tweets using a filter to get tweets from specific users and containing specific words
 
 ```
-import { Url } from './src/index';
-import { EResourceType } from './src/index';
+import { Url, EResourceType } from 'rettiwt-core';
 
 const url = new Url(EResourceType.TWEET_LIKES, {
     count: <count>,
