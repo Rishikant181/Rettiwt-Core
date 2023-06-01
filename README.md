@@ -32,11 +32,11 @@ import { Url } from './src/index';
 import { EResourceType } from './src/index';
 
 const url = new Url(EResourceType.USER_DETAILS, {
-    id: '<user_name>'
+    id: 'user_name'
 }).toString();
 ```
 
-Where, <user_name> is the user name of the Twitter user whose details are to be fetched.
+Where, user_name is the user name of the Twitter user whose details are to be fetched.
 
 ### 2. Getting the URL to fetch the list of likes of a given tweet
 
@@ -45,17 +45,17 @@ import { Url } from './src/index';
 import { EResourceType } from './src/index';
 
 const url = new Url(EResourceType.TWEET_LIKES, {
-    id: '<tweet_id>',
-    count: <count>,
-    cursor: '<cursor>'
+    id: 'tweet_id',
+    count: count,
+    cursor: 'cursor'
 }).toString();
 ```
 
 Where,
 
--   <tweet_id> is the 'rest_id' of the Tweet whose likes are to be fetched.
--   <count> is the number of data items to fetch.
--   <cursor> is the cursor to the batch of data items to fetch.
+-   tweet_id is the 'rest_id' of the Tweet whose likes are to be fetched.
+-   count is the number of data items to fetch.
+-   cursor is the cursor to the batch of data items to fetch.
 
 ### 3. Getting the URL to fetch tweets using a filter to get tweets from specific users and containing specific words
 
@@ -65,17 +65,17 @@ import { EResourceType } from './src/index';
 
 const url = new Url(EResourceType.TWEET_LIKES, {
     count: <count>,
-    cursor: '<cursor>',
+    cursor: 'cursor',
     filter: {
-        fromUsers: ['<user_name_1>', '<user_name_2>'],
-        words: ['<word_1>', '<word_2>'],
+        fromUsers: ['user_name_1', 'user_name_2'],
+        words: ['word_1', 'word_2'],
     }
 }).toString();
 ```
 
 Where,
 
--   <user_name_1>, <user_name_2>, .......... are the different usernames whose tweets are requried.
--   <word_1>, <word_2>, ........... are the different words that must be in the tweets.
+-   user_name_1, user_name_2, .......... are the different usernames whose tweets are requried.
+-   word_1, word_2, ........... are the different words that must be in the tweets.
 
 Apart from this, other filters are also available.
