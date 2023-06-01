@@ -6,6 +6,8 @@ import { TweetFilter } from './TweetFilter';
 
 /**
  * User set query paramters that are used to specify the data that is requested.
+ * 
+ * @public
  */
 export class Args implements IArgs {
 	/**
