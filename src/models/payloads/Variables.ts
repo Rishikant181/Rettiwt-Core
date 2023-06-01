@@ -9,6 +9,8 @@ import { EResourceType } from '../../enums/Resources';
 
 /**
  * Mandatory variables that must be sent as a URL-encoded, stringified-JSON.
+ * 
+ * @public
  */
 export class Variables implements IVariables {
 	/* eslint-disable */

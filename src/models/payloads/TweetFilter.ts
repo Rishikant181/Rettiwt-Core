@@ -9,6 +9,8 @@ import { EErrors } from '../../enums/Errors';
 
 /**
  * The filter to be used for fetching tweets from Twitter.
+ * 
+ * @public
  */
 export class TweetFilter implements ITweetFilter {
 	/** The list of words to search. */
