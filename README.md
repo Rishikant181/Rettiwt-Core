@@ -76,3 +76,5 @@ Where,
 -   word_1, word_2, ........... are the different words that must be in the tweets.
 
 Apart from this, other filters are also available.
+
+---
