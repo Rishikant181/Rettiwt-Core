@@ -6,8 +6,6 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"start": "node ./dist/test.js",
-		"debug": "nodemon ./dist/test.js --inspect=0.0.0.0:9229",
 		"lint": "eslint .",
 		"format": "prettier --write ."
 	},
