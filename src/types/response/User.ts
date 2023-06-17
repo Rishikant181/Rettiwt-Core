@@ -1,3 +1,6 @@
+// TYPES
+import { IUrl } from "./Tweet";
+
 export interface IUser {
     __typename: string
     id: string
@@ -75,21 +78,15 @@ export interface IUserLegacy {
 
 export interface IProfileEntities {
     description: IProfileDescription
-    url: IUrl
+    url: IProfileUrl
 }
 
 export interface IProfileDescription {
-    urls: IProfileUrlExtended[]
+    urls: IUrl[]
 }
 
-export interface IUrl {
-    urls: IProfileUrlExtended[]
-}
-
-export interface IProfileUrlExtended {
-    display_url: string
-    expanded_url: string
-    url: string
+export interface IProfileUrl {
+    urls: IUrl[]
 }
 
 export interface ILegacyExtendedProfile { }

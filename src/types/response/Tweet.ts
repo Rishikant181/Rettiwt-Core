@@ -5,33 +5,33 @@ import { IUser } from './User';
 export interface ITweet {
     __typename: string
     rest_id: string
-    core: ICoreData
-    edit_control: IEditControl
-    edit_perspective: IEditPerspective
+    core: ITweetCore
+    edit_control: ITweetEditControl
+    edit_perspective: ITweetEditPerspective
     is_translatable: boolean
-    views: IViews
+    views: ITweetViews
     source: string
     legacy: ITweetLegacy
-    quick_promote_eligibility: IQuickPromoteEligibilityInfo
+    quick_promote_eligibility: ITweetQuickPromoteEligibilityInfo
 }
 
-export interface ICoreData {
+export interface ITweetCore {
     user_results: IDataResult<IUser>
 }
 
-export interface IEditControl {
+export interface ITweetEditControl {
     edit_tweet_ids: string[]
     editable_until_msecs: string
     is_edit_eligible: boolean
     edits_remaining: string
 }
 
-export interface IEditPerspective {
+export interface ITweetEditPerspective {
     favorited: boolean
     retweeted: boolean
 }
 
-export interface IViews {
+export interface ITweetViews {
     state: string
 }
 
@@ -41,8 +41,8 @@ export interface ITweetLegacy {
     created_at: string
     conversation_id_str: string
     display_text_range: number[]
-    entities: ITweetEntities
-    extended_entities: ITweetExtendedEntities
+    entities: IEntities
+    extended_entities: IExtendedEntities
     favorite_count: number
     favorited: boolean
     full_text: string
@@ -59,10 +59,10 @@ export interface ITweetLegacy {
     retweeted_status_result: IRetweetedStatusResult
 }
 
-export interface ITweetEntities {
+export interface IEntities {
     media: IMedia[]
     user_mentions: IUserMention[]
-    urls: any[]
+    urls: IUrl[]
     hashtags: IHashtag[]
     symbols: any[]
 }
@@ -86,12 +86,19 @@ export interface IUserMention {
     indices: number[]
 }
 
+export interface IUrl {
+    display_url: string
+    expanded_url: string
+    url: string
+    indices: number[]
+}
+
 export interface IHashtag {
     indices: number[]
     text: string
 }
 
-export interface ITweetExtendedEntities {
+export interface IExtendedEntities {
     media: IExtendedMedia[]
 }
 
@@ -108,6 +115,6 @@ export interface IRetweetedStatusResult {
     result: ITweet
 }
 
-export interface IQuickPromoteEligibilityInfo {
+export interface ITweetQuickPromoteEligibilityInfo {
     eligibility: string
 }
