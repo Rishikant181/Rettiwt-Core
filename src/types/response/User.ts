@@ -6,32 +6,41 @@ export interface IUser {
     has_graduated_access: boolean
     is_blue_verified: boolean
     profile_image_shape: string
-    legacy: ILegacy
+    legacy: IUserLegacy
     super_follow_eligible: boolean
+    smart_blocked_by: boolean
+    smart_blocking: boolean
+    verified_phone_status: boolean
+    legacy_extended_profile: ILegacyExtendedProfile
+    is_profile_translatable: boolean
+    verification_info: IVerificationInfo
+    highlights_info: IHighlightsInfo
+    business_account: IBusinessAccountInfo
+    creator_subscriptions_count: number
 }
 
 export interface IAffiliatesHighlightedLabel {
-    label: ILabel
+    label: IAffiliateLabel
 }
 
-export interface ILabel {
-    url: IUrl
-    badge: IBadge
+export interface IAffiliateLabel {
+    url: IAffiliateUrl
+    badge: IAffiliateBadge
     description: string
     userLabelType: string
     userLabelDisplayType: string
 }
 
-export interface IUrl {
+export interface IAffiliateUrl {
     url: string
     urlType: string
 }
 
-export interface IBadge {
+export interface IAffiliateBadge {
     url: string
 }
 
-export interface ILegacy {
+export interface IUserLegacy {
     following: boolean
     can_dm: boolean
     can_media_tag: boolean
@@ -39,7 +48,7 @@ export interface ILegacy {
     default_profile: boolean
     default_profile_image: boolean
     description: string
-    entities: IEntities
+    entities: IProfileEntities
     fast_followers_count: number
     favourites_count: number
     followers_count: number
@@ -64,10 +73,57 @@ export interface ILegacy {
     withheld_in_countries: string[]
 }
 
-export interface IEntities {
-    description: IDescription
+export interface IProfileEntities {
+    description: IProfileDescription
+    url: IUrl
 }
 
-export interface IDescription {
-    urls: string[]
+export interface IProfileDescription {
+    urls: IProfileUrlExtended[]
+}
+
+export interface IUrl {
+    urls: IProfileUrlExtended[]
+}
+
+export interface IProfileUrlExtended {
+    display_url: string
+    expanded_url: string
+    url: string
+}
+
+export interface ILegacyExtendedProfile { }
+
+export interface IVerificationInfo {
+    reason: IVerificationReason
+}
+
+export interface IVerificationReason {
+    description: IVerificationReasonDescription
+    verified_since_msec: string
+}
+
+export interface IVerificationReasonDescription {
+    text: string
+    entities: IVerificationEntity[]
+}
+
+export interface IVerificationEntity {
+    from_index: number
+    to_index: number
+    ref: IVerificationRef
+}
+
+export interface IVerificationRef {
+    url: string
+    url_type: string
+}
+
+export interface IHighlightsInfo {
+    can_highlight_tweets: boolean
+    highlighted_tweets: string
+}
+
+export interface IBusinessAccountInfo {
+    affiliates_count: number
 }
