@@ -15,11 +15,6 @@ export interface User {
 	result: Result;
 }
 
-/**
- * Represents the raw data of a single user.
- *
- * @public
- */
 export interface Result {
 	__typename: string;
 	id: string;
@@ -36,7 +31,7 @@ export interface Result {
 	is_profile_translatable: boolean;
 }
 
-export interface AffiliatesHighlightedLabel {}
+export interface AffiliatesHighlightedLabel { }
 
 export interface Legacy {
 	blocked_by: boolean;
@@ -142,4 +137,4 @@ export interface Rgb2 {
 	red: number;
 }
 
-export interface LegacyExtendedProfile {}
+export interface LegacyExtendedProfile { }
