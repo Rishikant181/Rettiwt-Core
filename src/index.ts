@@ -22,8 +22,9 @@ export { Root as IUserTweetsResponse } from './types/response/user/Tweets';
 export { Root as IUserDetailsResponse } from './types/response/user/User';
 
 // Exporting base raw types
-export { Result as IRawTweet } from './types/response/tweet/Tweet';
-export { Result as IRawUser } from './types/response/user/User';
+export * from './types/response/base/DataResult';
+export * from './types/response/base/Tweet';
+export * from './types/response/base/User';
 
 // Exporting payload types
 export { IArgs } from './types/request/payloads/Args';
