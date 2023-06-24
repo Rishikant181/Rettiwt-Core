@@ -1,6 +1,11 @@
 // TYPES
 import { IUrl } from "./Tweet";
 
+/**
+ * Represents the raw data of a single User.
+ * 
+ * @public
+ */
 export interface IUser {
     __typename: string
     id: string

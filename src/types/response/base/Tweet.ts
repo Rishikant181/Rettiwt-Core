@@ -2,6 +2,11 @@
 import { IDataResult } from './DataResult';
 import { IUser } from './User';
 
+/**
+ * Represents the raw data of a single Tweet.
+ * 
+ * @public
+ */
 export interface ITweet {
     __typename: string
     rest_id: string
