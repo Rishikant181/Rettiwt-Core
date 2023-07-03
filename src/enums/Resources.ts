@@ -2,12 +2,12 @@
  * The different types of resources that can be fetched.
  */
 export enum EResourceType {
-	TWEET_SEARCH = '/2/search/adaptive.json',
-	TWEET_DETAILS = '/graphql/lXI2kaM2hgmbf7h42kpxuA/TweetDetail',
-	TWEET_FAVORITERS = '/graphql/56ZwFC3Vui31fF8IYX8EGA/Favoriters',
-	TWEET_RETWEETERS = '/graphql/Wd7DVeLqMj_JQiTL0tjJwQ/Retweeters',
-	USER_DETAILS = '/graphql/hVhfo_TquFTmgL7gYwf91Q/UserByScreenName',
-	USER_FOLLOWING = '/graphql/mSnjZc5CTm2Z5Lu_i4XsPQ/Following',
-	USER_FOLLOWERS = '/graphql/nwlAnaw7oKXcVLi91ehy7Q/Followers',
-	USER_LIKES = '/graphql/gP4ZKghLd4tpILgS6VudAQ/Likes',
+	TWEET_SEARCH = '/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
+	TWEET_DETAILS = '/i/api/graphql/3XDB26fBve-MmjHaWTUZxA/TweetDetail',
+	TWEET_FAVORITERS = '/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
+	TWEET_RETWEETERS = '/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',
+	USER_DETAILS = '/i/api/graphql/oUZZZ8Oddwxs8Cd3iW3UEA/UserByScreenName',
+	USER_FOLLOWING = '/i/api/graphql/V8zHw0SZijWORSsb-FNrng/Following',
+	USER_FOLLOWERS = '/i/api/graphql/6y5TB_HrwQM0FBGDiNfoEA/Followers',
+	USER_LIKES = '/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
 }
