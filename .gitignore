@@ -133,4 +133,4 @@ dist
 .vscode
 
 # Test files
-.src/test
+.test
