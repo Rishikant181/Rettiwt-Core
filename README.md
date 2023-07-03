@@ -37,12 +37,12 @@ const url = new Url(EResourceType.USER_DETAILS, {
 
 Where, user_name is the user name of the Twitter user whose details are to be fetched.
 
-### 2. Getting the URL to fetch the list of likes of a given tweet
+### 2. Getting the URL to fetch the list of users who liked a given tweet
 
 ```
 import { Url, EResourceType } from 'rettiwt-core';
 
-const url = new Url(EResourceType.TWEET_LIKES, {
+const url = new Url(EResourceType.TWEET_FAVORITERS, {
     id: 'tweet_id',
     count: count,
     cursor: 'cursor'
@@ -60,7 +60,7 @@ Where,
 ```
 import { Url, EResourceType } from 'rettiwt-core';
 
-const url = new Url(EResourceType.TWEET_LIKES, {
+const url = new Url(EResourceType.TWEET_SEARCH, {
     count: <count>,
     cursor: 'cursor',
     filter: {
