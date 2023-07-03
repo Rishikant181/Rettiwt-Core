@@ -10,6 +10,8 @@ export interface IVariables {
 	screen_name?: string;
 	count?: number;
 	cursor?: string;
+	rawQuery?: string;
+	product: string;
 	includePromotedContent: boolean;
 	referrer: string;
 	withBirdwatchNotes: boolean;
