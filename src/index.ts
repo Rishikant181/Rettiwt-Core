@@ -9,16 +9,15 @@ export { Url } from './Url';
 export * from './types/request/params/Query';
 
 // Exporting raw types related to tweets
-export { Root as ITweetLikesResponse } from './types/response/tweet/Favouriters';
-export { Root as ITweetRetweetsResponse } from './types/response/tweet/Retweeters';
+export { Root as ITweetFavoritersResponse } from './types/response/tweet/Favouriters';
+export { Root as ITweetRetweeterssResponse } from './types/response/tweet/Retweeters';
 export { Root as ITweetDetailsResponse } from './types/response/tweet/Tweet';
-export { Root as ITweetsResponse } from './types/response/tweet/Tweets';
+export { Root as ITweetSearchResponse } from './types/response/tweet/Search';
 
 // Exporting raw types related to users
 export { Root as IUserFollowersResponse } from './types/response/user/Followers';
 export { Root as IUserFollowingResponse } from './types/response/user/Following';
 export { Root as IUserLikesResponse } from './types/response/user/Likes';
-export { Root as IUserTweetsResponse } from './types/response/user/Tweets';
 export { Root as IUserDetailsResponse } from './types/response/user/User';
 
 // Exporting base raw types
