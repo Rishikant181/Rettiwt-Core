@@ -10,7 +10,7 @@ export * from './types/request/params/Query';
 
 // Exporting raw types related to tweets
 export { Root as ITweetFavoritersResponse } from './types/response/tweet/Favouriters';
-export { Root as ITweetRetweeterssResponse } from './types/response/tweet/Retweeters';
+export { Root as ITweetRetweetersResponse } from './types/response/tweet/Retweeters';
 export { Root as ITweetDetailsResponse } from './types/response/tweet/Tweet';
 export { Root as ITweetSearchResponse } from './types/response/tweet/Search';
 
