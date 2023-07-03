@@ -1,6 +1,6 @@
 {
 	"name": "rettiwt-core",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "The core library for the reverse-engineered Twitter API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
