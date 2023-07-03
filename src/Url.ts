@@ -12,7 +12,7 @@ import { Query } from './models/params/Query';
  */
 export class Url {
 	/** The base Twitter API url. */
-	private baseUrl: string = 'https://api.twitter.com';
+	private baseUrl: string = 'https://twitter.com';
 
 	/** The fully initialized target resource URL. */
 	private fullUrl: string;

@@ -45,26 +45,23 @@ export class Variables implements IVariables {
 	 * @param args The additional user-defined arguments for fetching the resource.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
-		if (resourceType == EResourceType.TWEETS) {
+		if (resourceType == EResourceType.TWEET_SEARCH) {
 			this.rawQuery = args.filter?.toString();
 		}
 		if (resourceType == EResourceType.TWEET_DETAILS) {
 			this.focalTweetId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
-		} else if (resourceType == EResourceType.TWEET_LIKES || resourceType == EResourceType.TWEET_RETWEETS) {
+		} else if (resourceType == EResourceType.TWEET_FAVORITERS || resourceType == EResourceType.TWEET_RETWEETERS) {
 			this.tweetId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
 		} else if (resourceType == EResourceType.USER_DETAILS) {
 			this.screen_name = args.id;
-		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
-			this.userId = args.id;
 		} else if (
 			resourceType == EResourceType.USER_FOLLOWERS ||
 			resourceType == EResourceType.USER_FOLLOWING ||
-			resourceType == EResourceType.USER_LIKES ||
-			resourceType == EResourceType.USER_TWEETS
+			resourceType == EResourceType.USER_LIKES
 		) {
 			this.userId = args.id;
 			this.count = args.count;
