@@ -27,7 +27,6 @@ export interface Instruction {
 	type: string
 	entries?: Entry[]
 	entry_id_to_replace?: string
-	entry?: Entry2
 }
 
 export interface Entry {
@@ -36,11 +35,19 @@ export interface Entry {
 	content: Content
 }
 
+/**
+ * This is actually slightly different from the one received from Twitter via browser.
+ * 
+ * In case of browser, the curosr is contained inside 'TimelineReplaceEntries', while in NodeJS, it is inside 'TimelineAddEntries', along with other Tweets.
+ * Therefore, for use in NodeJS, the one containing Tweet and the one containing Cursor, have been merged, with cursor being optional.
+ */
 export interface Content {
+	cursorType?: string
 	entryType: string
 	__typename: string
-	itemContent: ItemContent
-	clientEventInfo: ClientEventInfo
+	itemContent?: ItemContent
+	clientEventInfo?: ClientEventInfo
+	value?: string
 }
 
 export interface ItemContent {
@@ -577,17 +584,4 @@ export interface Details {
 
 export interface TimelinesDetails {
 	controllerData: string
-}
-
-export interface Entry2 {
-	entryId: string
-	sortIndex: string
-	content: Content2
-}
-
-export interface Content2 {
-	entryType: string
-	__typename: string
-	value: string
-	cursorType: string
 }
