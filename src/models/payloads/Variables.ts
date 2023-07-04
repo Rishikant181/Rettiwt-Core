@@ -9,7 +9,7 @@ import { EResourceType } from '../../enums/Resources';
 
 /**
  * Mandatory variables that must be sent as a URL-encoded, stringified-JSON.
- * 
+ *
  * @public
  */
 export class Variables implements IVariables {
@@ -47,6 +47,8 @@ export class Variables implements IVariables {
 	constructor(resourceType: EResourceType, args: Args) {
 		if (resourceType == EResourceType.TWEET_SEARCH) {
 			this.rawQuery = args.filter?.toString();
+			this.count = args.count;
+			this.cursor = args.cursor;
 		}
 		if (resourceType == EResourceType.TWEET_DETAILS) {
 			this.focalTweetId = args.id;

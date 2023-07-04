@@ -3,7 +3,7 @@ import { IFeatures } from '../../types/request/payloads/Features';
 
 /**
  * Parameters for customizing the raw response, that must be sent as a URL-encoded, stringified-JSON.
- * 
+ *
  * @public
  */
 export class Features implements IFeatures {

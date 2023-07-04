@@ -31,7 +31,7 @@ export interface Result {
 	is_profile_translatable: boolean;
 }
 
-export interface AffiliatesHighlightedLabel { }
+export interface AffiliatesHighlightedLabel {}
 
 export interface Legacy {
 	blocked_by: boolean;
@@ -137,4 +137,4 @@ export interface Rgb2 {
 	red: number;
 }
 
-export interface LegacyExtendedProfile { }
+export interface LegacyExtendedProfile {}
