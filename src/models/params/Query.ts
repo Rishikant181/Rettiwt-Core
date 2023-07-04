@@ -6,9 +6,6 @@ import { Args } from '../payloads/Args';
 // TYPES
 import { IQuery } from '../../types/request/params/Query';
 
-// MODELS
-import { TweetFilter } from '../payloads/TweetFilter';
-
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
@@ -18,47 +15,6 @@ import { EResourceType } from '../../enums/Resources';
  * @public
  */
 export class Query implements IQuery {
-	/* eslint-disable */
-	cards_platform?: string;
-	count?: number;
-	cursor?: string;
-	ext?: string;
-	include_blocked_by?: number;
-	include_blocking?: number;
-	include_can_dm?: number;
-	include_can_media_tag?: number;
-	include_cards?: number;
-	include_entities?: boolean = true;
-	include_ext_alt_text?: boolean;
-	include_ext_collab_control?: boolean;
-	include_ext_edit_control?: boolean;
-	include_ext_has_nft_avatar?: number;
-	include_ext_is_blue_verified?: number;
-	include_ext_limited_action_results?: boolean;
-	include_ext_media_availability?: boolean;
-	include_ext_media_color?: boolean;
-	include_ext_sensitive_media_warning?: boolean;
-	include_ext_trusted_friends_metadata?: boolean;
-	include_ext_verified_type?: number;
-	include_ext_views?: boolean;
-	include_followed_by?: number;
-	include_mute_edge?: number;
-	include_profile_interstitial_type?: number;
-	include_quote_count?: boolean = true;
-	include_reply_count?: number = 1;
-	include_user_entities?: boolean = true;
-	include_want_retweets?: number = 1;
-	pc?: number;
-	q?: string;
-	query_source?: string;
-	send_error_codes?: boolean;
-	simple_quoted_tweet?: boolean;
-	skip_status?: number;
-	spelling_corrections?: number;
-	tweet_mode?: string = 'extended';
-	tweet_search_mode?: string = 'live';
-	/* eslint-enable */
-
 	/**
 	 * Variables for fetching data.
 	 */
@@ -76,18 +32,8 @@ export class Query implements IQuery {
 	 * @param args Additional user-defined arguments to be sent in the request.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
-		/**
-		 * Only the endpoint for fetching tweets (using advanced search) requires the parameters defined in this class.
-		 * All other endpoints required only 'variables' and 'features' fields.
-		 */
-		if (resourceType == EResourceType.TWEETS && args.filter) {
-			this.q = encodeURIComponent(new TweetFilter(args.filter).toString() ?? '');
-			this.count = args.count;
-			this.cursor = args.cursor;
-		} else {
-			this.variables = new Variables(resourceType, args).toString();
-			this.features = new Features().toString();
-		}
+		this.variables = new Variables(resourceType, args).toString();
+		this.features = new Features().toString();
 	}
 
 	/**
