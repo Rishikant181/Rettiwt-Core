@@ -4,5 +4,5 @@
  * @public
  */
 export enum EErrors {
-	INVALID_FILTER = 'Invalid tweet filter supplied',
+	VALIDATION_ERROR = 'One or more validation errors occured. Check details',
 }
