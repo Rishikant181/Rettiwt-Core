@@ -4,8 +4,8 @@ import { IsArray, IsBoolean, IsNumberString, IsString, IsOptional, IsDateString,
 // TYPES
 import { ITweetFilter } from '../../types/request/payloads/TweetFilter';
 
-// ENUMS
-import { EErrors } from '../../enums/Errors';
+// MODELS
+import { DataValidationError } from '../errors/DataValidationError';
 
 /**
  * The filter to be used for fetching tweets from Twitter.
@@ -115,7 +115,7 @@ export class TweetFilter implements ITweetFilter {
 
 		// If valiation error occured
 		if (validationResult.length) {
-			throw new Error(EErrors.INVALID_FILTER);
+			throw new DataValidationError(validationResult);
 		}
 	}
 
