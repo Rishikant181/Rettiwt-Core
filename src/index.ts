@@ -34,6 +34,9 @@ export { IVariables } from './types/request/payloads/Variables';
 // Exporting param types
 export { IQuery } from './types/request/params/Query';
 
+// Exporting other types
+export { IDataValidationError } from './types/errors/DataValidationError';
+
 // Exporting payload models
 export { Args } from './models/payloads/Args';
 export { Features } from './models/payloads/Features';
@@ -42,3 +45,6 @@ export { Variables } from './models/payloads/Variables';
 
 // Exporting param models
 export { Query } from './models/params/Query';
+
+// Exporting other models
+export { DataValidationError } from './models/errors/DataValidationError';
