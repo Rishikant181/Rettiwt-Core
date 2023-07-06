@@ -1,4 +1,4 @@
-name: build-documentation
+name: Documentation
 run-name: Building the documentation for the release
 on:
     push:
@@ -14,7 +14,7 @@ jobs:
               with:
                   node-version: '18.x'
             # Installing dependencies
-            - run: npm install
+            - run: yarn
 
             # Generating documentations
             - run: npx typedoc src/index.ts
