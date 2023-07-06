@@ -20,10 +20,10 @@ export interface ITweetFilter {
 	mentions?: string[];
 
 	/** The date starting from which tweets are to be searched. */
-	startDate?: string;
+	startDate?: Date;
 
 	/** The date upto which tweets are to be searched. */
-	endDate?: string;
+	endDate?: Date;
 
 	/** The id of the tweet, after which the tweets are to be searched. */
 	sinceId?: string;
