@@ -4,6 +4,9 @@ import { Args } from './Args';
 // TYPES
 import { IVariables } from '../../types/request/payloads/Variables';
 
+// MODELS
+import { TweetFilter } from './TweetFilter';
+
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
@@ -45,8 +48,8 @@ export class Variables implements IVariables {
 	 * @param args The additional user-defined arguments for fetching the resource.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
-		if (resourceType == EResourceType.TWEET_SEARCH) {
-			this.rawQuery = args.filter?.toString();
+		if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {
+			this.rawQuery = new TweetFilter(args.filter).toString();
 			this.count = args.count;
 			this.cursor = args.cursor;
 		}
