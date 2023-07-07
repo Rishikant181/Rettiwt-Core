@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Mandatory variables that must be sent as a URL-encoded, stringified-JSON.
  *

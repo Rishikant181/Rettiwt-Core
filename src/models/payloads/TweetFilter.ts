@@ -1,5 +1,5 @@
 // PACKAGE
-import { IsArray, IsBoolean, IsNumberString, IsString, IsOptional, IsDateString, validateSync } from 'class-validator';
+import { IsArray, IsBoolean, IsNumberString, IsString, IsOptional, IsDate, validateSync } from 'class-validator';
 
 // TYPES
 import { ITweetFilter } from '../../types/request/payloads/TweetFilter';
@@ -59,23 +59,15 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	mentions?: string[];
 
-	/** The date starting from which tweets are to be searched.
-	 *
-	 * @remarks
-	 * Must be in the format YYYY-MM-DD.
-	 */
+	/** The date starting from which tweets are to be searched. */
 	@IsOptional()
-	@IsDateString()
-	startDate?: string;
+	@IsDate()
+	startDate?: Date;
 
-	/** The date upto which tweets are to be searched.
-	 *
-	 * @remarks
-	 * Must be in the format YYYY-MM-DD.
-	 */
+	/** The date upto which tweets are to be searched. */
 	@IsOptional()
-	@IsDateString()
-	endDate?: string;
+	@IsDate()
+	endDate?: Date;
 
 	/** The id of the tweet, after which the tweets are to be searched. */
 	@IsNumberString()
@@ -132,13 +124,43 @@ export class TweetFilter implements ITweetFilter {
 				this.fromUsers ? `(${this.fromUsers.map((user) => `from:${user}`).join(' OR ')})` : '',
 				this.toUsers ? `(${this.toUsers.map((user) => `to:${user}`).join(' OR ')})` : '',
 				this.mentions ? `(${this.mentions.map((mention) => '@' + mention).join(' OR ')})` : '',
-				this.startDate ? `since:${this.startDate}` : '',
-				this.endDate ? `until:${this.endDate}` : '',
+				this.startDate ? `since:${TweetFilter.dateToTwitterString(this.startDate)}` : '',
+				this.endDate ? `until:${TweetFilter.dateToTwitterString(this.endDate)}` : '',
 				this.sinceId ? `since_id:${this.sinceId}` : '',
 				this.quoted ? `quoted_tweet_id:${this.quoted}` : '',
 			]
 				.filter((item) => item !== '()' && item !== '')
 				.join(' ') + (!this.links ? ' -this:links' : '')
 		);
+	}
+
+	/**
+	 * Convert Date object to Twitter string representation.
+	 * eg - 2023-06-23_11:21:06_UTC
+	 *
+	 * @param date The date object to convert.
+	 * @returns The Twitter string representation of the date.
+	 */
+	private static dateToTwitterString(date: Date): string {
+		// Converting localized date to UTC date
+		const utc = new Date(
+			Date.UTC(
+				date.getUTCFullYear(),
+				date.getUTCMonth(),
+				date.getUTCDate(),
+				date.getUTCHours(),
+				date.getUTCMinutes(),
+				date.getUTCSeconds(),
+			),
+		);
+
+		/**
+		 * To convert ISO 8601 date string to Twitter date string:
+		 *
+		 * - 'T' between date and time substring is replace with '_'.
+		 * - Milliseconds substring is omitted.
+		 * - '_UTC' is appended as suffix.
+		 */
+		return utc.toISOString().replace(/T/, '_').replace(/\..+/, '') + '_UTC';
 	}
 }
