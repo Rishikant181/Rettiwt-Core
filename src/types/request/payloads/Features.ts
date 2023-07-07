@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Parameters for customizing the raw response, that must be sent as a URL-encoded, stringified-JSON.
  *

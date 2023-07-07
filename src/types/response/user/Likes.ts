@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * The raw data received when fetching the liked tweets of the given user.
  *

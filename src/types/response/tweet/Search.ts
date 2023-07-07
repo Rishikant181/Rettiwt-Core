@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * The raw data received when fetching the list of tweets matching a given filter.
  *

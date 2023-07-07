@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * The filter to be used for fetching tweets from Twitter.
  *
