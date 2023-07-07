@@ -53,7 +53,7 @@ export class Variables implements IVariables {
 			this.count = args.count;
 			this.cursor = args.cursor;
 		}
-		if (resourceType == EResourceType.TWEET_DETAILS) {
+		else if (resourceType == EResourceType.TWEET_DETAILS) {
 			this.focalTweetId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
