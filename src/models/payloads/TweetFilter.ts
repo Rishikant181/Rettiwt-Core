@@ -142,6 +142,7 @@ export class TweetFilter implements ITweetFilter {
 	 * @returns The Twitter string representation of the date.
 	 */
 	private static dateToTwitterString(date: Date): string {
+		// Converting localized date to UTC date
 		const utc = new Date(
 			Date.UTC(
 				date.getUTCFullYear(),
@@ -152,6 +153,14 @@ export class TweetFilter implements ITweetFilter {
 				date.getUTCSeconds(),
 			),
 		);
+
+		/**
+		 * To convert ISO 8601 date string to Twitter date string:
+		 *
+		 * - 'T' between date and time substring is replace with '_'.
+		 * - Milliseconds substring is omitted.
+		 * - '_UTC' is appended as suffix.
+		 */
 		return utc.toISOString().replace(/T/, '_').replace(/\..+/, '') + '_UTC';
 	}
 }
