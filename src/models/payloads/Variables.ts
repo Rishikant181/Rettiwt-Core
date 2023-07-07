@@ -52,8 +52,7 @@ export class Variables implements IVariables {
 			this.rawQuery = new TweetFilter(args.filter).toString();
 			this.count = args.count;
 			this.cursor = args.cursor;
-		}
-		else if (resourceType == EResourceType.TWEET_DETAILS) {
+		} else if (resourceType == EResourceType.TWEET_DETAILS) {
 			this.focalTweetId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
