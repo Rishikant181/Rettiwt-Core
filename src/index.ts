@@ -24,6 +24,7 @@ export { Root as IUserDetailsResponse } from './types/response/user/User';
 export * from './types/response/base/DataResult';
 export * from './types/response/base/Tweet';
 export * from './types/response/base/User';
+export * from './types/response/base/Cursor';
 
 // Exporting payload types
 export { IArgs } from './types/request/payloads/Args';
