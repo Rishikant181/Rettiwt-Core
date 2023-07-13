@@ -1,3 +1,6 @@
+// ENUMS
+import { EResourceType } from '../../enums/Resources';
+
 // TYPES
 import { IArgs } from '../../types/request/payloads/Args';
 
@@ -35,4 +38,23 @@ export class Args implements IArgs {
 	 * The cursor string to the batch of data to fetch.
 	 */
 	cursor?: string;
+
+	/**
+	 * Initializes a new argument object based on the type of input.
+	 * 
+	 * @param resourceType The type of resource that is requested.
+	 * @param args The additional user-defined arguments for fetching the resource.
+	 */
+	constructor(resourceType: EResourceType, args: Args) {
+		this.id = args.id;
+		this.count = args.count;
+		this.cursor = args.cursor;
+
+		/**
+		 * Initializing filter only if resource type is TWEET_SEARCH
+		 */
+		if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {
+			this.filter = new TweetFilter(args.filter);
+		}
+	}
 }
