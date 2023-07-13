@@ -7,7 +7,9 @@
 	"scripts": {
 		"build": "tsc",
 		"lint": "eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"docs": "typedoc src/index.ts",
+		"debug": "nodemon ./dist/index.js --inspect=0.0.0.0:9229"
 	},
 	"repository": {
 		"type": "git",
