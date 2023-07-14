@@ -16,7 +16,7 @@ jobs:
             - run: npx typedoc src/index.ts
             - uses: actions/upload-artifact@v3
               with:
-                  path: ./dist
+                  path: ./docs
 
     deploy:
         needs: build
