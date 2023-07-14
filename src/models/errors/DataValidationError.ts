@@ -12,7 +12,7 @@ import { EErrors } from '../../enums/Errors';
  *
  * @internal
  *
- * @param errorDetails The details of about the specific fields that failed to validate.
+ * @param errorDetails - The details of about the specific fields that failed to validate.
  */
 export class DataValidationError implements IDataValidationError {
 	/** The name of the error. */
@@ -25,7 +25,7 @@ export class DataValidationError implements IDataValidationError {
 	data: ValidationError[];
 
 	/**
-	 * @param data The error details.
+	 * @param data - The error details.
 	 */
 	constructor(errorDetails: ValidationError[]) {
 		this.name = 'VALIDATION_ERROR';

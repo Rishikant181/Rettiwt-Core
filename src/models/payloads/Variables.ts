@@ -41,8 +41,8 @@ export class Variables implements IVariables {
 	/**
 	 * Initializes the appropriate Variables object based on the requred resource type and parameters.
 	 *
-	 * @param resourceType The type of resource that is requested.
-	 * @param args The additional user-defined arguments for fetching the resource.
+	 * @param resourceType - The type of resource that is requested.
+	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
 		if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {

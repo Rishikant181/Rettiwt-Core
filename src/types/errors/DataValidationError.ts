@@ -9,7 +9,7 @@ import { EErrors } from '../../enums/Errors';
  *
  * @internal
  *
- * @param errorDetails The details of about the specific fields that failed to validate.
+ * @param errorDetails - The details of about the specific fields that failed to validate.
  */
 export interface IDataValidationError extends Error {
 	/** The name of the error. */
