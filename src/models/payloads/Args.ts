@@ -28,8 +28,27 @@ export class Args implements IArgs {
 	/**
 	 * The 'id of the target resource.
 	 */
-	@IsNotEmpty({ groups: [EResourceType.TWEET_DETAILS, EResourceType.TWEET_FAVORITERS, EResourceType.TWEET_RETWEETERS, EResourceType.USER_DETAILS, EResourceType.USER_FOLLOWERS, EResourceType.USER_FOLLOWING, EResourceType.USER_LIKES] })
-	@IsNumberString(undefined, { groups: [EResourceType.TWEET_DETAILS, EResourceType.TWEET_FAVORITERS, EResourceType.TWEET_RETWEETERS, EResourceType.USER_FOLLOWERS, EResourceType.USER_FOLLOWING, EResourceType.USER_LIKES] })
+	@IsNotEmpty({
+		groups: [
+			EResourceType.TWEET_DETAILS,
+			EResourceType.TWEET_FAVORITERS,
+			EResourceType.TWEET_RETWEETERS,
+			EResourceType.USER_DETAILS,
+			EResourceType.USER_FOLLOWERS,
+			EResourceType.USER_FOLLOWING,
+			EResourceType.USER_LIKES,
+		],
+	})
+	@IsNumberString(undefined, {
+		groups: [
+			EResourceType.TWEET_DETAILS,
+			EResourceType.TWEET_FAVORITERS,
+			EResourceType.TWEET_RETWEETERS,
+			EResourceType.USER_FOLLOWERS,
+			EResourceType.USER_FOLLOWING,
+			EResourceType.USER_LIKES,
+		],
+	})
 	id?: string;
 
 	/**
@@ -39,7 +58,15 @@ export class Args implements IArgs {
 	 * 		- Must be >= 20 (when no cursor is supplied) and <= 100 for data related to tweets (expcept for 'TWEETS' resource, for which it must be <= 20).
 	 * 		- Must be >= 40 (when no cursor is supplied) and <= 100 for data related to users.
 	 */
-	@Max(100, { groups: [EResourceType.TWEET_FAVORITERS, EResourceType.TWEET_RETWEETERS, EResourceType.USER_FOLLOWERS, EResourceType.USER_FOLLOWING, EResourceType.USER_LIKES] })
+	@Max(100, {
+		groups: [
+			EResourceType.TWEET_FAVORITERS,
+			EResourceType.TWEET_RETWEETERS,
+			EResourceType.USER_FOLLOWERS,
+			EResourceType.USER_FOLLOWING,
+			EResourceType.USER_LIKES,
+		],
+	})
 	@Max(20, { groups: [EResourceType.TWEET_SEARCH] })
 	count?: number = 20;
 
@@ -50,7 +77,7 @@ export class Args implements IArgs {
 
 	/**
 	 * Initializes a new argument object based on the type of input.
-	 * 
+	 *
 	 * @param resourceType The type of resource that is requested.
 	 * @param args The additional user-defined arguments for fetching the resource.
 	 */

@@ -4,9 +4,6 @@ import { Args } from './Args';
 // TYPES
 import { IVariables } from '../../types/request/payloads/Variables';
 
-// MODELS
-import { TweetFilter } from './TweetFilter';
-
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
