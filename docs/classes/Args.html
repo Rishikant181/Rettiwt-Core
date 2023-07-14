@@ -27,7 +27,7 @@
 <ul class="tsd-hierarchy">
 <li><a href="../interfaces/IArgs.html" class="tsd-signature-type tsd-kind-interface">IArgs</a></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/a8eb002/src/models/payloads/Args.ts#L12">src/models/payloads/Args.ts:12</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/831497f/src/models/payloads/Args.ts#L19">src/models/payloads/Args.ts:19</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -49,49 +49,78 @@
 <section class="tsd-panel tsd-member"><a id="constructor" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>constructor</span><a href="#constructor" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></h3>
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="constructor.new_Args"><span class="tsd-kind-constructor-signature">new <wbr/>Args</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Args.html" class="tsd-signature-type tsd-kind-class">Args</a><a href="#constructor.new_Args" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="constructor.new_Args"><span class="tsd-kind-constructor-signature">new <wbr/>Args</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">resourceType</span>, <span class="tsd-kind-parameter">args</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Args.html" class="tsd-signature-type tsd-kind-class">Args</a><a href="#constructor.new_Args" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
-<h4 class="tsd-returns-title">Returns <a href="Args.html" class="tsd-signature-type tsd-kind-class">Args</a></h4></li></ul></section></section>
+<div class="tsd-comment tsd-typography"><p>Initializes a new argument object based on the type of input.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">resourceType</span>: <a href="../enums/EResourceType.html" class="tsd-signature-type tsd-kind-enum">EResourceType</a></h5>
+<div class="tsd-comment tsd-typography"><p>The type of resource that is requested.</p>
+</div></li>
+<li>
+<h5><span class="tsd-kind-parameter">args</span>: <a href="Args.html" class="tsd-signature-type tsd-kind-class">Args</a></h5>
+<div class="tsd-comment tsd-typography"><p>The additional user-defined arguments for fetching the resource.</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Args.html" class="tsd-signature-type tsd-kind-class">Args</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/831497f/src/models/payloads/Args.ts#L96">src/models/payloads/Args.ts:96</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member"><a id="count" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>count</span><a href="#count" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">count</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">count</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 20</span></div>
 <div class="tsd-comment tsd-typography"><p>The number of data items to fetch.</p>
 
-<h3>Remarks</h3><p>Works only for cursored lists and must meet the following criteria:
-        - Must be &gt;= 20 (when no cursor is supplied) and &lt;= 100 for data related to tweets (expcept for &#39;TWEETS&#39; resource, for which it must be = 20).
-        - Must be &gt;= 40 (when no cursor is supplied) and &lt;= 100 for data related to users.</p>
+<h3>Remarks</h3><ul>
+<li>Works only for cursored resources.</li>
+<li>Must be &lt;= 20 for <a href="../enums/EResourceType.html#TWEET_SEARCH" class="tsd-kind-enum-member">TWEET_SEARCH</a>.</li>
+<li>Must be &lt;= 100 for all other cursored resources.</li>
+</ul>
+
+<h3>Default Value</h3><p>20</p>
 </div><aside class="tsd-sources">
 <p>Implementation of <a href="../interfaces/IArgs.html">IArgs</a>.<a href="../interfaces/IArgs.html#count">count</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/a8eb002/src/models/payloads/Args.ts#L32">src/models/payloads/Args.ts:32</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/831497f/src/models/payloads/Args.ts#L79">src/models/payloads/Args.ts:79</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="cursor" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>cursor</span><a href="#cursor" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">cursor</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>The cursor string to the batch of data to fetch.</p>
+
+<h3>Remarks</h3><ul>
+<li>May be used for cursored resources.</li>
+<li>Has no effect for all other resources.</li>
+</ul>
 </div><aside class="tsd-sources">
 <p>Implementation of <a href="../interfaces/IArgs.html">IArgs</a>.<a href="../interfaces/IArgs.html#cursor">cursor</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/a8eb002/src/models/payloads/Args.ts#L37">src/models/payloads/Args.ts:37</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/831497f/src/models/payloads/Args.ts#L88">src/models/payloads/Args.ts:88</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="filter" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>filter</span><a href="#filter" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">filter</span><span class="tsd-signature-symbol">?:</span> <a href="TweetFilter.html" class="tsd-signature-type tsd-kind-class">TweetFilter</a></div>
 <div class="tsd-comment tsd-typography"><p>The filter for filtering the data.</p>
 
-<h3>Remarks</h3><p>Works only while fetching tweets using the &#39;TWEETS&#39; resource.</p>
+<h3>Remarks</h3><p>Required when resource type is <a href="../enums/EResourceType.html#TWEET_SEARCH" class="tsd-kind-enum-member">TWEET_SEARCH</a></p>
 </div><aside class="tsd-sources">
 <p>Implementation of <a href="../interfaces/IArgs.html">IArgs</a>.<a href="../interfaces/IArgs.html#filter">filter</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/a8eb002/src/models/payloads/Args.ts#L18">src/models/payloads/Args.ts:18</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/831497f/src/models/payloads/Args.ts#L27">src/models/payloads/Args.ts:27</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="id" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>id</span><a href="#id" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">id</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>The &#39;id of the target resource.</p>
+
+<h3>Remarks</h3><ul>
+<li>Required for all resources except <a href="../enums/EResourceType.html#TWEET_SEARCH" class="tsd-kind-enum-member">TWEET_SEARCH</a>.</li>
+<li>For <a href="../enums/EResourceType.html#USER_DETAILS" class="tsd-kind-enum-member">USER_DETAILS</a>, can be alphanumeric, while for others, is strictly numeric.</li>
+</ul>
 </div><aside class="tsd-sources">
 <p>Implementation of <a href="../interfaces/IArgs.html">IArgs</a>.<a href="../interfaces/IArgs.html#id">id</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/a8eb002/src/models/payloads/Args.ts#L23">src/models/payloads/Args.ts:23</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/Rishikant181/Rettiwt-Core/blob/831497f/src/models/payloads/Args.ts#L57">src/models/payloads/Args.ts:57</a></li></ul></aside></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
