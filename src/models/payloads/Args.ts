@@ -20,13 +20,18 @@ export class Args implements IArgs {
 	/**
 	 * The filter for filtering the data.
 	 *
-	 * @remarks Works only while fetching tweets using the 'TWEETS' resource.
+	 * @remarks
+	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
 	 */
 	@IsNotEmpty({ groups: [EResourceType.TWEET_SEARCH] })
 	filter?: TweetFilter;
 
 	/**
 	 * The 'id of the target resource.
+	 *
+	 * @remarks
+	 * - Required for all resources except {@link EResourceType.TWEET_SEARCH}.
+	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
 	 */
 	@IsNotEmpty({
 		groups: [
@@ -54,9 +59,12 @@ export class Args implements IArgs {
 	/**
 	 * The number of data items to fetch.
 	 *
-	 * @remarks Works only for cursored lists and must meet the following criteria:
-	 * 		- Must be \>= 20 (when no cursor is supplied) and \<= 100 for data related to tweets (expcept for 'TWEETS' resource, for which it must be \= 20).
-	 * 		- Must be \>= 40 (when no cursor is supplied) and \<= 100 for data related to users.
+	 * @remarks
+	 * - Works only for cursored resources.
+	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH}.
+	 * - Must be \<= 100 for all other cursored resources.
+	 *
+	 * @defaultValue 20
 	 */
 	@Max(100, {
 		groups: [
@@ -72,14 +80,18 @@ export class Args implements IArgs {
 
 	/**
 	 * The cursor string to the batch of data to fetch.
+	 *
+	 * @remarks
+	 * - May be used for cursored resources.
+	 * - Has no effect for all other resources.
 	 */
 	cursor?: string;
 
 	/**
 	 * Initializes a new argument object based on the type of input.
 	 *
-	 * @param resourceType The type of resource that is requested.
-	 * @param args The additional user-defined arguments for fetching the resource.
+	 * @param resourceType - The type of resource that is requested.
+	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
 		this.id = args.id;
