@@ -19,7 +19,8 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	words?: string[];
 
-	/** The list of hashtags to search.
+	/**
+	 * The list of hashtags to search.
 	 *
 	 * @remarks
 	 * '#' must be excluded from the hashtag!
@@ -29,30 +30,33 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	hashtags?: string[];
 
-	/** The list of usernames whose tweets are to be searched.
+	/**
+	 * The list of usernames whose tweets are to be searched.
 	 *
 	 * @remarks
-	 * '@' must be excluded from the username!
+	 * '\@' must be excluded from the username!
 	 */
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
 	fromUsers?: string[];
 
-	/** The list of username to whom the tweets to be searched, are adressed.
+	/**
+	 * The list of username to whom the tweets to be searched, are adressed.
 	 *
 	 * @remarks
-	 * '@' must be excluded from the username!
+	 * '\@' must be excluded from the username!
 	 */
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
 	toUsers?: string[];
 
-	/** The list of username mentioned in the tweets to search.
+	/**
+	 * The list of username mentioned in the tweets to search.
 	 *
 	 * @remarks
-	 * '@' must be excluded from the username!
+	 * '\@' must be excluded from the username!
 	 */
 	@IsArray()
 	@IsString({ each: true })
@@ -69,12 +73,22 @@ export class TweetFilter implements ITweetFilter {
 	@IsDate()
 	endDate?: Date;
 
-	/** The id of the tweet, after which the tweets are to be searched. */
+	/**
+	 * The id of the tweet, after which the tweets are to be searched.
+	 *
+	 * @remarks
+	 * Must be a numeric string.
+	 */
 	@IsNumberString()
 	@IsOptional()
 	sinceId?: string;
 
-	/** The id of the tweet which is quoted in the tweets to search. */
+	/**
+	 * The id of the tweet which is quoted in the tweets to search.
+	 *
+	 * @remarks
+	 * Must be a numeric string.
+	 */
 	@IsNumberString()
 	@IsOptional()
 	quoted?: string;
@@ -88,7 +102,7 @@ export class TweetFilter implements ITweetFilter {
 	links?: boolean;
 
 	/**
-	 * @param filter The filter in JSON format.
+	 * @param filter - The filter to use for searching tweets.
 	 */
 	constructor(filter: TweetFilter) {
 		this.endDate = filter.endDate;
@@ -102,7 +116,7 @@ export class TweetFilter implements ITweetFilter {
 		this.toUsers = filter.toUsers;
 		this.words = filter.words;
 
-		// Validating the this
+		// Validating this object
 		const validationResult = validateSync(this);
 
 		// If valiation error occured
@@ -138,7 +152,7 @@ export class TweetFilter implements ITweetFilter {
 	 * Convert Date object to Twitter string representation.
 	 * eg - 2023-06-23_11:21:06_UTC
 	 *
-	 * @param date The date object to convert.
+	 * @param date - The date object to convert.
 	 * @returns The Twitter string representation of the date.
 	 */
 	private static dateToTwitterString(date: Date): string {

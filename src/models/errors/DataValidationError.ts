@@ -11,8 +11,6 @@ import { EErrors } from '../../enums/Errors';
  * Error when any fields of a JSON data fails to validate.
  *
  * @internal
- *
- * @param errorDetails The details of about the specific fields that failed to validate.
  */
 export class DataValidationError implements IDataValidationError {
 	/** The name of the error. */
@@ -25,7 +23,7 @@ export class DataValidationError implements IDataValidationError {
 	data: ValidationError[];
 
 	/**
-	 * @param data The error details.
+	 * @param data - The error details, as a list of type {@link ValidationError}
 	 */
 	constructor(errorDetails: ValidationError[]) {
 		this.name = 'VALIDATION_ERROR';

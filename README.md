@@ -4,13 +4,9 @@
 
 Rettiwt-Core is a library that can be used to to get the valid URLs which can be used to fetch various resource from the Twitter API.
 
----
-
 ## Prerequisites
 
 -   NodeJS 18.14.2
-
----
 
 ## Installation
 
@@ -18,8 +14,6 @@ Rettiwt-Core is a library that can be used to to get the valid URLs which can be
 2.  Install the package either via npm or yarn
     -   For **npm**, use the command **npm install --save rettiwt-core**
     -   For **yarn**, use the command **yarn add rettiwt-core**
-
----
 
 ## Getting started
 
@@ -77,4 +71,6 @@ Where,
 
 Apart from this, other filters are also available.
 
----
+## API Reference
+
+For the complete API reference, go through the full [documentation](https://rishikant181.github.io/Rettiwt-Core/).

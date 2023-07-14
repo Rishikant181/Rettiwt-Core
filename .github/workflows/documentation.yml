@@ -1,26 +1,30 @@
 name: Documentation
 run-name: Building the documentation for the release
+
 on:
     push:
         branches: release
 jobs:
-    documentation:
+    build:
         runs-on: ubuntu-latest
-        permissions:
-            contents: write
         steps:
+            - name: Building documentation
+            - id: build
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
               with:
                   node-version: '18.x'
-            # Installing dependencies
             - run: yarn
-
-            # Generating documentations
             - run: npx typedoc src/index.ts
-
-            # Commiting the documentations
-            - uses: stefanzweifel/git-auto-commit-action@v4
-              with:
-                  commit_message: Updated documentations
-                  branch: release
+    deploy:
+        needs: build
+        permissions:
+            pages: write
+            id-token: write
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Deploying documentation
+            - id: deploy
+            - uses: actions/deploy-pages@v2
