@@ -6,13 +6,9 @@
  * @public
  */
 export interface IQuery {
-	/**
-	 * Variables for fetching data.
-	 */
+	/** Variables for fetching data. */
 	variables?: string;
 
-	/**
-	 * Additional data features that must be fetched.
-	 */
+	/** Additional data features that must be fetched. */
 	features?: string;
 }

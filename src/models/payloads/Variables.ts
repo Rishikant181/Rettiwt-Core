@@ -4,9 +4,6 @@ import { Args } from './Args';
 // TYPES
 import { IVariables } from '../../types/request/payloads/Variables';
 
-// MODELS
-import { TweetFilter } from './TweetFilter';
-
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
@@ -49,7 +46,7 @@ export class Variables implements IVariables {
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
 		if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {
-			this.rawQuery = new TweetFilter(args.filter).toString();
+			this.rawQuery = args.filter.toString();
 			this.count = args.count;
 			this.cursor = args.cursor;
 		} else if (resourceType == EResourceType.TWEET_DETAILS) {
