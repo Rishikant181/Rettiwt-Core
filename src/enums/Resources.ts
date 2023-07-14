@@ -1,5 +1,7 @@
 /**
  * The different types of resources that can be fetched.
+ *
+ * @public
  */
 export enum EResourceType {
 	TWEET_SEARCH = '/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',

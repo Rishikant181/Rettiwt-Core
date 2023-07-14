@@ -19,7 +19,8 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	words?: string[];
 
-	/** The list of hashtags to search.
+	/**
+	 * The list of hashtags to search.
 	 *
 	 * @remarks
 	 * '#' must be excluded from the hashtag!
@@ -29,7 +30,8 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	hashtags?: string[];
 
-	/** The list of usernames whose tweets are to be searched.
+	/**
+	 * The list of usernames whose tweets are to be searched.
 	 *
 	 * @remarks
 	 * '\@' must be excluded from the username!
@@ -39,7 +41,8 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	fromUsers?: string[];
 
-	/** The list of username to whom the tweets to be searched, are adressed.
+	/**
+	 * The list of username to whom the tweets to be searched, are adressed.
 	 *
 	 * @remarks
 	 * '\@' must be excluded from the username!
@@ -49,7 +52,8 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	toUsers?: string[];
 
-	/** The list of username mentioned in the tweets to search.
+	/**
+	 * The list of username mentioned in the tweets to search.
 	 *
 	 * @remarks
 	 * '\@' must be excluded from the username!
@@ -69,12 +73,22 @@ export class TweetFilter implements ITweetFilter {
 	@IsDate()
 	endDate?: Date;
 
-	/** The id of the tweet, after which the tweets are to be searched. */
+	/**
+	 * The id of the tweet, after which the tweets are to be searched.
+	 *
+	 * @remarks
+	 * Must be a numeric string.
+	 */
 	@IsNumberString()
 	@IsOptional()
 	sinceId?: string;
 
-	/** The id of the tweet which is quoted in the tweets to search. */
+	/**
+	 * The id of the tweet which is quoted in the tweets to search.
+	 *
+	 * @remarks
+	 * Must be a numeric string.
+	 */
 	@IsNumberString()
 	@IsOptional()
 	quoted?: string;
@@ -88,7 +102,7 @@ export class TweetFilter implements ITweetFilter {
 	links?: boolean;
 
 	/**
-	 * @param filter - The filter in JSON format.
+	 * @param filter - The filter to use for searching tweets.
 	 */
 	constructor(filter: TweetFilter) {
 		this.endDate = filter.endDate;
