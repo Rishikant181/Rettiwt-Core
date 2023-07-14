@@ -20,8 +20,8 @@ export class Url {
 	/**
 	 * Initializes a URL for fetching the specified resource, using the given parameters.
 	 *
-	 * @param resourceType The type of resource to fetch.
-	 * @param args Any additional user-set parameters.
+	 * @param resourceType - The type of resource to fetch.
+	 * @param args - Any additional user-set parameters.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
 		/**

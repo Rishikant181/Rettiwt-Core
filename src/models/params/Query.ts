@@ -28,8 +28,8 @@ export class Query implements IQuery {
 	/**
 	 * Initializes the URL parameters.
 	 *
-	 * @param resourceType The type of resource requested.
-	 * @param args Additional user-defined arguments to be sent in the request.
+	 * @param resourceType - The type of resource requested.
+	 * @param args - Additional user-defined arguments to be sent in the request.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
 		this.variables = new Variables(resourceType, args).toString();

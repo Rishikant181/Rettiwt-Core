@@ -49,6 +49,6 @@ module.exports = {
 			},
 		],
 		'@typescript-eslint/no-inferrable-types': 'off',
-		'tsdoc/syntax': 'warn'
+		'tsdoc/syntax': 'warn',
 	},
 };

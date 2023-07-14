@@ -32,7 +32,7 @@ export class TweetFilter implements ITweetFilter {
 	/** The list of usernames whose tweets are to be searched.
 	 *
 	 * @remarks
-	 * '@' must be excluded from the username!
+	 * '\@' must be excluded from the username!
 	 */
 	@IsArray()
 	@IsString({ each: true })
@@ -42,7 +42,7 @@ export class TweetFilter implements ITweetFilter {
 	/** The list of username to whom the tweets to be searched, are adressed.
 	 *
 	 * @remarks
-	 * '@' must be excluded from the username!
+	 * '\@' must be excluded from the username!
 	 */
 	@IsArray()
 	@IsString({ each: true })
@@ -52,7 +52,7 @@ export class TweetFilter implements ITweetFilter {
 	/** The list of username mentioned in the tweets to search.
 	 *
 	 * @remarks
-	 * '@' must be excluded from the username!
+	 * '\@' must be excluded from the username!
 	 */
 	@IsArray()
 	@IsString({ each: true })
@@ -88,7 +88,7 @@ export class TweetFilter implements ITweetFilter {
 	links?: boolean;
 
 	/**
-	 * @param filter The filter in JSON format.
+	 * @param filter - The filter in JSON format.
 	 */
 	constructor(filter: TweetFilter) {
 		this.endDate = filter.endDate;
@@ -138,7 +138,7 @@ export class TweetFilter implements ITweetFilter {
 	 * Convert Date object to Twitter string representation.
 	 * eg - 2023-06-23_11:21:06_UTC
 	 *
-	 * @param date The date object to convert.
+	 * @param date - The date object to convert.
 	 * @returns The Twitter string representation of the date.
 	 */
 	private static dateToTwitterString(date: Date): string {
