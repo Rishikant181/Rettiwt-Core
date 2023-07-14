@@ -14,7 +14,8 @@ jobs:
                   node-version: '18.x'
             - run: yarn
             - run: npx typedoc src/index.ts
-            - uses: actions/upload-artifact@v3
+            - name: Package documentation as artifact
+              uses: actions/upload-artifact@v3
               with:
                   path: ./docs
 
@@ -28,4 +29,6 @@ jobs:
             url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/deploy-pages@v2
+            - name: Deploy to GitHub pages
+              id: deployment
+              uses: actions/deploy-pages@v2
