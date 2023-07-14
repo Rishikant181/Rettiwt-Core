@@ -15,7 +15,7 @@ jobs:
             - run: yarn
             - run: npx typedoc src/index.ts
             - name: Package documentation as artifact
-              uses: actions/upload-pages-artifact@v3
+              uses: actions/upload-pages-artifact
               with:
                   path: ./docs
 
