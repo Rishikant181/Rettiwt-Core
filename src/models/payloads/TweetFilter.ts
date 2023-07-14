@@ -102,7 +102,7 @@ export class TweetFilter implements ITweetFilter {
 		this.toUsers = filter.toUsers;
 		this.words = filter.words;
 
-		// Validating the this
+		// Validating this object
 		const validationResult = validateSync(this);
 
 		// If valiation error occured

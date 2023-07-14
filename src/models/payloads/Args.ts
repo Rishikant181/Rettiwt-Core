@@ -1,3 +1,6 @@
+// PACKAGES
+import { IsNotEmpty, IsNumberString, Max, validateSync } from 'class-validator';
+
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
@@ -6,6 +9,7 @@ import { IArgs } from '../../types/request/payloads/Args';
 
 // MODELS
 import { TweetFilter } from './TweetFilter';
+import { DataValidationError } from '../errors/DataValidationError';
 
 /**
  * User set query paramters that are used to specify the data that is requested.
@@ -18,11 +22,14 @@ export class Args implements IArgs {
 	 *
 	 * @remarks Works only while fetching tweets using the 'TWEETS' resource.
 	 */
+	@IsNotEmpty({ groups: [EResourceType.TWEET_SEARCH] })
 	filter?: TweetFilter;
 
 	/**
 	 * The 'id of the target resource.
 	 */
+	@IsNotEmpty({ groups: [EResourceType.TWEET_DETAILS, EResourceType.TWEET_FAVORITERS, EResourceType.TWEET_RETWEETERS, EResourceType.USER_DETAILS, EResourceType.USER_FOLLOWERS, EResourceType.USER_FOLLOWING, EResourceType.USER_LIKES] })
+	@IsNumberString(undefined, { groups: [EResourceType.TWEET_DETAILS, EResourceType.TWEET_FAVORITERS, EResourceType.TWEET_RETWEETERS, EResourceType.USER_FOLLOWERS, EResourceType.USER_FOLLOWING, EResourceType.USER_LIKES] })
 	id?: string;
 
 	/**
@@ -32,7 +39,9 @@ export class Args implements IArgs {
 	 * 		- Must be >= 20 (when no cursor is supplied) and <= 100 for data related to tweets (expcept for 'TWEETS' resource, for which it must be <= 20).
 	 * 		- Must be >= 40 (when no cursor is supplied) and <= 100 for data related to users.
 	 */
-	count?: number;
+	@Max(100, { groups: [EResourceType.TWEET_FAVORITERS, EResourceType.TWEET_RETWEETERS, EResourceType.USER_FOLLOWERS, EResourceType.USER_FOLLOWING, EResourceType.USER_LIKES] })
+	@Max(20, { groups: [EResourceType.TWEET_SEARCH] })
+	count?: number = 20;
 
 	/**
 	 * The cursor string to the batch of data to fetch.
@@ -55,6 +64,14 @@ export class Args implements IArgs {
 		 */
 		if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {
 			this.filter = new TweetFilter(args.filter);
+		}
+
+		// Validating this object
+		const validationResult = validateSync(this, { groups: [resourceType] });
+
+		// If valiation error occured
+		if (validationResult.length) {
+			throw new DataValidationError(validationResult);
 		}
 	}
 }
