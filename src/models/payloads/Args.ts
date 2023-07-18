@@ -76,7 +76,7 @@ export class Args implements IArgs {
 		],
 	})
 	@Max(20, { groups: [EResourceType.TWEET_SEARCH] })
-	count?: number = 20;
+	count?: number;
 
 	/**
 	 * The cursor string to the batch of data to fetch.
@@ -95,7 +95,7 @@ export class Args implements IArgs {
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
 		this.id = args.id;
-		this.count = args.count;
+		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
 
 		/**
