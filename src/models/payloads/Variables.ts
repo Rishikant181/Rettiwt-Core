@@ -66,6 +66,8 @@ export class Variables implements IVariables {
 			this.cursor = args.cursor;
 		} else if (resourceType == EResourceType.USER_DETAILS) {
 			this.screen_name = args.id;
+		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
+			this.userId = args.id;
 		} else if (
 			resourceType == EResourceType.USER_FOLLOWERS ||
 			resourceType == EResourceType.USER_FOLLOWING ||

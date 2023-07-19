@@ -29,6 +29,7 @@ export class Features implements IFeatures {
 	responsive_web_media_download_video_enabled = false;
 	responsive_web_enhance_cards_enabled = false;
 	hidden_profile_likes_enabled = false;
+	hidden_profile_subscriptions_enabled = false;
 	subscriptions_verification_info_verified_since_enabled = true;
 	highlights_tweets_tab_ui_enabled = true;
 	/* eslint-enable */
