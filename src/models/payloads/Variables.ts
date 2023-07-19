@@ -46,7 +46,9 @@ export class Variables implements IVariables {
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
-		if (resourceType == EResourceType.LIST_TWEETS) {
+		if (resourceType == EResourceType.LIST_DETAILS) {
+			this.listId = args.id;
+		} else if (resourceType == EResourceType.LIST_TWEETS) {
 			this.listId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;

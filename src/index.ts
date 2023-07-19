@@ -9,6 +9,7 @@ export { Url } from './Url';
 export * from './types/request/params/Query';
 
 // Exporting raw types related to lists
+export { Root as IListDetailsResponse } from './types/response/list/Details';
 export { Root as IListTweetsResponse } from './types/response/list/Tweets';
 
 // Exporting raw types related to tweets
@@ -25,6 +26,7 @@ export { Root as IUserDetailsResponse } from './types/response/user/User';
 
 // Exporting base raw types
 export * from './types/response/base/DataResult';
+export * from './types/response/base/List';
 export * from './types/response/base/Tweet';
 export * from './types/response/base/User';
 export * from './types/response/base/Cursor';
