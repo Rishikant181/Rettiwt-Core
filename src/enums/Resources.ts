@@ -4,6 +4,8 @@
  * @public
  */
 export enum EResourceType {
+	LIST_DETAILS = '/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
+	LIST_TWEETS = '/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',
 	TWEET_SEARCH = '/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
 	TWEET_DETAILS = '/i/api/graphql/3XDB26fBve-MmjHaWTUZxA/TweetDetail',
 	TWEET_FAVORITERS = '/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
