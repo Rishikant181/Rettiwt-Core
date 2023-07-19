@@ -4,6 +4,11 @@
 import { IDataResult } from './DataResult';
 import { IUser } from './User';
 
+/**
+ * Represents the raw data of a single List.
+ *
+ * @public
+ */
 export interface Root {
 	created_at: number;
 	default_banner_media: DefaultBannerMedia;
