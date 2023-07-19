@@ -2,9 +2,6 @@
 export { EResourceType } from './enums/Resources';
 export { EErrors } from './enums/Errors';
 
-// Exporting classes
-export { Url } from './Url';
-
 // Exporting custom types
 export * from './types/request/params/Query';
 
@@ -31,26 +28,32 @@ export * from './types/response/base/Tweet';
 export * from './types/response/base/User';
 export * from './types/response/base/Cursor';
 
-// Exporting payload types
+// Exporting request payload types
 export { IArgs } from './types/request/payloads/Args';
 export { IFeatures } from './types/request/payloads/Features';
 export { ITweetFilter } from './types/request/payloads/TweetFilter';
 export { IVariables } from './types/request/payloads/Variables';
 
-// Exporting param types
+// Exporting request param types
 export { IQuery } from './types/request/params/Query';
+
+// Exporting request types
+export { IUrl } from './types/Url';
 
 // Exporting other types
 export { IDataValidationError } from './types/errors/DataValidationError';
 
-// Exporting payload models
+// Exporting request payload models
 export { Args } from './models/payloads/Args';
 export { Features } from './models/payloads/Features';
 export { TweetFilter } from './models/payloads/TweetFilter';
 export { Variables } from './models/payloads/Variables';
 
-// Exporting param models
+// Exporting request param models
 export { Query } from './models/params/Query';
+
+// Exporting request models
+export { Url } from './models/Url';
 
 // Exporting other models
 export { DataValidationError } from './models/errors/DataValidationError';

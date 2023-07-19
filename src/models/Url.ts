@@ -1,21 +1,24 @@
 // ENUMS
-import { EResourceType } from './enums/Resources';
+import { EResourceType } from '../enums/Resources';
+
+// TYPES
+import { IUrl } from '../types/Url';
 
 // PAYLOADS
-import { Args } from './models/payloads/Args';
-import { Query } from './models/params/Query';
+import { Args } from './payloads/Args';
+import { Query } from './params/Query';
 
 /**
  * A class that represents the URL to a single resource on Twitter.
  *
  * @public
  */
-export class Url {
+export class Url implements IUrl {
 	/** The base Twitter API url. */
-	private baseUrl: string = 'https://twitter.com';
+	baseUrl: string = 'https://twitter.com';
 
 	/** The fully initialized target resource URL. */
-	private fullUrl: string;
+	fullUrl: string;
 
 	/**
 	 * Initializes a URL for fetching the specified resource, using the given parameters.
@@ -36,7 +39,7 @@ export class Url {
 	/**
 	 * @returns The string representation of thi Url.
 	 */
-	public toString(): string {
+	toString(): string {
 		return this.fullUrl;
 	}
 }
