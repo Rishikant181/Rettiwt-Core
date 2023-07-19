@@ -9,6 +9,7 @@ export interface IVariables {
 	tweetId?: string;
 	focalTweetId?: string;
 	userId?: string;
+	listId?: string;
 	screen_name?: string;
 	count?: number;
 	cursor?: string;

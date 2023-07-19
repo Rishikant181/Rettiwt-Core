@@ -8,6 +8,9 @@ export { Url } from './Url';
 // Exporting custom types
 export * from './types/request/params/Query';
 
+// Exporting raw types related to lists
+export { Root as IListTweetsResponse } from './types/response/list/Tweets';
+
 // Exporting raw types related to tweets
 export { Root as ITweetFavoritersResponse } from './types/response/tweet/Favouriters';
 export { Root as ITweetRetweetersResponse } from './types/response/tweet/Retweeters';
