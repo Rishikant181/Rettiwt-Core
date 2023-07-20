@@ -30,4 +30,7 @@ export interface IFeatures {
 	hidden_profile_subscriptions_enabled: boolean;
 	subscriptions_verification_info_verified_since_enabled: boolean;
 	highlights_tweets_tab_ui_enabled: boolean;
+
+	/** @returns The string representation of 'this' data. */
+	toString(): string;
 }

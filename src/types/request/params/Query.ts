@@ -16,6 +16,6 @@ export interface IQuery {
 	/** Variables for fetching data. */
 	variables: IVariables;
 
-	/** Returns the string representation of 'this' data. */
+	/** @returns The string representation of 'this' data. */
 	toString(): string;
 }

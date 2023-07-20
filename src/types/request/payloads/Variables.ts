@@ -29,4 +29,7 @@ export interface IVariables {
 	withVoice: boolean;
 	with_rux_injections: boolean;
 	withClientEventToken: boolean;
+
+	/** @returns The string representation of 'this' data. */
+	toString(): string;
 }

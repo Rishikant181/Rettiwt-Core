@@ -35,4 +35,7 @@ export interface ITweetFilter {
 
 	/** Whether to fetch tweets that are links or not. */
 	links?: boolean;
+
+	/** @returns The string representation of 'this' data. */
+	toString(): string;
 }
