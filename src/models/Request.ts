@@ -4,9 +4,10 @@ import { EResourceType } from "../enums/Resources";
 
 // MODELS
 import { Url } from "./Url";
+import { Query } from "./params/Query";
 import { Args } from "./payloads/Args";
 
-export class Request<PayloadType> {
+export class Request {
     /** The full url of the request. */
     url: string;
 
@@ -14,7 +15,7 @@ export class Request<PayloadType> {
     type: ERequestType;
 
     /** The payload to be sent in the request. */
-    payload?: PayloadType;
+    payload?: Query;
 
     /**
      * Generates an HTTP request configuration for the requested resource on Twitter.
@@ -23,7 +24,8 @@ export class Request<PayloadType> {
      * @param args - Additional URL arguments.
      */
     constructor(resourceType: EResourceType, args: Args) {
-        this.url = new Url(resourceType, args ?? {}).toString();
+        this.payload = new Query(resourceType, args);
         this.type = ERequestType.GET;
+        this.url = `${new Url(resourceType).toString()}?${this.payload.toString()}`;
     }
 }

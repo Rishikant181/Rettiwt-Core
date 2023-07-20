@@ -1,7 +1,10 @@
 // ENUMS
 import { ERequestType } from "../enums/RequestType";
 
-export interface IRequest<PayloadType> {
+// TYPES
+import { IQuery } from "./request/params/Query";
+
+export interface IRequest {
     /** The full url of the request. */
     url: string;
 
@@ -9,5 +12,5 @@ export interface IRequest<PayloadType> {
     type: ERequestType;
 
     /** The payload to be sent in the request. */
-    payload?: PayloadType;
+    payload: IQuery;
 }
