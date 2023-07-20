@@ -1,5 +1,5 @@
 // PACKAGES
-import { IsNotEmpty, IsNumberString, Max, validateSync } from 'class-validator';
+import { IsNotEmpty, IsNumberString, Max, MaxLength, validateSync } from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -93,6 +93,15 @@ export class Args implements IArgs {
 	 * - Has no effect for all other resources.
 	 */
 	cursor?: string;
+
+	/**
+	 * The text for the tweet to be created.
+	 *
+	 * @remarks Length of the tweet must be \<= 280 characters.
+	 */
+	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
+	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
+	tweetText?: string;
 
 	/**
 	 * Initializes a new argument object based on the type of input.
