@@ -46,6 +46,10 @@ export class Variables implements IVariables {
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
+		// Converting JSON args to Args object
+		args = new Args(resourceType, args);
+
+		// Conditionally initializing variables
 		if (resourceType == EResourceType.LIST_DETAILS) {
 			this.listId = args.id;
 		} else if (resourceType == EResourceType.LIST_TWEETS) {

@@ -12,6 +12,6 @@ export interface IRequest<PayloadType> {
     /** The type of 'this' request. */
     type: ERequestType;
 
-    /** The payload to be sent (applicable for {@link ERequestType.POST}) request. */
+    /** The payload to be sent in the request. */
     payload?: PayloadType;
 }

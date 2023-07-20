@@ -17,8 +17,11 @@ export class Url implements IUrl {
 	/** The base Twitter API url. */
 	baseUrl: string = 'https://twitter.com';
 
-	/** The fully initialized target resource URL. */
-	fullUrl: string;
+	/** The URL endpoint. */
+	endpoint: EResourceType;
+
+	/** The url query parameters. */
+	query?: Query;
 
 	/**
 	 * Initializes a URL for fetching the specified resource, using the given parameters.
@@ -27,19 +30,19 @@ export class Url implements IUrl {
 	 * @param args - Any additional user-set parameters.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
-		/**
-		 * Initializing full URL along with additional URL parameters.
-		 */
-		this.fullUrl = `${this.baseUrl}${resourceType}?${new Query(
-			resourceType,
-			args,
-		).toString()}`;
+		this.endpoint = resourceType;
+		this.query = new Query(resourceType, args);
 	}
 
 	/**
-	 * @returns The string representation of thi Url.
+	 * @returns The string representation of 'this' Url.
 	 */
 	toString(): string {
-		return this.fullUrl;
+		if (this.query) {
+			return `${this.baseUrl}${this.endpoint}?${this.query.toString()}`;
+		}
+		else {
+			return `${this.baseUrl}${this.endpoint}`;
+		}
 	}
 }

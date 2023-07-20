@@ -28,7 +28,7 @@ export class Query implements IQuery {
 	 * @param args - Additional user-defined arguments to be sent in the request.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
-		this.variables = new Variables(resourceType, new Args(resourceType, args));
+		this.variables = new Variables(resourceType, args);
 		this.features = new Features();
 	}
 
