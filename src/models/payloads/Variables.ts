@@ -22,6 +22,7 @@ export class Variables implements IVariables {
 	count?: number;
 	cursor?: string;
 	rawQuery?: string;
+	tweet_text?: string;
 	product: string = 'Latest';
 	includePromotedContent: boolean = false;
 	referrer: string = '';
@@ -50,7 +51,9 @@ export class Variables implements IVariables {
 		args = new Args(resourceType, args);
 
 		// Conditionally initializing variables
-		if (resourceType == EResourceType.LIST_DETAILS) {
+		if (resourceType == EResourceType.CREATE_TWEET) {
+			this.tweet_text = args.tweetText;
+		} else if (resourceType == EResourceType.LIST_DETAILS) {
 			this.listId = args.id;
 		} else if (resourceType == EResourceType.LIST_TWEETS) {
 			this.listId = args.id;

@@ -14,6 +14,7 @@ export interface IVariables {
 	count?: number;
 	cursor?: string;
 	rawQuery?: string;
+	tweet_text?: string;
 	product: string;
 	includePromotedContent: boolean;
 	referrer: string;

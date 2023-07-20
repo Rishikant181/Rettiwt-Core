@@ -113,6 +113,7 @@ export class Args implements IArgs {
 		this.id = args.id;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
+		this.tweetText = args.tweetText;
 
 		/**
 		 * Initializing filter only if resource type is TWEET_SEARCH
