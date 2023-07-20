@@ -1,4 +1,4 @@
-// TYPES
+// ENUMS
 import { ERequestType } from "../enums/RequestType";
 import { EResourceType } from "../enums/Resources";
 
