@@ -1,6 +1,6 @@
 // PAYLOADS
-import { Variables } from '../payloads/Variables';
 import { Features } from '../payloads/Features';
+import { Variables } from '../payloads/Variables';
 import { Args } from '../payloads/Args';
 
 // TYPES
@@ -15,11 +15,11 @@ import { EResourceType } from '../../enums/Resources';
  * @public
  */
 export class Query implements IQuery {
-	/** Variables for fetching data. */
-	variables?: string;
-
 	/** Additional data features that must be fetched. */
-	features?: string;
+	features: Features;
+
+	/** Variables for fetching data. */
+	variables: Variables;
 
 	/**
 	 * Initializes the URL parameters.
@@ -28,8 +28,8 @@ export class Query implements IQuery {
 	 * @param args - Additional user-defined arguments to be sent in the request.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
-		this.variables = new Variables(resourceType, args).toString();
-		this.features = new Features().toString();
+		this.variables = new Variables(resourceType, new Args(resourceType, args));
+		this.features = new Features();
 	}
 
 	/**
@@ -38,14 +38,6 @@ export class Query implements IQuery {
 	 * @returns 'this' object's string representation;
 	 */
 	toString(): string {
-		/**
-		 * This first filters out all the empty paramters.
-		 * Then it formats each parameter key value pair as 'key=value'.
-		 * Then it joins the list of all formatted parameters using '&' as a separator.
-		 */
-		return Object.entries(this)
-			.filter(([, value]) => value)
-			.map(([key, value]) => `${key}=${value as string}`)
-			.join('&');
+		return `variables=${this.variables.toString()}&features=${this.features.toString()}`;
 	}
 }

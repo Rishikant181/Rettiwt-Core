@@ -32,7 +32,7 @@ export class Url implements IUrl {
 		 */
 		this.fullUrl = `${this.baseUrl}${resourceType}?${new Query(
 			resourceType,
-			new Args(resourceType, args),
+			args,
 		).toString()}`;
 	}
 
