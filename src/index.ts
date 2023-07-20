@@ -38,7 +38,7 @@ export { IVariables } from './types/request/payloads/Variables';
 export { IQuery } from './types/request/params/Query';
 
 // Exporting request types
-export { IUrl } from './types/Url';
+export { IRequest } from './types/Request';
 
 // Exporting other types
 export { IDataValidationError } from './types/errors/DataValidationError';
@@ -53,7 +53,7 @@ export { Variables } from './models/payloads/Variables';
 export { Query } from './models/params/Query';
 
 // Exporting request models
-export { Url } from './models/Url';
+export { Request } from './models/Request';
 
 // Exporting other models
 export { DataValidationError } from './models/errors/DataValidationError';
