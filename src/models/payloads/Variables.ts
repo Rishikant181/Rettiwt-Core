@@ -15,6 +15,7 @@ import { EResourceType } from '../../enums/Resources';
 export class Variables implements IVariables {
 	/* eslint-disable */
 	tweetId?: string;
+	tweet_id?: string;
 	focalTweetId?: string;
 	userId?: string;
 	listId?: string;
@@ -40,6 +41,8 @@ export class Variables implements IVariables {
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweetText;
+		} else if (resourceType == EResourceType.FAVORITE_TWEET) {
+			this.tweet_id = args.id;
 		} else if (resourceType == EResourceType.LIST_DETAILS) {
 			this.listId = args.id;
 		} else if (resourceType == EResourceType.LIST_TWEETS) {

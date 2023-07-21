@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 /**
- * The raw data received creating a tweet.
+ * The raw data received after creating a tweet.
  *
  * @public
  */

@@ -15,6 +15,7 @@ export { Root as ITweetRetweetersResponse } from './types/response/tweet/Retweet
 export { Root as ITweetDetailsResponse } from './types/response/tweet/Tweet';
 export { Root as ITweetSearchResponse } from './types/response/tweet/Search';
 export { Root as ITweetCreateResponse } from './types/response/tweet/Create';
+export { Root as ITweetFavoriteResponse } from './types/response/tweet/Favorite';
 
 // Exporting raw types related to users
 export { Root as IUserFollowersResponse } from './types/response/user/Followers';

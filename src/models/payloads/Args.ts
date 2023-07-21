@@ -35,6 +35,7 @@ export class Args implements IArgs {
 	 */
 	@IsNotEmpty({
 		groups: [
+			EResourceType.FAVORITE_TWEET,
 			EResourceType.LIST_DETAILS,
 			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
@@ -49,6 +50,7 @@ export class Args implements IArgs {
 	})
 	@IsNumberString(undefined, {
 		groups: [
+			EResourceType.FAVORITE_TWEET,
 			EResourceType.LIST_DETAILS,
 			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
