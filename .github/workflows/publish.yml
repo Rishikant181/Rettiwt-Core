@@ -1,9 +1,9 @@
-name: Publish
-run-name: Publishing the package to NPM
+name: Publish Release
+run-name: Publishing the stable package to NPM
 
 on:
     release:
-        types: [created]
+        types: [released]
 
 jobs:
     # Packages and publishes the package to NPM

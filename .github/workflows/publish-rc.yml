@@ -1,4 +1,4 @@
-name: Publish Release Candidate
+name: Publish Pre-Release
 run-name: Publishing the release candidate package to NPM
 
 on:
