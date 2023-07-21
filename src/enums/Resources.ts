@@ -4,6 +4,7 @@
  * @public
  */
 export enum EResourceType {
+	CREATE_RETWEET = '/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
 	CREATE_TWEET = '/i/api/graphql/tTsjMKyhajZvK4q76mpIBg/CreateTweet',
 	FAVORITE_TWEET = '/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
 	LIST_DETAILS = '/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
