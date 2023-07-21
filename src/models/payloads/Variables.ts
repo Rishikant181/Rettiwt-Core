@@ -41,7 +41,7 @@ export class Variables implements IVariables {
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweetText;
-		} else if (resourceType == EResourceType.FAVORITE_TWEET) {
+		} else if (resourceType == EResourceType.CREATE_RETWEET || resourceType == EResourceType.FAVORITE_TWEET) {
 			this.tweet_id = args.id;
 		} else if (resourceType == EResourceType.LIST_DETAILS) {
 			this.listId = args.id;
