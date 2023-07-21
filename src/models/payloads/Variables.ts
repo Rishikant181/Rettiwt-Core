@@ -23,7 +23,7 @@ export class Variables implements IVariables {
 	cursor?: string;
 	rawQuery?: string;
 	tweet_text?: string;
-	product?: string = 'Latest';
+	product?: string;
 	includePromotedContent: boolean = false;
 	/* eslint-enable */
 
