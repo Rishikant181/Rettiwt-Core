@@ -1,5 +1,5 @@
 // PACKAGES
-import { IsNotEmpty, IsNumberString, Max, validateSync } from 'class-validator';
+import { IsNotEmpty, IsNumberString, Max, MaxLength, validateSync } from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -95,6 +95,15 @@ export class Args implements IArgs {
 	cursor?: string;
 
 	/**
+	 * The text for the tweet to be created.
+	 *
+	 * @remarks Length of the tweet must be \<= 280 characters.
+	 */
+	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
+	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
+	tweetText?: string;
+
+	/**
 	 * Initializes a new argument object based on the type of input.
 	 *
 	 * @param resourceType - The type of resource that is requested.
@@ -104,6 +113,7 @@ export class Args implements IArgs {
 		this.id = args.id;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
+		this.tweetText = args.tweetText;
 
 		/**
 		 * Initializing filter only if resource type is TWEET_SEARCH
