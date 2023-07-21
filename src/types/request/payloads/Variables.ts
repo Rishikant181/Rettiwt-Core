@@ -7,6 +7,7 @@
  */
 export interface IVariables {
 	tweetId?: string;
+	tweet_id?: string;
 	focalTweetId?: string;
 	userId?: string;
 	listId?: string;
