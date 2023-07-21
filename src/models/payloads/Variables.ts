@@ -22,21 +22,8 @@ export class Variables implements IVariables {
 	count?: number;
 	cursor?: string;
 	rawQuery?: string;
-	product: string = 'Latest';
+	product?: string;
 	includePromotedContent: boolean = false;
-	referrer: string = '';
-	withBirdwatchNotes: boolean = false;
-	withCommunity: boolean = false;
-	withDownvotePerspective: boolean = false;
-	withQuickPromoteEligibilityTweetFields: boolean = false;
-	withReactionsMetadata: boolean = false;
-	withReactionsPerspective: boolean = false;
-	withSuperFollowsTweetFields: boolean = false;
-	withSuperFollowsUserFields: boolean = false;
-	withV2Timeline: boolean = true;
-	withVoice: boolean = false;
-	with_rux_injections: boolean = false;
-	withClientEventToken: boolean = false;
 	/* eslint-enable */
 
 	/**
@@ -60,6 +47,7 @@ export class Variables implements IVariables {
 			this.rawQuery = args.filter.toString();
 			this.count = args.count;
 			this.cursor = args.cursor;
+			this.product = 'Latest';
 		} else if (resourceType == EResourceType.TWEET_DETAILS) {
 			this.focalTweetId = args.id;
 			this.count = args.count;
