@@ -42,7 +42,11 @@ export class Request implements IRequest {
 		this.payload = new Query(resourceType, args);
 
 		// For 'POST' requests
-		if (resourceType == EResourceType.CREATE_TWEET) {
+		if (
+			resourceType == EResourceType.CREATE_TWEET ||
+			resourceType == EResourceType.CREATE_RETWEET ||
+			resourceType == EResourceType.FAVORITE_TWEET
+		) {
 			this.type = ERequestType.POST;
 		}
 		// For 'GET' requests

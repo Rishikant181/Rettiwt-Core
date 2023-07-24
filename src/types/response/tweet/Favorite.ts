@@ -6,9 +6,9 @@
  * @public
  */
 export interface Root {
-    data: Data
+	data: Data;
 }
 
 export interface Data {
-    favorite_tweet: string
+	favorite_tweet: string;
 }
