@@ -1,9 +1,9 @@
 // ENUMS
-import { ERequestType } from '../enums/RequestType';
-import { EResourceType } from '../enums/Resources';
+import { ERequestType } from '../../enums/RequestType';
+import { EResourceType } from '../../enums/Resources';
 
 // TYPES
-import { IQuery } from './request/params/Query';
+import { IQuery } from './params/Query';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.

@@ -3,7 +3,7 @@ import { ERequestType } from '../enums/RequestType';
 import { EResourceType } from '../enums/Resources';
 
 // TYPES
-import { IRequest } from '../types/Request';
+import { IRequest } from '../types/request/Request';
 
 // MODELS
 import { Query } from './params/Query';

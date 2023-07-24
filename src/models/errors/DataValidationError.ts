@@ -2,7 +2,7 @@
 import { ValidationError } from 'class-validator';
 
 // TYPES
-import { IDataValidationError } from '../../types/errors/DataValidationError';
+import { IDataValidationError } from '../../types/request/errors/DataValidationError';
 
 // ENUMS
 import { EErrors } from '../../enums/Errors';
