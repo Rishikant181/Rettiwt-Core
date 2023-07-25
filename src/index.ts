@@ -24,6 +24,10 @@ export { Root as IUserFollowingResponse } from './types/response/user/Following'
 export { Root as IUserLikesResponse } from './types/response/user/Likes';
 export { Root as IUserDetailsResponse } from './types/response/user/User';
 
+// Exporting generic raw types
+export * from './types/response/generic/Error';
+export * from './types/response/generic/Response';
+
 // Exporting base raw types
 export * from './types/response/base/DataResult';
 export * from './types/response/base/List';
@@ -41,10 +45,10 @@ export { IVariables } from './types/request/payloads/Variables';
 export { IQuery } from './types/request/params/Query';
 
 // Exporting request types
-export { IRequest } from './types/Request';
+export { IRequest } from './types/request/Request';
 
 // Exporting other types
-export { IDataValidationError } from './types/errors/DataValidationError';
+export { IDataValidationError } from './types/request/errors/DataValidationError';
 
 // Exporting request payload models
 export { Args } from './models/payloads/Args';
