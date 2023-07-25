@@ -25,8 +25,8 @@ export { Root as IUserLikesResponse } from './types/response/user/Likes';
 export { Root as IUserDetailsResponse } from './types/response/user/User';
 
 // Exporting generic raw types
-export { Root as IError } from './types/response/generic/Error';
-export { Root as IResponse } from './types/response/generic/Response';
+export * from './types/response/generic/Error';
+export * from './types/response/generic/Response';
 
 // Exporting base raw types
 export * from './types/response/base/DataResult';

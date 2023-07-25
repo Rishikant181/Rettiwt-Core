@@ -1,7 +1,5 @@
-/* eslint-disable */
-
 // TYPES
-import { Root as IError } from './Error';
+import { IError } from './Error';
 
 /**
  * The generic raw data received.
@@ -10,7 +8,7 @@ import { Root as IError } from './Error';
  *
  * @public
  */
-export interface Root<DataType> {
+export interface IResponse<DataType> {
 	data: DataType;
 	errors: IError[];
 }

@@ -1,35 +1,35 @@
-/* eslint-disable */
-
 /**
  * The error received from Twitter.
  *
  * @public
  */
-export interface Root {
+export interface IError {
 	message: string;
-	locations: Location[];
+	locations: IErrorLocation[];
 	path: string[];
-	extensions: Extensions;
+	extensions: IErrorExtensions;
 	code: number;
 	kind: string;
 	name: string;
 	source: string;
-	tracing: Tracing;
+	tracing: IErrorTrace;
 }
 
-export interface Location {
+export interface IErrorLocation {
 	line: number;
 	column: number;
 }
 
-export interface Extensions {
+export interface IErrorExtensions {
 	name: string;
 	source: string;
 	code: number;
 	kind: string;
-	tracing: Tracing;
+	tracing: IErrorTrace;
 }
 
-export interface Tracing {
+export interface IErrorTrace {
+	/* eslint-disable */
 	trace_id: string;
+	/* eslint-enable */
 }
