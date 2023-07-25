@@ -9,7 +9,7 @@ export enum EErrors {
 
 /**
  * The different error codes received from Twitter API.
- * 
+ *
  * @public
  */
 export enum EErrorCodes {
@@ -35,5 +35,5 @@ export enum EErrorCodes {
 	ALREADY_RETWEETED = 327,
 	TWEET_NOT_FOUND = 421,
 	TWEET_VIOLATED_RULES = 422,
-	DISABLED_TWEET_ACTIONS = 425
+	DISABLED_TWEET_ACTIONS = 425,
 }
