@@ -1,6 +1,7 @@
 // Exporting enums
-export { EResourceType } from './enums/Resources';
-export { EErrors } from './enums/Errors';
+export * from './enums/Errors';
+export * from './enums/Request';
+export * from './enums/Resources';
 
 // Exporting custom types
 export * from './types/request/params/Query';
