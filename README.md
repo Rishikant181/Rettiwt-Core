@@ -1,6 +1,6 @@
 # Rettiwt-Core
 
-**A library for generating URLs to various Twitter API resources**
+**A library for generating request configurations to various Twitter API resources**
 
 Rettiwt-Core is a library that can be used to generate requests which can be used to fetch various resource from the Twitter API.
 
@@ -91,7 +91,7 @@ As of now, only simple text tweets are possible.
 
 ## Next steps
 
-After having generated the respective [Request](https://rishikant181.github.io/Rettiwt-Core/classes/Request.html), the type, url and payload, which contain the type of request ('GET', 'POST', etc), the url to which the request is targeted at and the payload to be sent (incase of 'POST' request), can be used to make HTTP requests in order to fetch that specific resource.
+After generating the respective [Request](https://rishikant181.github.io/Rettiwt-Core/classes/Request.html), the type, url and payload, which contain the type of request ('GET', 'POST', etc), the url to which the request is targeted at and the payload to be sent (incase of 'POST' request), can be used to make HTTP requests in order to fetch that specific resource.
 
 ## API Reference
 
