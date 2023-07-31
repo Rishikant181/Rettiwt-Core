@@ -1,5 +1,5 @@
 // PACKAGES
-import { IsNotEmpty, IsNumberString, Max, validateSync } from 'class-validator';
+import { IsNotEmpty, IsNumberString, Max, MaxLength, validateSync } from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -35,10 +35,15 @@ export class Args implements IArgs {
 	 */
 	@IsNotEmpty({
 		groups: [
+			EResourceType.CREATE_RETWEET,
+			EResourceType.FAVORITE_TWEET,
+			EResourceType.LIST_DETAILS,
+			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
 			EResourceType.TWEET_FAVORITERS,
 			EResourceType.TWEET_RETWEETERS,
 			EResourceType.USER_DETAILS,
+			EResourceType.USER_DETAILS_BY_ID,
 			EResourceType.USER_FOLLOWERS,
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
@@ -46,9 +51,14 @@ export class Args implements IArgs {
 	})
 	@IsNumberString(undefined, {
 		groups: [
+			EResourceType.CREATE_RETWEET,
+			EResourceType.FAVORITE_TWEET,
+			EResourceType.LIST_DETAILS,
+			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
 			EResourceType.TWEET_FAVORITERS,
 			EResourceType.TWEET_RETWEETERS,
+			EResourceType.USER_DETAILS_BY_ID,
 			EResourceType.USER_FOLLOWERS,
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
@@ -68,6 +78,7 @@ export class Args implements IArgs {
 	 */
 	@Max(100, {
 		groups: [
+			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_FAVORITERS,
 			EResourceType.TWEET_RETWEETERS,
 			EResourceType.USER_FOLLOWERS,
@@ -88,6 +99,15 @@ export class Args implements IArgs {
 	cursor?: string;
 
 	/**
+	 * The text for the tweet to be created.
+	 *
+	 * @remarks Length of the tweet must be \<= 280 characters.
+	 */
+	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
+	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
+	tweetText?: string;
+
+	/**
 	 * Initializes a new argument object based on the type of input.
 	 *
 	 * @param resourceType - The type of resource that is requested.
@@ -97,6 +117,7 @@ export class Args implements IArgs {
 		this.id = args.id;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
+		this.tweetText = args.tweetText;
 
 		/**
 		 * Initializing filter only if resource type is TWEET_SEARCH

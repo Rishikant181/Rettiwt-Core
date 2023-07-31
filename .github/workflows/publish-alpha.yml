@@ -1,9 +1,9 @@
-name: Publish Release
-run-name: Publishing the stable package to NPM
+name: Publish Alpha
+run-name: Publishing the alpha package to NPM
 
 on:
     release:
-        types: [released]
+        types: [prereleased]
 
 jobs:
     # Packages and publishes the package to NPM
@@ -24,6 +24,6 @@ jobs:
             - run: yarn run build
 
             # Publishing to NPM
-            - run: npm publish
+            - run: npm publish --tag alpha
               env:
                   NODE_AUTH_TOKEN: ${{secrets.npm_token}}

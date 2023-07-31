@@ -2,7 +2,7 @@
 import { ValidationError } from 'class-validator';
 
 // ENUMS
-import { EErrors } from '../../enums/Errors';
+import { EErrors } from '../../../enums/Errors';
 
 /**
  * Error when any fields of a JSON data fails to validate.

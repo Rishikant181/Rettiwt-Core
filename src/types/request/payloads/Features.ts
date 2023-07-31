@@ -27,6 +27,10 @@ export interface IFeatures {
 	responsive_web_media_download_video_enabled: boolean;
 	responsive_web_enhance_cards_enabled: boolean;
 	hidden_profile_likes_enabled: boolean;
+	hidden_profile_subscriptions_enabled: boolean;
 	subscriptions_verification_info_verified_since_enabled: boolean;
 	highlights_tweets_tab_ui_enabled: boolean;
+
+	/** @returns The string representation of 'this' data. */
+	toString(): string;
 }

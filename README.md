@@ -1,8 +1,8 @@
 # Rettiwt-Core
 
-**A library for generating URLs to various Twitter API resources**
+**A library for generating request configurations to various Twitter API resources**
 
-Rettiwt-Core is a library that can be used to to get the valid URLs which can be used to fetch various resource from the Twitter API.
+Rettiwt-Core is a library that can be used to generate requests which can be used to fetch various resource from the Twitter API.
 
 ## Prerequisites
 
@@ -19,28 +19,30 @@ Rettiwt-Core is a library that can be used to to get the valid URLs which can be
 
 The following examples will help you to get started with using the library:
 
-### 1. Getting the URL to fetch the details of a Twitter user
+### 1. Getting the request to fetch the details of a Twitter user
 
 ```
-import { Url, EResourceType } from 'rettiwt-core';
+import { Request, EResourceType } from 'rettiwt-core';
 
-const url = new Url(EResourceType.USER_DETAILS, {
+const { type, url } = new Request(EResourceType.USER_DETAILS, {
     id: 'user_name'
-}).toString();
+});
 ```
 
-Where, user_name is the user name of the Twitter user whose details are to be fetched.
+Where,
 
-### 2. Getting the URL to fetch the list of users who liked a given tweet
+-   user_name is the user name of the Twitter user whose details are to be fetched.
+
+### 2. Getting the request to fetch the list of users who liked a given tweet
 
 ```
-import { Url, EResourceType } from 'rettiwt-core';
+import { Request, EResourceType } from 'rettiwt-core';
 
-const url = new Url(EResourceType.TWEET_FAVORITERS, {
+const { type, url } = new Request(EResourceType.TWEET_FAVORITERS, {
     id: 'tweet_id',
     count: count,
     cursor: 'cursor'
-}).toString();
+});
 ```
 
 Where,
@@ -49,19 +51,19 @@ Where,
 -   count is the number of data items to fetch.
 -   cursor is the cursor to the batch of data items to fetch.
 
-### 3. Getting the URL to fetch tweets using a filter to get tweets from specific users and containing specific words
+### 3. Getting the request to fetch tweets using a filter to get tweets from specific users and containing specific words
 
 ```
-import { Url, EResourceType } from 'rettiwt-core';
+import { Request, EResourceType } from 'rettiwt-core';
 
-const url = new Url(EResourceType.TWEET_SEARCH, {
+const { type, url } = new Request(EResourceType.TWEET_SEARCH, {
     count: <count>,
     cursor: 'cursor',
     filter: {
         fromUsers: ['user_name_1', 'user_name_2'],
         words: ['word_1', 'word_2'],
     }
-}).toString();
+});
 ```
 
 Where,
@@ -70,6 +72,26 @@ Where,
 -   word_1, word_2, ........... are the different words that must be in the tweets.
 
 Apart from this, other filters are also available.
+
+### 4. Getting the request to create a Tweet
+
+```
+import { Request, EResourceType } from 'rettiwt-core;
+
+const { type, url, payload } = new Request(EResourceType.CREATE_TWEET, {
+    tweetText: 'text_to_tweet'
+});
+```
+
+Where,
+
+-   'text_to_tweet' is the text which you want to tweet.
+
+As of now, only simple text tweets are possible.
+
+## Next steps
+
+After generating the respective [Request](https://rishikant181.github.io/Rettiwt-Core/classes/Request.html), the type, url and payload, which contain the type of request ('GET', 'POST', etc), the url to which the request is targeted at and the payload to be sent (incase of 'POST' request), can be used to make HTTP requests in order to fetch that specific resource.
 
 ## API Reference
 

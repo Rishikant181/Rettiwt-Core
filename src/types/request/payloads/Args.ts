@@ -18,4 +18,7 @@ export interface IArgs {
 
 	/** The cursor string to the batch of data to fetch. */
 	cursor?: string;
+
+	/** The text for the tweet to be created. */
+	tweetText?: string;
 }

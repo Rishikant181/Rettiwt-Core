@@ -15,27 +15,18 @@ import { EResourceType } from '../../enums/Resources';
 export class Variables implements IVariables {
 	/* eslint-disable */
 	tweetId?: string;
-	focalTweetId?: string;
+	tweet_id?: string;
 	userId?: string;
+	listId?: string;
 	screen_name?: string;
 	count?: number;
 	cursor?: string;
 	rawQuery?: string;
-	product: string = 'Latest';
+	tweet_text?: string;
+	product?: string;
 	includePromotedContent: boolean = false;
-	referrer: string = '';
-	withBirdwatchNotes: boolean = false;
-	withCommunity: boolean = false;
-	withDownvotePerspective: boolean = false;
-	withQuickPromoteEligibilityTweetFields: boolean = false;
-	withReactionsMetadata: boolean = false;
-	withReactionsPerspective: boolean = false;
-	withSuperFollowsTweetFields: boolean = false;
-	withSuperFollowsUserFields: boolean = false;
-	withV2Timeline: boolean = true;
 	withVoice: boolean = false;
-	with_rux_injections: boolean = false;
-	withClientEventToken: boolean = false;
+	withCommunity: boolean = false;
 	/* eslint-enable */
 
 	/**
@@ -45,20 +36,35 @@ export class Variables implements IVariables {
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
 	constructor(resourceType: EResourceType, args: Args) {
-		if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {
+		// Converting JSON args to Args object
+		args = new Args(resourceType, args);
+
+		// Conditionally initializing variables
+		if (resourceType == EResourceType.CREATE_TWEET) {
+			this.tweet_text = args.tweetText;
+		} else if (resourceType == EResourceType.CREATE_RETWEET || resourceType == EResourceType.FAVORITE_TWEET) {
+			this.tweet_id = args.id;
+		} else if (resourceType == EResourceType.LIST_DETAILS) {
+			this.listId = args.id;
+		} else if (resourceType == EResourceType.LIST_TWEETS) {
+			this.listId = args.id;
+			this.count = args.count;
+			this.cursor = args.cursor;
+		} else if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {
 			this.rawQuery = args.filter.toString();
 			this.count = args.count;
 			this.cursor = args.cursor;
+			this.product = 'Latest';
 		} else if (resourceType == EResourceType.TWEET_DETAILS) {
-			this.focalTweetId = args.id;
-			this.count = args.count;
-			this.cursor = args.cursor;
+			this.tweetId = args.id;
 		} else if (resourceType == EResourceType.TWEET_FAVORITERS || resourceType == EResourceType.TWEET_RETWEETERS) {
 			this.tweetId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
 		} else if (resourceType == EResourceType.USER_DETAILS) {
 			this.screen_name = args.id;
+		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
+			this.userId = args.id;
 		} else if (
 			resourceType == EResourceType.USER_FOLLOWERS ||
 			resourceType == EResourceType.USER_FOLLOWING ||
