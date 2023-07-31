@@ -17,6 +17,8 @@ export interface IVariables {
 	tweet_text?: string;
 	product?: string;
 	includePromotedContent: boolean;
+	withVoice: boolean;
+	withCommunity: boolean;
 
 	/** @returns The string representation of 'this' data. */
 	toString(): string;

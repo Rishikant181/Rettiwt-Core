@@ -25,6 +25,8 @@ export class Variables implements IVariables {
 	tweet_text?: string;
 	product?: string;
 	includePromotedContent: boolean = false;
+	withVoice: boolean = false;
+	withCommunity: boolean = false;
 	/* eslint-enable */
 
 	/**
