@@ -16,7 +16,6 @@ export class Variables implements IVariables {
 	/* eslint-disable */
 	tweetId?: string;
 	tweet_id?: string;
-	focalTweetId?: string;
 	userId?: string;
 	listId?: string;
 	screen_name?: string;
@@ -55,9 +54,7 @@ export class Variables implements IVariables {
 			this.cursor = args.cursor;
 			this.product = 'Latest';
 		} else if (resourceType == EResourceType.TWEET_DETAILS) {
-			this.focalTweetId = args.id;
-			this.count = args.count;
-			this.cursor = args.cursor;
+			this.tweetId = args.id;
 		} else if (resourceType == EResourceType.TWEET_FAVORITERS || resourceType == EResourceType.TWEET_RETWEETERS) {
 			this.tweetId = args.id;
 			this.count = args.count;
