@@ -8,7 +8,6 @@
 export interface IVariables {
 	tweetId?: string;
 	tweet_id?: string;
-	focalTweetId?: string;
 	userId?: string;
 	listId?: string;
 	screen_name?: string;
@@ -18,6 +17,8 @@ export interface IVariables {
 	tweet_text?: string;
 	product?: string;
 	includePromotedContent: boolean;
+	withVoice: boolean;
+	withCommunity: boolean;
 
 	/** @returns The string representation of 'this' data. */
 	toString(): string;
