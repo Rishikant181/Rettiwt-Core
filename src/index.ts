@@ -34,6 +34,8 @@ export * from './types/response/base/DataResult';
 export * from './types/response/base/List';
 export * from './types/response/base/Tweet';
 export * from './types/response/base/User';
+export * from './types/response/base/TimelineTweet';
+export * from './types/response/base/TimelineUser';
 export * from './types/response/base/Cursor';
 
 // Exporting request payload types
