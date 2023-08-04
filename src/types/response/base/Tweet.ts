@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 // TYPES
-import { IDataResult } from './DataResult';
+import { IDataResult } from '../composite/DataResult';
 import { IUser } from './User';
 
 /**
