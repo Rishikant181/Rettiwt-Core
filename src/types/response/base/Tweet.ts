@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 // TYPES
-import { IDataResult } from './DataResult';
+import { IDataResult } from '../composite/DataResult';
 import { IUser } from './User';
 
 /**
@@ -39,6 +39,7 @@ export interface ITweetEditPerspective {
 }
 
 export interface ITweetViews {
+	count: string;
 	state: string;
 }
 

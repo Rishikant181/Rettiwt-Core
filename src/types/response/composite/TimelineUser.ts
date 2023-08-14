@@ -2,7 +2,7 @@
 
 // TYPES
 import { IDataResult } from './DataResult';
-import { IUser } from './User';
+import { IUser } from '../base/User';
 
 /**
  * Represents the raw data of a single timeline user.
