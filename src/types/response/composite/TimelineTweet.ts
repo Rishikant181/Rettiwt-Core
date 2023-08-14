@@ -2,7 +2,7 @@
 
 // TYPES
 import { IDataResult } from './DataResult';
-import { ITweet } from './Tweet';
+import { ITweet } from '../base/Tweet';
 
 /**
  * Represents the raw data of a single timeline tweet.
