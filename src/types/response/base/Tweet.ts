@@ -39,6 +39,7 @@ export interface ITweetEditPerspective {
 }
 
 export interface ITweetViews {
+	count: string;
 	state: string;
 }
 
