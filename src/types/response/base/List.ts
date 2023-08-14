@@ -9,10 +9,10 @@ import { IUser } from './User';
  *
  * @public
  */
-export interface Root {
+export interface IList {
 	created_at: number;
-	default_banner_media: DefaultBannerMedia;
-	default_banner_media_results: DefaultBannerMediaResults;
+	default_banner_media: IDefaultBannerMedia;
+	default_banner_media_results: IDefaultBannerMediaResults;
 	description: string;
 	following: boolean;
 	id: string;
@@ -29,47 +29,23 @@ export interface Root {
 	members_context: string;
 }
 
-export interface DefaultBannerMedia {
-	media_info: MediaInfo;
+export interface IDefaultBannerMedia {
+	media_info: IMediaInfo;
 }
 
-export interface MediaInfo {
-	original_img_url: string;
-	original_img_width: number;
-	original_img_height: number;
-	salient_rect: SalientRect;
+export interface IDefaultBannerMediaResults {
+	result: IBannerMediaResult;
 }
 
-export interface SalientRect {
-	left: number;
-	top: number;
-	width: number;
-	height: number;
-}
-
-export interface DefaultBannerMediaResults {
-	result: Result;
-}
-
-export interface Result {
+export interface IBannerMediaResult {
 	id: string;
 	media_key: string;
 	media_id: string;
-	media_info: MediaInfo2;
-	__typename: string;
+	media_info: IMediaInfo;
 }
 
-export interface MediaInfo2 {
-	__typename: string;
-	original_img_height: number;
-	original_img_width: number;
+export interface IMediaInfo {
 	original_img_url: string;
-	salient_rect: SalientRect2;
-}
-
-export interface SalientRect2 {
-	height: number;
-	left: number;
-	top: number;
-	width: number;
+	original_img_width: number;
+	original_img_height: number;
 }
