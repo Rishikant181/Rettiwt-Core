@@ -30,13 +30,15 @@ export * from './types/response/generic/Error';
 export * from './types/response/generic/Response';
 
 // Exporting base raw types
-export * from './types/response/base/DataResult';
 export * from './types/response/base/List';
 export * from './types/response/base/Tweet';
 export * from './types/response/base/User';
-export * from './types/response/base/TimelineTweet';
-export * from './types/response/base/TimelineUser';
 export * from './types/response/base/Cursor';
+
+// Exporting composite raw types
+export * from './types/response/composite/DataResult';
+export * from './types/response/composite/TimelineTweet';
+export * from './types/response/composite/TimelineUser';
 
 // Exporting request payload types
 export { IArgs } from './types/request/payloads/Args';
