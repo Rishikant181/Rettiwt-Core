@@ -9,10 +9,13 @@ export interface IMedia {
 	display_url: string;
 	expanded_url: string;
 	id_str: string;
-	media_key: string;
 	media_url_https: string;
 	type: string;
 	url: string;
+}
+
+export interface IExtendedMedia extends IMedia {
+	media_key: string;
 	ext_media_availability: IMediaAvailability;
 	additional_media_info?: IAdditionalMediaInfo;
 	mediaStats?: IMediaStats;
