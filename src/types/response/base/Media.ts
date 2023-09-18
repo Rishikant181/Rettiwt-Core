@@ -1,5 +1,8 @@
 /* eslint-disable */
 
+// ENUMS
+import { EMediaType } from '../../../enums/Response';
+
 /**
  * Represents the raw data of a single Media.
  *
@@ -10,7 +13,7 @@ export interface IMedia {
 	expanded_url: string;
 	id_str: string;
 	media_url_https: string;
-	type: string;
+	type: EMediaType;
 	url: string;
 }
 
