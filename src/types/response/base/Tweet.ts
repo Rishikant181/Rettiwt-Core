@@ -3,6 +3,7 @@
 // TYPES
 import { IDataResult } from '../composite/DataResult';
 import { IUser } from './User';
+import { IMedia, IExtendedMedia } from './Media';
 
 /**
  * Represents the raw data of a single Tweet.
@@ -77,18 +78,6 @@ export interface IEntities {
 	symbols: any[];
 }
 
-export interface IMedia {
-	display_url: string;
-	expanded_url: string;
-	id_str: string;
-	indices: number[];
-	media_url_https: string;
-	source_status_id_str: string;
-	source_user_id_str: string;
-	type: string;
-	url: string;
-}
-
 export interface IUserMention {
 	id_str: string;
 	name: string;
@@ -110,15 +99,6 @@ export interface IHashtag {
 
 export interface IExtendedEntities {
 	media: IExtendedMedia[];
-}
-
-export interface IExtendedMedia extends IMedia {
-	media_key: string;
-	ext_media_availability: IExtMediaAvailability;
-}
-
-export interface IExtMediaAvailability {
-	status: string;
 }
 
 export interface IRetweetedStatusResult {
