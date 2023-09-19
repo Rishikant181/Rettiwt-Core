@@ -4,8 +4,10 @@
 	"description": "The core library for the reverse-engineered Twitter API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"files": ["dist"],
 	"scripts": {
 		"build": "tsc",
+		"prepare": "tsc",
 		"lint": "eslint .",
 		"format": "prettier --write .",
 		"docs": "typedoc src/index.ts",
