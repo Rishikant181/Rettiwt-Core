@@ -95,11 +95,19 @@ export class TweetFilter implements ITweetFilter {
 
 	/** Whether to fetch tweets that are links or not.
 	 *
-	 * @defaultValue false
+	 * @defaultValue true
 	 */
 	@IsBoolean()
 	@IsOptional()
-	links?: boolean;
+	links?: boolean = true;
+
+	/** Whether to fetch tweets that are replies or not.
+	 *
+	 * @defaultValue true
+	 */
+	@IsBoolean()
+	@IsOptional()
+	replies?: boolean = true;
 
 	/**
 	 * @param filter - The filter to use for searching tweets.
@@ -109,6 +117,7 @@ export class TweetFilter implements ITweetFilter {
 		this.fromUsers = filter.fromUsers;
 		this.hashtags = filter.hashtags;
 		this.links = filter.links;
+		this.replies = filter.replies;
 		this.mentions = filter.mentions;
 		this.quoted = filter.quoted;
 		this.sinceId = filter.sinceId;
@@ -144,7 +153,9 @@ export class TweetFilter implements ITweetFilter {
 				this.quoted ? `quoted_tweet_id:${this.quoted}` : '',
 			]
 				.filter((item) => item !== '()' && item !== '')
-				.join(' ') + (!this.links ? ' -this:links' : '')
+				.join(' ') +
+			(this.links == false ? ' -filter:links' : '') +
+			(this.replies == false ? ' -filter:replies' : '')
 		);
 	}
 
