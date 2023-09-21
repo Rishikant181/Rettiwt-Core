@@ -1,6 +1,7 @@
 // Exporting enums
 export * from './enums/Errors';
 export * from './enums/Request';
+export * from './enums/Response';
 export * from './enums/Resources';
 
 // Exporting custom types
@@ -35,6 +36,7 @@ export * from './types/response/base/List';
 export * from './types/response/base/Tweet';
 export * from './types/response/base/User';
 export * from './types/response/base/Cursor';
+export * from './types/response/base/Media';
 
 // Exporting composite raw types
 export * from './types/response/composite/DataResult';
