@@ -73,7 +73,7 @@ export class Args implements IArgs {
 	 *
 	 * @remarks
 	 * - Works only for cursored resources.
-	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH}.
+	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH} and {@link EResourceType.USER_TWEETS}.
 	 * - Must be \<= 100 for all other cursored resources.
 	 *
 	 * @defaultValue 20
