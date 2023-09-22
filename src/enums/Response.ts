@@ -6,4 +6,5 @@
 export enum EMediaType {
 	PHOTO = 'photo',
 	VIDEO = 'video',
+	GIF = 'animated_gif',
 }
