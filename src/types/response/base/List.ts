@@ -30,7 +30,7 @@ export interface IList {
 }
 
 export interface IDefaultBannerMedia {
-	media_info: IMediaInfo;
+	media_info: IBannerMediaInfo;
 }
 
 export interface IDefaultBannerMediaResults {
@@ -41,10 +41,10 @@ export interface IBannerMediaResult {
 	id: string;
 	media_key: string;
 	media_id: string;
-	media_info: IMediaInfo;
+	media_info: IBannerMediaInfo;
 }
 
-export interface IMediaInfo {
+export interface IBannerMediaInfo {
 	original_img_url: string;
 	original_img_width: number;
 	original_img_height: number;

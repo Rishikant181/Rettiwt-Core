@@ -47,6 +47,7 @@ export class Args implements IArgs {
 			EResourceType.USER_FOLLOWERS,
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
+			EResourceType.USER_TWEETS,
 		],
 	})
 	@IsNumberString(undefined, {
@@ -62,6 +63,7 @@ export class Args implements IArgs {
 			EResourceType.USER_FOLLOWERS,
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
+			EResourceType.USER_TWEETS,
 		],
 	})
 	id?: string;
@@ -71,7 +73,7 @@ export class Args implements IArgs {
 	 *
 	 * @remarks
 	 * - Works only for cursored resources.
-	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH}.
+	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH} and {@link EResourceType.USER_TWEETS}.
 	 * - Must be \<= 100 for all other cursored resources.
 	 *
 	 * @defaultValue 20
@@ -86,7 +88,7 @@ export class Args implements IArgs {
 			EResourceType.USER_LIKES,
 		],
 	})
-	@Max(20, { groups: [EResourceType.TWEET_SEARCH] })
+	@Max(20, { groups: [EResourceType.TWEET_SEARCH, EResourceType.USER_TWEETS] })
 	count?: number;
 
 	/**

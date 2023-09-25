@@ -1,6 +1,7 @@
 // Exporting enums
 export * from './enums/Errors';
 export * from './enums/Request';
+export * from './enums/Response';
 export * from './enums/Resources';
 
 // Exporting custom types
@@ -23,6 +24,7 @@ export { Root as ITweetRetweetResponse } from './types/response/tweet/Retweet';
 export { Root as IUserFollowersResponse } from './types/response/user/Followers';
 export { Root as IUserFollowingResponse } from './types/response/user/Following';
 export { Root as IUserLikesResponse } from './types/response/user/Likes';
+export { Root as IUserTweetsResponse } from './types/response/user/Tweets';
 export { Root as IUserDetailsResponse } from './types/response/user/User';
 
 // Exporting generic raw types
@@ -34,6 +36,7 @@ export * from './types/response/base/List';
 export * from './types/response/base/Tweet';
 export * from './types/response/base/User';
 export * from './types/response/base/Cursor';
+export * from './types/response/base/Media';
 
 // Exporting composite raw types
 export * from './types/response/composite/DataResult';
