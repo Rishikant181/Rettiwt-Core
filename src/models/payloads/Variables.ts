@@ -13,21 +13,21 @@ import { EResourceType } from '../../enums/Resources';
  * @public
  */
 export class Variables implements IVariables {
-	/* eslint-disable */
-	tweetId?: string;
-	tweet_id?: string;
-	userId?: string;
-	listId?: string;
-	screen_name?: string;
-	count?: number;
-	cursor?: string;
-	rawQuery?: string;
-	tweet_text?: string;
-	product?: string;
-	includePromotedContent: boolean = false;
-	withVoice: boolean = false;
-	withCommunity: boolean = false;
-	/* eslint-enable */
+	/* eslint-disable @typescript-eslint/naming-convention */
+	public tweetId?: string;
+	public tweet_id?: string;
+	public userId?: string;
+	public listId?: string;
+	public screen_name?: string;
+	public count?: number;
+	public cursor?: string;
+	public rawQuery?: string;
+	public tweet_text?: string;
+	public product?: string;
+	public includePromotedContent: boolean = false;
+	public withVoice: boolean = false;
+	public withCommunity: boolean = false;
+	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
 	 * Initializes the appropriate Variables object based on the requred resource type and parameters.
