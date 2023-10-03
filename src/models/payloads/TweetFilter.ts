@@ -17,7 +17,7 @@ export class TweetFilter implements ITweetFilter {
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
-	words?: string[];
+	public words?: string[];
 
 	/**
 	 * The list of hashtags to search.
@@ -28,7 +28,7 @@ export class TweetFilter implements ITweetFilter {
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
-	hashtags?: string[];
+	public hashtags?: string[];
 
 	/**
 	 * The list of usernames whose tweets are to be searched.
@@ -39,7 +39,7 @@ export class TweetFilter implements ITweetFilter {
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
-	fromUsers?: string[];
+	public fromUsers?: string[];
 
 	/**
 	 * The list of username to whom the tweets to be searched, are adressed.
@@ -50,7 +50,7 @@ export class TweetFilter implements ITweetFilter {
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
-	toUsers?: string[];
+	public toUsers?: string[];
 
 	/**
 	 * The list of username mentioned in the tweets to search.
@@ -61,17 +61,17 @@ export class TweetFilter implements ITweetFilter {
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
-	mentions?: string[];
+	public mentions?: string[];
 
 	/** The date starting from which tweets are to be searched. */
 	@IsOptional()
 	@IsDate()
-	startDate?: Date;
+	public startDate?: Date;
 
 	/** The date upto which tweets are to be searched. */
 	@IsOptional()
 	@IsDate()
-	endDate?: Date;
+	public endDate?: Date;
 
 	/**
 	 * The id of the tweet, after which the tweets are to be searched.
@@ -81,7 +81,7 @@ export class TweetFilter implements ITweetFilter {
 	 */
 	@IsNumberString()
 	@IsOptional()
-	sinceId?: string;
+	public sinceId?: string;
 
 	/**
 	 * The id of the tweet which is quoted in the tweets to search.
@@ -91,7 +91,7 @@ export class TweetFilter implements ITweetFilter {
 	 */
 	@IsNumberString()
 	@IsOptional()
-	quoted?: string;
+	public quoted?: string;
 
 	/** Whether to fetch tweets that are links or not.
 	 *
@@ -99,7 +99,7 @@ export class TweetFilter implements ITweetFilter {
 	 */
 	@IsBoolean()
 	@IsOptional()
-	links?: boolean = true;
+	public links?: boolean = true;
 
 	/** Whether to fetch tweets that are replies or not.
 	 *
@@ -107,12 +107,12 @@ export class TweetFilter implements ITweetFilter {
 	 */
 	@IsBoolean()
 	@IsOptional()
-	replies?: boolean = true;
+	public replies?: boolean = true;
 
 	/**
 	 * @param filter - The filter to use for searching tweets.
 	 */
-	constructor(filter: TweetFilter) {
+	public constructor(filter: TweetFilter) {
 		this.endDate = filter.endDate;
 		this.fromUsers = filter.fromUsers;
 		this.hashtags = filter.hashtags;
@@ -139,7 +139,7 @@ export class TweetFilter implements ITweetFilter {
 	 *
 	 * @returns 'this' object's string representation.
 	 */
-	toString(): string {
+	public toString(): string {
 		return (
 			[
 				this.words ? this.words.join(' ') : '',

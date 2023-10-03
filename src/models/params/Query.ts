@@ -16,10 +16,10 @@ import { EResourceType } from '../../enums/Resources';
  */
 export class Query implements IQuery {
 	/** Additional data features that must be fetched. */
-	features: Features;
+	public features: Features;
 
 	/** Variables for fetching data. */
-	variables: Variables;
+	public variables: Variables;
 
 	/**
 	 * Initializes the URL parameters.
@@ -27,7 +27,7 @@ export class Query implements IQuery {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional user-defined arguments to be sent in the request.
 	 */
-	constructor(resourceType: EResourceType, args: Args) {
+	public constructor(resourceType: EResourceType, args: Args) {
 		this.variables = new Variables(resourceType, args);
 		this.features = new Features();
 	}
@@ -37,7 +37,7 @@ export class Query implements IQuery {
 	 *
 	 * @returns 'this' object's string representation;
 	 */
-	toString(): string {
+	public toString(): string {
 		return `variables=${this.variables.toString()}&features=${this.features.toString()}`;
 	}
 }

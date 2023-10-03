@@ -35,7 +35,7 @@ export class Variables implements IVariables {
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	constructor(resourceType: EResourceType, args: Args) {
+	public constructor(resourceType: EResourceType, args: Args) {
 		// Converting JSON args to Args object
 		args = new Args(resourceType, args);
 
@@ -82,7 +82,7 @@ export class Variables implements IVariables {
 	 *
 	 * @returns 'this' object's string representation.
 	 */
-	toString(): string {
+	public toString(): string {
 		return `${encodeURIComponent(JSON.stringify(this))}`;
 	}
 }

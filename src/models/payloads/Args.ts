@@ -24,7 +24,7 @@ export class Args implements IArgs {
 	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
 	 */
 	@IsNotEmpty({ groups: [EResourceType.TWEET_SEARCH] })
-	filter?: TweetFilter;
+	public filter?: TweetFilter;
 
 	/**
 	 * The 'id of the target resource.
@@ -66,7 +66,7 @@ export class Args implements IArgs {
 			EResourceType.USER_TWEETS,
 		],
 	})
-	id?: string;
+	public id?: string;
 
 	/**
 	 * The number of data items to fetch.
@@ -89,7 +89,7 @@ export class Args implements IArgs {
 		],
 	})
 	@Max(20, { groups: [EResourceType.TWEET_SEARCH, EResourceType.USER_TWEETS] })
-	count?: number;
+	public count?: number;
 
 	/**
 	 * The cursor string to the batch of data to fetch.
@@ -98,7 +98,7 @@ export class Args implements IArgs {
 	 * - May be used for cursored resources.
 	 * - Has no effect for all other resources.
 	 */
-	cursor?: string;
+	public cursor?: string;
 
 	/**
 	 * The text for the tweet to be created.
@@ -107,7 +107,7 @@ export class Args implements IArgs {
 	 */
 	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
 	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
-	tweetText?: string;
+	public tweetText?: string;
 
 	/**
 	 * Initializes a new argument object based on the type of input.
@@ -115,7 +115,7 @@ export class Args implements IArgs {
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	constructor(resourceType: EResourceType, args: Args) {
+	public constructor(resourceType: EResourceType, args: Args) {
 		this.id = args.id;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
