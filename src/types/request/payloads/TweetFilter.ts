@@ -30,6 +30,9 @@ export interface ITweetFilter {
 	/** The id of the tweet, after which the tweets are to be searched. */
 	sinceId?: string;
 
+	/** The id of the tweet, before which the tweets are to be searched. */
+	maxId?: string;
+
 	/** The id of the tweet which is quoted in the tweets to search. */
 	quoted?: string;
 

@@ -84,6 +84,16 @@ export class TweetFilter implements ITweetFilter {
 	public sinceId?: string;
 
 	/**
+	 * The id of the tweet, before which the tweets are to be searched.
+	 *
+	 * @remarks
+	 * Must be a numeric string.
+	 */
+	@IsNumberString()
+	@IsOptional()
+	public maxId?: string;
+
+	/**
 	 * The id of the tweet which is quoted in the tweets to search.
 	 *
 	 * @remarks
@@ -121,6 +131,7 @@ export class TweetFilter implements ITweetFilter {
 		this.mentions = filter.mentions;
 		this.quoted = filter.quoted;
 		this.sinceId = filter.sinceId;
+		this.maxId = filter.maxId;
 		this.startDate = filter.startDate;
 		this.toUsers = filter.toUsers;
 		this.words = filter.words;
@@ -150,6 +161,7 @@ export class TweetFilter implements ITweetFilter {
 				this.startDate ? `since:${TweetFilter.dateToTwitterString(this.startDate)}` : '',
 				this.endDate ? `until:${TweetFilter.dateToTwitterString(this.endDate)}` : '',
 				this.sinceId ? `since_id:${this.sinceId}` : '',
+				this.maxId ? `max_id:${this.maxId}` : '',
 				this.quoted ? `quoted_tweet_id:${this.quoted}` : '',
 			]
 				.filter((item) => item !== '()' && item !== '')
