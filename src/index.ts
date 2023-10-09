@@ -25,7 +25,6 @@ export { Root as IUserFollowersResponse } from './types/response/user/Followers'
 export { Root as IUserFollowingResponse } from './types/response/user/Following';
 export { Root as IUserLikesResponse } from './types/response/user/Likes';
 export { Root as IUserTweetsResponse } from './types/response/user/Tweets';
-export { Root as IUserTweetsAndRepliesResponse } from './types/response/user/TweetsAndReplies';
 export { Root as IUserDetailsResponse } from './types/response/user/User';
 
 // Exporting generic raw types
