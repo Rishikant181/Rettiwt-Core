@@ -16,19 +16,19 @@ import { Args } from './payloads/Args';
  */
 export class Request implements IRequest {
 	/** The base URL of the request. */
-	base: string = 'https://twitter.com';
+	public base: string = 'https://twitter.com';
 
 	/** The endpoint to which the request is to be sent. */
-	endpoint: EResourceType;
+	public endpoint: EResourceType;
 
 	/** The full url of the request. */
-	url: string;
+	public url: string;
 
 	/** The type of 'this' request. */
-	type: ERequestType;
+	public type: ERequestType;
 
 	/** The payload to be sent in the request. */
-	payload: Query;
+	public payload: Query;
 
 	/**
 	 * Generates an HTTP request configuration for the requested resource on Twitter.
@@ -36,7 +36,7 @@ export class Request implements IRequest {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional URL arguments.
 	 */
-	constructor(resourceType: EResourceType, args: Args) {
+	public constructor(resourceType: EResourceType, args: Args) {
 		this.url = `${this.base}${resourceType}`;
 		this.endpoint = resourceType;
 		this.payload = new Query(resourceType, args);
