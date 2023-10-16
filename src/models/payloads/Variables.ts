@@ -69,7 +69,8 @@ export class Variables implements IVariables {
 			resourceType == EResourceType.USER_FOLLOWERS ||
 			resourceType == EResourceType.USER_FOLLOWING ||
 			resourceType == EResourceType.USER_LIKES ||
-			resourceType == EResourceType.USER_TWEETS
+			resourceType == EResourceType.USER_TWEETS ||
+			resourceType == EResourceType.USER_TWEETS_AND_REPLIES
 		) {
 			this.userId = args.id;
 			this.count = args.count;

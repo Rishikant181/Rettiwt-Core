@@ -12,6 +12,7 @@ export interface IFeatures {
 	creator_subscriptions_tweet_preview_api_enabled: boolean;
 	responsive_web_graphql_timeline_navigation_enabled: boolean;
 	responsive_web_graphql_skip_user_profile_image_extensions_enabled: boolean;
+	responsive_web_home_pinned_timelines_enabled: boolean;
 	tweetypie_unmention_optimization_enabled: boolean;
 	responsive_web_edit_tweet_api_enabled: boolean;
 	graphql_is_translatable_rweb_tweet_is_translatable_enabled: boolean;

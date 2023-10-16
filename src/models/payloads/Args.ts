@@ -48,6 +48,7 @@ export class Args implements IArgs {
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
 			EResourceType.USER_TWEETS,
+			EResourceType.USER_TWEETS_AND_REPLIES,
 		],
 	})
 	@IsNumberString(undefined, {
@@ -64,6 +65,7 @@ export class Args implements IArgs {
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
 			EResourceType.USER_TWEETS,
+			EResourceType.USER_TWEETS_AND_REPLIES,
 		],
 	})
 	public id?: string;
@@ -88,7 +90,9 @@ export class Args implements IArgs {
 			EResourceType.USER_LIKES,
 		],
 	})
-	@Max(20, { groups: [EResourceType.TWEET_SEARCH, EResourceType.USER_TWEETS] })
+	@Max(20, {
+		groups: [EResourceType.TWEET_SEARCH, EResourceType.USER_TWEETS, EResourceType.USER_TWEETS_AND_REPLIES],
+	})
 	public count?: number;
 
 	/**
