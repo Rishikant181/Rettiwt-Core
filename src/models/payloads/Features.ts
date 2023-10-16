@@ -14,6 +14,7 @@ export class Features implements IFeatures {
 	public creator_subscriptions_tweet_preview_api_enabled = true;
 	public responsive_web_graphql_timeline_navigation_enabled = true;
 	public responsive_web_graphql_skip_user_profile_image_extensions_enabled = false;
+	public responsive_web_home_pinned_timelines_enabled = false;
 	public tweetypie_unmention_optimization_enabled = true;
 	public responsive_web_edit_tweet_api_enabled = true;
 	public graphql_is_translatable_rweb_tweet_is_translatable_enabled = true;
