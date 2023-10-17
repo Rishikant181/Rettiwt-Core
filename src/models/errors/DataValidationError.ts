@@ -14,18 +14,18 @@ import { EErrors } from '../../enums/Errors';
  */
 export class DataValidationError implements IDataValidationError {
 	/** The name of the error. */
-	name: string;
+	public name: string;
 
 	/** The user-friendly error message. */
-	message: EErrors;
+	public message: EErrors;
 
 	/** The error data. */
-	data: ValidationError[];
+	public data: ValidationError[];
 
 	/**
 	 * @param data - The error details, as a list of type {@link ValidationError}
 	 */
-	constructor(errorDetails: ValidationError[]) {
+	public constructor(errorDetails: ValidationError[]) {
 		this.name = 'VALIDATION_ERROR';
 		this.message = EErrors.VALIDATION_ERROR;
 		this.data = errorDetails;
