@@ -7,7 +7,16 @@
  */
 export interface ITweetFilter {
 	/** The list of words to search. */
-	words?: string[];
+	includeWords?: string[];
+
+	/** The exact phrase to search. */
+	includePhrase: string;
+
+	/** The optional words to search. */
+	optionalWords: string[];
+
+	/** The list of words to exclude from search. */
+	excludeWords: string[];
 
 	/** The list of hashtags to search. */
 	hashtags?: string[];
@@ -20,6 +29,18 @@ export interface ITweetFilter {
 
 	/** The list of username mentioned in the tweets to search. */
 	mentions?: string[];
+
+	/** The minimum number of replies to search by. */
+	minReplies: number;
+
+	/** The minimun number of likes to search by. */
+	minLikes: number;
+
+	/** The minimum number of retweets to search by. */
+	minRetweets: number;
+
+	/** The language of the tweets to search. */
+	language: string;
 
 	/** The date starting from which tweets are to be searched. */
 	startDate?: Date;

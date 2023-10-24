@@ -1,5 +1,14 @@
 // PACKAGE
-import { IsArray, IsBoolean, IsNumberString, IsString, IsOptional, IsDate, validateSync } from 'class-validator';
+import {
+	IsArray,
+	IsBoolean,
+	IsNumberString,
+	IsString,
+	IsOptional,
+	IsDate,
+	validateSync,
+	IsNumber,
+} from 'class-validator';
 
 // TYPES
 import { ITweetFilter } from '../../types/request/payloads/TweetFilter';
@@ -17,7 +26,24 @@ export class TweetFilter implements ITweetFilter {
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
-	public words?: string[];
+	public includeWords?: string[];
+
+	/** The exact phrase to search. */
+	@IsString()
+	@IsOptional()
+	public includePhrase: string;
+
+	/** The list of optional words to search. */
+	@IsArray()
+	@IsString({ each: true })
+	@IsOptional()
+	public optionalWords: string[];
+
+	/** The list of words to exclude from search. */
+	@IsArray()
+	@IsString({ each: true })
+	@IsOptional()
+	public excludeWords: string[];
 
 	/**
 	 * The list of hashtags to search.
@@ -62,6 +88,26 @@ export class TweetFilter implements ITweetFilter {
 	@IsString({ each: true })
 	@IsOptional()
 	public mentions?: string[];
+
+	/** The minimum number of replies to search by. */
+	@IsNumber()
+	@IsOptional()
+	public minReplies: number;
+
+	/** The minimun number of likes to search by. */
+	@IsNumber()
+	@IsOptional()
+	public minLikes: number;
+
+	/** The minimum number of retweets to search by. */
+	@IsNumber()
+	@IsOptional()
+	public minRetweets: number;
+
+	/** The language of the tweets to search. */
+	@IsString()
+	@IsOptional()
+	public language: string;
 
 	/** The date starting from which tweets are to be searched. */
 	@IsOptional()
@@ -124,17 +170,24 @@ export class TweetFilter implements ITweetFilter {
 	 */
 	public constructor(filter: TweetFilter) {
 		this.endDate = filter.endDate;
+		this.excludeWords = filter.excludeWords;
 		this.fromUsers = filter.fromUsers;
 		this.hashtags = filter.hashtags;
+		this.includePhrase = filter.includePhrase;
+		this.language = filter.language;
 		this.links = filter.links;
 		this.replies = filter.replies;
 		this.mentions = filter.mentions;
 		this.quoted = filter.quoted;
 		this.sinceId = filter.sinceId;
 		this.maxId = filter.maxId;
+		this.minLikes = filter.minLikes;
+		this.minReplies = filter.minReplies;
+		this.minRetweets = filter.minRetweets;
+		this.optionalWords = filter.optionalWords;
 		this.startDate = filter.startDate;
 		this.toUsers = filter.toUsers;
-		this.words = filter.words;
+		this.includeWords = filter.includeWords;
 
 		// Validating this object
 		const validationResult = validateSync(this);
@@ -153,11 +206,18 @@ export class TweetFilter implements ITweetFilter {
 	public toString(): string {
 		return (
 			[
-				this.words ? this.words.join(' ') : '',
+				this.includeWords ? this.includeWords.join(' ') : '',
+				this.includePhrase ? `"${this.includePhrase}"` : '',
+				this.optionalWords ? `(${this.optionalWords.join(' OR ')})` : '',
+				this.excludeWords ? `${this.excludeWords.map((word) => '-' + word).join(' ')}` : '',
 				this.hashtags ? `(${this.hashtags.map((hashtag) => '#' + hashtag).join(' OR ')})` : '',
 				this.fromUsers ? `(${this.fromUsers.map((user) => `from:${user}`).join(' OR ')})` : '',
 				this.toUsers ? `(${this.toUsers.map((user) => `to:${user}`).join(' OR ')})` : '',
 				this.mentions ? `(${this.mentions.map((mention) => '@' + mention).join(' OR ')})` : '',
+				this.minReplies ? `min_replies:${this.minReplies}` : '',
+				this.minLikes ? `min_faves:${this.minLikes}` : '',
+				this.minRetweets ? `min_retweets:${this.minRetweets}` : '',
+				this.language ? `lang:${this.language}` : '',
 				this.startDate ? `since:${TweetFilter.dateToTwitterString(this.startDate)}` : '',
 				this.endDate ? `until:${TweetFilter.dateToTwitterString(this.endDate)}` : '',
 				this.sinceId ? `since_id:${this.sinceId}` : '',
