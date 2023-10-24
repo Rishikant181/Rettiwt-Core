@@ -1,5 +1,14 @@
 // PACKAGE
-import { IsArray, IsBoolean, IsNumberString, IsString, IsOptional, IsDate, validateSync } from 'class-validator';
+import {
+	IsArray,
+	IsBoolean,
+	IsNumberString,
+	IsString,
+	IsOptional,
+	IsDate,
+	validateSync,
+	IsNumber,
+} from 'class-validator';
 
 // TYPES
 import { ITweetFilter } from '../../types/request/payloads/TweetFilter';
@@ -18,6 +27,23 @@ export class TweetFilter implements ITweetFilter {
 	@IsString({ each: true })
 	@IsOptional()
 	public words?: string[];
+
+	/** The exact phrase to search. */
+	@IsString()
+	@IsOptional()
+	public includePhrase: string;
+
+	/** The optional words to search. */
+	@IsArray()
+	@IsString({ each: true })
+	@IsOptional()
+	public optionalWords: string[];
+
+	/** The list of words to exclude from search. */
+	@IsArray()
+	@IsString({ each: true })
+	@IsOptional()
+	public excludeWords: string[];
 
 	/**
 	 * The list of hashtags to search.
@@ -62,6 +88,26 @@ export class TweetFilter implements ITweetFilter {
 	@IsString({ each: true })
 	@IsOptional()
 	public mentions?: string[];
+
+	/** The minimum number of replies to search by. */
+	@IsNumber()
+	@IsOptional()
+	public minReplies: number;
+
+	/** The minimun number of likes to search by. */
+	@IsNumber()
+	@IsOptional()
+	public minLikes: number;
+
+	/** The minimum number of retweets to search by. */
+	@IsNumber()
+	@IsOptional()
+	public minRetweets: number;
+
+	/** The language of the tweets to search. */
+	@IsString()
+	@IsOptional()
+	public language: string;
 
 	/** The date starting from which tweets are to be searched. */
 	@IsOptional()
