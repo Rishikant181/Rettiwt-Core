@@ -61,7 +61,7 @@ const { type, url } = new Request(EResourceType.TWEET_SEARCH, {
     cursor: 'cursor',
     filter: {
         fromUsers: ['user_name_1', 'user_name_2'],
-        words: ['word_1', 'word_2'],
+        includeWords: ['word_1', 'word_2'],
     }
 });
 ```
