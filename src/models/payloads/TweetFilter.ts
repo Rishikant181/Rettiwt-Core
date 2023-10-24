@@ -170,14 +170,21 @@ export class TweetFilter implements ITweetFilter {
 	 */
 	public constructor(filter: TweetFilter) {
 		this.endDate = filter.endDate;
+		this.excludeWords = filter.excludeWords;
 		this.fromUsers = filter.fromUsers;
 		this.hashtags = filter.hashtags;
+		this.includePhrase = filter.includePhrase;
+		this.language = filter.language;
 		this.links = filter.links;
 		this.replies = filter.replies;
 		this.mentions = filter.mentions;
 		this.quoted = filter.quoted;
 		this.sinceId = filter.sinceId;
 		this.maxId = filter.maxId;
+		this.minLikes = filter.minLikes;
+		this.minReplies = filter.minReplies;
+		this.minRetweets = filter.minRetweets;
+		this.optionalWords = filter.optionalWords;
 		this.startDate = filter.startDate;
 		this.toUsers = filter.toUsers;
 		this.words = filter.words;
@@ -200,10 +207,17 @@ export class TweetFilter implements ITweetFilter {
 		return (
 			[
 				this.words ? this.words.join(' ') : '',
+				this.includePhrase ? this.includePhrase : '',
+				this.optionalWords ? `(${this.optionalWords.join(' OR ')})` : '',
+				this.excludeWords ? `${this.excludeWords.map((word) => '-' + word).join(' ')}` : '',
 				this.hashtags ? `(${this.hashtags.map((hashtag) => '#' + hashtag).join(' OR ')})` : '',
 				this.fromUsers ? `(${this.fromUsers.map((user) => `from:${user}`).join(' OR ')})` : '',
 				this.toUsers ? `(${this.toUsers.map((user) => `to:${user}`).join(' OR ')})` : '',
 				this.mentions ? `(${this.mentions.map((mention) => '@' + mention).join(' OR ')})` : '',
+				this.minReplies ? `min_replies:${this.minReplies}` : '',
+				this.minLikes ? `min_faves:${this.minLikes}` : '',
+				this.minRetweets ? `min_retweets:${this.minRetweets}` : '',
+				this.language ? `lang:${this.language}` : '',
 				this.startDate ? `since:${TweetFilter.dateToTwitterString(this.startDate)}` : '',
 				this.endDate ? `until:${TweetFilter.dateToTwitterString(this.endDate)}` : '',
 				this.sinceId ? `since_id:${this.sinceId}` : '',
