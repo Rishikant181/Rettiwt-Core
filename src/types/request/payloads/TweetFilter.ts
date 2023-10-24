@@ -7,7 +7,7 @@
  */
 export interface ITweetFilter {
 	/** The list of words to search. */
-	words?: string[];
+	includeWords?: string[];
 
 	/** The exact phrase to search. */
 	includePhrase: string;

@@ -26,7 +26,7 @@ export class TweetFilter implements ITweetFilter {
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
-	public words?: string[];
+	public includeWords?: string[];
 
 	/** The exact phrase to search. */
 	@IsString()
@@ -187,7 +187,7 @@ export class TweetFilter implements ITweetFilter {
 		this.optionalWords = filter.optionalWords;
 		this.startDate = filter.startDate;
 		this.toUsers = filter.toUsers;
-		this.words = filter.words;
+		this.includeWords = filter.includeWords;
 
 		// Validating this object
 		const validationResult = validateSync(this);
@@ -206,7 +206,7 @@ export class TweetFilter implements ITweetFilter {
 	public toString(): string {
 		return (
 			[
-				this.words ? this.words.join(' ') : '',
+				this.includeWords ? this.includeWords.join(' ') : '',
 				this.includePhrase ? `"${this.includePhrase}"` : '',
 				this.optionalWords ? `(${this.optionalWords.join(' OR ')})` : '',
 				this.excludeWords ? `${this.excludeWords.map((word) => '-' + word).join(' ')}` : '',
