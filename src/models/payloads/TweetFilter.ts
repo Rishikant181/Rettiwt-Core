@@ -33,7 +33,7 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	public includePhrase: string;
 
-	/** The optional words to search. */
+	/** The list of optional words to search. */
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
