@@ -207,7 +207,7 @@ export class TweetFilter implements ITweetFilter {
 		return (
 			[
 				this.words ? this.words.join(' ') : '',
-				this.includePhrase ? this.includePhrase : '',
+				this.includePhrase ? `"${this.includePhrase}"` : '',
 				this.optionalWords ? `(${this.optionalWords.join(' OR ')})` : '',
 				this.excludeWords ? `${this.excludeWords.map((word) => '-' + word).join(' ')}` : '',
 				this.hashtags ? `(${this.hashtags.map((hashtag) => '#' + hashtag).join(' OR ')})` : '',
