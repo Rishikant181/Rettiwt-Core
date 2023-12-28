@@ -1,6 +1,6 @@
 // ENUMS
 import { ERequestType } from '../enums/Request';
-import { EResourceType } from '../enums/Resources';
+import { ESubdomains, EResourceType } from '../enums/Resources';
 
 // TYPES
 import { IRequest } from '../types/request/Request';
@@ -15,19 +15,11 @@ import { Args } from './payloads/Args';
  * @public
  */
 export class Request implements IRequest {
-	/** The base URL of the request. */
 	public base: string = 'https://twitter.com';
-
-	/** The endpoint to which the request is to be sent. */
+	public subdomain: ESubdomains;
 	public endpoint: EResourceType;
-
-	/** The full url of the request. */
 	public url: string;
-
-	/** The type of 'this' request. */
 	public type: ERequestType;
-
-	/** The payload to be sent in the request. */
 	public payload: Query;
 
 	/**
@@ -37,10 +29,19 @@ export class Request implements IRequest {
 	 * @param args - Additional URL arguments.
 	 */
 	public constructor(resourceType: EResourceType, args: Args) {
-		this.url = `${this.base}${resourceType}`;
+		// Determining the subdomain from the resource
+		if (resourceType == EResourceType.MEDIA_UPLOAD) {
+			this.subdomain = ESubdomains.UPLOAD;
+		} else {
+			this.subdomain = ESubdomains.MAIN;
+		}
+
+		// Setting url, parameters and payloads
+		this.url = `${this.subdomain ? this.subdomain + '.' : ''}${this.base}${resourceType}`;
 		this.endpoint = resourceType;
 		this.payload = new Query(resourceType, args);
 
+		// Determining the request type from the resource
 		// For 'POST' requests
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||

@@ -15,10 +15,7 @@ import { EResourceType } from '../../enums/Resources';
  * @public
  */
 export class Query implements IQuery {
-	/** Additional data features that must be fetched. */
 	public features: Features;
-
-	/** Variables for fetching data. */
 	public variables: Variables;
 
 	/**

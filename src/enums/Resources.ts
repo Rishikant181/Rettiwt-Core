@@ -1,4 +1,14 @@
 /**
+ * The different subdomain available.
+ *
+ * @public
+ */
+export enum ESubdomains {
+	MAIN = '',
+	UPLOAD = 'upload',
+}
+
+/**
  * The different types of resources that can be fetched.
  *
  * @public
@@ -20,4 +30,5 @@ export enum EResourceType {
 	USER_LIKES = '/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
 	USER_TWEETS = '/i/api/graphql/H8OOoI-5ZE4NxgRr8lfyWg/UserTweets',
 	USER_TWEETS_AND_REPLIES = '/i/api/graphql/GJuqLMoVxFZOvy8Oqec_9Q/UserTweetsAndReplies',
+	MEDIA_UPLOAD = '/i/media/upload.json',
 }

@@ -14,6 +14,9 @@ export interface IRequest {
 	/** The base URL of the request. */
 	base: string;
 
+	/** The sub-domain of the request. */
+	subdomain: string;
+
 	/** The endpoint to which the request is to be sent. */
 	endpoint: EResourceType;
 
