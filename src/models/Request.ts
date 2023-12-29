@@ -49,12 +49,20 @@ export class Request implements IRequest {
 		this.endpoint = resourceType;
 	}
 
+	/**
+	 * Converts 'this' Request object to it's equivalent AxiosRequstConfig object.
+	 *
+	 * @returns The AxiosRequestConfig reqpresentation of 'this' Request.
+	 */
 	public toAxiosRequestConfig(): AxiosRequestConfig {
 		return {
 			url: this.endpoint,
 			method: this.type,
 			baseURL: `https://${this.base}`,
 			params: this.params,
+			paramsSerializer: {
+				encode: encodeURIComponent,
+			},
 			data: this.payload,
 		};
 	}

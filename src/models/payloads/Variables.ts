@@ -77,4 +77,13 @@ export class Variables implements IVariables {
 			this.cursor = args.cursor;
 		}
 	}
+
+	/**
+	 * Converts this object to it's string representation.
+	 *
+	 * @returns 'this' object's string representation.
+	 */
+	public toString(): string {
+		return JSON.stringify(this);
+	}
 }
