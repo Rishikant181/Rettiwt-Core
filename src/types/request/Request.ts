@@ -11,18 +11,18 @@ import { IQuery } from './params/Query';
  * @public
  */
 export interface IRequest {
+	/** The type of 'this' request. */
+	type: ERequestType;
+
 	/** The base URL of the request. */
 	base: string;
 
 	/** The endpoint to which the request is to be sent. */
 	endpoint: EResourceType;
 
-	/** The full url of the request. */
-	url: string;
+	/** The parameters to be sent in the request. */
+	params?: IQuery;
 
-	/** The type of 'this' request. */
-	type: ERequestType;
-
-	/** The payload to be sent in the request. */
-	payload: IQuery;
+	/** The payload to be sent (for POST requests). */
+	payload?: NonNullable<unknown>;
 }
