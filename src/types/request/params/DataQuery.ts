@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 // TYPES
+import { IBaseQuery } from './BaseQuery';
 import { IFeatures } from '../payloads/Features';
 import { IVariables } from '../payloads/Variables';
 
@@ -9,13 +10,10 @@ import { IVariables } from '../payloads/Variables';
  *
  * @public
  */
-export interface IQuery {
+export interface IDataQuery extends IBaseQuery {
 	/** Additional data features that must be fetched. */
 	features: IFeatures;
 
 	/** Variables for fetching data. */
 	variables: IVariables;
-
-	/** @returns The string representation of 'this' data. */
-	toString(): string;
 }

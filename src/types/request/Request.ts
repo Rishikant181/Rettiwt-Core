@@ -3,7 +3,7 @@ import { ERequestType } from '../../enums/Request';
 import { EResourceType } from '../../enums/Resources';
 
 // TYPES
-import { IQuery } from './params/Query';
+import { IBaseQuery } from './params/BaseQuery';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
@@ -27,5 +27,5 @@ export interface IRequest {
 	type: ERequestType;
 
 	/** The payload to be sent in the request. */
-	payload: IQuery;
+	payload: IBaseQuery;
 }

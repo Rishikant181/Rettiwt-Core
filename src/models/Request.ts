@@ -6,7 +6,8 @@ import { ESubdomains, EResourceType } from '../enums/Resources';
 import { IRequest } from '../types/request/Request';
 
 // MODELS
-import { Query } from './params/Query';
+import { BaseQuery } from './params/BaseQuery';
+import { DataQuery } from './params/DataQuery';
 import { Args } from './payloads/Args';
 
 /**
@@ -20,7 +21,7 @@ export class Request implements IRequest {
 	public endpoint: EResourceType;
 	public url: string;
 	public type: ERequestType;
-	public payload: Query;
+	public payload: BaseQuery;
 
 	/**
 	 * Generates an HTTP request configuration for the requested resource on Twitter.
@@ -39,7 +40,7 @@ export class Request implements IRequest {
 		// Setting url, parameters and payloads
 		this.url = `${this.subdomain ? this.subdomain + '.' : ''}${this.base}${resourceType}`;
 		this.endpoint = resourceType;
-		this.payload = new Query(resourceType, args);
+		this.payload = new DataQuery(resourceType, args);
 
 		// Determining the request type from the resource
 		// For 'POST' requests

@@ -5,7 +5,7 @@ export * from './enums/Media';
 export * from './enums/Resources';
 
 // Exporting custom types
-export * from './types/request/params/Query';
+export * from './types/request/params/DataQuery';
 
 // Exporting raw types related to lists
 export { Root as IListDetailsResponse } from './types/response/list/Details';
@@ -51,7 +51,8 @@ export { ITweetFilter } from './types/request/payloads/TweetFilter';
 export { IVariables } from './types/request/payloads/Variables';
 
 // Exporting request param types
-export { IQuery } from './types/request/params/Query';
+export { IBaseQuery } from './types/request/params/BaseQuery';
+export { IDataQuery } from './types/request/params/DataQuery';
 
 // Exporting request types
 export { IRequest } from './types/request/Request';
@@ -66,7 +67,8 @@ export { TweetFilter } from './models/payloads/TweetFilter';
 export { Variables } from './models/payloads/Variables';
 
 // Exporting request param models
-export { Query } from './models/params/Query';
+export { BaseQuery } from './models/params/BaseQuery';
+export { DataQuery } from './models/params/DataQuery';
 
 // Exporting request models
 export { Request } from './models/Request';

@@ -1,10 +1,13 @@
+// PARAMS
+import { BaseQuery } from './BaseQuery';
+
 // PAYLOADS
 import { Features } from '../payloads/Features';
 import { Variables } from '../payloads/Variables';
 import { Args } from '../payloads/Args';
 
 // TYPES
-import { IQuery } from '../../types/request/params/Query';
+import { IDataQuery } from '../../types/request/params/DataQuery';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -14,7 +17,7 @@ import { EResourceType } from '../../enums/Resources';
  *
  * @public
  */
-export class Query implements IQuery {
+export class DataQuery extends BaseQuery implements IDataQuery {
 	public features: Features;
 	public variables: Variables;
 
@@ -25,16 +28,8 @@ export class Query implements IQuery {
 	 * @param args - Additional user-defined arguments to be sent in the request.
 	 */
 	public constructor(resourceType: EResourceType, args: Args) {
+		super();
 		this.variables = new Variables(resourceType, args);
 		this.features = new Features();
-	}
-
-	/**
-	 * Converts this object to it's string representation.
-	 *
-	 * @returns 'this' object's string representation;
-	 */
-	public toString(): string {
-		return `variables=${this.variables.toString()}&features=${this.features.toString()}`;
 	}
 }
