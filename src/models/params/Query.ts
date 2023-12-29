@@ -31,13 +31,4 @@ export class Query implements IQuery {
 		this.variables = new Variables(resourceType, args);
 		this.features = new Features();
 	}
-
-	/**
-	 * Converts this object to it's string representation.
-	 *
-	 * @returns 'this' object's string representation;
-	 */
-	public toString(): string {
-		return `variables=${this.variables.toString()}&features=${this.features.toString()}`;
-	}
 }

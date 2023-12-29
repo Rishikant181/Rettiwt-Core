@@ -34,13 +34,4 @@ export class Features implements IFeatures {
 	public subscriptions_verification_info_verified_since_enabled = true;
 	public highlights_tweets_tab_ui_enabled = true;
 	/* eslint-enable @typescript-eslint/naming-convention */
-
-	/**
-	 * Converts this object to it's string representation.
-	 *
-	 * @returns 'this' object's string representation.
-	 */
-	public toString(): string {
-		return `${encodeURIComponent(JSON.stringify(this))}`;
-	}
 }

@@ -1,3 +1,6 @@
+// PACKAGES
+import { AxiosRequestConfig } from 'axios';
+
 // ENUMS
 import { ERequestType } from '../enums/Request';
 import { EResourceType } from '../enums/Resources';
@@ -44,5 +47,15 @@ export class Request implements IRequest {
 		}
 
 		this.endpoint = resourceType;
+	}
+
+	public toAxiosRequestConfig(): AxiosRequestConfig {
+		return {
+			url: this.endpoint,
+			method: this.type,
+			baseURL: `https://${this.base}`,
+			params: this.params,
+			data: this.payload,
+		};
 	}
 }
