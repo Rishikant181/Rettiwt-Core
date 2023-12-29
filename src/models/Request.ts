@@ -9,9 +9,9 @@ import { ESubdomains, EResourceType } from '../enums/Resources';
 import { IRequest } from '../types/request/Request';
 
 // MODELS
-import { BaseQuery } from './params/BaseQuery';
-import { DataQuery } from './params/DataQuery';
-import { Args } from './payloads/Args';
+import { BaseQuery } from './queries/BaseQuery';
+import { DataQuery } from './queries/DataQuery';
+import { Args } from './params/Args';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.

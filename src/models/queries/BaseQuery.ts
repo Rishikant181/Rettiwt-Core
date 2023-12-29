@@ -1,5 +1,5 @@
 // TYPES
-import { IBaseQuery } from '../../types/request/params/BaseQuery';
+import { IBaseQuery } from '../../types/request/queries/BaseQuery';
 
 /**
  * The base URL query.

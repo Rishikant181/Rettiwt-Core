@@ -1,5 +1,5 @@
 // TYPES
-import { ITweetFilter } from './TweetFilter';
+import { ITweetFilter } from '../payloads/TweetFilter';
 
 /**
  * User set query paramters that are used to specify the data that is requested.

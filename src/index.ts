@@ -5,7 +5,7 @@ export * from './enums/Media';
 export * from './enums/Resources';
 
 // Exporting custom types
-export * from './types/request/params/DataQuery';
+export * from './types/request/queries/DataQuery';
 
 // Exporting raw types related to lists
 export { Root as IListDetailsResponse } from './types/response/list/Details';
@@ -45,14 +45,14 @@ export * from './types/response/composite/TimelineTweet';
 export * from './types/response/composite/TimelineUser';
 
 // Exporting request payload types
-export { IArgs } from './types/request/payloads/Args';
+export { IArgs } from './types/request/params/Args';
 export { IFeatures } from './types/request/payloads/Features';
 export { ITweetFilter } from './types/request/payloads/TweetFilter';
 export { IVariables } from './types/request/payloads/Variables';
 
 // Exporting request param types
-export { IBaseQuery } from './types/request/params/BaseQuery';
-export { IDataQuery } from './types/request/params/DataQuery';
+export { IBaseQuery } from './types/request/queries/BaseQuery';
+export { IDataQuery } from './types/request/queries/DataQuery';
 
 // Exporting request types
 export { IRequest } from './types/request/Request';
@@ -61,14 +61,14 @@ export { IRequest } from './types/request/Request';
 export { IDataValidationError } from './types/request/errors/DataValidationError';
 
 // Exporting request payload models
-export { Args } from './models/payloads/Args';
+export { Args } from './models/params/Args';
 export { Features } from './models/payloads/Features';
 export { TweetFilter } from './models/payloads/TweetFilter';
 export { Variables } from './models/payloads/Variables';
 
 // Exporting request param models
-export { BaseQuery } from './models/params/BaseQuery';
-export { DataQuery } from './models/params/DataQuery';
+export { BaseQuery } from './models/queries/BaseQuery';
+export { DataQuery } from './models/queries/DataQuery';
 
 // Exporting request models
 export { Request } from './models/Request';

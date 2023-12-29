@@ -6,7 +6,7 @@ import { IFeatures } from '../payloads/Features';
 import { IVariables } from '../payloads/Variables';
 
 /**
- * User set URL query paramters that can be used to customize the format in which data is received.
+ * User set URL query parameters that can be used to customize the format in which data is received.
  *
  * @public
  */

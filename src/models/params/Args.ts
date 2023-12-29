@@ -5,10 +5,10 @@ import { IsNotEmpty, IsNumberString, Max, MaxLength, validateSync } from 'class-
 import { EResourceType } from '../../enums/Resources';
 
 // TYPES
-import { IArgs } from '../../types/request/payloads/Args';
+import { IArgs } from '../../types/request/params/Args';
 
 // MODELS
-import { TweetFilter } from './TweetFilter';
+import { TweetFilter } from '../payloads/TweetFilter';
 import { DataValidationError } from '../errors/DataValidationError';
 
 /**

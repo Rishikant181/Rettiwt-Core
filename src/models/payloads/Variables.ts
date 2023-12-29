@@ -1,5 +1,5 @@
 // PAYLOADS
-import { Args } from './Args';
+import { Args } from '../params/Args';
 
 // TYPES
 import { IVariables } from '../../types/request/payloads/Variables';

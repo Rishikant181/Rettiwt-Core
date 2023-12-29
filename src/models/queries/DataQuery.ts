@@ -4,16 +4,16 @@ import { BaseQuery } from './BaseQuery';
 // PAYLOADS
 import { Features } from '../payloads/Features';
 import { Variables } from '../payloads/Variables';
-import { Args } from '../payloads/Args';
+import { Args } from '../params/Args';
 
 // TYPES
-import { IDataQuery } from '../../types/request/params/DataQuery';
+import { IDataQuery } from '../../types/request/queries/DataQuery';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
 /**
- * User set URL query paramters that can be used to customize the format in which data is received.
+ * User set URL query parameters that can be used to customize the format in which data is received.
  *
  * @public
  */

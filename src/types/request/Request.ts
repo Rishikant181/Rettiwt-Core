@@ -3,7 +3,7 @@ import { ERequestType } from '../../enums/Request';
 import { EResourceType } from '../../enums/Resources';
 
 // TYPES
-import { IBaseQuery } from './params/BaseQuery';
+import { IBaseQuery } from './queries/BaseQuery';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
