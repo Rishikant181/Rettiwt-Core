@@ -11,6 +11,9 @@ import { IBaseQuery } from './params/BaseQuery';
  * @public
  */
 export interface IRequest {
+	/** The type of 'this' request. */
+	type: ERequestType;
+
 	/** The base URL of the request. */
 	base: string;
 
@@ -20,12 +23,9 @@ export interface IRequest {
 	/** The endpoint to which the request is to be sent. */
 	endpoint: EResourceType;
 
-	/** The full url of the request. */
-	url: string;
-
-	/** The type of 'this' request. */
-	type: ERequestType;
+	/** The parameters to be sent in the request. */
+	params?: IBaseQuery;
 
 	/** The payload to be sent in the request. */
-	payload: IBaseQuery;
+	payload?: NonNullable<unknown>;
 }

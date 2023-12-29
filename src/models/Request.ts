@@ -1,3 +1,6 @@
+// PACKAGES
+import { AxiosRequestConfig } from 'axios';
+
 // ENUMS
 import { ERequestType } from '../enums/Request';
 import { ESubdomains, EResourceType } from '../enums/Resources';
@@ -16,12 +19,12 @@ import { Args } from './payloads/Args';
  * @public
  */
 export class Request implements IRequest {
-	public base: string = 'https://twitter.com';
-	public subdomain: ESubdomains;
-	public endpoint: EResourceType;
-	public url: string;
 	public type: ERequestType;
-	public payload: BaseQuery;
+	public subdomain: ESubdomains;
+	public base: string = 'twitter.com';
+	public endpoint: EResourceType;
+	public params?: BaseQuery;
+	public payload?: NonNullable<unknown>;
 
 	/**
 	 * Generates an HTTP request configuration for the requested resource on Twitter.
@@ -30,31 +33,44 @@ export class Request implements IRequest {
 	 * @param args - Additional URL arguments.
 	 */
 	public constructor(resourceType: EResourceType, args: Args) {
-		// Determining the subdomain from the resource
-		if (resourceType == EResourceType.MEDIA_UPLOAD) {
-			this.subdomain = ESubdomains.UPLOAD;
-		} else {
-			this.subdomain = ESubdomains.MAIN;
-		}
-
-		// Setting url, parameters and payloads
-		this.url = `${this.subdomain ? this.subdomain + '.' : ''}${this.base}${resourceType}`;
-		this.endpoint = resourceType;
-		this.payload = new DataQuery(resourceType, args);
-
-		// Determining the request type from the resource
-		// For 'POST' requests
+		// Setting the request type
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
 			resourceType == EResourceType.CREATE_RETWEET ||
 			resourceType == EResourceType.FAVORITE_TWEET
 		) {
 			this.type = ERequestType.POST;
-		}
-		// For 'GET' requests
-		else {
+			this.payload = new DataQuery(resourceType, args);
+		} else {
 			this.type = ERequestType.GET;
-			this.url = `${this.url}?${this.payload.toString()}`;
+			this.params = new DataQuery(resourceType, args);
 		}
+
+		// Setting the sub-domain from the requested resource
+		if (resourceType == EResourceType.MEDIA_UPLOAD) {
+			this.subdomain = ESubdomains.UPLOAD;
+		} else {
+			this.subdomain = ESubdomains.MAIN;
+		}
+
+		this.endpoint = resourceType;
+	}
+
+	/**
+	 * Converts 'this' Request object to it's equivalent AxiosRequstConfig object.
+	 *
+	 * @returns The AxiosRequestConfig reqpresentation of 'this' Request.
+	 */
+	public toAxiosRequestConfig(): AxiosRequestConfig {
+		return {
+			url: this.endpoint,
+			method: this.type,
+			baseURL: `https://${this.subdomain ? this.subdomain + '.' : ''}${this.base}`,
+			params: this.params,
+			paramsSerializer: {
+				encode: encodeURIComponent,
+			},
+			data: this.payload,
+		};
 	}
 }
