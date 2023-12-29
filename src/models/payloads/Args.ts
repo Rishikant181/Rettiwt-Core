@@ -18,8 +18,6 @@ import { DataValidationError } from '../errors/DataValidationError';
  */
 export class Args implements IArgs {
 	/**
-	 * The filter for filtering the data.
-	 *
 	 * @remarks
 	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
 	 */
@@ -27,8 +25,6 @@ export class Args implements IArgs {
 	public filter?: TweetFilter;
 
 	/**
-	 * The 'id of the target resource.
-	 *
 	 * @remarks
 	 * - Required for all resources except {@link EResourceType.TWEET_SEARCH}.
 	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
@@ -71,8 +67,6 @@ export class Args implements IArgs {
 	public id?: string;
 
 	/**
-	 * The number of data items to fetch.
-	 *
 	 * @remarks
 	 * - Works only for cursored resources.
 	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH} and {@link EResourceType.USER_TWEETS}.
@@ -96,8 +90,6 @@ export class Args implements IArgs {
 	public count?: number;
 
 	/**
-	 * The cursor string to the batch of data to fetch.
-	 *
 	 * @remarks
 	 * - May be used for cursored resources.
 	 * - Has no effect for all other resources.
@@ -105,8 +97,6 @@ export class Args implements IArgs {
 	public cursor?: string;
 
 	/**
-	 * The text for the tweet to be created.
-	 *
 	 * @remarks Length of the tweet must be \<= 280 characters.
 	 */
 	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })

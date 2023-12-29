@@ -13,13 +13,8 @@ import { EErrors } from '../../enums/Errors';
  * @internal
  */
 export class DataValidationError implements IDataValidationError {
-	/** The name of the error. */
 	public name: string;
-
-	/** The user-friendly error message. */
 	public message: EErrors;
-
-	/** The error data. */
 	public data: ValidationError[];
 
 	/**

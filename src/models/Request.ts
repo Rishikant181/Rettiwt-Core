@@ -1,3 +1,6 @@
+// PACKAGES
+import { AxiosRequestConfig } from 'axios';
+
 // ENUMS
 import { ERequestType } from '../enums/Request';
 import { EResourceType } from '../enums/Resources';
@@ -15,20 +18,11 @@ import { Args } from './payloads/Args';
  * @public
  */
 export class Request implements IRequest {
-	/** The base URL of the request. */
-	public base: string = 'https://twitter.com';
-
-	/** The endpoint to which the request is to be sent. */
-	public endpoint: EResourceType;
-
-	/** The full url of the request. */
-	public url: string;
-
-	/** The type of 'this' request. */
 	public type: ERequestType;
-
-	/** The payload to be sent in the request. */
-	public payload: Query;
+	public base: string = 'twitter.com';
+	public endpoint: EResourceType;
+	public params?: Query;
+	public payload?: NonNullable<unknown>;
 
 	/**
 	 * Generates an HTTP request configuration for the requested resource on Twitter.
@@ -37,10 +31,6 @@ export class Request implements IRequest {
 	 * @param args - Additional URL arguments.
 	 */
 	public constructor(resourceType: EResourceType, args: Args) {
-		this.url = `${this.base}${resourceType}`;
-		this.endpoint = resourceType;
-		this.payload = new Query(resourceType, args);
-
 		// For 'POST' requests
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
@@ -48,11 +38,32 @@ export class Request implements IRequest {
 			resourceType == EResourceType.FAVORITE_TWEET
 		) {
 			this.type = ERequestType.POST;
+			this.payload = new Query(resourceType, args);
 		}
 		// For 'GET' requests
 		else {
 			this.type = ERequestType.GET;
-			this.url = `${this.url}?${this.payload.toString()}`;
+			this.params = new Query(resourceType, args);
 		}
+
+		this.endpoint = resourceType;
+	}
+
+	/**
+	 * Converts 'this' Request object to it's equivalent AxiosRequstConfig object.
+	 *
+	 * @returns The AxiosRequestConfig reqpresentation of 'this' Request.
+	 */
+	public toAxiosRequestConfig(): AxiosRequestConfig {
+		return {
+			url: this.endpoint,
+			method: this.type,
+			baseURL: `https://${this.base}`,
+			params: this.params,
+			paramsSerializer: {
+				encode: encodeURIComponent,
+			},
+			data: this.payload,
+		};
 	}
 }

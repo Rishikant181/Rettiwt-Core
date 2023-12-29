@@ -84,6 +84,6 @@ export class Variables implements IVariables {
 	 * @returns 'this' object's string representation.
 	 */
 	public toString(): string {
-		return `${encodeURIComponent(JSON.stringify(this))}`;
+		return JSON.stringify(this);
 	}
 }

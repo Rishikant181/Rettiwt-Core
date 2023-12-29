@@ -41,6 +41,6 @@ export class Features implements IFeatures {
 	 * @returns 'this' object's string representation.
 	 */
 	public toString(): string {
-		return `${encodeURIComponent(JSON.stringify(this))}`;
+		return JSON.stringify(this);
 	}
 }
