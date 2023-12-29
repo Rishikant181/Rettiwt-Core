@@ -22,7 +22,7 @@ export class DataQuery extends BaseQuery implements IDataQuery {
 	public variables: Variables;
 
 	/**
-	 * Initializes the URL parameters.
+	 * Initializes the URL query parameters.
 	 *
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional user-defined arguments to be sent in the request.
