@@ -1,7 +1,7 @@
 // Exporting enums
 export * from './enums/Errors';
 export * from './enums/Request';
-export * from './enums/Response';
+export * from './enums/Media';
 export * from './enums/Resources';
 
 // Exporting custom types
