@@ -1,4 +1,4 @@
-// PAYLOADS
+// MODELS
 import { DataArgs } from '../params/DataArgs';
 
 // TYPES

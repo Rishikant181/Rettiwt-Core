@@ -1,7 +1,5 @@
-// QUERIES
+// MODELS
 import { BaseQuery } from './BaseQuery';
-
-// PAYLOADS
 import { Features } from '../payloads/Features';
 import { Variables } from '../payloads/Variables';
 import { DataArgs } from '../params/DataArgs';
