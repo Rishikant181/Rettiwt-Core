@@ -1,4 +1,4 @@
-// PARAMS
+// QUERIES
 import { BaseQuery } from './BaseQuery';
 
 // PAYLOADS

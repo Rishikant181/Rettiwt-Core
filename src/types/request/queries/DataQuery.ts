@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 // TYPES
 import { IBaseQuery } from './BaseQuery';
 import { IFeatures } from '../payloads/Features';
