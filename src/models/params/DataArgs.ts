@@ -12,7 +12,7 @@ import { TweetFilter } from '../payloads/TweetFilter';
 import { DataValidationError } from '../errors/DataValidationError';
 
 /**
- * User set query paramters that are used to specify the data that is requested.
+ * User set query parameters that are used to specify the data that is requested.
  *
  * @public
  */
@@ -104,6 +104,8 @@ export class DataArgs implements IDataArgs {
 	public tweetText?: string;
 
 	/**
+	 * Initializes a new DataArgs object using the given arguments.
+	 *
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
