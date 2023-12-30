@@ -11,7 +11,7 @@ import { IRequest } from '../types/request/Request';
 // MODELS
 import { BaseQuery } from './queries/BaseQuery';
 import { DataQuery } from './queries/DataQuery';
-import { Args } from './params/Args';
+import { DataArgs } from './params/DataArgs';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
@@ -32,7 +32,7 @@ export class Request implements IRequest {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional URL arguments.
 	 */
-	public constructor(resourceType: EResourceType, args: Args) {
+	public constructor(resourceType: EResourceType, args: DataArgs) {
 		// Setting the request type
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||

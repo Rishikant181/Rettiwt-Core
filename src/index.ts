@@ -45,7 +45,7 @@ export * from './types/response/composite/TimelineTweet';
 export * from './types/response/composite/TimelineUser';
 
 // Exporting request payload types
-export { IArgs } from './types/request/params/Args';
+export { IDataArgs } from './types/request/params/DataArgs';
 export { IFeatures } from './types/request/payloads/Features';
 export { ITweetFilter } from './types/request/payloads/TweetFilter';
 export { IVariables } from './types/request/payloads/Variables';
@@ -53,6 +53,7 @@ export { IVariables } from './types/request/payloads/Variables';
 // Exporting request param types
 export { IBaseQuery } from './types/request/queries/BaseQuery';
 export { IDataQuery } from './types/request/queries/DataQuery';
+export { IUploadQuery } from './types/request/queries/UploadQuery';
 
 // Exporting request types
 export { IRequest } from './types/request/Request';
@@ -61,7 +62,7 @@ export { IRequest } from './types/request/Request';
 export { IDataValidationError } from './types/request/errors/DataValidationError';
 
 // Exporting request payload models
-export { Args } from './models/params/Args';
+export { DataArgs } from './models/params/DataArgs';
 export { Features } from './models/payloads/Features';
 export { TweetFilter } from './models/payloads/TweetFilter';
 export { Variables } from './models/payloads/Variables';
@@ -69,6 +70,7 @@ export { Variables } from './models/payloads/Variables';
 // Exporting request param models
 export { BaseQuery } from './models/queries/BaseQuery';
 export { DataQuery } from './models/queries/DataQuery';
+export { UploadQuery } from './models/queries/UploadQuery';
 
 // Exporting request models
 export { Request } from './models/Request';

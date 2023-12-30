@@ -6,7 +6,7 @@ import { ITweetFilter } from '../payloads/TweetFilter';
  *
  * @public
  */
-export interface IArgs {
+export interface IDataArgs {
 	/** The filter for filtering the data. */
 	filter?: ITweetFilter;
 

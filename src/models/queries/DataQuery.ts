@@ -4,7 +4,7 @@ import { BaseQuery } from './BaseQuery';
 // PAYLOADS
 import { Features } from '../payloads/Features';
 import { Variables } from '../payloads/Variables';
-import { Args } from '../params/Args';
+import { DataArgs } from '../params/DataArgs';
 
 // TYPES
 import { IDataQuery } from '../../types/request/queries/DataQuery';
@@ -27,7 +27,7 @@ export class DataQuery extends BaseQuery implements IDataQuery {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional user-defined arguments to be sent in the request.
 	 */
-	public constructor(resourceType: EResourceType, args: Args) {
+	public constructor(resourceType: EResourceType, args: DataArgs) {
 		super();
 		this.variables = new Variables(resourceType, args);
 		this.features = new Features();
