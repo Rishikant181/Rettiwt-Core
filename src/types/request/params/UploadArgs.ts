@@ -1,3 +1,6 @@
+// ENUMS
+import { EUploadSteps } from '../../../enums/Request';
+
 /**
  * User set query parameters that are used while uploading a media file.
  *
@@ -5,7 +8,7 @@
  */
 export interface IUploadArgs {
 	/** The name of the step of the upload process to be executed. */
-	step: string;
+	step: EUploadSteps;
 
 	/** The size (in bytes) of the media file to be uploaded. */
 	size: number;

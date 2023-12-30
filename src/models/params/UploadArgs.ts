@@ -1,13 +1,16 @@
 // TYPES
 import { IUploadArgs } from '../../types/request/params/UploadArgs';
 
+// ENUMS
+import { EUploadSteps } from '../../enums/Request';
+
 /**
  * User set query parameters that are used while uploading a media file.
  *
  * @public
  */
 export class UploadArgs implements IUploadArgs {
-	public step: string;
+	public step: EUploadSteps;
 	public size: number;
 	public media: string;
 	public id?: string;

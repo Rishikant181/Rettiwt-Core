@@ -1,4 +1,7 @@
 // TYPES
+import { EUploadSteps } from '../../../enums/Request';
+
+// ENUMS
 import { IBaseQuery } from './BaseQuery';
 
 /**
@@ -10,7 +13,7 @@ export interface IUploadQuery extends IBaseQuery {
 	/* eslint-disable @typescript-eslint/naming-convention */
 
 	/** The name of the upload step. */
-	command: string;
+	command: EUploadSteps;
 
 	/** The total number of bytes in the file to be uploaded. */
 	total_bytes: number;
