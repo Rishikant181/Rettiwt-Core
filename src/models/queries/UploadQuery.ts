@@ -26,12 +26,12 @@ export class UploadQuery extends BaseQuery implements IUploadQuery {
 	 *
 	 * @param step - The step of the upload process to be executed.
 	 */
-	public constructor(step: EUploadSteps, args: UploadArgs) {
+	public constructor(args: UploadArgs) {
 		super();
-		this.command = step;
+		this.command = args.step;
 
 		// Initializing based on the upload sted
-		if (step == EUploadSteps.INITIALIZE) {
+		if (args.step == EUploadSteps.INITIALIZE) {
 			this.total_bytes = args.size;
 		} else {
 			this.media_id = args.media;

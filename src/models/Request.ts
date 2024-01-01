@@ -2,7 +2,7 @@
 import { AxiosRequestConfig } from 'axios';
 
 // ENUMS
-import { ERequestType } from '../enums/Request';
+import { ERequestType, EUploadSteps } from '../enums/Request';
 import { ESubdomains, EResourceType } from '../enums/Resources';
 
 // TYPES
@@ -11,7 +11,9 @@ import { IRequest } from '../types/request/Request';
 // MODELS
 import { BaseQuery } from './queries/BaseQuery';
 import { DataQuery } from './queries/DataQuery';
+import { UploadQuery } from './queries/UploadQuery';
 import { DataArgs } from './params/DataArgs';
+import { UploadArgs } from './params/UploadArgs';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
@@ -33,27 +35,42 @@ export class Request implements IRequest {
 	 * @param args - Additional URL arguments.
 	 */
 	public constructor(resourceType: EResourceType, args: DataArgs) {
-		// Setting the request type
+		// Setting request type
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
 			resourceType == EResourceType.CREATE_RETWEET ||
 			resourceType == EResourceType.FAVORITE_TWEET
 		) {
 			this.type = ERequestType.POST;
-			this.payload = new DataQuery(resourceType, args);
 		} else {
 			this.type = ERequestType.GET;
-			this.params = new DataQuery(resourceType, args);
 		}
 
-		// Setting the sub-domain from the requested resource
+		// Setting request subdomain
 		if (resourceType == EResourceType.MEDIA_UPLOAD) {
 			this.subdomain = ESubdomains.UPLOAD;
 		} else {
 			this.subdomain = ESubdomains.MAIN;
 		}
 
+		// Setting request endpoint
 		this.endpoint = resourceType;
+
+		// Setting request params and payload
+		if (
+			resourceType == EResourceType.CREATE_TWEET ||
+			resourceType == EResourceType.CREATE_RETWEET ||
+			resourceType == EResourceType.FAVORITE_TWEET
+		) {
+			this.payload = new DataQuery(resourceType, args);
+		} else if (resourceType == EResourceType.MEDIA_UPLOAD && (args as UploadArgs).step == EUploadSteps.APPEND) {
+			this.params = new UploadQuery(args as UploadArgs);
+			this.payload = { media: (args as UploadArgs).media };
+		} else if (resourceType == EResourceType.MEDIA_UPLOAD) {
+			this.params = new UploadQuery(args as UploadArgs);
+		} else {
+			this.params = new DataQuery(resourceType, args);
+		}
 	}
 
 	/**
