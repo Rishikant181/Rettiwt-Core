@@ -34,7 +34,14 @@ export class Request implements IRequest {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional URL arguments.
 	 */
-	public constructor(resourceType: EResourceType, args: DataArgs) {
+	public constructor(resourceType: EResourceType, args: DataArgs | UploadArgs) {
+		// Converting JSON args to object
+		if (resourceType == EResourceType.MEDIA_UPLOAD) {
+			args = new UploadArgs(args as UploadArgs);
+		} else {
+			args = new DataArgs(resourceType, args as DataArgs);
+		}
+
 		// Setting request type
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||

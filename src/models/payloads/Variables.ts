@@ -36,9 +36,6 @@ export class Variables implements IVariables {
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
 	public constructor(resourceType: EResourceType, args: DataArgs) {
-		// Converting JSON args to Args object
-		args = new DataArgs(resourceType, args);
-
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweetText;
