@@ -2,7 +2,7 @@
 import { IsNotEmpty, IsNumberString, validateSync } from 'class-validator';
 
 // TYPES
-import { IUploadArgs } from '../../types/request/params/UploadArgs';
+import { IUploadArgs } from '../../types/request/args/UploadArgs';
 
 // ENUMS
 import { EUploadSteps } from '../../enums/Request';

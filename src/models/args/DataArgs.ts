@@ -5,7 +5,7 @@ import { IsNotEmpty, IsNumberString, Max, MaxLength, validateSync } from 'class-
 import { EResourceType } from '../../enums/Resources';
 
 // TYPES
-import { IDataArgs } from '../../types/request/params/DataArgs';
+import { IDataArgs } from '../../types/request/args/DataArgs';
 
 // MODELS
 import { TweetFilter } from '../payloads/TweetFilter';

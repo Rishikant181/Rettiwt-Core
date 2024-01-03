@@ -2,7 +2,7 @@
 import { BaseQuery } from './BaseQuery';
 import { Features } from '../payloads/Features';
 import { Variables } from '../payloads/Variables';
-import { DataArgs } from '../params/DataArgs';
+import { DataArgs } from '../args/DataArgs';
 
 // TYPES
 import { IDataQuery } from '../../types/request/queries/DataQuery';

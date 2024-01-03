@@ -12,8 +12,8 @@ import { IRequest } from '../types/request/Request';
 import { BaseQuery } from './queries/BaseQuery';
 import { DataQuery } from './queries/DataQuery';
 import { UploadQuery } from './queries/UploadQuery';
-import { DataArgs } from './params/DataArgs';
-import { UploadArgs } from './params/UploadArgs';
+import { DataArgs } from './args/DataArgs';
+import { UploadArgs } from './args/UploadArgs';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.

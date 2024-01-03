@@ -1,6 +1,6 @@
 // MODELS
 import { BaseQuery } from './BaseQuery';
-import { UploadArgs } from '../params/UploadArgs';
+import { UploadArgs } from '../args/UploadArgs';
 
 // TYPES
 import { IUploadQuery } from '../../types/request/queries/UploadQuery';

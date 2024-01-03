@@ -1,8 +1,8 @@
 // MODELS
-import { DataArgs } from '../params/DataArgs';
+import { DataArgs } from '../args/DataArgs';
 
 // TYPES
-import { IVariables } from '../../types/request/payloads/Variables';
+import { IMediaVariable, IMediaVariableEntity, IVariables } from '../../types/request/payloads/Variables';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -23,6 +23,7 @@ export class Variables implements IVariables {
 	public cursor?: string;
 	public rawQuery?: string;
 	public tweet_text?: string;
+	public media?: IMediaVariable;
 	public product?: string;
 	public includePromotedContent: boolean = false;
 	public withVoice: boolean = false;
@@ -82,5 +83,49 @@ export class Variables implements IVariables {
 	 */
 	public toString(): string {
 		return JSON.stringify(this);
+	}
+}
+
+/**
+ * Media to be sent as payload.
+ *
+ * @public
+ */
+export class MediaVariable implements IMediaVariable {
+	/* eslint-disable @typescript-eslint/naming-convention */
+	public media_entities: MediaVariableEntity[];
+	public possibly_sensitive: boolean;
+	/* eslint-enable @typescript-eslint/naming-convention */
+
+	/**
+	 * Initializes a new MediaVariable payload containing all the different media to be sent.
+	 *
+	 * @param media - The media items payload to be sent.
+	 */
+	public constructor(media: MediaVariable) {
+		this.media_entities = media.media_entities;
+		this.possibly_sensitive = media.possibly_sensitive;
+	}
+}
+
+/**
+ * Each media item in the media payload.
+ *
+ * @public
+ */
+export class MediaVariableEntity implements IMediaVariableEntity {
+	/* eslint-disable @typescript-eslint/naming-convention */
+	public media_id: string;
+	public tagged_users: string[];
+	/* eslint-enable @typescript-eslint/naming-convention */
+
+	/**
+	 * Initializes a single MedieVariableEntity (media item).
+	 *
+	 * @param mediaEntity - The media item to be included in the payload.
+	 */
+	public constructor(mediaEntity: MediaVariableEntity) {
+		this.media_id = mediaEntity.media_id;
+		this.tagged_users = mediaEntity.tagged_users;
 	}
 }
