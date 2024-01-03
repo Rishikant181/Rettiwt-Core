@@ -5,18 +5,18 @@ import { IsNotEmpty, IsNumberString, Max, MaxLength, validateSync } from 'class-
 import { EResourceType } from '../../enums/Resources';
 
 // TYPES
-import { IArgs } from '../../types/request/payloads/Args';
+import { IDataArgs } from '../../types/request/params/DataArgs';
 
 // MODELS
-import { TweetFilter } from './TweetFilter';
+import { TweetFilter } from '../payloads/TweetFilter';
 import { DataValidationError } from '../errors/DataValidationError';
 
 /**
- * User set query paramters that are used to specify the data that is requested.
+ * User set query parameters that are used to specify the data that is requested.
  *
  * @public
  */
-export class Args implements IArgs {
+export class DataArgs implements IDataArgs {
 	/**
 	 * @remarks
 	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
@@ -104,12 +104,12 @@ export class Args implements IArgs {
 	public tweetText?: string;
 
 	/**
-	 * Initializes a new argument object based on the type of input.
+	 * Initializes a new DataArgs object using the given arguments.
 	 *
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: Args) {
+	public constructor(resourceType: EResourceType, args: DataArgs) {
 		this.id = args.id;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;

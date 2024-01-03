@@ -1,12 +1,12 @@
 // TYPES
-import { ITweetFilter } from './TweetFilter';
+import { ITweetFilter } from '../payloads/TweetFilter';
 
 /**
- * User set query paramters that are used to specify the data that is requested.
+ * User set query parameters that are used to specify the data that is requested.
  *
  * @public
  */
-export interface IArgs {
+export interface IDataArgs {
 	/** The filter for filtering the data. */
 	filter?: ITweetFilter;
 

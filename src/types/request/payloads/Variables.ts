@@ -1,11 +1,10 @@
-/* eslint-disable */
-
 /**
  * Mandatory variables that must be sent as a URL-encoded, stringified-JSON.
  *
  * @public
  */
 export interface IVariables {
+	/* eslint-disable @typescript-eslint/naming-convention */
 	tweetId?: string;
 	tweet_id?: string;
 	userId?: string;
@@ -19,6 +18,7 @@ export interface IVariables {
 	includePromotedContent: boolean;
 	withVoice: boolean;
 	withCommunity: boolean;
+	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/** @returns The string representation of 'this' data. */
 	toString(): string;

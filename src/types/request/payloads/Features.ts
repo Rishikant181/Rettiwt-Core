@@ -1,11 +1,10 @@
-/* eslint-disable */
-
 /**
  * Parameters for customizing the raw response, that must be sent as a URL-encoded, stringified-JSON.
  *
  * @public
  */
 export interface IFeatures {
+	/* eslint-disable @typescript-eslint/naming-convention */
 	rweb_lists_timeline_redesign_enabled: boolean;
 	responsive_web_graphql_exclude_directive_enabled: boolean;
 	verified_phone_label_enabled: boolean;
@@ -31,6 +30,7 @@ export interface IFeatures {
 	hidden_profile_subscriptions_enabled: boolean;
 	subscriptions_verification_info_verified_since_enabled: boolean;
 	highlights_tweets_tab_ui_enabled: boolean;
+	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/** @returns The string representation of 'this' data. */
 	toString(): string;

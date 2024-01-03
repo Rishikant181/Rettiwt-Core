@@ -1,5 +1,5 @@
-// PAYLOADS
-import { Args } from './Args';
+// MODELS
+import { DataArgs } from '../params/DataArgs';
 
 // TYPES
 import { IVariables } from '../../types/request/payloads/Variables';
@@ -35,10 +35,7 @@ export class Variables implements IVariables {
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: Args) {
-		// Converting JSON args to Args object
-		args = new Args(resourceType, args);
-
+	public constructor(resourceType: EResourceType, args: DataArgs) {
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweetText;
