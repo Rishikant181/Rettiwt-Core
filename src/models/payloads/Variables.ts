@@ -40,6 +40,7 @@ export class Variables implements IVariables {
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweetText;
+			this.media = args.media ? new MediaVariable(args.media) : undefined;
 		} else if (resourceType == EResourceType.CREATE_RETWEET || resourceType == EResourceType.FAVORITE_TWEET) {
 			this.tweet_id = args.id;
 		} else if (resourceType == EResourceType.LIST_DETAILS) {
@@ -100,11 +101,11 @@ export class MediaVariable implements IMediaVariable {
 	/**
 	 * Initializes a new MediaVariable payload containing all the different media to be sent.
 	 *
-	 * @param media - The media items payload to be sent.
+	 * @param mediaIds - The list of ids of the media items to be sent in the Tweet.
 	 */
-	public constructor(media: MediaVariable) {
-		this.media_entities = media.media_entities;
-		this.possibly_sensitive = media.possibly_sensitive;
+	public constructor(mediaIds: string[]) {
+		this.media_entities = mediaIds.map((item) => new MediaVariableEntity(item));
+		this.possibly_sensitive = false;
 	}
 }
 
@@ -122,10 +123,10 @@ export class MediaVariableEntity implements IMediaVariableEntity {
 	/**
 	 * Initializes a single MedieVariableEntity (media item).
 	 *
-	 * @param mediaEntity - The media item to be included in the payload.
+	 * @param mediaId - The id of the media item to be included in the payload.
 	 */
-	public constructor(mediaEntity: MediaVariableEntity) {
-		this.media_id = mediaEntity.media_id;
-		this.tagged_users = mediaEntity.tagged_users;
+	public constructor(mediaId: string) {
+		this.media_id = mediaId;
+		this.tagged_users = [];
 	}
 }

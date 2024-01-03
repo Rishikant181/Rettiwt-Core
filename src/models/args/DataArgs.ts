@@ -1,5 +1,5 @@
 // PACKAGES
-import { IsNotEmpty, IsNumberString, Max, MaxLength, validateSync } from 'class-validator';
+import { IsArray, IsNotEmpty, IsNumberString, IsOptional, Max, MaxLength, validateSync } from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -68,6 +68,16 @@ export class DataArgs implements IDataArgs {
 
 	/**
 	 * @remarks
+	 * - The media first needs to be uploaded using the {@link EResourceType.MEDIA_UPLOAD} resource.
+	 * - After uploading, the returned id(s) can be used to reference the media here.
+	 */
+	@IsArray({ groups: [EResourceType.CREATE_TWEET] })
+	@IsNumberString(undefined, { groups: [EResourceType.CREATE_TWEET], each: true })
+	@IsOptional({ groups: [EResourceType.CREATE_TWEET] })
+	public media?: string[];
+
+	/**
+	 * @remarks
 	 * - Works only for cursored resources.
 	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH} and {@link EResourceType.USER_TWEETS}.
 	 * - Must be \<= 100 for all other cursored resources.
@@ -111,6 +121,7 @@ export class DataArgs implements IDataArgs {
 	 */
 	public constructor(resourceType: EResourceType, args: DataArgs) {
 		this.id = args.id;
+		this.media = args.media;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
 		this.tweetText = args.tweetText;

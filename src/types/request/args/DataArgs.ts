@@ -13,6 +13,9 @@ export interface IDataArgs {
 	/** The 'rest_id' of the target resource. */
 	id?: string;
 
+	/** The list of id of the media to be uploaded. */
+	media?: string[];
+
 	/** The number of data items to fetch. */
 	count?: number;
 

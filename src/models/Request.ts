@@ -69,14 +69,14 @@ export class Request implements IRequest {
 			resourceType == EResourceType.CREATE_RETWEET ||
 			resourceType == EResourceType.FAVORITE_TWEET
 		) {
-			this.payload = new DataQuery(resourceType, args);
+			this.payload = new DataQuery(resourceType, args as DataArgs);
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD && (args as UploadArgs).step == EUploadSteps.APPEND) {
 			this.params = new UploadQuery(args as UploadArgs);
 			this.payload = { media: (args as UploadArgs).media };
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD) {
 			this.params = new UploadQuery(args as UploadArgs);
 		} else {
-			this.params = new DataQuery(resourceType, args);
+			this.params = new DataQuery(resourceType, args as DataArgs);
 		}
 	}
 
