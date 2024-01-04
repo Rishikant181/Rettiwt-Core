@@ -124,7 +124,7 @@ export class MediaVariableEntity implements IMediaVariableEntity {
 	/**
 	 * Initializes a single MedieVariableEntity (media item).
 	 *
-	 * @param media - The MediaArg object specifying the details of the media item to be included in the payload.
+	 * @param media - The MediaArgs object specifying the details of the media item to be included in the payload.
 	 */
 	public constructor(media: MediaArgs) {
 		this.media_id = media.id;

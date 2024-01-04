@@ -18,7 +18,8 @@ export class MediaArgs implements IMediaArgs {
 	public id: string;
 
 	/**
-	 * @remarks Maximum number of users that can be tagged is 10.
+	 * @remarks
+	 * Maximum number of users that can be tagged is 10.
 	 */
 	@IsArray()
 	@ArrayMaxSize(10)

@@ -4,8 +4,53 @@ export * from './enums/Request';
 export * from './enums/Media';
 export * from './enums/Resources';
 
-// Exporting custom types
-export * from './types/request/queries/DataQuery';
+// REQUEST MODELS
+
+// Exporting arg models
+export { DataArgs } from './models/args/DataArgs';
+export { MediaArgs } from './models/args/MediaArgs';
+export { UploadArgs } from './models/args/UploadArgs';
+
+// Exporting error models
+export { DataValidationError } from './models/errors/DataValidationError';
+
+// Exporting payload models
+export { Features } from './models/payloads/Features';
+export { TweetFilter } from './models/payloads/TweetFilter';
+export { Variables } from './models/payloads/Variables';
+
+// Exporting query models
+export { BaseQuery } from './models/queries/BaseQuery';
+export { DataQuery } from './models/queries/DataQuery';
+export { UploadQuery } from './models/queries/UploadQuery';
+
+// Exporting request model
+export { Request } from './models/Request';
+
+// REQUEST TYPES
+
+// Exporting arg types
+export { IDataArgs } from './types/request/args/DataArgs';
+export { IMediaArgs } from './types/request/args/MediaArgs';
+export { IUploadArgs } from './types/request/args/UploadArgs';
+
+// Exporting error types
+export { IDataValidationError } from './types/request/errors/DataValidationError';
+
+// Exporting payload types
+export { IFeatures } from './types/request/payloads/Features';
+export { ITweetFilter } from './types/request/payloads/TweetFilter';
+export { IVariables } from './types/request/payloads/Variables';
+
+// Exporting query types
+export { IBaseQuery } from './types/request/queries/BaseQuery';
+export { IDataQuery } from './types/request/queries/DataQuery';
+export { IUploadQuery } from './types/request/queries/UploadQuery';
+
+// Exporting request types
+export { IRequest } from './types/request/Request';
+
+// RESPONSE TYPES
 
 // Exporting raw types related to lists
 export { Root as IListDetailsResponse } from './types/response/list/Details';
@@ -47,37 +92,3 @@ export * from './types/response/base/Media';
 export * from './types/response/composite/DataResult';
 export * from './types/response/composite/TimelineTweet';
 export * from './types/response/composite/TimelineUser';
-
-// Exporting request payload types
-export { IDataArgs } from './types/request/args/DataArgs';
-export { IFeatures } from './types/request/payloads/Features';
-export { ITweetFilter } from './types/request/payloads/TweetFilter';
-export { IVariables } from './types/request/payloads/Variables';
-
-// Exporting request param types
-export { IBaseQuery } from './types/request/queries/BaseQuery';
-export { IDataQuery } from './types/request/queries/DataQuery';
-export { IUploadQuery } from './types/request/queries/UploadQuery';
-
-// Exporting request types
-export { IRequest } from './types/request/Request';
-
-// Exporting other types
-export { IDataValidationError } from './types/request/errors/DataValidationError';
-
-// Exporting request payload models
-export { DataArgs } from './models/args/DataArgs';
-export { Features } from './models/payloads/Features';
-export { TweetFilter } from './models/payloads/TweetFilter';
-export { Variables } from './models/payloads/Variables';
-
-// Exporting request param models
-export { BaseQuery } from './models/queries/BaseQuery';
-export { DataQuery } from './models/queries/DataQuery';
-export { UploadQuery } from './models/queries/UploadQuery';
-
-// Exporting request models
-export { Request } from './models/Request';
-
-// Exporting other models
-export { DataValidationError } from './models/errors/DataValidationError';

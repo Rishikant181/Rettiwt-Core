@@ -107,7 +107,8 @@ export class DataArgs implements IDataArgs {
 	public cursor?: string;
 
 	/**
-	 * @remarks Length of the tweet must be \<= 280 characters.
+	 * @remarks
+	 * Length of the tweet must be \<= 280 characters.
 	 */
 	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
 	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
