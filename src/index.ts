@@ -11,6 +11,10 @@ export * from './types/request/queries/DataQuery';
 export { Root as IListDetailsResponse } from './types/response/list/Details';
 export { Root as IListTweetsResponse } from './types/response/list/Tweets';
 
+// Exporting raw types related ot media
+export { Root as IMediaUploadInitializeResponse } from './types/response/media/InitalizeUpload';
+export { Root as IMediaUploadFinalizeResponse } from './types/response/media/FinalizeUpload';
+
 // Exporting raw types related to tweets
 export { Root as ITweetFavoritersResponse } from './types/response/tweet/Favouriters';
 export { Root as ITweetRetweetersResponse } from './types/response/tweet/Retweeters';
