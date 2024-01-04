@@ -2,7 +2,7 @@
 import { IsNotEmpty, IsNumberString, validateSync } from 'class-validator';
 
 // TYPES
-import { IUploadArgs } from '../../types/request/params/UploadArgs';
+import { IUploadArgs } from '../../types/request/args/UploadArgs';
 
 // ENUMS
 import { EUploadSteps } from '../../enums/Request';
@@ -20,12 +20,12 @@ export class UploadArgs implements IUploadArgs {
 	public step: EUploadSteps;
 
 	@IsNotEmpty({ groups: [EUploadSteps.INITIALIZE] })
-	public size: number;
+	public size?: number;
 
 	@IsNotEmpty({ groups: [EUploadSteps.APPEND] })
-	public media: string;
+	public media?: string;
 
-	@IsNotEmpty({ groups: [EUploadSteps.APPEND, EUploadSteps.INITIALIZE] })
+	@IsNotEmpty({ groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
 	@IsNumberString(undefined, { groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
 	public id?: string;
 

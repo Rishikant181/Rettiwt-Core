@@ -11,6 +11,10 @@ export * from './types/request/queries/DataQuery';
 export { Root as IListDetailsResponse } from './types/response/list/Details';
 export { Root as IListTweetsResponse } from './types/response/list/Tweets';
 
+// Exporting raw types related ot media
+export { Root as IMediaUploadInitializeResponse } from './types/response/media/InitalizeUpload';
+export { Root as IMediaUploadFinalizeResponse } from './types/response/media/FinalizeUpload';
+
 // Exporting raw types related to tweets
 export { Root as ITweetFavoritersResponse } from './types/response/tweet/Favouriters';
 export { Root as ITweetRetweetersResponse } from './types/response/tweet/Retweeters';
@@ -45,7 +49,7 @@ export * from './types/response/composite/TimelineTweet';
 export * from './types/response/composite/TimelineUser';
 
 // Exporting request payload types
-export { IDataArgs } from './types/request/params/DataArgs';
+export { IDataArgs } from './types/request/args/DataArgs';
 export { IFeatures } from './types/request/payloads/Features';
 export { ITweetFilter } from './types/request/payloads/TweetFilter';
 export { IVariables } from './types/request/payloads/Variables';
@@ -62,7 +66,7 @@ export { IRequest } from './types/request/Request';
 export { IDataValidationError } from './types/request/errors/DataValidationError';
 
 // Exporting request payload models
-export { DataArgs } from './models/params/DataArgs';
+export { DataArgs } from './models/args/DataArgs';
 export { Features } from './models/payloads/Features';
 export { TweetFilter } from './models/payloads/TweetFilter';
 export { Variables } from './models/payloads/Variables';

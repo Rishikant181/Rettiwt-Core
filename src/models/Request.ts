@@ -12,8 +12,8 @@ import { IRequest } from '../types/request/Request';
 import { BaseQuery } from './queries/BaseQuery';
 import { DataQuery } from './queries/DataQuery';
 import { UploadQuery } from './queries/UploadQuery';
-import { DataArgs } from './params/DataArgs';
-import { UploadArgs } from './params/UploadArgs';
+import { DataArgs } from './args/DataArgs';
+import { UploadArgs } from './args/UploadArgs';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
@@ -69,14 +69,14 @@ export class Request implements IRequest {
 			resourceType == EResourceType.CREATE_RETWEET ||
 			resourceType == EResourceType.FAVORITE_TWEET
 		) {
-			this.payload = new DataQuery(resourceType, args);
+			this.payload = new DataQuery(resourceType, args as DataArgs);
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD && (args as UploadArgs).step == EUploadSteps.APPEND) {
 			this.params = new UploadQuery(args as UploadArgs);
 			this.payload = { media: (args as UploadArgs).media };
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD) {
 			this.params = new UploadQuery(args as UploadArgs);
 		} else {
-			this.params = new DataQuery(resourceType, args);
+			this.params = new DataQuery(resourceType, args as DataArgs);
 		}
 	}
 

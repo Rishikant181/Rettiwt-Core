@@ -1,8 +1,9 @@
 // MODELS
-import { DataArgs } from '../params/DataArgs';
+import { DataArgs } from '../args/DataArgs';
+import { MediaArgs } from '../args/MediaArgs';
 
 // TYPES
-import { IVariables } from '../../types/request/payloads/Variables';
+import { IMediaVariable, IMediaVariableEntity, IVariables } from '../../types/request/payloads/Variables';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -23,6 +24,7 @@ export class Variables implements IVariables {
 	public cursor?: string;
 	public rawQuery?: string;
 	public tweet_text?: string;
+	public media?: IMediaVariable;
 	public product?: string;
 	public includePromotedContent: boolean = false;
 	public withVoice: boolean = false;
@@ -39,6 +41,7 @@ export class Variables implements IVariables {
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweetText;
+			this.media = args.media ? new MediaVariable(args.media) : undefined;
 		} else if (resourceType == EResourceType.CREATE_RETWEET || resourceType == EResourceType.FAVORITE_TWEET) {
 			this.tweet_id = args.id;
 		} else if (resourceType == EResourceType.LIST_DETAILS) {
@@ -82,5 +85,49 @@ export class Variables implements IVariables {
 	 */
 	public toString(): string {
 		return JSON.stringify(this);
+	}
+}
+
+/**
+ * Media to be sent as payload.
+ *
+ * @public
+ */
+export class MediaVariable implements IMediaVariable {
+	/* eslint-disable @typescript-eslint/naming-convention */
+	public media_entities: MediaVariableEntity[];
+	public possibly_sensitive: boolean;
+	/* eslint-enable @typescript-eslint/naming-convention */
+
+	/**
+	 * Initializes a new MediaVariable payload containing all the different media to be sent.
+	 *
+	 * @param media - The list of MediaArgs objects specifying the media items to be sent in the Tweet.
+	 */
+	public constructor(media: MediaArgs[]) {
+		this.media_entities = media.map((item) => new MediaVariableEntity(item));
+		this.possibly_sensitive = false;
+	}
+}
+
+/**
+ * Each media item in the media payload.
+ *
+ * @public
+ */
+export class MediaVariableEntity implements IMediaVariableEntity {
+	/* eslint-disable @typescript-eslint/naming-convention */
+	public media_id: string;
+	public tagged_users: string[];
+	/* eslint-enable @typescript-eslint/naming-convention */
+
+	/**
+	 * Initializes a single MedieVariableEntity (media item).
+	 *
+	 * @param media - The MediaArg object specifying the details of the media item to be included in the payload.
+	 */
+	public constructor(media: MediaArgs) {
+		this.media_id = media.id;
+		this.tagged_users = media.tags ?? [];
 	}
 }

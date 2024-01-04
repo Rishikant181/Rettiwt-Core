@@ -14,6 +14,7 @@ export interface IVariables {
 	cursor?: string;
 	rawQuery?: string;
 	tweet_text?: string;
+	media?: IMediaVariable;
 	product?: string;
 	includePromotedContent: boolean;
 	withVoice: boolean;
@@ -22,4 +23,28 @@ export interface IVariables {
 
 	/** @returns The string representation of 'this' data. */
 	toString(): string;
+}
+
+/**
+ * Media to be sent as payload.
+ *
+ * @public
+ */
+export interface IMediaVariable {
+	/* eslint-disable @typescript-eslint/naming-convention */
+	media_entities: IMediaVariableEntity[];
+	possibly_sensitive: boolean;
+	/* eslint-enable @typescript-eslint/naming-convention */
+}
+
+/**
+ * Each media item in the media payload.
+ *
+ * @public
+ */
+export interface IMediaVariableEntity {
+	/* eslint-disable @typescript-eslint/naming-convention */
+	media_id: string;
+	tagged_users: string[];
+	/* eslint-enable @typescript-eslint/naming-convention */
 }
