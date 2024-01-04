@@ -9,6 +9,7 @@ import { IDataArgs } from '../../types/request/args/DataArgs';
 
 // MODELS
 import { TweetFilter } from '../payloads/TweetFilter';
+import { MediaArgs } from './MediaArgs';
 import { DataValidationError } from '../errors/DataValidationError';
 
 /**
@@ -72,9 +73,8 @@ export class DataArgs implements IDataArgs {
 	 * - After uploading, the returned id(s) can be used to reference the media here.
 	 */
 	@IsArray({ groups: [EResourceType.CREATE_TWEET] })
-	@IsNumberString(undefined, { groups: [EResourceType.CREATE_TWEET], each: true })
 	@IsOptional({ groups: [EResourceType.CREATE_TWEET] })
-	public media?: string[];
+	public media?: MediaArgs[];
 
 	/**
 	 * @remarks
@@ -121,7 +121,7 @@ export class DataArgs implements IDataArgs {
 	 */
 	public constructor(resourceType: EResourceType, args: DataArgs) {
 		this.id = args.id;
-		this.media = args.media;
+		this.media = args.media ? args.media.map((item) => new MediaArgs(item)) : undefined;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
 		this.tweetText = args.tweetText;

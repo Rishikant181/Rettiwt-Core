@@ -1,5 +1,6 @@
 // TYPES
 import { ITweetFilter } from '../payloads/TweetFilter';
+import { IMediaArgs } from './MediaArgs';
 
 /**
  * User set query parameters that are used to specify the data that is requested.
@@ -13,8 +14,8 @@ export interface IDataArgs {
 	/** The 'rest_id' of the target resource. */
 	id?: string;
 
-	/** The list of id of the media to be uploaded. */
-	media?: string[];
+	/** The list of media to be uploaded. */
+	media?: IMediaArgs[];
 
 	/** The number of data items to fetch. */
 	count?: number;

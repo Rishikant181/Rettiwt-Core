@@ -1,5 +1,6 @@
 // MODELS
 import { DataArgs } from '../args/DataArgs';
+import { MediaArgs } from '../args/MediaArgs';
 
 // TYPES
 import { IMediaVariable, IMediaVariableEntity, IVariables } from '../../types/request/payloads/Variables';
@@ -101,10 +102,10 @@ export class MediaVariable implements IMediaVariable {
 	/**
 	 * Initializes a new MediaVariable payload containing all the different media to be sent.
 	 *
-	 * @param mediaIds - The list of ids of the media items to be sent in the Tweet.
+	 * @param media - The list of MediaArgs objects specifying the media items to be sent in the Tweet.
 	 */
-	public constructor(mediaIds: string[]) {
-		this.media_entities = mediaIds.map((item) => new MediaVariableEntity(item));
+	public constructor(media: MediaArgs[]) {
+		this.media_entities = media.map((item) => new MediaVariableEntity(item));
 		this.possibly_sensitive = false;
 	}
 }
@@ -123,10 +124,10 @@ export class MediaVariableEntity implements IMediaVariableEntity {
 	/**
 	 * Initializes a single MedieVariableEntity (media item).
 	 *
-	 * @param mediaId - The id of the media item to be included in the payload.
+	 * @param media - The MediaArg object specifying the details of the media item to be included in the payload.
 	 */
-	public constructor(mediaId: string) {
-		this.media_id = mediaId;
-		this.tagged_users = [];
+	public constructor(media: MediaArgs) {
+		this.media_id = media.id;
+		this.tagged_users = media.tags ?? [];
 	}
 }
