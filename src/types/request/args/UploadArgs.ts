@@ -11,10 +11,10 @@ export interface IUploadArgs {
 	step: EUploadSteps;
 
 	/** The size (in bytes) of the media file to be uploaded. */
-	size: number;
+	size?: number;
 
 	/** The medial file to be uploaded. */
-	media: string;
+	media?: string;
 
 	/** The id allocated to the media file to be uploaded. */
 	id?: string;
