@@ -29,6 +29,12 @@ export class Variables implements IVariables {
 	public includePromotedContent: boolean = false;
 	public withVoice: boolean = false;
 	public withCommunity: boolean = false;
+
+	// Variables related to Spaces
+	public id?: string;
+	public withReplays?: boolean;
+	public isMetatagsQuery?: boolean;
+	public withListeners?: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
@@ -65,6 +71,11 @@ export class Variables implements IVariables {
 			this.screen_name = args.id;
 		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
 			this.userId = args.id;
+		} else if (resourceType == EResourceType.SPACE_DETAILS) {
+			this.id = args.id;
+			this.isMetatagsQuery = args.isMetatagsQuery;
+			this.withReplays = args.withReplays;
+			this.withListeners = args.withListeners;
 		} else if (
 			resourceType == EResourceType.USER_FOLLOWERS ||
 			resourceType == EResourceType.USER_FOLLOWING ||
