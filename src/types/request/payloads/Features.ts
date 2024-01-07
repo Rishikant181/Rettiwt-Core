@@ -30,6 +30,12 @@ export interface IFeatures {
 	hidden_profile_subscriptions_enabled: boolean;
 	subscriptions_verification_info_verified_since_enabled: boolean;
 	highlights_tweets_tab_ui_enabled: boolean;
+
+	// Features related to Spaces
+	spaces_2022_h2_spaces_communities?: boolean;
+	spaces_2022_h2_clipping?: boolean;
+	c9s_tweet_anatomy_moderator_badge_enabled?: boolean;
+	rweb_video_timestamps_enabled?: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/** @returns The string representation of 'this' data. */

@@ -19,6 +19,11 @@ export interface IVariables {
 	includePromotedContent: boolean;
 	withVoice: boolean;
 	withCommunity: boolean;
+
+	// Variables related to Spaces
+	withReplays?: boolean;
+	isMetatagsQuery?: boolean;
+	withListeners?: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/** @returns The string representation of 'this' data. */
