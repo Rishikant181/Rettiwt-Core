@@ -25,4 +25,9 @@ export interface IDataArgs {
 
 	/** The text for the tweet to be created. */
 	tweetText?: string;
+
+	/** Data Args used for Spaces */
+	withReplays?: boolean;
+	isMetatagsQuery?: boolean;
+	withListeners?: boolean;
 }

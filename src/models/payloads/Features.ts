@@ -1,5 +1,6 @@
 // TYPES
 import { IFeatures } from '../../types/request/payloads/Features';
+import { EResourceType } from '../../enums/Resources';
 
 /**
  * Parameters for customizing the raw response, that must be sent as a URL-encoded, stringified-JSON.
@@ -33,6 +34,12 @@ export class Features implements IFeatures {
 	public hidden_profile_subscriptions_enabled = false;
 	public subscriptions_verification_info_verified_since_enabled = true;
 	public highlights_tweets_tab_ui_enabled = true;
+
+	// Features related to Spaces
+	public spaces_2022_h2_spaces_communities?: boolean;
+	public spaces_2022_h2_clipping?: boolean;
+	public c9s_tweet_anatomy_moderator_badge_enabled?: boolean;
+	public rweb_video_timestamps_enabled?: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
@@ -42,5 +49,14 @@ export class Features implements IFeatures {
 	 */
 	public toString(): string {
 		return JSON.stringify(this);
+	}
+
+	public constructor(resourceType: EResourceType) {
+		if (resourceType == EResourceType.SPACE_DETAILS) {
+			this.spaces_2022_h2_spaces_communities = true;
+			this.spaces_2022_h2_clipping = true;
+			this.c9s_tweet_anatomy_moderator_badge_enabled = true;
+			this.rweb_video_timestamps_enabled = true;
+		}
 	}
 }
