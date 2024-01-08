@@ -17,12 +17,10 @@ export interface IVariables {
 	media?: IMediaVariable;
 	product?: string;
 	includePromotedContent: boolean;
+	isMetatagsQuery?: boolean;
 	withVoice: boolean;
 	withCommunity: boolean;
-
-	// Variables related to Spaces
 	withReplays?: boolean;
-	isMetatagsQuery?: boolean;
 	withListeners?: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */
 

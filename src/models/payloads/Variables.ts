@@ -15,6 +15,7 @@ import { EResourceType } from '../../enums/Resources';
  */
 export class Variables implements IVariables {
 	/* eslint-disable @typescript-eslint/naming-convention */
+	public id?: string;
 	public tweetId?: string;
 	public tweet_id?: string;
 	public userId?: string;
@@ -27,14 +28,12 @@ export class Variables implements IVariables {
 	public media?: IMediaVariable;
 	public product?: string;
 	public includePromotedContent: boolean = false;
+	public isMetatagsQuery?: boolean = false;
 	public withVoice: boolean = false;
 	public withCommunity: boolean = false;
+	public withReplays?: boolean = true;
+	public withListeners?: boolean = true;
 
-	// Variables related to Spaces
-	public id?: string;
-	public withReplays?: boolean;
-	public isMetatagsQuery?: boolean;
-	public withListeners?: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
@@ -73,9 +72,6 @@ export class Variables implements IVariables {
 			this.userId = args.id;
 		} else if (resourceType == EResourceType.SPACE_DETAILS) {
 			this.id = args.id;
-			this.isMetatagsQuery = args.isMetatagsQuery;
-			this.withReplays = args.withReplays;
-			this.withListeners = args.withListeners;
 		} else if (
 			resourceType == EResourceType.USER_FOLLOWERS ||
 			resourceType == EResourceType.USER_FOLLOWING ||

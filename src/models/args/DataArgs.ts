@@ -1,5 +1,14 @@
 // PACKAGES
-import { IsArray, IsNotEmpty, IsNumberString, IsOptional, IsString, Max, MaxLength, validateSync } from 'class-validator';
+import {
+	IsArray,
+	IsNotEmpty,
+	IsNumberString,
+	IsOptional,
+	IsString,
+	Max,
+	MaxLength,
+	validateSync,
+} from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -46,7 +55,7 @@ export class DataArgs implements IDataArgs {
 			EResourceType.USER_LIKES,
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
-			EResourceType.SPACE_DETAILS
+			EResourceType.SPACE_DETAILS,
 		],
 	})
 	@IsNumberString(undefined, {
@@ -67,11 +76,8 @@ export class DataArgs implements IDataArgs {
 		],
 	})
 	@IsString({
-		groups: [
-			EResourceType.SPACE_DETAILS
-		],
+		groups: [EResourceType.SPACE_DETAILS],
 	})
-
 	public id?: string;
 
 	/**
@@ -122,14 +128,6 @@ export class DataArgs implements IDataArgs {
 	public tweetText?: string;
 
 	/**
-	 * @remarks
-	 * - May be used for {@link EResourceType.SPACE_DETAILS} resource type.
-	 */
-	public withReplays?: boolean;
-	public isMetatagsQuery?: boolean;
-	public withListeners?: boolean;
-
-	/**
 	 * Initializes a new DataArgs object using the given arguments.
 	 *
 	 * @param resourceType - The type of resource that is requested.
@@ -149,17 +147,9 @@ export class DataArgs implements IDataArgs {
 			this.filter = new TweetFilter(args.filter);
 		}
 
-		/**
-		 * Initializing withReplays, isMetatagsQuery and withListeners only if resource type is AUDIO_SPACE
-		 */
-		if (resourceType == EResourceType.SPACE_DETAILS) {
-			this.withReplays = args.withReplays ?? false;
-			this.isMetatagsQuery = args.isMetatagsQuery ?? false;
-			this.withListeners = args.withListeners ?? false;
-		}
-
 		// Validating this object
 		const validationResult = validateSync(this, { groups: [resourceType] });
+
 		// If valiation error occured
 		if (validationResult.length) {
 			throw new DataValidationError(validationResult);
