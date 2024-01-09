@@ -59,6 +59,7 @@ export { Root as IListTweetsResponse } from './types/response/list/Tweets';
 // Exporting raw types related ot media
 export { Root as IMediaUploadInitializeResponse } from './types/response/media/InitalizeUpload';
 export { Root as IMediaUploadFinalizeResponse } from './types/response/media/FinalizeUpload';
+export { Root as IVideoStreamResponse } from './types/response/media/LiveVideoStream';
 
 // Exporting raw types related to spaces
 export { Root as ISpaceDetailsResponse } from './types/response/space/Space';

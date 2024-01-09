@@ -1,6 +1,5 @@
 // ENUMS
 import { ERequestType } from '../../enums/Request';
-import { EResourceType } from '../../enums/Resources';
 
 // TYPES
 import { IBaseQuery } from './queries/BaseQuery';
@@ -21,7 +20,7 @@ export interface IRequest {
 	subdomain: string;
 
 	/** The endpoint to which the request is to be sent. */
-	endpoint: EResourceType;
+	endpoint: string;
 
 	/** The parameters to be sent in the request. */
 	params?: IBaseQuery;

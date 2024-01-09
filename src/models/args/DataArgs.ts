@@ -55,7 +55,7 @@ export class DataArgs implements IDataArgs {
 			EResourceType.USER_LIKES,
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
-			EResourceType.AUDIO_SPACE_DETAILS_BY_ID,
+			EResourceType.SPACE_DETAILS_BY_ID,
 		],
 	})
 	@IsNumberString(undefined, {
@@ -76,7 +76,7 @@ export class DataArgs implements IDataArgs {
 		],
 	})
 	@IsString({
-		groups: [EResourceType.AUDIO_SPACE_DETAILS_BY_ID],
+		groups: [EResourceType.SPACE_DETAILS_BY_ID, EResourceType.VIDEO_STREAM],
 	})
 	public id?: string;
 

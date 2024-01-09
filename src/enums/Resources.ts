@@ -38,8 +38,8 @@ export enum EResourceType {
 
 	// MEDIA
 	MEDIA_UPLOAD = '/i/media/upload.json',
-	LIVE_VIDEO_STREAM = '/i/api/1.1/live_video_stream/status',
+	VIDEO_STREAM = '/i/api/1.1/live_video_stream/status',
 
 	// SPACE
-	AUDIO_SPACE_DETAILS_BY_ID = '/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
+	SPACE_DETAILS_BY_ID = '/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
 }
