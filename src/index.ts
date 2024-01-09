@@ -59,6 +59,10 @@ export { Root as IListTweetsResponse } from './types/response/list/Tweets';
 // Exporting raw types related ot media
 export { Root as IMediaUploadInitializeResponse } from './types/response/media/InitalizeUpload';
 export { Root as IMediaUploadFinalizeResponse } from './types/response/media/FinalizeUpload';
+export { Root as IVideoStreamResponse } from './types/response/media/LiveVideoStream';
+
+// Exporting raw types related to spaces
+export { Root as ISpaceDetailsResponse } from './types/response/space/Space';
 
 // Exporting raw types related to tweets
 export { Root as ITweetFavoritersResponse } from './types/response/tweet/Favouriters';
@@ -82,11 +86,12 @@ export * from './types/response/generic/Error';
 export * from './types/response/generic/Response';
 
 // Exporting base raw types
+export * from './types/response/base/Cursor';
 export * from './types/response/base/List';
+export * from './types/response/base/Media';
+export * from './types/response/base/Space';
 export * from './types/response/base/Tweet';
 export * from './types/response/base/User';
-export * from './types/response/base/Cursor';
-export * from './types/response/base/Media';
 
 // Exporting composite raw types
 export * from './types/response/composite/DataResult';

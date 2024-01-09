@@ -33,6 +33,10 @@ export class Features implements IFeatures {
 	public hidden_profile_subscriptions_enabled = false;
 	public subscriptions_verification_info_verified_since_enabled = true;
 	public highlights_tweets_tab_ui_enabled = true;
+	public spaces_2022_h2_spaces_communities = true;
+	public spaces_2022_h2_clipping = true;
+	public c9s_tweet_anatomy_moderator_badge_enabled = true;
+	public rweb_video_timestamps_enabled = true;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**

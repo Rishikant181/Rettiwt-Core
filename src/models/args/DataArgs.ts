@@ -1,5 +1,14 @@
 // PACKAGES
-import { IsArray, IsNotEmpty, IsNumberString, IsOptional, Max, MaxLength, validateSync } from 'class-validator';
+import {
+	IsArray,
+	IsNotEmpty,
+	IsNumberString,
+	IsOptional,
+	IsString,
+	Max,
+	MaxLength,
+	validateSync,
+} from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -46,6 +55,7 @@ export class DataArgs implements IDataArgs {
 			EResourceType.USER_LIKES,
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
+			EResourceType.SPACE_DETAILS_BY_ID,
 		],
 	})
 	@IsNumberString(undefined, {
@@ -64,6 +74,9 @@ export class DataArgs implements IDataArgs {
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
 		],
+	})
+	@IsString({
+		groups: [EResourceType.SPACE_DETAILS_BY_ID, EResourceType.VIDEO_STREAM],
 	})
 	public id?: string;
 

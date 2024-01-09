@@ -24,7 +24,7 @@ export class Request implements IRequest {
 	public type: ERequestType;
 	public subdomain: ESubdomains;
 	public base: string = 'twitter.com';
-	public endpoint: EResourceType;
+	public endpoint: string;
 	public params?: BaseQuery;
 	public payload?: NonNullable<unknown>;
 
@@ -61,7 +61,11 @@ export class Request implements IRequest {
 		}
 
 		// Setting request endpoint
-		this.endpoint = resourceType;
+		if (resourceType == EResourceType.VIDEO_STREAM) {
+			this.endpoint = `${resourceType}/${args.id as string}`;
+		} else {
+			this.endpoint = resourceType;
+		}
 
 		// Setting request params and payload
 		if (
@@ -75,6 +79,8 @@ export class Request implements IRequest {
 			this.payload = { media: (args as UploadArgs).media };
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD) {
 			this.params = new UploadQuery(args as UploadArgs);
+		} else if (resourceType == EResourceType.VIDEO_STREAM) {
+			this.params = undefined;
 		} else {
 			this.params = new DataQuery(resourceType, args as DataArgs);
 		}
