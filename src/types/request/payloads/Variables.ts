@@ -16,10 +16,10 @@ export interface IVariables {
 	tweet_text?: string;
 	media?: IMediaVariable;
 	product?: string;
-	includePromotedContent: boolean;
+	includePromotedContent?: boolean;
 	isMetatagsQuery?: boolean;
-	withVoice: boolean;
-	withCommunity: boolean;
+	withVoice?: boolean;
+	withCommunity?: boolean;
 	withReplays?: boolean;
 	withListeners?: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */

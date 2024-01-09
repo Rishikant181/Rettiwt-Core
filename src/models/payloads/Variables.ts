@@ -27,12 +27,12 @@ export class Variables implements IVariables {
 	public tweet_text?: string;
 	public media?: IMediaVariable;
 	public product?: string;
-	public includePromotedContent: boolean = false;
-	public isMetatagsQuery?: boolean = false;
-	public withVoice: boolean = false;
-	public withCommunity: boolean = false;
-	public withReplays?: boolean = true;
-	public withListeners?: boolean = true;
+	public includePromotedContent?: boolean;
+	public isMetatagsQuery?: boolean;
+	public withVoice?: boolean;
+	public withCommunity?: boolean;
+	public withReplays?: boolean;
+	public withListeners?: boolean;
 
 	/* eslint-enable @typescript-eslint/naming-convention */
 
@@ -55,6 +55,11 @@ export class Variables implements IVariables {
 			this.listId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
+		} else if (resourceType == EResourceType.SPACE_DETAILS) {
+			this.id = args.id;
+			this.isMetatagsQuery = false;
+			this.withReplays = true;
+			this.withListeners = true;
 		} else if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {
 			this.rawQuery = args.filter.toString();
 			this.count = args.count;
@@ -62,19 +67,24 @@ export class Variables implements IVariables {
 			this.product = 'Latest';
 		} else if (resourceType == EResourceType.TWEET_DETAILS) {
 			this.tweetId = args.id;
+			this.includePromotedContent = false;
+			this.withCommunity = false;
+			this.withVoice = false;
 		} else if (resourceType == EResourceType.TWEET_FAVORITERS || resourceType == EResourceType.TWEET_RETWEETERS) {
 			this.tweetId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
+			this.includePromotedContent = false;
 		} else if (resourceType == EResourceType.USER_DETAILS) {
 			this.screen_name = args.id;
 		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
 			this.userId = args.id;
-		} else if (resourceType == EResourceType.SPACE_DETAILS) {
-			this.id = args.id;
+		} else if (resourceType == EResourceType.USER_FOLLOWERS || resourceType == EResourceType.USER_FOLLOWING) {
+			this.userId = args.id;
+			this.count = args.count;
+			this.cursor = args.cursor;
+			this.includePromotedContent = false;
 		} else if (
-			resourceType == EResourceType.USER_FOLLOWERS ||
-			resourceType == EResourceType.USER_FOLLOWING ||
 			resourceType == EResourceType.USER_LIKES ||
 			resourceType == EResourceType.USER_TWEETS ||
 			resourceType == EResourceType.USER_TWEETS_AND_REPLIES
@@ -82,6 +92,8 @@ export class Variables implements IVariables {
 			this.userId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
+			this.includePromotedContent = false;
+			this.withVoice = false;
 		}
 	}
 
