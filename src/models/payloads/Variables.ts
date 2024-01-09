@@ -55,7 +55,7 @@ export class Variables implements IVariables {
 			this.listId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
-		} else if (resourceType == EResourceType.SPACE_DETAILS) {
+		} else if (resourceType == EResourceType.AUDIO_SPACE_DETAILS_BY_ID) {
 			this.id = args.id;
 			this.isMetatagsQuery = false;
 			this.withReplays = true;

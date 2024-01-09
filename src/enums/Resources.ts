@@ -31,5 +31,5 @@ export enum EResourceType {
 	USER_TWEETS = '/i/api/graphql/H8OOoI-5ZE4NxgRr8lfyWg/UserTweets',
 	USER_TWEETS_AND_REPLIES = '/i/api/graphql/GJuqLMoVxFZOvy8Oqec_9Q/UserTweetsAndReplies',
 	MEDIA_UPLOAD = '/i/media/upload.json',
-	SPACE_DETAILS = '/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
+	AUDIO_SPACE_DETAILS_BY_ID = '/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
 }
