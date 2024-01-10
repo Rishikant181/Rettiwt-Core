@@ -4,9 +4,6 @@ import { Features } from '../payloads/Features';
 import { Variables } from '../payloads/Variables';
 import { DataArgs } from '../args/DataArgs';
 
-// TYPES
-import { IDataQuery } from '../../types/request/queries/DataQuery';
-
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
@@ -15,8 +12,11 @@ import { EResourceType } from '../../enums/Resources';
  *
  * @public
  */
-export class DataQuery extends BaseQuery implements IDataQuery {
+export class DataQuery extends BaseQuery {
+	/** Additional data features that must be fetched. */
 	public features: Features;
+
+	/** Variables for fetching data. */
 	public variables: Variables;
 
 	/**

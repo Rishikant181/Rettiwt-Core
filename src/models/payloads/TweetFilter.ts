@@ -10,9 +10,6 @@ import {
 	IsNumber,
 } from 'class-validator';
 
-// TYPES
-import { ITweetFilter } from '../../types/request/payloads/TweetFilter';
-
 // MODELS
 import { DataValidationError } from '../errors/DataValidationError';
 
@@ -21,27 +18,33 @@ import { DataValidationError } from '../errors/DataValidationError';
  *
  * @public
  */
-export class TweetFilter implements ITweetFilter {
+export class TweetFilter {
+	/** The list of words to search. */
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
 	public includeWords?: string[];
 
+	/** The exact phrase to search. */
 	@IsString()
 	@IsOptional()
 	public includePhrase: string;
 
+	/** The optional words to search. */
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
 	public optionalWords: string[];
 
+	/** The list of words to exclude from search. */
 	@IsArray()
 	@IsString({ each: true })
 	@IsOptional()
 	public excludeWords: string[];
 
 	/**
+	 * The list of hashtags to search.
+	 *
 	 * @remarks
 	 * '#' must be excluded from the hashtag!
 	 */
@@ -51,6 +54,8 @@ export class TweetFilter implements ITweetFilter {
 	public hashtags?: string[];
 
 	/**
+	 * The list of usernames whose tweets are to be searched.
+	 *
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
@@ -60,6 +65,8 @@ export class TweetFilter implements ITweetFilter {
 	public fromUsers?: string[];
 
 	/**
+	 * The list of username to whom the tweets to be searched, are adressed.
+	 *
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
@@ -69,6 +76,8 @@ export class TweetFilter implements ITweetFilter {
 	public toUsers?: string[];
 
 	/**
+	 * The list of username mentioned in the tweets to search.
+	 *
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
@@ -77,55 +86,54 @@ export class TweetFilter implements ITweetFilter {
 	@IsOptional()
 	public mentions?: string[];
 
+	/** The minimum number of replies to search by. */
 	@IsNumber()
 	@IsOptional()
 	public minReplies: number;
 
+	/** The minimun number of likes to search by. */
 	@IsNumber()
 	@IsOptional()
 	public minLikes: number;
 
+	/** The minimum number of retweets to search by. */
 	@IsNumber()
 	@IsOptional()
 	public minRetweets: number;
 
+	/** The language of the tweets to search. */
 	@IsString()
 	@IsOptional()
 	public language: string;
 
+	/** The date starting from which tweets are to be searched. */
 	@IsOptional()
 	@IsDate()
 	public startDate?: Date;
 
+	/** The date upto which tweets are to be searched. */
 	@IsOptional()
 	@IsDate()
 	public endDate?: Date;
 
-	/**
-	 * @remarks
-	 * Must be a numeric string.
-	 */
+	/** The id of the tweet, after which the tweets are to be searched. */
 	@IsNumberString()
 	@IsOptional()
 	public sinceId?: string;
 
-	/**
-	 * @remarks
-	 * Must be a numeric string.
-	 */
+	/** The id of the tweet, before which the tweets are to be searched. */
 	@IsNumberString()
 	@IsOptional()
 	public maxId?: string;
 
-	/**
-	 * @remarks
-	 * Must be a numeric string.
-	 */
+	/** The id of the tweet which is quoted in the tweets to search. */
 	@IsNumberString()
 	@IsOptional()
 	public quoted?: string;
 
 	/**
+	 * Whether to fetch tweets that are links or not.
+	 *
 	 * @defaultValue true
 	 */
 	@IsBoolean()
@@ -133,6 +141,8 @@ export class TweetFilter implements ITweetFilter {
 	public links?: boolean = true;
 
 	/**
+	 * Whether to fetch tweets that are replies or not.
+	 *
 	 * @defaultValue true
 	 */
 	@IsBoolean()
@@ -140,6 +150,8 @@ export class TweetFilter implements ITweetFilter {
 	public replies?: boolean = true;
 
 	/**
+	 * Initializes a new TweetFilter based on the given filter parameters.
+	 *
 	 * @param filter - The filter to use for searching tweets.
 	 */
 	public constructor(filter: TweetFilter) {
@@ -175,7 +187,7 @@ export class TweetFilter implements ITweetFilter {
 	/**
 	 * Converts this object to it's string representation.
 	 *
-	 * @returns 'this' object's string representation.
+	 * @returns The string representation of 'this' data.
 	 */
 	public toString(): string {
 		return (

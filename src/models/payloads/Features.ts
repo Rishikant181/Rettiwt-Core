@@ -1,12 +1,9 @@
-// TYPES
-import { IFeatures } from '../../types/request/payloads/Features';
-
 /**
  * Parameters for customizing the raw response, that must be sent as a URL-encoded, stringified-JSON.
  *
  * @public
  */
-export class Features implements IFeatures {
+export class Features {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public rweb_lists_timeline_redesign_enabled = true;
 	public responsive_web_graphql_exclude_directive_enabled = true;

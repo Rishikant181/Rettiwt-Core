@@ -1,12 +1,9 @@
-// TYPES
-import { IBaseQuery } from '../../types/request/queries/BaseQuery';
-
 /**
  * The base URL query.
  *
  * @public
  */
-export class BaseQuery implements IBaseQuery {
+export class BaseQuery {
 	/**
 	 * Converts this object to it's string representation.
 	 *

@@ -1,9 +1,6 @@
 // PACKAGES
 import { ArrayMaxSize, IsArray, IsNotEmpty, IsNumberString, validateSync } from 'class-validator';
 
-// TYPES
-import { IMediaArgs } from '../../types/request/args/MediaArgs';
-
 // MODELS
 import { DataValidationError } from '../errors/DataValidationError';
 
@@ -12,12 +9,15 @@ import { DataValidationError } from '../errors/DataValidationError';
  *
  * @public
  */
-export class MediaArgs implements IMediaArgs {
+export class MediaArgs {
+	/** The id of the media to upload. */
 	@IsNotEmpty()
 	@IsNumberString()
 	public id: string;
 
 	/**
+	 * The list of id of the users tagged in the media.
+	 *
 	 * @remarks
 	 * Maximum number of users that can be tagged is 10.
 	 */

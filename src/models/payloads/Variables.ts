@@ -2,9 +2,6 @@
 import { DataArgs } from '../args/DataArgs';
 import { MediaArgs } from '../args/MediaArgs';
 
-// TYPES
-import { IMediaVariable, IMediaVariableEntity, IVariables } from '../../types/request/payloads/Variables';
-
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
@@ -13,7 +10,7 @@ import { EResourceType } from '../../enums/Resources';
  *
  * @public
  */
-export class Variables implements IVariables {
+export class Variables {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public id?: string;
 	public tweetId?: string;
@@ -25,7 +22,7 @@ export class Variables implements IVariables {
 	public cursor?: string;
 	public rawQuery?: string;
 	public tweet_text?: string;
-	public media?: IMediaVariable;
+	public media?: MediaVariable;
 	public product?: string;
 	public includePromotedContent?: boolean;
 	public isMetatagsQuery?: boolean;
@@ -33,7 +30,6 @@ export class Variables implements IVariables {
 	public withCommunity?: boolean;
 	public withReplays?: boolean;
 	public withListeners?: boolean;
-
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
@@ -112,7 +108,7 @@ export class Variables implements IVariables {
  *
  * @public
  */
-export class MediaVariable implements IMediaVariable {
+export class MediaVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public media_entities: MediaVariableEntity[];
 	public possibly_sensitive: boolean;
@@ -134,7 +130,7 @@ export class MediaVariable implements IMediaVariable {
  *
  * @public
  */
-export class MediaVariableEntity implements IMediaVariableEntity {
+export class MediaVariableEntity {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public media_id: string;
 	public tagged_users: string[];

@@ -3,9 +3,6 @@ import { BaseQuery } from './BaseQuery';
 import { UploadArgs } from '../args/UploadArgs';
 
 // TYPES
-import { IUploadQuery } from '../../types/request/queries/UploadQuery';
-
-// TYPES
 import { EUploadSteps } from '../../enums/Request';
 
 /**
@@ -13,12 +10,21 @@ import { EUploadSteps } from '../../enums/Request';
  *
  * @public
  */
-export class UploadQuery extends BaseQuery implements IUploadQuery {
+export class UploadQuery extends BaseQuery {
 	/* eslint-disable @typescript-eslint/naming-convention */
+
+	/** The name of the upload step. */
 	public command: EUploadSteps;
+
+	/** The total number of bytes in the media file to be uploaded. */
 	public total_bytes?: number;
+
+	/** The id alloted to the file to be uploaded. */
 	public media_id?: string;
+
+	/** The index of the segment of the media file to be uploaded. */
 	public segment_index?: number = 0;
+
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
