@@ -10,7 +10,7 @@ import { BaseQuery } from './queries/BaseQuery';
 import { DataQuery } from './queries/DataQuery';
 import { UploadQuery } from './queries/UploadQuery';
 import { FetchArgs } from './args/FetchArgs';
-import { UploadArgs } from './args/UploadArgs';
+import { PostArgs } from './args/PostArgs';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
@@ -46,19 +46,25 @@ export class Request {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional URL arguments.
 	 */
-	public constructor(resourceType: EResourceType, args: FetchArgs | UploadArgs) {
+	public constructor(resourceType: EResourceType, args: FetchArgs & PostArgs) {
 		// Converting JSON args to object
-		if (resourceType == EResourceType.MEDIA_UPLOAD) {
-			args = new UploadArgs(args as UploadArgs);
+		if (
+			resourceType == EResourceType.CREATE_RETWEET ||
+			resourceType == EResourceType.CREATE_TWEET ||
+			resourceType == EResourceType.FAVORITE_TWEET ||
+			resourceType == EResourceType.MEDIA_UPLOAD
+		) {
+			args = new PostArgs(resourceType, args);
 		} else {
-			args = new FetchArgs(resourceType, args as FetchArgs);
+			args = new FetchArgs(resourceType, args);
 		}
 
 		// Setting request type
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
 			resourceType == EResourceType.CREATE_RETWEET ||
-			resourceType == EResourceType.FAVORITE_TWEET
+			resourceType == EResourceType.FAVORITE_TWEET ||
+			resourceType == EResourceType.MEDIA_UPLOAD
 		) {
 			this.type = ERequestType.POST;
 		} else {
@@ -85,16 +91,19 @@ export class Request {
 			resourceType == EResourceType.CREATE_RETWEET ||
 			resourceType == EResourceType.FAVORITE_TWEET
 		) {
-			this.payload = new DataQuery(resourceType, args as FetchArgs);
-		} else if (resourceType == EResourceType.MEDIA_UPLOAD && (args as UploadArgs).step == EUploadSteps.APPEND) {
-			this.params = new UploadQuery(args as UploadArgs);
-			this.payload = { media: (args as UploadArgs).media };
-		} else if (resourceType == EResourceType.MEDIA_UPLOAD) {
-			this.params = new UploadQuery(args as UploadArgs);
+			this.payload = new DataQuery(resourceType, args);
+		} else if (resourceType == EResourceType.MEDIA_UPLOAD && args.upload?.step == EUploadSteps.APPEND) {
+			this.params = new UploadQuery(args.upload);
+			this.payload = { media: args.upload.media };
+		} else if (
+			resourceType == EResourceType.MEDIA_UPLOAD &&
+			(args.upload?.step == EUploadSteps.INITIALIZE || args.upload?.step == EUploadSteps.FINALIZE)
+		) {
+			this.params = new UploadQuery(args.upload);
 		} else if (resourceType == EResourceType.VIDEO_STREAM) {
 			this.params = undefined;
 		} else {
-			this.params = new DataQuery(resourceType, args as FetchArgs);
+			this.params = new DataQuery(resourceType, args);
 		}
 	}
 

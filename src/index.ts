@@ -8,8 +8,7 @@ export * from './enums/Resources';
 
 // ARG MODELS
 export * from './models/args/FetchArgs';
-export * from './models/args/MediaArgs';
-export * from './models/args/UploadArgs';
+export * from './models/args/PostArgs';
 
 // ERROR MODELS
 export * from './models/errors/DataValidationError';
