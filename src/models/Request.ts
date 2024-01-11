@@ -9,7 +9,7 @@ import { ESubdomains, EResourceType } from '../enums/Resources';
 import { BaseQuery } from './queries/BaseQuery';
 import { DataQuery } from './queries/DataQuery';
 import { UploadQuery } from './queries/UploadQuery';
-import { DataArgs } from './args/DataArgs';
+import { FetchArgs } from './args/FetchArgs';
 import { UploadArgs } from './args/UploadArgs';
 
 /**
@@ -46,12 +46,12 @@ export class Request {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional URL arguments.
 	 */
-	public constructor(resourceType: EResourceType, args: DataArgs | UploadArgs) {
+	public constructor(resourceType: EResourceType, args: FetchArgs | UploadArgs) {
 		// Converting JSON args to object
 		if (resourceType == EResourceType.MEDIA_UPLOAD) {
 			args = new UploadArgs(args as UploadArgs);
 		} else {
-			args = new DataArgs(resourceType, args as DataArgs);
+			args = new FetchArgs(resourceType, args as FetchArgs);
 		}
 
 		// Setting request type
@@ -85,7 +85,7 @@ export class Request {
 			resourceType == EResourceType.CREATE_RETWEET ||
 			resourceType == EResourceType.FAVORITE_TWEET
 		) {
-			this.payload = new DataQuery(resourceType, args as DataArgs);
+			this.payload = new DataQuery(resourceType, args as FetchArgs);
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD && (args as UploadArgs).step == EUploadSteps.APPEND) {
 			this.params = new UploadQuery(args as UploadArgs);
 			this.payload = { media: (args as UploadArgs).media };
@@ -94,7 +94,7 @@ export class Request {
 		} else if (resourceType == EResourceType.VIDEO_STREAM) {
 			this.params = undefined;
 		} else {
-			this.params = new DataQuery(resourceType, args as DataArgs);
+			this.params = new DataQuery(resourceType, args as FetchArgs);
 		}
 	}
 

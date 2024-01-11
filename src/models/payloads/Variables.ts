@@ -1,5 +1,5 @@
 // MODELS
-import { DataArgs } from '../args/DataArgs';
+import { FetchArgs } from '../args/FetchArgs';
 import { MediaArgs } from '../args/MediaArgs';
 
 // ENUMS
@@ -38,7 +38,7 @@ export class Variables {
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: DataArgs) {
+	public constructor(resourceType: EResourceType, args: FetchArgs) {
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweetText;

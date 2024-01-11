@@ -19,11 +19,11 @@ import { MediaArgs } from './MediaArgs';
 import { DataValidationError } from '../errors/DataValidationError';
 
 /**
- * User set query parameters that are used to specify the data that is requested.
+ * User set query parameters that are used to specify the data that is to be fetched.
  *
  * @public
  */
-export class DataArgs {
+export class FetchArgs {
 	/**
 	 * The filter for searching.
 	 *
@@ -142,7 +142,7 @@ export class DataArgs {
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: DataArgs) {
+	public constructor(resourceType: EResourceType, args: FetchArgs) {
 		this.id = args.id;
 		this.media = args.media ? args.media.map((item) => new MediaArgs(item)) : undefined;
 		this.count = args.count ?? 20;

@@ -7,7 +7,7 @@ export * from './enums/Resources';
 // CLASSES
 
 // ARG MODELS
-export * from './models/args/DataArgs';
+export * from './models/args/FetchArgs';
 export * from './models/args/MediaArgs';
 export * from './models/args/UploadArgs';
 

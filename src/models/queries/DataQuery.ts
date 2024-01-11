@@ -2,7 +2,7 @@
 import { BaseQuery } from './BaseQuery';
 import { Features } from '../payloads/Features';
 import { Variables } from '../payloads/Variables';
-import { DataArgs } from '../args/DataArgs';
+import { FetchArgs } from '../args/FetchArgs';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -25,7 +25,7 @@ export class DataQuery extends BaseQuery {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional user-defined arguments to be sent in the request.
 	 */
-	public constructor(resourceType: EResourceType, args: DataArgs) {
+	public constructor(resourceType: EResourceType, args: FetchArgs) {
 		super();
 		this.variables = new Variables(resourceType, args);
 		this.features = new Features();
