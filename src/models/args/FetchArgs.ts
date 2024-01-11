@@ -15,7 +15,6 @@ import { EResourceType } from '../../enums/Resources';
 
 // MODELS
 import { TweetFilter } from '../payloads/TweetFilter';
-import { MediaArgs } from './MediaArgs';
 import { DataValidationError } from '../errors/DataValidationError';
 
 /**
@@ -42,8 +41,6 @@ export class FetchArgs {
 	 */
 	@IsNotEmpty({
 		groups: [
-			EResourceType.CREATE_RETWEET,
-			EResourceType.FAVORITE_TWEET,
 			EResourceType.LIST_DETAILS,
 			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
@@ -61,8 +58,6 @@ export class FetchArgs {
 	})
 	@IsNumberString(undefined, {
 		groups: [
-			EResourceType.CREATE_RETWEET,
-			EResourceType.FAVORITE_TWEET,
 			EResourceType.LIST_DETAILS,
 			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
@@ -80,17 +75,6 @@ export class FetchArgs {
 		groups: [EResourceType.SPACE_DETAILS_BY_ID, EResourceType.VIDEO_STREAM],
 	})
 	public id?: string;
-
-	/**
-	 * The list of media to be uploaded.
-	 *
-	 * @remarks
-	 * - The media first needs to be uploaded using the {@link EResourceType.MEDIA_UPLOAD} resource.
-	 * - After uploading, the returned id(s) can be used to reference the media here.
-	 */
-	@IsArray({ groups: [EResourceType.CREATE_TWEET] })
-	@IsOptional({ groups: [EResourceType.CREATE_TWEET] })
-	public media?: MediaArgs[];
 
 	/**
 	 * The number of data items to fetch.
@@ -127,16 +111,6 @@ export class FetchArgs {
 	public cursor?: string;
 
 	/**
-	 * The text for the tweet to be created.
-	 *
-	 * @remarks
-	 * Length of the tweet must be \<= 280 characters.
-	 */
-	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
-	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
-	public tweetText?: string;
-
-	/**
 	 * Initializes a new DataArgs object using the given arguments.
 	 *
 	 * @param resourceType - The type of resource that is requested.
@@ -144,10 +118,8 @@ export class FetchArgs {
 	 */
 	public constructor(resourceType: EResourceType, args: FetchArgs) {
 		this.id = args.id;
-		this.media = args.media ? args.media.map((item) => new MediaArgs(item)) : undefined;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
-		this.tweetText = args.tweetText;
 
 		/**
 		 * Initializing filter only if resource type is TWEET_SEARCH
