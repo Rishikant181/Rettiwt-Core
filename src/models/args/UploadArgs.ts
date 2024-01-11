@@ -1,9 +1,6 @@
 // PACKAGES
 import { IsNotEmpty, IsNumberString, validateSync } from 'class-validator';
 
-// TYPES
-import { IUploadArgs } from '../../types/request/args/UploadArgs';
-
 // ENUMS
 import { EUploadSteps } from '../../enums/Request';
 
@@ -15,16 +12,20 @@ import { DataValidationError } from '../errors/DataValidationError';
  *
  * @public
  */
-export class UploadArgs implements IUploadArgs {
+export class UploadArgs {
+	/** The name of the step of the upload process to be executed. */
 	@IsNotEmpty()
 	public step: EUploadSteps;
 
+	/** The size (in bytes) of the media file to be uploaded. */
 	@IsNotEmpty({ groups: [EUploadSteps.INITIALIZE] })
 	public size?: number;
 
+	/** The medial file to be uploaded. */
 	@IsNotEmpty({ groups: [EUploadSteps.APPEND] })
 	public media?: string;
 
+	/** The id allocated to the media file to be uploaded. */
 	@IsNotEmpty({ groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
 	@IsNumberString(undefined, { groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
 	public id?: string;

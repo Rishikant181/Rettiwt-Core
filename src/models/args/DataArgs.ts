@@ -13,9 +13,6 @@ import {
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
-// TYPES
-import { IDataArgs } from '../../types/request/args/DataArgs';
-
 // MODELS
 import { TweetFilter } from '../payloads/TweetFilter';
 import { MediaArgs } from './MediaArgs';
@@ -26,8 +23,10 @@ import { DataValidationError } from '../errors/DataValidationError';
  *
  * @public
  */
-export class DataArgs implements IDataArgs {
+export class DataArgs {
 	/**
+	 * The filter for searching.
+	 *
 	 * @remarks
 	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
 	 */
@@ -35,6 +34,8 @@ export class DataArgs implements IDataArgs {
 	public filter?: TweetFilter;
 
 	/**
+	 * The id of the target resource.
+	 *
 	 * @remarks
 	 * - Required for all resources except {@link EResourceType.TWEET_SEARCH}.
 	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
@@ -81,6 +82,8 @@ export class DataArgs implements IDataArgs {
 	public id?: string;
 
 	/**
+	 * The list of media to be uploaded.
+	 *
 	 * @remarks
 	 * - The media first needs to be uploaded using the {@link EResourceType.MEDIA_UPLOAD} resource.
 	 * - After uploading, the returned id(s) can be used to reference the media here.
@@ -90,6 +93,8 @@ export class DataArgs implements IDataArgs {
 	public media?: MediaArgs[];
 
 	/**
+	 * The number of data items to fetch.
+	 *
 	 * @remarks
 	 * - Works only for cursored resources.
 	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH} and {@link EResourceType.USER_TWEETS}.
@@ -113,6 +118,8 @@ export class DataArgs implements IDataArgs {
 	public count?: number;
 
 	/**
+	 * The cursor string to the batch of data to fetch.
+	 *
 	 * @remarks
 	 * - May be used for cursored resources.
 	 * - Has no effect for all other resources.
@@ -120,6 +127,8 @@ export class DataArgs implements IDataArgs {
 	public cursor?: string;
 
 	/**
+	 * The text for the tweet to be created.
+	 *
 	 * @remarks
 	 * Length of the tweet must be \<= 280 characters.
 	 */

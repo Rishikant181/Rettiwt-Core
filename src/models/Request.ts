@@ -5,9 +5,6 @@ import { AxiosRequestConfig } from 'axios';
 import { ERequestType, EUploadSteps } from '../enums/Request';
 import { ESubdomains, EResourceType } from '../enums/Resources';
 
-// TYPES
-import { IRequest } from '../types/request/Request';
-
 // MODELS
 import { BaseQuery } from './queries/BaseQuery';
 import { DataQuery } from './queries/DataQuery';
@@ -20,7 +17,7 @@ import { UploadArgs } from './args/UploadArgs';
  *
  * @public
  */
-export class Request implements IRequest {
+export class Request {
 	public type: ERequestType;
 	public subdomain: ESubdomains;
 	public base: string = 'twitter.com';

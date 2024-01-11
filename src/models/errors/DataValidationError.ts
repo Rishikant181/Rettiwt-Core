@@ -1,9 +1,6 @@
 // PACKAGES
 import { ValidationError } from 'class-validator';
 
-// TYPES
-import { IDataValidationError } from '../../types/request/errors/DataValidationError';
-
 // ENUMS
 import { EErrors } from '../../enums/Errors';
 
@@ -12,9 +9,14 @@ import { EErrors } from '../../enums/Errors';
  *
  * @internal
  */
-export class DataValidationError implements IDataValidationError {
+export class DataValidationError {
+	/** The name of the error. */
 	public name: string;
+
+	/** The user-friendly error message. */
 	public message: EErrors;
+
+	/** The error data. */
 	public data: ValidationError[];
 
 	/**
