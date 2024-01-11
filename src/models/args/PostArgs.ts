@@ -14,7 +14,7 @@ import { DataValidationError } from '../errors/DataValidationError';
  * @public
  */
 export class PostArgs {
-	/** The id the of target resource. */
+	/** The id of the target resource. */
 	@IsNotEmpty({ groups: [EResourceType.FAVORITE_TWEET, EResourceType.CREATE_RETWEET] })
 	@IsNumberString()
 	public id?: string;

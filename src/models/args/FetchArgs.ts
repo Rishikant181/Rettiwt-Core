@@ -1,14 +1,5 @@
 // PACKAGES
-import {
-	IsArray,
-	IsNotEmpty,
-	IsNumberString,
-	IsOptional,
-	IsString,
-	Max,
-	MaxLength,
-	validateSync,
-} from 'class-validator';
+import { IsNotEmpty, IsNumberString, IsString, Max, validateSync } from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
