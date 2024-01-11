@@ -12,7 +12,7 @@
 		"prepare": "tsc",
 		"lint": "eslint .",
 		"format": "prettier --write .",
-		"docs": "typedoc src/index.ts",
+		"docs": "typedoc --excludePrivate --excludeProtected --excludeInternal src/index.ts",
 		"debug": "nodemon ./dist/index.js --inspect=0.0.0.0:9229"
 	},
 	"repository": {

@@ -1,13 +1,17 @@
 /**
- * The base URL query.
+ * The base URL query, with query parameters as key-value pairs.
  *
  * @public
  */
 export class BaseQuery {
+	[key: string]: unknown;
+
 	/**
 	 * Converts this object to it's string representation.
 	 *
 	 * @returns 'this' object's string representation;
+	 *
+	 * @internal
 	 */
 	public toString(): string {
 		return (

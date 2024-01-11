@@ -188,6 +188,8 @@ export class TweetFilter {
 	 * Converts this object to it's string representation.
 	 *
 	 * @returns The string representation of 'this' data.
+	 *
+	 * @internal
 	 */
 	public toString(): string {
 		return (
@@ -223,6 +225,8 @@ export class TweetFilter {
 	 *
 	 * @param date - The date object to convert.
 	 * @returns The Twitter string representation of the date.
+	 *
+	 * @internal
 	 */
 	private static dateToTwitterString(date: Date): string {
 		// Converting localized date to UTC date

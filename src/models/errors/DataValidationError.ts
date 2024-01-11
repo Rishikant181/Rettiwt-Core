@@ -7,7 +7,7 @@ import { EErrors } from '../../enums/Errors';
 /**
  * Error when any fields of a JSON data fails to validate.
  *
- * @internal
+ * @public
  */
 export class DataValidationError {
 	/** The name of the error. */

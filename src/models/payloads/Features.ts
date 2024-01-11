@@ -40,6 +40,8 @@ export class Features {
 	 * Converts this object to it's string representation.
 	 *
 	 * @returns 'this' object's string representation.
+	 *
+	 * @internal
 	 */
 	public toString(): string {
 		return JSON.stringify(this);

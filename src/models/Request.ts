@@ -18,11 +18,26 @@ import { UploadArgs } from './args/UploadArgs';
  * @public
  */
 export class Request {
+	/** The type of request to be made. */
 	public type: ERequestType;
+
+	/** The subdomain of the URL to which the request is targeted. */
 	public subdomain: ESubdomains;
+
+	/** The base URL to which the request is targeted. */
 	public base: string = 'twitter.com';
+
+	/** The endpoint of the URL to which the request is targeted. */
 	public endpoint: string;
+
+	/** The query parameters to be sent in the request. */
 	public params?: BaseQuery;
+
+	/**
+	 * The payload to be sent in the request.
+	 *
+	 * @remarks This is applicable only for {@link ERequestType.POST} requests.
+	 */
 	public payload?: NonNullable<unknown>;
 
 	/**

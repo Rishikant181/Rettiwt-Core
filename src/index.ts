@@ -7,25 +7,25 @@ export * from './enums/Resources';
 // CLASSES
 
 // ARG MODELS
-export { DataArgs } from './models/args/DataArgs';
-export { MediaArgs } from './models/args/MediaArgs';
-export { UploadArgs } from './models/args/UploadArgs';
+export * from './models/args/DataArgs';
+export * from './models/args/MediaArgs';
+export * from './models/args/UploadArgs';
 
 // ERROR MODELS
-export { DataValidationError } from './models/errors/DataValidationError';
+export * from './models/errors/DataValidationError';
 
 // PAYLOAD MODELS
-export { Features } from './models/payloads/Features';
-export { TweetFilter } from './models/payloads/TweetFilter';
-export { Variables } from './models/payloads/Variables';
+export * from './models/payloads/Features';
+export * from './models/payloads/TweetFilter';
+export * from './models/payloads/Variables';
 
 // QUERIY MODELS
-export { BaseQuery } from './models/queries/BaseQuery';
-export { DataQuery } from './models/queries/DataQuery';
-export { UploadQuery } from './models/queries/UploadQuery';
+export * from './models/queries/BaseQuery';
+export * from './models/queries/DataQuery';
+export * from './models/queries/UploadQuery';
 
 // REQUEST MODELS
-export { Request } from './models/Request';
+export * from './models/Request';
 
 // RESPONSE TYPES
 
