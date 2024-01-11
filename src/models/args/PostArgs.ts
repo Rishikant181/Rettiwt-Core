@@ -3,6 +3,7 @@ import { ArrayMaxSize, IsArray, IsNotEmpty, IsNumberString, IsObject, MaxLength,
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
+import { EUploadSteps } from '../../enums/Request';
 
 // MODELS
 import { DataValidationError } from '../errors/DataValidationError';
@@ -22,6 +23,11 @@ export class PostArgs {
 	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
 	@IsObject()
 	public tweet?: TweetArgs;
+
+	/** The media file to be uploaded. */
+	@IsNotEmpty({ groups: [EResourceType.MEDIA_UPLOAD] })
+	@IsObject()
+	public upload?: UploadArgs;
 
 	public constructor(resourceType: EResourceType, args: PostArgs) {
 		this.id = args.id;
@@ -49,8 +55,8 @@ export class TweetArgs {
 	 * @remarks
 	 * Length of the tweet must be \<= 280 characters.
 	 */
-	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
-	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
+	@IsNotEmpty()
+	@MaxLength(280)
 	public text: string;
 
 	/**
@@ -60,7 +66,8 @@ export class TweetArgs {
 	 * - The media first needs to be uploaded using the {@link EResourceType.MEDIA_UPLOAD} resource.
 	 * - After uploading, the returned id(s) can be used to reference the media here.
 	 */
-	@IsArray({ groups: [EResourceType.CREATE_TWEET] })
+	@IsArray()
+	@IsObject({ each: true })
 	public media?: MediaArgs[];
 
 	/**
@@ -116,6 +123,50 @@ export class MediaArgs {
 
 		// Validating this object
 		const validationResult = validateSync(this);
+
+		// If validation error occured
+		if (validationResult.length) {
+			throw new DataValidationError(validationResult);
+		}
+	}
+}
+
+/**
+ * User set query parameters that are used while uploading a media file.
+ *
+ * @public
+ */
+export class UploadArgs {
+	/** The name of the step of the upload process to be executed. */
+	@IsNotEmpty()
+	public step: EUploadSteps;
+
+	/** The size (in bytes) of the media file to be uploaded. */
+	@IsNotEmpty({ groups: [EUploadSteps.INITIALIZE] })
+	public size?: number;
+
+	/** The medial file to be uploaded. */
+	@IsNotEmpty({ groups: [EUploadSteps.APPEND] })
+	public media?: string;
+
+	/** The id allocated to the media file to be uploaded. */
+	@IsNotEmpty({ groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
+	@IsNumberString()
+	public id?: string;
+
+	/**
+	 * Initializes a new UploadArgs object using the given arguments.
+	 *
+	 * @param args - The upload arguments for uploading the media file.
+	 */
+	public constructor(args: UploadArgs) {
+		this.step = args.step;
+		this.size = args.size;
+		this.media = args.media;
+		this.id = args.id;
+
+		// Validating this object
+		const validationResult = validateSync(this, { groups: [args.step] });
 
 		// If validation error occured
 		if (validationResult.length) {
