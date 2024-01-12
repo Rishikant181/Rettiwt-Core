@@ -1,5 +1,5 @@
 // PACKAGES
-import { IsNotEmpty, IsNumberString, IsString, Max, validateSync } from 'class-validator';
+import { IsNotEmpty, IsNumberString, IsObject, IsOptional, IsString, Max, validateSync } from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -20,7 +20,9 @@ export class FetchArgs {
 	 * @remarks
 	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
 	 */
+	@IsOptional()
 	@IsNotEmpty({ groups: [EResourceType.TWEET_SEARCH] })
+	@IsObject()
 	public filter?: TweetFilter;
 
 	/**
@@ -30,6 +32,7 @@ export class FetchArgs {
 	 * - Required for all resources except {@link EResourceType.TWEET_SEARCH}.
 	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
 	 */
+	@IsOptional()
 	@IsNotEmpty({
 		groups: [
 			EResourceType.LIST_DETAILS,
@@ -45,6 +48,7 @@ export class FetchArgs {
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
 			EResourceType.SPACE_DETAILS_BY_ID,
+			EResourceType.VIDEO_STREAM,
 		],
 	})
 	@IsNumberString(undefined, {
@@ -77,6 +81,7 @@ export class FetchArgs {
 	 *
 	 * @defaultValue 20
 	 */
+	@IsOptional()
 	@Max(100, {
 		groups: [
 			EResourceType.LIST_TWEETS,
@@ -99,6 +104,8 @@ export class FetchArgs {
 	 * - May be used for cursored resources.
 	 * - Has no effect for all other resources.
 	 */
+	@IsOptional()
+	@IsString()
 	public cursor?: string;
 
 	/**

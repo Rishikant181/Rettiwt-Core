@@ -20,27 +20,27 @@ import { DataValidationError } from '../errors/DataValidationError';
  */
 export class TweetFilter {
 	/** The list of words to search. */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public includeWords?: string[];
 
 	/** The exact phrase to search. */
-	@IsString()
 	@IsOptional()
-	public includePhrase: string;
+	@IsString()
+	public includePhrase?: string;
 
 	/** The optional words to search. */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
-	public optionalWords: string[];
+	public optionalWords?: string[];
 
 	/** The list of words to exclude from search. */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
-	public excludeWords: string[];
+	public excludeWords?: string[];
 
 	/**
 	 * The list of hashtags to search.
@@ -48,9 +48,9 @@ export class TweetFilter {
 	 * @remarks
 	 * '#' must be excluded from the hashtag!
 	 */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public hashtags?: string[];
 
 	/**
@@ -59,9 +59,9 @@ export class TweetFilter {
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public fromUsers?: string[];
 
 	/**
@@ -70,9 +70,9 @@ export class TweetFilter {
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public toUsers?: string[];
 
 	/**
@@ -81,30 +81,30 @@ export class TweetFilter {
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public mentions?: string[];
 
 	/** The minimum number of replies to search by. */
-	@IsNumber()
 	@IsOptional()
-	public minReplies: number;
+	@IsNumber()
+	public minReplies?: number;
 
 	/** The minimun number of likes to search by. */
-	@IsNumber()
 	@IsOptional()
-	public minLikes: number;
+	@IsNumber()
+	public minLikes?: number;
 
 	/** The minimum number of retweets to search by. */
-	@IsNumber()
 	@IsOptional()
-	public minRetweets: number;
+	@IsNumber()
+	public minRetweets?: number;
 
 	/** The language of the tweets to search. */
-	@IsString()
 	@IsOptional()
-	public language: string;
+	@IsString()
+	public language?: string;
 
 	/** The date starting from which tweets are to be searched. */
 	@IsOptional()
@@ -117,18 +117,18 @@ export class TweetFilter {
 	public endDate?: Date;
 
 	/** The id of the tweet, after which the tweets are to be searched. */
-	@IsNumberString()
 	@IsOptional()
+	@IsNumberString()
 	public sinceId?: string;
 
 	/** The id of the tweet, before which the tweets are to be searched. */
-	@IsNumberString()
 	@IsOptional()
+	@IsNumberString()
 	public maxId?: string;
 
 	/** The id of the tweet which is quoted in the tweets to search. */
-	@IsNumberString()
 	@IsOptional()
+	@IsNumberString()
 	public quoted?: string;
 
 	/**
@@ -136,8 +136,8 @@ export class TweetFilter {
 	 *
 	 * @defaultValue true
 	 */
-	@IsBoolean()
 	@IsOptional()
+	@IsBoolean()
 	public links?: boolean = true;
 
 	/**
@@ -145,8 +145,8 @@ export class TweetFilter {
 	 *
 	 * @defaultValue true
 	 */
-	@IsBoolean()
 	@IsOptional()
+	@IsBoolean()
 	public replies?: boolean = true;
 
 	/**
