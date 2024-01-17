@@ -1,12 +1,10 @@
 # Rettiwt-Core
 
-**A library for generating request configurations to various Twitter API resources**
-
-Rettiwt-Core is a library that can be used to generate requests which can be used to fetch various resource from the Twitter API.
+A library for generating request configurations to various Twitter API resources.
 
 ## Prerequisites
 
--   NodeJS 18.14.2
+-   NodeJS 20.x
 
 ## Installation
 
