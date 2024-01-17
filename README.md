@@ -42,7 +42,7 @@ const request = new Request(EResourceType.TWEET_FAVORITERS, {
     id: 'tweet_id',
     count: count,
     cursor: 'cursor'
-}).toAxiosRequestConfig();;
+}).toAxiosRequestConfig();
 ```
 
 Where,
@@ -63,7 +63,7 @@ const request = new Request(EResourceType.TWEET_SEARCH, {
         fromUsers: ['user_name_1', 'user_name_2'],
         includeWords: ['word_1', 'word_2'],
     }
-}).toAxiosRequestConfig();;
+}).toAxiosRequestConfig();
 ```
 
 Where,
@@ -82,7 +82,7 @@ const request = new Request(EResourceType.CREATE_TWEET, {
     tweet: {
         text: 'text_to_tweet'
     }
-}).toAxiosRequestConfig();;
+}).toAxiosRequestConfig();
 ```
 
 Where,
@@ -107,7 +107,7 @@ const request = new Request(EResourceType.MEDIA_UPLOAD, {
         step: EUploadSteps.INIT,
         size: <size>
     }
-});
+}).toAxiosRequestConfig();
 ```
 
 Where,
@@ -127,7 +127,7 @@ const request = new Request(EResourceType.MEDIA_UPLOAD, {
         id: 'media_id',
         media: 'media_path'
     }
-});
+}).toAxiosRequestConfig();
 ```
 
 Where,
@@ -147,7 +147,7 @@ const request = new Request(EResourceType.MEDIA_UPLOAD, {
         step: EUploadSteps.FINALIZE,
         id: 'media_id'
     }
-});
+}).toAxiosRequestConfig();
 ```
 
 Where,
@@ -156,7 +156,7 @@ Where,
 
 Sending this request finalizes the upload process of the media and makes the media ready to be included in Tweets, via the media's allocated ID.
 
-### 4. Getting the request to create a Tweet having media content
+### 6. Getting the request to create a Tweet having media content
 
 ```
 import { Request, EResourceType } from 'rettiwt-core;
@@ -175,7 +175,7 @@ const request = new Request(EResourceType.CREATE_TWEET, {
             }
         ]
     }
-}).toAxiosRequestConfig();;
+}).toAxiosRequestConfig();
 ```
 
 Where,
