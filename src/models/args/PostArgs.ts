@@ -27,7 +27,7 @@ export class PostArgs {
 	/** The id of the target resource. */
 	@IsOptional()
 	@IsNotEmpty({ groups: [EResourceType.FAVORITE_TWEET, EResourceType.CREATE_RETWEET] })
-	@IsNumberString()
+	@IsNumberString(undefined, { groups: [EResourceType.FAVORITE_TWEET, EResourceType.CREATE_RETWEET] })
 	public id?: string;
 
 	/** The tweet that is to be posted. */
