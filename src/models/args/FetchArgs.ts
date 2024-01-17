@@ -22,7 +22,7 @@ export class FetchArgs {
 	 */
 	@IsOptional()
 	@IsNotEmpty({ groups: [EResourceType.TWEET_SEARCH] })
-	@IsObject()
+	@IsObject({ groups: [EResourceType.TWEET_SEARCH] })
 	public filter?: TweetFilter;
 
 	/**

@@ -24,9 +24,9 @@ The following examples will help you to get started with using the library:
 ```
 import { Request, EResourceType } from 'rettiwt-core';
 
-const { type, url } = new Request(EResourceType.USER_DETAILS, {
+const request = new Request(EResourceType.USER_DETAILS, {
     id: 'user_name'
-});
+}).toAxiosRequestConfig();
 ```
 
 Where,
@@ -38,11 +38,11 @@ Where,
 ```
 import { Request, EResourceType } from 'rettiwt-core';
 
-const { type, url } = new Request(EResourceType.TWEET_FAVORITERS, {
+const request = new Request(EResourceType.TWEET_FAVORITERS, {
     id: 'tweet_id',
     count: count,
     cursor: 'cursor'
-});
+}).toAxiosRequestConfig();;
 ```
 
 Where,
@@ -56,14 +56,14 @@ Where,
 ```
 import { Request, EResourceType } from 'rettiwt-core';
 
-const { type, url } = new Request(EResourceType.TWEET_SEARCH, {
+const request = new Request(EResourceType.TWEET_SEARCH, {
     count: <count>,
     cursor: 'cursor',
     filter: {
         fromUsers: ['user_name_1', 'user_name_2'],
         includeWords: ['word_1', 'word_2'],
     }
-});
+}).toAxiosRequestConfig();;
 ```
 
 Where,
@@ -73,25 +73,120 @@ Where,
 
 Apart from this, other filters are also available.
 
-### 4. Getting the request to create a Tweet
+### 4. Getting the request to create a simple text Tweet
 
 ```
 import { Request, EResourceType } from 'rettiwt-core;
 
-const { type, url, payload } = new Request(EResourceType.CREATE_TWEET, {
-    tweetText: 'text_to_tweet'
-});
+const request = new Request(EResourceType.CREATE_TWEET, {
+    tweet: {
+        text: 'text_to_tweet'
+    }
+}).toAxiosRequestConfig();;
 ```
 
 Where,
 
 -   'text_to_tweet' is the text which you want to tweet.
 
-As of now, only simple text tweets are possible.
+### 5. Getting a request to upload a media for a Tweet
+
+Uploading a media is a three step process. These three steps are:
+
+1. Initialization
+2. Upload
+3. Finalization
+
+#### 1. Initialization
+
+```
+import { Request, EResourceType, EUploadSteps } from 'rettiwt-core';
+
+const request = new Request(EResourceType.MEDIA_UPLOAD, {
+    upload: {
+        step: EUploadSteps.INIT,
+        size: <size>
+    }
+});
+```
+
+Where,
+
+-   'size' is the size (in bytes) of the media to be uploaded.
+
+Sending this request allocates a 'media_id' to the media to be uploaded, which will be used for successive steps.
+
+#### 2. Upload
+
+```
+import { Request, EResourceType, EUploadSteps } from 'rettiwt-core';
+
+const request = new Request(EResourceType.MEDIA_UPLOAD, {
+    upload: {
+        step: EUploadSteps.APPEND,
+        id: 'media_id',
+        media: 'media_path'
+    }
+});
+```
+
+Where,
+
+-   'media_id' is the ID allocated to the media by sending the previous request.
+-   'media_path' is the path to the media to be uploaded.
+
+Sending this request uploads the media file to Twitter.
+
+#### 3. Finalization
+
+```
+import { Request, EResourceType, EUploadSteps } from 'rettiwt-core';
+
+const request = new Request(EResourceType.MEDIA_UPLOAD, {
+    upload: {
+        step: EUploadSteps.FINALIZE,
+        id: 'media_id'
+    }
+});
+```
+
+Where,
+
+-   'media_id' is the ID allocated to the media uploaded using the previous reqeust.
+
+Sending this request finalizes the upload process of the media and makes the media ready to be included in Tweets, via the media's allocated ID.
+
+### 4. Getting the request to create a Tweet having media content
+
+```
+import { Request, EResourceType } from 'rettiwt-core;
+
+const request = new Request(EResourceType.CREATE_TWEET, {
+    tweet: {
+        text: 'text_to_tweet',
+        media: [
+            {
+                id: 'id_1',
+                tags: ['user_id_1', 'user_id_2', 'user_id_3']
+            },
+            {
+                id: 'id_2',
+                tags: ['user_id_4', 'user_id_5', 'user_id_6']
+            }
+        ]
+    }
+}).toAxiosRequestConfig();;
+```
+
+Where,
+
+-   'text_to_tweet' is the text which you want to tweet.
+-   'id_1', 'id_2', ... are the allocated 'media_id' of the uploaded media.
+-   'user_id_1', 'user_id_2', ... are the 'rest_id' of the users to be tagged in the media.
 
 ## Next steps
 
-After generating the respective [Request](https://rishikant181.github.io/Rettiwt-Core/classes/Request.html), the type, url and payload, which contain the type of request ('GET', 'POST', etc), the url to which the request is targeted at and the payload to be sent (incase of 'POST' request), can be used to make HTTP requests in order to fetch that specific resource.
+After generating the respective [Request](https://rishikant181.github.io/Rettiwt-Core/classes/Request.html) and successive conversion of the request into an AxiosRequestConfig object, the request configuration can be used to make HTTP requests in order to fetch that specific resource.
 
 ## API Reference
 

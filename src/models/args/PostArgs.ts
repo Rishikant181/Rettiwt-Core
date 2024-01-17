@@ -33,18 +33,19 @@ export class PostArgs {
 	/** The tweet that is to be posted. */
 	@IsOptional()
 	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
-	@IsObject()
+	@IsObject({ groups: [EResourceType.CREATE_TWEET] })
 	public tweet?: TweetArgs;
 
 	/** The media file to be uploaded. */
 	@IsOptional()
 	@IsNotEmpty({ groups: [EResourceType.MEDIA_UPLOAD] })
-	@IsObject()
+	@IsObject({ groups: [EResourceType.MEDIA_UPLOAD] })
 	public upload?: UploadArgs;
 
 	public constructor(resourceType: EResourceType, args: PostArgs) {
 		this.id = args.id;
 		this.tweet = args.tweet ? new TweetArgs(args.tweet) : undefined;
+		this.upload = args.upload ? new UploadArgs(args.upload) : undefined;
 
 		// Validating this object
 		const validationResult = validateSync(this, { groups: [resourceType] });
@@ -161,7 +162,7 @@ export class UploadArgs {
 	@IsNotEmpty({ groups: [EUploadSteps.INITIALIZE] })
 	public size?: number;
 
-	/** The medial file to be uploaded. */
+	/** The media file to be uploaded. */
 	@IsOptional()
 	@IsNotEmpty({ groups: [EUploadSteps.APPEND] })
 	public media?: string;
@@ -169,7 +170,7 @@ export class UploadArgs {
 	/** The id allocated to the media file to be uploaded. */
 	@IsOptional()
 	@IsNotEmpty({ groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
-	@IsNumberString()
+	@IsNumberString(undefined, { groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
 	public id?: string;
 
 	/**
