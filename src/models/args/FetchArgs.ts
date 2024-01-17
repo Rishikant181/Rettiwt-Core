@@ -1,36 +1,28 @@
 // PACKAGES
-import {
-	IsArray,
-	IsNotEmpty,
-	IsNumberString,
-	IsOptional,
-	IsString,
-	Max,
-	MaxLength,
-	validateSync,
-} from 'class-validator';
+import { IsNotEmpty, IsNumberString, IsObject, IsOptional, IsString, Max, validateSync } from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
 // MODELS
 import { TweetFilter } from '../payloads/TweetFilter';
-import { MediaArgs } from './MediaArgs';
 import { DataValidationError } from '../errors/DataValidationError';
 
 /**
- * User set query parameters that are used to specify the data that is requested.
+ * User set query parameters that are used to specify the data that is to be fetched.
  *
  * @public
  */
-export class DataArgs {
+export class FetchArgs {
 	/**
 	 * The filter for searching.
 	 *
 	 * @remarks
 	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
 	 */
+	@IsOptional()
 	@IsNotEmpty({ groups: [EResourceType.TWEET_SEARCH] })
+	@IsObject()
 	public filter?: TweetFilter;
 
 	/**
@@ -40,10 +32,9 @@ export class DataArgs {
 	 * - Required for all resources except {@link EResourceType.TWEET_SEARCH}.
 	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
 	 */
+	@IsOptional()
 	@IsNotEmpty({
 		groups: [
-			EResourceType.CREATE_RETWEET,
-			EResourceType.FAVORITE_TWEET,
 			EResourceType.LIST_DETAILS,
 			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
@@ -57,12 +48,11 @@ export class DataArgs {
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
 			EResourceType.SPACE_DETAILS_BY_ID,
+			EResourceType.VIDEO_STREAM,
 		],
 	})
 	@IsNumberString(undefined, {
 		groups: [
-			EResourceType.CREATE_RETWEET,
-			EResourceType.FAVORITE_TWEET,
 			EResourceType.LIST_DETAILS,
 			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
@@ -82,17 +72,6 @@ export class DataArgs {
 	public id?: string;
 
 	/**
-	 * The list of media to be uploaded.
-	 *
-	 * @remarks
-	 * - The media first needs to be uploaded using the {@link EResourceType.MEDIA_UPLOAD} resource.
-	 * - After uploading, the returned id(s) can be used to reference the media here.
-	 */
-	@IsArray({ groups: [EResourceType.CREATE_TWEET] })
-	@IsOptional({ groups: [EResourceType.CREATE_TWEET] })
-	public media?: MediaArgs[];
-
-	/**
 	 * The number of data items to fetch.
 	 *
 	 * @remarks
@@ -102,6 +81,7 @@ export class DataArgs {
 	 *
 	 * @defaultValue 20
 	 */
+	@IsOptional()
 	@Max(100, {
 		groups: [
 			EResourceType.LIST_TWEETS,
@@ -124,17 +104,9 @@ export class DataArgs {
 	 * - May be used for cursored resources.
 	 * - Has no effect for all other resources.
 	 */
+	@IsOptional()
+	@IsString()
 	public cursor?: string;
-
-	/**
-	 * The text for the tweet to be created.
-	 *
-	 * @remarks
-	 * Length of the tweet must be \<= 280 characters.
-	 */
-	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
-	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
-	public tweetText?: string;
 
 	/**
 	 * Initializes a new DataArgs object using the given arguments.
@@ -142,12 +114,10 @@ export class DataArgs {
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: DataArgs) {
+	public constructor(resourceType: EResourceType, args: FetchArgs) {
 		this.id = args.id;
-		this.media = args.media ? args.media.map((item) => new MediaArgs(item)) : undefined;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
-		this.tweetText = args.tweetText;
 
 		/**
 		 * Initializing filter only if resource type is TWEET_SEARCH

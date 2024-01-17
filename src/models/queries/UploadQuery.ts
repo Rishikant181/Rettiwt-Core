@@ -1,6 +1,6 @@
 // MODELS
 import { BaseQuery } from './BaseQuery';
-import { UploadArgs } from '../args/UploadArgs';
+import { UploadArgs } from '../args/PostArgs';
 
 // TYPES
 import { EUploadSteps } from '../../enums/Request';

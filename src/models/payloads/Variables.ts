@@ -1,6 +1,6 @@
 // MODELS
-import { DataArgs } from '../args/DataArgs';
-import { MediaArgs } from '../args/MediaArgs';
+import { FetchArgs } from '../args/FetchArgs';
+import { PostArgs, MediaArgs } from '../args/PostArgs';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -38,11 +38,11 @@ export class Variables {
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: DataArgs) {
+	public constructor(resourceType: EResourceType, args: FetchArgs & PostArgs) {
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
-			this.tweet_text = args.tweetText;
-			this.media = args.media ? new MediaVariable(args.media) : undefined;
+			this.tweet_text = args.tweet?.text;
+			this.media = args.tweet?.media ? new MediaVariable(args.tweet.media) : undefined;
 		} else if (resourceType == EResourceType.CREATE_RETWEET || resourceType == EResourceType.FAVORITE_TWEET) {
 			this.tweet_id = args.id;
 		} else if (resourceType == EResourceType.LIST_DETAILS) {
