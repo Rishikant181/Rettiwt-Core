@@ -1,34 +1,44 @@
-// ENUMS
-import { ERequestType } from '../enums/Request';
-import { EResourceType } from '../enums/Resources';
+// PACKAGES
+import { AxiosRequestConfig } from 'axios';
 
-// TYPES
-import { IRequest } from '../types/request/Request';
+// ENUMS
+import { ERequestType, EUploadSteps } from '../enums/Request';
+import { ESubdomains, EResourceType } from '../enums/Resources';
 
 // MODELS
-import { Query } from './params/Query';
-import { Args } from './payloads/Args';
+import { BaseQuery } from './queries/BaseQuery';
+import { DataQuery } from './queries/DataQuery';
+import { UploadQuery } from './queries/UploadQuery';
+import { FetchArgs } from './args/FetchArgs';
+import { PostArgs } from './args/PostArgs';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
  *
  * @public
  */
-export class Request implements IRequest {
-	/** The base URL of the request. */
-	public base: string = 'https://twitter.com';
-
-	/** The endpoint to which the request is to be sent. */
-	public endpoint: EResourceType;
-
-	/** The full url of the request. */
-	public url: string;
-
-	/** The type of 'this' request. */
+export class Request {
+	/** The type of request to be made. */
 	public type: ERequestType;
 
-	/** The payload to be sent in the request. */
-	public payload: Query;
+	/** The subdomain of the URL to which the request is targeted. */
+	public subdomain: ESubdomains;
+
+	/** The base URL to which the request is targeted. */
+	public base: string = 'twitter.com';
+
+	/** The endpoint of the URL to which the request is targeted. */
+	public endpoint: string;
+
+	/** The query parameters to be sent in the request. */
+	public params?: BaseQuery;
+
+	/**
+	 * The payload to be sent in the request.
+	 *
+	 * @remarks This is applicable only for {@link ERequestType.POST} requests.
+	 */
+	public payload?: NonNullable<unknown>;
 
 	/**
 	 * Generates an HTTP request configuration for the requested resource on Twitter.
@@ -36,23 +46,82 @@ export class Request implements IRequest {
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional URL arguments.
 	 */
-	public constructor(resourceType: EResourceType, args: Args) {
-		this.url = `${this.base}${resourceType}`;
-		this.endpoint = resourceType;
-		this.payload = new Query(resourceType, args);
+	public constructor(resourceType: EResourceType, args: FetchArgs & PostArgs) {
+		// Converting JSON args to object
+		if (
+			resourceType == EResourceType.CREATE_RETWEET ||
+			resourceType == EResourceType.CREATE_TWEET ||
+			resourceType == EResourceType.FAVORITE_TWEET ||
+			resourceType == EResourceType.MEDIA_UPLOAD
+		) {
+			args = new PostArgs(resourceType, args);
+		} else {
+			args = new FetchArgs(resourceType, args);
+		}
 
-		// For 'POST' requests
+		// Setting request type
+		if (
+			resourceType == EResourceType.CREATE_TWEET ||
+			resourceType == EResourceType.CREATE_RETWEET ||
+			resourceType == EResourceType.FAVORITE_TWEET ||
+			resourceType == EResourceType.MEDIA_UPLOAD
+		) {
+			this.type = ERequestType.POST;
+		} else {
+			this.type = ERequestType.GET;
+		}
+
+		// Setting request subdomain
+		if (resourceType == EResourceType.MEDIA_UPLOAD) {
+			this.subdomain = ESubdomains.UPLOAD;
+		} else {
+			this.subdomain = ESubdomains.MAIN;
+		}
+
+		// Setting request endpoint
+		if (resourceType == EResourceType.VIDEO_STREAM) {
+			this.endpoint = `${resourceType}/${args.id as string}`;
+		} else {
+			this.endpoint = resourceType;
+		}
+
+		// Setting request params and payload
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
 			resourceType == EResourceType.CREATE_RETWEET ||
 			resourceType == EResourceType.FAVORITE_TWEET
 		) {
-			this.type = ERequestType.POST;
+			this.payload = new DataQuery(resourceType, args);
+		} else if (resourceType == EResourceType.MEDIA_UPLOAD && args.upload?.step == EUploadSteps.APPEND) {
+			this.params = new UploadQuery(args.upload);
+			this.payload = { media: args.upload.media };
+		} else if (
+			resourceType == EResourceType.MEDIA_UPLOAD &&
+			(args.upload?.step == EUploadSteps.INITIALIZE || args.upload?.step == EUploadSteps.FINALIZE)
+		) {
+			this.params = new UploadQuery(args.upload);
+		} else if (resourceType == EResourceType.VIDEO_STREAM) {
+			this.params = undefined;
+		} else {
+			this.params = new DataQuery(resourceType, args);
 		}
-		// For 'GET' requests
-		else {
-			this.type = ERequestType.GET;
-			this.url = `${this.url}?${this.payload.toString()}`;
-		}
+	}
+
+	/**
+	 * Converts 'this' Request object to it's equivalent AxiosRequstConfig object.
+	 *
+	 * @returns The AxiosRequestConfig reqpresentation of 'this' Request.
+	 */
+	public toAxiosRequestConfig(): AxiosRequestConfig {
+		return {
+			url: this.endpoint,
+			method: this.type,
+			baseURL: `https://${this.subdomain ? this.subdomain + '.' : ''}${this.base}`,
+			params: this.params,
+			paramsSerializer: {
+				encode: encodeURIComponent,
+			},
+			data: this.payload,
+		};
 	}
 }

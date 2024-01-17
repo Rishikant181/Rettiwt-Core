@@ -1,8 +1,14 @@
 // PACKAGE
-import { IsArray, IsBoolean, IsNumberString, IsString, IsOptional, IsDate, validateSync } from 'class-validator';
-
-// TYPES
-import { ITweetFilter } from '../../types/request/payloads/TweetFilter';
+import {
+	IsArray,
+	IsBoolean,
+	IsNumberString,
+	IsString,
+	IsOptional,
+	IsDate,
+	validateSync,
+	IsNumber,
+} from 'class-validator';
 
 // MODELS
 import { DataValidationError } from '../errors/DataValidationError';
@@ -12,12 +18,29 @@ import { DataValidationError } from '../errors/DataValidationError';
  *
  * @public
  */
-export class TweetFilter implements ITweetFilter {
+export class TweetFilter {
 	/** The list of words to search. */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
+	public includeWords?: string[];
+
+	/** The exact phrase to search. */
 	@IsOptional()
-	public words?: string[];
+	@IsString()
+	public includePhrase?: string;
+
+	/** The optional words to search. */
+	@IsOptional()
+	@IsArray()
+	@IsString({ each: true })
+	public optionalWords?: string[];
+
+	/** The list of words to exclude from search. */
+	@IsOptional()
+	@IsArray()
+	@IsString({ each: true })
+	public excludeWords?: string[];
 
 	/**
 	 * The list of hashtags to search.
@@ -25,9 +48,9 @@ export class TweetFilter implements ITweetFilter {
 	 * @remarks
 	 * '#' must be excluded from the hashtag!
 	 */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public hashtags?: string[];
 
 	/**
@@ -36,9 +59,9 @@ export class TweetFilter implements ITweetFilter {
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public fromUsers?: string[];
 
 	/**
@@ -47,9 +70,9 @@ export class TweetFilter implements ITweetFilter {
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public toUsers?: string[];
 
 	/**
@@ -58,10 +81,30 @@ export class TweetFilter implements ITweetFilter {
 	 * @remarks
 	 * '\@' must be excluded from the username!
 	 */
+	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	@IsOptional()
 	public mentions?: string[];
+
+	/** The minimum number of replies to search by. */
+	@IsOptional()
+	@IsNumber()
+	public minReplies?: number;
+
+	/** The minimun number of likes to search by. */
+	@IsOptional()
+	@IsNumber()
+	public minLikes?: number;
+
+	/** The minimum number of retweets to search by. */
+	@IsOptional()
+	@IsNumber()
+	public minRetweets?: number;
+
+	/** The language of the tweets to search. */
+	@IsOptional()
+	@IsString()
+	public language?: string;
 
 	/** The date starting from which tweets are to be searched. */
 	@IsOptional()
@@ -73,68 +116,64 @@ export class TweetFilter implements ITweetFilter {
 	@IsDate()
 	public endDate?: Date;
 
-	/**
-	 * The id of the tweet, after which the tweets are to be searched.
-	 *
-	 * @remarks
-	 * Must be a numeric string.
-	 */
-	@IsNumberString()
+	/** The id of the tweet, after which the tweets are to be searched. */
 	@IsOptional()
+	@IsNumberString()
 	public sinceId?: string;
 
-	/**
-	 * The id of the tweet, before which the tweets are to be searched.
-	 *
-	 * @remarks
-	 * Must be a numeric string.
-	 */
-	@IsNumberString()
+	/** The id of the tweet, before which the tweets are to be searched. */
 	@IsOptional()
+	@IsNumberString()
 	public maxId?: string;
 
-	/**
-	 * The id of the tweet which is quoted in the tweets to search.
-	 *
-	 * @remarks
-	 * Must be a numeric string.
-	 */
-	@IsNumberString()
+	/** The id of the tweet which is quoted in the tweets to search. */
 	@IsOptional()
+	@IsNumberString()
 	public quoted?: string;
 
-	/** Whether to fetch tweets that are links or not.
+	/**
+	 * Whether to fetch tweets that are links or not.
 	 *
 	 * @defaultValue true
 	 */
-	@IsBoolean()
 	@IsOptional()
+	@IsBoolean()
 	public links?: boolean = true;
 
-	/** Whether to fetch tweets that are replies or not.
+	/**
+	 * Whether to fetch tweets that are replies or not.
 	 *
 	 * @defaultValue true
 	 */
-	@IsBoolean()
 	@IsOptional()
+	@IsBoolean()
 	public replies?: boolean = true;
 
 	/**
+	 * Initializes a new TweetFilter based on the given filter parameters.
+	 *
 	 * @param filter - The filter to use for searching tweets.
 	 */
 	public constructor(filter: TweetFilter) {
 		this.endDate = filter.endDate;
+		this.excludeWords = filter.excludeWords;
 		this.fromUsers = filter.fromUsers;
 		this.hashtags = filter.hashtags;
+		this.includePhrase = filter.includePhrase;
+		this.language = filter.language;
 		this.links = filter.links;
 		this.replies = filter.replies;
 		this.mentions = filter.mentions;
 		this.quoted = filter.quoted;
 		this.sinceId = filter.sinceId;
 		this.maxId = filter.maxId;
+		this.minLikes = filter.minLikes;
+		this.minReplies = filter.minReplies;
+		this.minRetweets = filter.minRetweets;
+		this.optionalWords = filter.optionalWords;
 		this.startDate = filter.startDate;
 		this.toUsers = filter.toUsers;
-		this.words = filter.words;
+		this.includeWords = filter.includeWords;
 
 		// Validating this object
 		const validationResult = validateSync(this);
@@ -148,16 +187,25 @@ export class TweetFilter implements ITweetFilter {
 	/**
 	 * Converts this object to it's string representation.
 	 *
-	 * @returns 'this' object's string representation.
+	 * @returns The string representation of 'this' data.
+	 *
+	 * @internal
 	 */
 	public toString(): string {
 		return (
 			[
-				this.words ? this.words.join(' ') : '',
+				this.includeWords ? this.includeWords.join(' ') : '',
+				this.includePhrase ? `"${this.includePhrase}"` : '',
+				this.optionalWords ? `(${this.optionalWords.join(' OR ')})` : '',
+				this.excludeWords ? `${this.excludeWords.map((word) => '-' + word).join(' ')}` : '',
 				this.hashtags ? `(${this.hashtags.map((hashtag) => '#' + hashtag).join(' OR ')})` : '',
 				this.fromUsers ? `(${this.fromUsers.map((user) => `from:${user}`).join(' OR ')})` : '',
 				this.toUsers ? `(${this.toUsers.map((user) => `to:${user}`).join(' OR ')})` : '',
 				this.mentions ? `(${this.mentions.map((mention) => '@' + mention).join(' OR ')})` : '',
+				this.minReplies ? `min_replies:${this.minReplies}` : '',
+				this.minLikes ? `min_faves:${this.minLikes}` : '',
+				this.minRetweets ? `min_retweets:${this.minRetweets}` : '',
+				this.language ? `lang:${this.language}` : '',
 				this.startDate ? `since:${TweetFilter.dateToTwitterString(this.startDate)}` : '',
 				this.endDate ? `until:${TweetFilter.dateToTwitterString(this.endDate)}` : '',
 				this.sinceId ? `since_id:${this.sinceId}` : '',
@@ -177,6 +225,8 @@ export class TweetFilter implements ITweetFilter {
 	 *
 	 * @param date - The date object to convert.
 	 * @returns The Twitter string representation of the date.
+	 *
+	 * @internal
 	 */
 	private static dateToTwitterString(date: Date): string {
 		// Converting localized date to UTC date

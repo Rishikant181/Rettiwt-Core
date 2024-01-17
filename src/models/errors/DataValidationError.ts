@@ -1,18 +1,15 @@
 // PACKAGES
 import { ValidationError } from 'class-validator';
 
-// TYPES
-import { IDataValidationError } from '../../types/request/errors/DataValidationError';
-
 // ENUMS
 import { EErrors } from '../../enums/Errors';
 
 /**
  * Error when any fields of a JSON data fails to validate.
  *
- * @internal
+ * @public
  */
-export class DataValidationError implements IDataValidationError {
+export class DataValidationError {
 	/** The name of the error. */
 	public name: string;
 
