@@ -1,5 +1,6 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
+import FormData from 'form-data';
 
 // ENUMS
 import { ERequestType, EUploadSteps } from '../enums/Request';
@@ -11,6 +12,7 @@ import { DataQuery } from './queries/DataQuery';
 import { UploadQuery } from './queries/UploadQuery';
 import { FetchArgs } from './args/FetchArgs';
 import { PostArgs } from './args/PostArgs';
+import { createReadStream } from 'fs';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
@@ -93,8 +95,12 @@ export class Request {
 		) {
 			this.payload = new DataQuery(resourceType, args);
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD && args.upload?.step == EUploadSteps.APPEND) {
+			// Appending the media to form data
+			const data = new FormData();
+			data.append('media', createReadStream(args.upload.media as string));
+
 			this.params = new UploadQuery(args.upload);
-			this.payload = { media: args.upload.media };
+			this.payload = data;
 		} else if (
 			resourceType == EResourceType.MEDIA_UPLOAD &&
 			(args.upload?.step == EUploadSteps.INITIALIZE || args.upload?.step == EUploadSteps.FINALIZE)
