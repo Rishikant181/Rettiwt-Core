@@ -23,7 +23,7 @@ export class UploadQuery extends BaseQuery {
 	public media_id?: string;
 
 	/** The index of the segment of the media file to be uploaded. */
-	public segment_index?: number = 0;
+	public segment_index?: number;
 
 	/* eslint-enable @typescript-eslint/naming-convention */
 
@@ -39,8 +39,11 @@ export class UploadQuery extends BaseQuery {
 		// Initializing based on the upload sted
 		if (args.step == EUploadSteps.INITIALIZE) {
 			this.total_bytes = args.size;
+		} else if (args.step == EUploadSteps.APPEND) {
+			this.media_id = args.id;
+			this.segment_index = 0;
 		} else {
-			this.media_id = args.media;
+			this.media_id = args.id;
 		}
 	}
 }
