@@ -28,8 +28,6 @@ export class UploadQuery extends BaseQuery {
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
-	 * Initializes a new query object for uploading a media file.
-	 *
 	 * @param step - The step of the upload process to be executed.
 	 */
 	public constructor(args: UploadArgs) {

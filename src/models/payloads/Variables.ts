@@ -33,8 +33,6 @@ export class Variables {
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
-	 * Initializes the appropriate Variables object based on the requred resource type and parameters.
-	 *
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
@@ -94,9 +92,7 @@ export class Variables {
 	}
 
 	/**
-	 * Converts this object to it's string representation.
-	 *
-	 * @returns 'this' object's string representation.
+	 * @returns The string representation of 'this' object.
 	 */
 	public toString(): string {
 		return JSON.stringify(this);
@@ -115,8 +111,6 @@ export class MediaVariable {
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
-	 * Initializes a new MediaVariable payload containing all the different media to be sent.
-	 *
 	 * @param media - The list of MediaArgs objects specifying the media items to be sent in the Tweet.
 	 */
 	public constructor(media: MediaArgs[]) {
@@ -137,8 +131,6 @@ export class MediaVariableEntity {
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
-	 * Initializes a single MedieVariableEntity (media item).
-	 *
 	 * @param media - The MediaArgs object specifying the details of the media item to be included in the payload.
 	 */
 	public constructor(media: MediaArgs) {

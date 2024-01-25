@@ -150,8 +150,6 @@ export class TweetFilter {
 	public replies?: boolean = true;
 
 	/**
-	 * Initializes a new TweetFilter based on the given filter parameters.
-	 *
 	 * @param filter - The filter to use for searching tweets.
 	 */
 	public constructor(filter: TweetFilter) {
@@ -185,9 +183,7 @@ export class TweetFilter {
 	}
 
 	/**
-	 * Converts this object to it's string representation.
-	 *
-	 * @returns The string representation of 'this' data.
+	 * @returns The string representation of 'this' object.
 	 *
 	 * @internal
 	 */

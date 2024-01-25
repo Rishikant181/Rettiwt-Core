@@ -37,9 +37,7 @@ export class Features {
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
-	 * Converts this object to it's string representation.
-	 *
-	 * @returns 'this' object's string representation.
+	 * @returns The string representation of 'this' object.
 	 *
 	 * @internal
 	 */

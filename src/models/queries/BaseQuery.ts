@@ -7,9 +7,7 @@ export class BaseQuery {
 	[key: string]: unknown;
 
 	/**
-	 * Converts this object to it's string representation.
-	 *
-	 * @returns 'this' object's string representation;
+	 * @returns The string representation of 'this' object.
 	 *
 	 * @internal
 	 */

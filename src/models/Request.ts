@@ -1,6 +1,7 @@
 // PACKAGES
-import { AxiosRequestConfig } from 'axios';
+import { AxiosHeaders, AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
+import { createReadStream } from 'fs';
 
 // ENUMS
 import { ERequestType, EUploadSteps } from '../enums/Request';
@@ -12,7 +13,6 @@ import { DataQuery } from './queries/DataQuery';
 import { UploadQuery } from './queries/UploadQuery';
 import { FetchArgs } from './args/FetchArgs';
 import { PostArgs } from './args/PostArgs';
-import { createReadStream } from 'fs';
 
 /**
  * The request containing all the required url, params, query, payload, etc for a requested resource on Twitter.
@@ -32,6 +32,9 @@ export class Request {
 	/** The endpoint of the URL to which the request is targeted. */
 	public endpoint: string;
 
+	/** The resource specific headers. */
+	public headers: AxiosHeaders;
+
 	/** The query parameters to be sent in the request. */
 	public params?: BaseQuery;
 
@@ -43,8 +46,6 @@ export class Request {
 	public payload?: NonNullable<unknown>;
 
 	/**
-	 * Generates an HTTP request configuration for the requested resource on Twitter.
-	 *
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional URL arguments.
 	 */
@@ -87,6 +88,13 @@ export class Request {
 			this.endpoint = resourceType;
 		}
 
+		// Setting request headers
+		if (resourceType == EResourceType.MEDIA_UPLOAD) {
+			this.headers = new AxiosHeaders({ referer: 'https://twitter.com' });
+		} else {
+			this.headers = new AxiosHeaders();
+		}
+
 		// Setting request params and payload
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
@@ -114,15 +122,14 @@ export class Request {
 	}
 
 	/**
-	 * Converts 'this' Request object to it's equivalent AxiosRequstConfig object.
-	 *
-	 * @returns The AxiosRequestConfig reqpresentation of 'this' Request.
+	 * @returns The AxiosRequestConfig representation of 'this' Request.
 	 */
 	public toAxiosRequestConfig(): AxiosRequestConfig {
 		return {
 			url: this.endpoint,
 			method: this.type,
 			baseURL: `https://${this.subdomain ? this.subdomain + '.' : ''}${this.base}`,
+			headers: this.headers,
 			params: this.params,
 			paramsSerializer: {
 				encode: encodeURIComponent,

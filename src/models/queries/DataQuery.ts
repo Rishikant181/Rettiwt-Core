@@ -20,8 +20,6 @@ export class DataQuery extends BaseQuery {
 	public variables: Variables;
 
 	/**
-	 * Initializes the URL query parameters.
-	 *
 	 * @param resourceType - The type of resource requested.
 	 * @param args - Additional user-defined arguments to be sent in the request.
 	 */

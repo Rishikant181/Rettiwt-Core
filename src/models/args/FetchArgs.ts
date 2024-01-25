@@ -109,8 +109,6 @@ export class FetchArgs {
 	public cursor?: string;
 
 	/**
-	 * Initializes a new DataArgs object using the given arguments.
-	 *
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
