@@ -42,6 +42,10 @@ export class PostArgs {
 	@IsObject({ groups: [EResourceType.MEDIA_UPLOAD] })
 	public upload?: UploadArgs;
 
+	/**
+	 * @param resourceType - The type of resource that is targeted.
+	 * @param args - The additional user-defined arguments for posting the resource.
+	 */
 	public constructor(resourceType: EResourceType, args: PostArgs) {
 		this.id = args.id;
 		this.tweet = args.tweet ? new TweetArgs(args.tweet) : undefined;
@@ -87,8 +91,6 @@ export class TweetArgs {
 	public media?: MediaArgs[];
 
 	/**
-	 * Initializes a new TweetArgs object using the given arguments.
-	 *
 	 * @param args - The additional user-defined arguments for posting the resource.
 	 */
 	public constructor(args: TweetArgs) {
@@ -129,8 +131,6 @@ export class MediaArgs {
 	public tags?: string[];
 
 	/**
-	 * Initializes a new MediaArgs object using the given arguments.
-	 *
 	 * @param args - The media arguments specifying the media.
 	 */
 	public constructor(args: MediaArgs) {
@@ -174,8 +174,6 @@ export class UploadArgs {
 	public id?: string;
 
 	/**
-	 * Initializes a new UploadArgs object using the given arguments.
-	 *
 	 * @param args - The upload arguments for uploading the media file.
 	 */
 	public constructor(args: UploadArgs) {
