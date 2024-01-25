@@ -7,6 +7,7 @@ import {
 	IsObject,
 	IsOptional,
 	IsString,
+	Max,
 	MaxLength,
 	validateSync,
 } from 'class-validator';
@@ -157,9 +158,14 @@ export class UploadArgs {
 	@IsNotEmpty()
 	public step: EUploadSteps;
 
-	/** The size (in bytes) of the media file to be uploaded. */
+	/**
+	 * The size (in bytes) of the media file to be uploaded.
+	 *
+	 * @remarks The size must be \<= 5242880 bytes.
+	 */
 	@IsOptional()
 	@IsNotEmpty({ groups: [EUploadSteps.INITIALIZE] })
+	@Max(5242880, { groups: [EUploadSteps.INITIALIZE] })
 	public size?: number;
 
 	/** The media file to be uploaded. */
