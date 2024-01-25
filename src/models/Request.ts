@@ -1,5 +1,5 @@
 // PACKAGES
-import { AxiosRequestConfig } from 'axios';
+import { AxiosHeaders, AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
 
 // ENUMS
@@ -31,6 +31,9 @@ export class Request {
 
 	/** The endpoint of the URL to which the request is targeted. */
 	public endpoint: string;
+
+	/** The resource specific headers. */
+	public headers: AxiosHeaders;
 
 	/** The query parameters to be sent in the request. */
 	public params?: BaseQuery;
@@ -87,6 +90,13 @@ export class Request {
 			this.endpoint = resourceType;
 		}
 
+		// Setting request headers
+		if (resourceType == EResourceType.MEDIA_UPLOAD) {
+			this.headers = new AxiosHeaders({ referer: 'https://twitter.com' });
+		} else {
+			this.headers = new AxiosHeaders();
+		}
+
 		// Setting request params and payload
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
@@ -123,6 +133,7 @@ export class Request {
 			url: this.endpoint,
 			method: this.type,
 			baseURL: `https://${this.subdomain ? this.subdomain + '.' : ''}${this.base}`,
+			headers: this.headers,
 			params: this.params,
 			paramsSerializer: {
 				encode: encodeURIComponent,
