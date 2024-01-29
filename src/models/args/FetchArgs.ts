@@ -1,42 +1,40 @@
 // PACKAGES
-import { IsNotEmpty, IsNumberString, Max, MaxLength, validateSync } from 'class-validator';
+import { IsNotEmpty, IsNumberString, IsObject, IsOptional, IsString, Max, validateSync } from 'class-validator';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
 
-// TYPES
-import { IArgs } from '../../types/request/payloads/Args';
-
 // MODELS
-import { TweetFilter } from './TweetFilter';
+import { TweetFilter } from '../payloads/TweetFilter';
 import { DataValidationError } from '../errors/DataValidationError';
 
 /**
- * User set query paramters that are used to specify the data that is requested.
+ * User set query parameters that are used to specify the data that is to be fetched.
  *
  * @public
  */
-export class Args implements IArgs {
+export class FetchArgs {
 	/**
-	 * The filter for filtering the data.
+	 * The filter for searching.
 	 *
 	 * @remarks
 	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
 	 */
+	@IsOptional()
 	@IsNotEmpty({ groups: [EResourceType.TWEET_SEARCH] })
+	@IsObject({ groups: [EResourceType.TWEET_SEARCH] })
 	public filter?: TweetFilter;
 
 	/**
-	 * The 'id of the target resource.
+	 * The id of the target resource.
 	 *
 	 * @remarks
 	 * - Required for all resources except {@link EResourceType.TWEET_SEARCH}.
 	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
 	 */
+	@IsOptional()
 	@IsNotEmpty({
 		groups: [
-			EResourceType.CREATE_RETWEET,
-			EResourceType.FAVORITE_TWEET,
 			EResourceType.LIST_DETAILS,
 			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
@@ -49,12 +47,12 @@ export class Args implements IArgs {
 			EResourceType.USER_LIKES,
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
+			EResourceType.SPACE_DETAILS_BY_ID,
+			EResourceType.VIDEO_STREAM,
 		],
 	})
 	@IsNumberString(undefined, {
 		groups: [
-			EResourceType.CREATE_RETWEET,
-			EResourceType.FAVORITE_TWEET,
 			EResourceType.LIST_DETAILS,
 			EResourceType.LIST_TWEETS,
 			EResourceType.TWEET_DETAILS,
@@ -67,6 +65,9 @@ export class Args implements IArgs {
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
 		],
+	})
+	@IsString({
+		groups: [EResourceType.SPACE_DETAILS_BY_ID, EResourceType.VIDEO_STREAM],
 	})
 	public id?: string;
 
@@ -80,6 +81,7 @@ export class Args implements IArgs {
 	 *
 	 * @defaultValue 20
 	 */
+	@IsOptional()
 	@Max(100, {
 		groups: [
 			EResourceType.LIST_TWEETS,
@@ -102,28 +104,18 @@ export class Args implements IArgs {
 	 * - May be used for cursored resources.
 	 * - Has no effect for all other resources.
 	 */
+	@IsOptional()
+	@IsString()
 	public cursor?: string;
 
 	/**
-	 * The text for the tweet to be created.
-	 *
-	 * @remarks Length of the tweet must be \<= 280 characters.
-	 */
-	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
-	@MaxLength(280, { groups: [EResourceType.CREATE_TWEET] })
-	public tweetText?: string;
-
-	/**
-	 * Initializes a new argument object based on the type of input.
-	 *
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: Args) {
+	public constructor(resourceType: EResourceType, args: FetchArgs) {
 		this.id = args.id;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
-		this.tweetText = args.tweetText;
 
 		/**
 		 * Initializing filter only if resource type is TWEET_SEARCH
