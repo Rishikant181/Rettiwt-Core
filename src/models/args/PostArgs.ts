@@ -85,9 +85,11 @@ export class TweetArgs {
 	 * @remarks
 	 * - The media first needs to be uploaded using the {@link EResourceType.MEDIA_UPLOAD} resource.
 	 * - After uploading, the returned id(s) can be used to reference the media here.
+	 * - Maximum number of media items that can be posted is 4.
 	 */
 	@IsOptional()
 	@IsArray()
+	@ArrayMaxSize(4)
 	@IsObject({ each: true })
 	public media?: MediaArgs[];
 
