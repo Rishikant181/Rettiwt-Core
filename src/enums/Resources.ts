@@ -22,6 +22,7 @@ export enum EResourceType {
 	TWEET_DETAILS = '/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId',
 	TWEET_FAVORITERS = '/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
 	TWEET_RETWEETERS = '/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',
+	TWEET_REPLIES = '/i/api/graphql/B9_KmbkLhXt6jRwGjJrweg/TweetDetail',
 
 	// LIST
 	LIST_DETAILS = '/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
