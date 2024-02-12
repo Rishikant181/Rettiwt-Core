@@ -13,6 +13,7 @@ import { EResourceType } from '../../enums/Resources';
 export class Variables {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public id?: string;
+	public focalTweetId?: string;
 	public tweetId?: string;
 	public tweet_id?: string;
 	public userId?: string;
@@ -69,6 +70,9 @@ export class Variables {
 			this.count = args.count;
 			this.cursor = args.cursor;
 			this.includePromotedContent = false;
+		} else if (resourceType == EResourceType.TWEET_REPLIES) {
+			this.focalTweetId = args.id;
+			this.cursor = args.cursor;
 		} else if (resourceType == EResourceType.USER_DETAILS) {
 			this.screen_name = args.id;
 		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
