@@ -27,6 +27,7 @@ export class Variables {
 	public product?: string;
 	public includePromotedContent?: boolean;
 	public isMetatagsQuery?: boolean;
+	public withBirdwatchNotes?: boolean;
 	public withVoice?: boolean;
 	public withCommunity?: boolean;
 	public withReplays?: boolean;
@@ -73,6 +74,9 @@ export class Variables {
 		} else if (resourceType == EResourceType.TWEET_REPLIES) {
 			this.focalTweetId = args.id;
 			this.cursor = args.cursor;
+			this.includePromotedContent = false;
+			this.withBirdwatchNotes = false;
+			this.withVoice = false;
 		} else if (resourceType == EResourceType.USER_DETAILS) {
 			this.screen_name = args.id;
 		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
