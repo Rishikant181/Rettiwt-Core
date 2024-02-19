@@ -79,6 +79,10 @@ export class TweetArgs {
 	@MaxLength(280)
 	public text: string;
 
+	@IsOptional()
+	@IsNumberString()
+	public replyTo?: string;
+
 	/**
 	 * The list of media to be uploaded.
 	 *
@@ -98,6 +102,7 @@ export class TweetArgs {
 	 */
 	public constructor(args: TweetArgs) {
 		this.text = args.text;
+		this.replyTo = args.replyTo;
 		this.media = args.media ? args.media.map((item) => new MediaArgs(item)) : undefined;
 
 		// Validating this object
