@@ -23,6 +23,7 @@ export class Variables {
 	public controller_data?: string;
 	public rawQuery?: string;
 	public tweet_text?: string;
+	public reply?: ReplyVariable;
 	public media?: MediaVariable;
 	public product?: string;
 	public includePromotedContent?: boolean;
@@ -101,13 +102,33 @@ export class Variables {
 }
 
 /**
+ * Reply specific details to be sent in payload.
+ *
+ * @public
+ */
+export class ReplyVariable {
+	/* eslint-disable @typescript-eslint/naming-convention */
+	public in_reply_to_tweet_id: string;
+	public exclude_reply_user_ids: string[];
+	/* eslint-enable @typescript-eslint/naming-convention */
+
+	/**
+	 * @param replyTo - The id of the Tweet to which this Tweet is a reply.
+	 */
+	public constructor(replyTo: string) {
+		this.in_reply_to_tweet_id = replyTo;
+		this.exclude_reply_user_ids = [];
+	}
+}
+
+/**
  * Media to be sent as payload.
  *
  * @public
  */
 export class MediaVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
-	public media_entities: MediaVariableEntity[];
+	public media_entities: MediaEntityVariable[];
 	public possibly_sensitive: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
@@ -115,7 +136,7 @@ export class MediaVariable {
 	 * @param media - The list of MediaArgs objects specifying the media items to be sent in the Tweet.
 	 */
 	public constructor(media: MediaArgs[]) {
-		this.media_entities = media.map((item) => new MediaVariableEntity(item));
+		this.media_entities = media.map((item) => new MediaEntityVariable(item));
 		this.possibly_sensitive = false;
 	}
 }
@@ -125,7 +146,7 @@ export class MediaVariable {
  *
  * @public
  */
-export class MediaVariableEntity {
+export class MediaEntityVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public media_id: string;
 	public tagged_users: string[];
