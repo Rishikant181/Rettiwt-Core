@@ -93,12 +93,18 @@ export class TweetArgs {
 	@IsObject({ each: true })
 	public media?: MediaArgs[];
 
+	/** The id of the Tweet to which the given Tweet must be a reply. */
+	@IsOptional()
+	@IsNumberString()
+	public replyTo?: string;
+
 	/**
 	 * @param args - The additional user-defined arguments for posting the resource.
 	 */
 	public constructor(args: TweetArgs) {
 		this.text = args.text;
 		this.media = args.media ? args.media.map((item) => new MediaArgs(item)) : undefined;
+		this.replyTo = args.replyTo;
 
 		// Validating this object
 		const validationResult = validateSync(this);

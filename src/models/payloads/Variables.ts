@@ -13,7 +13,6 @@ import { EResourceType } from '../../enums/Resources';
 export class Variables {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public id?: string;
-	public focalTweetId?: string;
 	public tweetId?: string;
 	public tweet_id?: string;
 	public userId?: string;
@@ -21,13 +20,14 @@ export class Variables {
 	public screen_name?: string;
 	public count?: number;
 	public cursor?: string;
+	public controller_data?: string;
 	public rawQuery?: string;
 	public tweet_text?: string;
 	public media?: MediaVariable;
+	public reply?: ReplyVariable;
 	public product?: string;
 	public includePromotedContent?: boolean;
 	public isMetatagsQuery?: boolean;
-	public withBirdwatchNotes?: boolean;
 	public withVoice?: boolean;
 	public withCommunity?: boolean;
 	public withReplays?: boolean;
@@ -43,6 +43,7 @@ export class Variables {
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweet?.text;
 			this.media = args.tweet?.media ? new MediaVariable(args.tweet.media) : undefined;
+			this.reply = args.tweet?.replyTo ? new ReplyVariable(args.tweet.replyTo) : undefined;
 		} else if (resourceType == EResourceType.CREATE_RETWEET || resourceType == EResourceType.FAVORITE_TWEET) {
 			this.tweet_id = args.id;
 		} else if (resourceType == EResourceType.LIST_DETAILS) {
@@ -71,12 +72,6 @@ export class Variables {
 			this.count = args.count;
 			this.cursor = args.cursor;
 			this.includePromotedContent = false;
-		} else if (resourceType == EResourceType.TWEET_REPLIES) {
-			this.focalTweetId = args.id;
-			this.cursor = args.cursor;
-			this.includePromotedContent = false;
-			this.withBirdwatchNotes = false;
-			this.withVoice = false;
 		} else if (resourceType == EResourceType.USER_DETAILS) {
 			this.screen_name = args.id;
 		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
@@ -114,7 +109,7 @@ export class Variables {
  */
 export class MediaVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
-	public media_entities: MediaVariableEntity[];
+	public media_entities: MediaEntityVariable[];
 	public possibly_sensitive: boolean;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
@@ -122,7 +117,7 @@ export class MediaVariable {
 	 * @param media - The list of MediaArgs objects specifying the media items to be sent in the Tweet.
 	 */
 	public constructor(media: MediaArgs[]) {
-		this.media_entities = media.map((item) => new MediaVariableEntity(item));
+		this.media_entities = media.map((item) => new MediaEntityVariable(item));
 		this.possibly_sensitive = false;
 	}
 }
@@ -132,7 +127,7 @@ export class MediaVariable {
  *
  * @public
  */
-export class MediaVariableEntity {
+export class MediaEntityVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public media_id: string;
 	public tagged_users: string[];
@@ -144,5 +139,25 @@ export class MediaVariableEntity {
 	public constructor(media: MediaArgs) {
 		this.media_id = media.id;
 		this.tagged_users = media.tags ?? [];
+	}
+}
+
+/**
+ * Reply specific details to be sent in payload.
+ *
+ * @public
+ */
+export class ReplyVariable {
+	/* eslint-disable @typescript-eslint/naming-convention */
+	public in_reply_to_tweet_id: string;
+	public exclude_reply_user_ids: string[];
+	/* eslint-enable @typescript-eslint/naming-convention */
+
+	/**
+	 * @param replyTo - The id of the Tweet to which this Tweet is a reply.
+	 */
+	public constructor(replyTo: string) {
+		this.in_reply_to_tweet_id = replyTo;
+		this.exclude_reply_user_ids = [];
 	}
 }
