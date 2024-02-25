@@ -19,6 +19,7 @@ export interface ITweet {
 	is_translatable: boolean;
 	views: ITweetViews;
 	source: string;
+	note_tweet: ITweetNote;
 	legacy: ITweetLegacy;
 	quick_promote_eligibility: ITweetQuickPromoteEligibilityInfo;
 }
@@ -42,6 +43,37 @@ export interface ITweetEditPerspective {
 export interface ITweetViews {
 	count: string;
 	state: string;
+}
+
+export interface ITweetNote {
+	is_expandable: boolean;
+	note_tweet_results: ITweetNoteResults;
+}
+
+export interface ITweetNoteResults {
+	result: ITweetNoteResult;
+}
+
+export interface ITweetNoteResult {
+	id: string;
+	text: string;
+	entity_set: IEntities;
+	richtext: IRichtext;
+	media: ITweetNoteMedia;
+}
+
+export interface IRichtext {
+	richtext_tags: IRichtextTag[];
+}
+
+export interface IRichtextTag {
+	from_index: number;
+	to_index: number;
+	richtext_types: string[];
+}
+
+export interface ITweetNoteMedia {
+	inline_media: any[];
 }
 
 export interface ITweetLegacy {
