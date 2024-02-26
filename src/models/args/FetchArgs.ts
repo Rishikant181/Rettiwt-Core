@@ -76,6 +76,7 @@ export class FetchArgs {
 	 *
 	 * @remarks
 	 * - Works only for cursored resources.
+	 * - Has no effect for {@link EResourceType.TWEET_REPLIES}
 	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH} and {@link EResourceType.USER_TWEETS}.
 	 * - Must be \<= 100 for all other cursored resources.
 	 *
