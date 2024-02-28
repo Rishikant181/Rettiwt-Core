@@ -79,6 +79,11 @@ export class TweetArgs {
 	@MaxLength(280)
 	public text: string;
 
+	/** The id of the tweet to quote. */
+	@IsOptional()
+	@IsNumberString()
+	public quote?: string;
+
 	/**
 	 * The list of media to be uploaded.
 	 *
@@ -103,6 +108,7 @@ export class TweetArgs {
 	 */
 	public constructor(args: TweetArgs) {
 		this.text = args.text;
+		this.quote = args.quote;
 		this.media = args.media ? args.media.map((item) => new MediaArgs(item)) : undefined;
 		this.replyTo = args.replyTo;
 
