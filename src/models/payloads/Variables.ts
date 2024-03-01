@@ -23,6 +23,7 @@ export class Variables {
 	public controller_data?: string;
 	public rawQuery?: string;
 	public tweet_text?: string;
+	public attachment_url?: string;
 	public media?: MediaVariable;
 	public reply?: ReplyVariable;
 	public product?: string;
@@ -42,6 +43,7 @@ export class Variables {
 		// Conditionally initializing variables
 		if (resourceType == EResourceType.CREATE_TWEET) {
 			this.tweet_text = args.tweet?.text;
+			this.attachment_url = args.tweet?.quote ? `https://twitter.com/i/status/${args.tweet.quote}` : undefined;
 			this.media = args.tweet?.media ? new MediaVariable(args.tweet.media) : undefined;
 			this.reply = args.tweet?.replyTo ? new ReplyVariable(args.tweet.replyTo) : undefined;
 		} else if (resourceType == EResourceType.CREATE_RETWEET || resourceType == EResourceType.FAVORITE_TWEET) {
@@ -76,13 +78,19 @@ export class Variables {
 			this.screen_name = args.id;
 		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
 			this.userId = args.id;
-		} else if (resourceType == EResourceType.USER_FOLLOWERS || resourceType == EResourceType.USER_FOLLOWING) {
+		} else if (
+			resourceType == EResourceType.USER_FOLLOWERS ||
+			resourceType == EResourceType.USER_FOLLOWING ||
+			resourceType == EResourceType.USER_SUBSCRIPTIONS
+		) {
 			this.userId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
 			this.includePromotedContent = false;
 		} else if (
+			resourceType == EResourceType.USER_HIGHLIGHTS ||
 			resourceType == EResourceType.USER_LIKES ||
+			resourceType == EResourceType.USER_MEDIA ||
 			resourceType == EResourceType.USER_TWEETS ||
 			resourceType == EResourceType.USER_TWEETS_AND_REPLIES
 		) {

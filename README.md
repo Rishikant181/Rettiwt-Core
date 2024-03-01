@@ -13,6 +13,46 @@ A library for generating request configurations to various Twitter API resources
     -   For **npm**, use the command **npm install --save rettiwt-core**
     -   For **yarn**, use the command **yarn add rettiwt-core**
 
+## Available Resources
+
+Currently, generation of request configuration for the following resources is supported:
+
+-   ### Lists:
+
+    -   List Details
+    -   List Tweets
+
+-   ### Media:
+
+    -   Media Upload
+    -   Video Stream
+
+-   ### Spaces:
+
+    -   Space Details (by id)
+
+-   ### Tweets:
+
+    -   Create Retweet
+    -   Create Tweet
+    -   Favorite Tweet
+    -   Tweet Search
+    -   Tweet Details
+    -   Tweet Favoriters
+    -   Tweet Retweeters
+
+-   ### Users:
+    -   User Details (by username)
+    -   User Details (by id)
+    -   User Following
+    -   User Followers
+    -   User Highlights
+    -   User Likes
+    -   User Media
+    -   User Subscriptions
+    -   User Tweets
+    -   User Tweets and Replies
+
 ## Getting started
 
 The following examples will help you to get started with using the library:

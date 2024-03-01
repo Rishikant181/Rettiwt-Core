@@ -22,10 +22,12 @@ export interface Result {
 	rest_id: string;
 	has_birdwatch_notes: boolean;
 	core: Core;
+	unmention_data: UnmentionData;
 	edit_control: EditControl;
 	is_translatable: boolean;
 	views: Views;
 	source: string;
+	note_tweet: NoteTweet;
 	legacy: Legacy2;
 	quick_promote_eligibility: QuickPromoteEligibility;
 }
@@ -47,6 +49,7 @@ export interface Result2 {
 	is_blue_verified: boolean;
 	profile_image_shape: string;
 	legacy: Legacy;
+	professional: Professional;
 	verified_phone_status: boolean;
 }
 
@@ -71,9 +74,8 @@ export interface Legacy {
 	media_count: number;
 	name: string;
 	normal_followers_count: number;
-	pinned_tweet_ids_str: any[];
+	pinned_tweet_ids_str: string[];
 	possibly_sensitive: boolean;
-	profile_banner_url: string;
 	profile_image_url_https: string;
 	profile_interstitial_type: string;
 	screen_name: string;
@@ -87,23 +89,44 @@ export interface Legacy {
 
 export interface Entities {
 	description: Description;
-	url: Url;
+	url: Url2;
 }
 
 export interface Description {
-	urls: any[];
+	urls: Url[];
 }
 
 export interface Url {
-	urls: Url2[];
-}
-
-export interface Url2 {
 	display_url: string;
 	expanded_url: string;
 	url: string;
 	indices: number[];
 }
+
+export interface Url2 {
+	urls: Url3[];
+}
+
+export interface Url3 {
+	display_url: string;
+	expanded_url: string;
+	url: string;
+	indices: number[];
+}
+
+export interface Professional {
+	rest_id: string;
+	professional_type: string;
+	category: Category[];
+}
+
+export interface Category {
+	id: number;
+	name: string;
+	icon_name: string;
+}
+
+export interface UnmentionData {}
 
 export interface EditControl {
 	edit_tweet_ids: string[];
@@ -117,6 +140,44 @@ export interface Views {
 	state: string;
 }
 
+export interface NoteTweet {
+	is_expandable: boolean;
+	note_tweet_results: NoteTweetResults;
+}
+
+export interface NoteTweetResults {
+	result: Result3;
+}
+
+export interface Result3 {
+	id: string;
+	text: string;
+	entity_set: EntitySet;
+	richtext: Richtext;
+	media: Media;
+}
+
+export interface EntitySet {
+	user_mentions: any[];
+	urls: any[];
+	hashtags: any[];
+	symbols: any[];
+}
+
+export interface Richtext {
+	richtext_tags: RichtextTag[];
+}
+
+export interface RichtextTag {
+	from_index: number;
+	to_index: number;
+	richtext_types: string[];
+}
+
+export interface Media {
+	inline_media: any[];
+}
+
 export interface Legacy2 {
 	bookmark_count: number;
 	bookmarked: boolean;
@@ -124,14 +185,11 @@ export interface Legacy2 {
 	conversation_id_str: string;
 	display_text_range: number[];
 	entities: Entities2;
-	extended_entities: ExtendedEntities;
 	favorite_count: number;
 	favorited: boolean;
 	full_text: string;
 	is_quote_status: boolean;
 	lang: string;
-	possibly_sensitive: boolean;
-	possibly_sensitive_editable: boolean;
 	quote_count: number;
 	reply_count: number;
 	retweet_count: number;
@@ -141,160 +199,10 @@ export interface Legacy2 {
 }
 
 export interface Entities2 {
-	media: Medum[];
-	user_mentions: UserMention[];
+	user_mentions: any[];
 	urls: any[];
-	hashtags: Hashtag[];
+	hashtags: any[];
 	symbols: any[];
-}
-
-export interface Medum {
-	display_url: string;
-	expanded_url: string;
-	id_str: string;
-	indices: number[];
-	media_url_https: string;
-	type: string;
-	url: string;
-	features: Features;
-	sizes: Sizes;
-	original_info: OriginalInfo;
-}
-
-export interface Features {}
-
-export interface Sizes {
-	large: Large;
-	medium: Medium;
-	small: Small;
-	thumb: Thumb;
-}
-
-export interface Large {
-	h: number;
-	w: number;
-	resize: string;
-}
-
-export interface Medium {
-	h: number;
-	w: number;
-	resize: string;
-}
-
-export interface Small {
-	h: number;
-	w: number;
-	resize: string;
-}
-
-export interface Thumb {
-	h: number;
-	w: number;
-	resize: string;
-}
-
-export interface OriginalInfo {
-	height: number;
-	width: number;
-}
-
-export interface UserMention {
-	id_str: string;
-	name: string;
-	screen_name: string;
-	indices: number[];
-}
-
-export interface Hashtag {
-	indices: number[];
-	text: string;
-}
-
-export interface ExtendedEntities {
-	media: Medum2[];
-}
-
-export interface Medum2 {
-	display_url: string;
-	expanded_url: string;
-	id_str: string;
-	indices: number[];
-	media_key: string;
-	media_url_https: string;
-	type: string;
-	url: string;
-	additional_media_info: AdditionalMediaInfo;
-	mediaStats: MediaStats;
-	ext_media_availability: ExtMediaAvailability;
-	features: Features2;
-	sizes: Sizes2;
-	original_info: OriginalInfo2;
-	video_info: VideoInfo;
-}
-
-export interface AdditionalMediaInfo {
-	title: string;
-	description: string;
-	monetizable: boolean;
-}
-
-export interface MediaStats {
-	viewCount: number;
-}
-
-export interface ExtMediaAvailability {
-	status: string;
-}
-
-export interface Features2 {}
-
-export interface Sizes2 {
-	large: Large2;
-	medium: Medium2;
-	small: Small2;
-	thumb: Thumb2;
-}
-
-export interface Large2 {
-	h: number;
-	w: number;
-	resize: string;
-}
-
-export interface Medium2 {
-	h: number;
-	w: number;
-	resize: string;
-}
-
-export interface Small2 {
-	h: number;
-	w: number;
-	resize: string;
-}
-
-export interface Thumb2 {
-	h: number;
-	w: number;
-	resize: string;
-}
-
-export interface OriginalInfo2 {
-	height: number;
-	width: number;
-}
-
-export interface VideoInfo {
-	aspect_ratio: number[];
-	duration_millis: number;
-	variants: Variant[];
-}
-
-export interface Variant {
-	content_type: string;
-	url: string;
-	bitrate?: number;
 }
 
 export interface QuickPromoteEligibility {
