@@ -46,6 +46,7 @@ export class FetchArgs {
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
 			EResourceType.USER_MEDIA,
+			EResourceType.USER_SUBSCRIPTIONS,
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
 			EResourceType.SPACE_DETAILS_BY_ID,
@@ -64,6 +65,7 @@ export class FetchArgs {
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
 			EResourceType.USER_MEDIA,
+			EResourceType.USER_SUBSCRIPTIONS,
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
 		],
@@ -93,6 +95,7 @@ export class FetchArgs {
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
 			EResourceType.USER_MEDIA,
+			EResourceType.USER_SUBSCRIPTIONS,
 		],
 	})
 	@Max(20, {

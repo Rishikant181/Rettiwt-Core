@@ -78,7 +78,11 @@ export class Variables {
 			this.screen_name = args.id;
 		} else if (resourceType == EResourceType.USER_DETAILS_BY_ID) {
 			this.userId = args.id;
-		} else if (resourceType == EResourceType.USER_FOLLOWERS || resourceType == EResourceType.USER_FOLLOWING) {
+		} else if (
+			resourceType == EResourceType.USER_FOLLOWERS ||
+			resourceType == EResourceType.USER_FOLLOWING ||
+			resourceType == EResourceType.USER_SUBSCRIPTIONS
+		) {
 			this.userId = args.id;
 			this.count = args.count;
 			this.cursor = args.cursor;
