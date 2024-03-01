@@ -85,6 +85,7 @@ export class Variables {
 			this.includePromotedContent = false;
 		} else if (
 			resourceType == EResourceType.USER_LIKES ||
+			resourceType == EResourceType.USER_MEDIA ||
 			resourceType == EResourceType.USER_TWEETS ||
 			resourceType == EResourceType.USER_TWEETS_AND_REPLIES
 		) {
