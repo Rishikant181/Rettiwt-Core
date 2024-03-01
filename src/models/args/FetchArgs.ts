@@ -45,6 +45,7 @@ export class FetchArgs {
 			EResourceType.USER_FOLLOWERS,
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
+			EResourceType.USER_MEDIA,
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
 			EResourceType.SPACE_DETAILS_BY_ID,
@@ -62,6 +63,7 @@ export class FetchArgs {
 			EResourceType.USER_FOLLOWERS,
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
+			EResourceType.USER_MEDIA,
 			EResourceType.USER_TWEETS,
 			EResourceType.USER_TWEETS_AND_REPLIES,
 		],
@@ -76,7 +78,6 @@ export class FetchArgs {
 	 *
 	 * @remarks
 	 * - Works only for cursored resources.
-	 * - Has no effect for {@link EResourceType.TWEET_REPLIES}
 	 * - Must be \<= 20 for {@link EResourceType.TWEET_SEARCH} and {@link EResourceType.USER_TWEETS}.
 	 * - Must be \<= 100 for all other cursored resources.
 	 *
@@ -91,6 +92,7 @@ export class FetchArgs {
 			EResourceType.USER_FOLLOWERS,
 			EResourceType.USER_FOLLOWING,
 			EResourceType.USER_LIKES,
+			EResourceType.USER_MEDIA,
 		],
 	})
 	@Max(20, {

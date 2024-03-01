@@ -33,6 +33,7 @@ export enum EResourceType {
 	USER_FOLLOWING = '/i/api/graphql/V8zHw0SZijWORSsb-FNrng/Following',
 	USER_FOLLOWERS = '/i/api/graphql/6y5TB_HrwQM0FBGDiNfoEA/Followers',
 	USER_LIKES = '/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
+	USER_MEDIA = '/i/api/graphql/EnIWTNQ8Tum-7t1NnZHOEQ/UserMedia',
 	USER_TWEETS = '/i/api/graphql/H8OOoI-5ZE4NxgRr8lfyWg/UserTweets',
 	USER_TWEETS_AND_REPLIES = '/i/api/graphql/GJuqLMoVxFZOvy8Oqec_9Q/UserTweetsAndReplies',
 
