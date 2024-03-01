@@ -52,7 +52,10 @@ export { Root as ITweetRetweetResponse } from './types/tweet/Retweet';
 // USERS
 export { Root as IUserFollowersResponse } from './types/user/Followers';
 export { Root as IUserFollowingResponse } from './types/user/Following';
+export { Root as IUserHighlightsResponse } from './types/user/Highlights';
 export { Root as IUserLikesResponse } from './types/user/Likes';
+export { Root as IUserMediaResponse } from './types/user/Media';
+export { Root as IUserSubscriptionsResponse } from './types/user/Subscriptions';
 export { Root as IUserTweetsResponse } from './types/user/Tweets';
 export { Root as IUserTweetsAndRepliesResponse } from './types/user/TweetsAndReplies';
 export { Root as IUserDetailsResponse } from './types/user/User';
