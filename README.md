@@ -175,6 +175,10 @@ Where,
 
 Sending this request uploads the media file to Twitter.
 
+Notes:
+
+-   Instead of a path to a locally stored file, a Readable stream can also be uploaded
+
 #### 3. Finalization
 
 ```
