@@ -105,7 +105,10 @@ export class Request {
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD && args.upload?.step == EUploadSteps.APPEND) {
 			// Appending the media to form data
 			const data = new FormData();
-			data.append('media', createReadStream(args.upload.media as string));
+			data.append(
+				'media',
+				typeof args.upload.media == 'string' ? createReadStream(args.upload.media) : args.upload.media,
+			);
 
 			this.params = new UploadQuery(args.upload);
 			this.payload = data;
