@@ -107,7 +107,9 @@ export class Request {
 			const data = new FormData();
 			data.append(
 				'media',
-				typeof args.upload.media == 'string' ? createReadStream(args.upload.media) : args.upload.media,
+				typeof args.upload.media == 'string'
+					? createReadStream(args.upload.media)
+					: Buffer.from(args.upload.media as ArrayBuffer),
 			);
 
 			this.params = new UploadQuery(args.upload);

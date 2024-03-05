@@ -11,7 +11,6 @@ import {
 	MaxLength,
 	validateSync,
 } from 'class-validator';
-import { Readable } from 'stream';
 
 // ENUMS
 import { EResourceType } from '../../enums/Resources';
@@ -186,7 +185,7 @@ export class UploadArgs {
 	/** The media file to be uploaded. */
 	@IsOptional()
 	@IsNotEmpty({ groups: [EUploadSteps.APPEND] })
-	public media?: string | Readable;
+	public media?: string | ArrayBuffer;
 
 	/** The id allocated to the media file to be uploaded. */
 	@IsOptional()
