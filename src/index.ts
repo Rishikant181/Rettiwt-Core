@@ -14,9 +14,8 @@ export * from './models/args/PostArgs';
 export * from './models/errors/DataValidationError';
 
 // PAYLOAD MODELS
-export * from './models/payloads/Features';
-export * from './models/payloads/TweetFilter';
-export * from './models/payloads/Variables';
+export * from './models/params/Features';
+export * from './models/params/Variables';
 
 // QUERIY MODELS
 export * from './models/queries/BaseQuery';

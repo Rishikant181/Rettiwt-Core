@@ -1,7 +1,7 @@
 // MODELS
 import { BaseQuery } from './BaseQuery';
-import { Features } from '../payloads/Features';
-import { Variables } from '../payloads/Variables';
+import { Features } from '../params/Features';
+import { Variables } from '../params/Variables';
 import { FetchArgs } from '../args/FetchArgs';
 
 // ENUMS
