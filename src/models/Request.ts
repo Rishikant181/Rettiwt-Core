@@ -20,20 +20,20 @@ import { PostArgs } from './args/PostArgs';
  * @public
  */
 export class Request {
-	/** The type of request to be made. */
-	public type: ERequestType;
-
-	/** The subdomain of the URL to which the request is targeted. */
-	public subdomain: ESubdomains;
-
 	/** The base URL to which the request is targeted. */
 	public base: string = 'twitter.com';
 
+	/** The type of request to be made. */
+	public type?: ERequestType;
+
+	/** The subdomain of the URL to which the request is targeted. */
+	public subdomain?: ESubdomains;
+
 	/** The endpoint of the URL to which the request is targeted. */
-	public endpoint: string;
+	public endpoint?: string;
 
 	/** The resource specific headers. */
-	public headers: AxiosHeaders;
+	public headers?: AxiosHeaders;
 
 	/** The query parameters to be sent in the request. */
 	public params?: BaseQuery;
@@ -50,19 +50,48 @@ export class Request {
 	 * @param args - Additional URL arguments.
 	 */
 	public constructor(resourceType: EResourceType, args: FetchArgs & PostArgs) {
-		// Converting JSON args to object
+		// Validating the supplied args
+		args = this.validateArgs(resourceType, args);
+
+		// Setting request options
+		this.setType(resourceType);
+		this.setSubdomain(resourceType);
+		this.setEndpoint(resourceType, args);
+		this.setHeaders(resourceType);
+		this.setParams(resourceType, args);
+		this.setPayload(resourceType, args);
+	}
+
+	/**
+	 * Validates the supplied arguments.
+	 *
+	 * @param resourceType - The type of requested resource.
+	 * @param args - Resource-specific arguments for configuring the request.
+	 * @returns A validated object containing the args.
+	 *
+	 * @internal
+	 */
+	private validateArgs(resourceType: EResourceType, args: FetchArgs & PostArgs): FetchArgs & PostArgs {
 		if (
 			resourceType == EResourceType.CREATE_RETWEET ||
 			resourceType == EResourceType.CREATE_TWEET ||
 			resourceType == EResourceType.FAVORITE_TWEET ||
 			resourceType == EResourceType.MEDIA_UPLOAD
 		) {
-			args = new PostArgs(resourceType, args);
+			return new PostArgs(resourceType, args);
 		} else {
-			args = new FetchArgs(resourceType, args);
+			return new FetchArgs(resourceType, args);
 		}
+	}
 
-		// Setting request type
+	/**
+	 * Sets the type of HTTP request.
+	 *
+	 * @param resourceType - The type of requested resource.
+	 *
+	 * @internal
+	 */
+	private setType(resourceType: EResourceType): void {
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
 			resourceType == EResourceType.CREATE_RETWEET ||
@@ -73,29 +102,63 @@ export class Request {
 		} else {
 			this.type = ERequestType.GET;
 		}
+	}
 
-		// Setting request subdomain
+	/**
+	 * Sets the request subdomain
+	 *
+	 * @param resourceType - The type of requested resource.
+	 *
+	 * @internal
+	 */
+	private setSubdomain(resourceType: EResourceType): void {
 		if (resourceType == EResourceType.MEDIA_UPLOAD) {
 			this.subdomain = ESubdomains.UPLOAD;
 		} else {
 			this.subdomain = ESubdomains.MAIN;
 		}
+	}
 
-		// Setting request endpoint
+	/**
+	 * Sets the request endpoint.
+	 *
+	 * @param resourceType - The type of requested resource.
+	 * @param args - Resource-specific arguments for configuring the request.
+	 *
+	 * @internal
+	 */
+	private setEndpoint(resourceType: EResourceType, args: FetchArgs & PostArgs): void {
 		if (resourceType == EResourceType.VIDEO_STREAM) {
 			this.endpoint = `${resourceType}/${args.id as string}`;
 		} else {
 			this.endpoint = resourceType;
 		}
+	}
 
-		// Setting request headers
+	/**
+	 * Sets the reqeust headers.
+	 *
+	 * @param resourceType - The type of requested resource.
+	 *
+	 * @internal
+	 */
+	private setHeaders(resourceType: EResourceType): void {
 		if (resourceType == EResourceType.MEDIA_UPLOAD) {
 			this.headers = new AxiosHeaders({ referer: 'https://twitter.com' });
 		} else {
 			this.headers = new AxiosHeaders();
 		}
+	}
 
-		// Setting request params and payload
+	/**
+	 * Sets the request parameters.
+	 *
+	 * @param resourceType - The type of requested resource.
+	 * @param args - Resource-specific arguments for configuring the request.
+	 *
+	 * @internal
+	 */
+	private setParams(resourceType: EResourceType, args: FetchArgs & PostArgs): void {
 		if (
 			resourceType == EResourceType.CREATE_TWEET ||
 			resourceType == EResourceType.CREATE_RETWEET ||
@@ -103,17 +166,7 @@ export class Request {
 		) {
 			this.payload = new DataQuery(resourceType, args);
 		} else if (resourceType == EResourceType.MEDIA_UPLOAD && args.upload?.step == EUploadSteps.APPEND) {
-			// Appending the media to form data
-			const data = new FormData();
-			data.append(
-				'media',
-				typeof args.upload.media == 'string'
-					? createReadStream(args.upload.media)
-					: Buffer.from(args.upload.media as ArrayBuffer),
-			);
-
 			this.params = new UploadQuery(args.upload);
-			this.payload = data;
 		} else if (
 			resourceType == EResourceType.MEDIA_UPLOAD &&
 			(args.upload?.step == EUploadSteps.INITIALIZE || args.upload?.step == EUploadSteps.FINALIZE)
@@ -123,6 +176,29 @@ export class Request {
 			this.params = undefined;
 		} else {
 			this.params = new DataQuery(resourceType, args);
+		}
+	}
+
+	/**
+	 * Sets the request payload.
+	 *
+	 * @param resourceType - The type of requested resource.
+	 * @param args - Resource-specific arguments for configuring the request.
+	 *
+	 * @internal
+	 */
+	private setPayload(resourceType: EResourceType, args: FetchArgs & PostArgs): void {
+		if (resourceType == EResourceType.MEDIA_UPLOAD && args.upload?.step == EUploadSteps.APPEND) {
+			// Appending the media to form data
+			const data = new FormData();
+			data.append(
+				'media',
+				typeof args.upload.media == 'string'
+					? createReadStream(args.upload.media)
+					: Buffer.from(args.upload.media as ArrayBuffer),
+			);
+
+			this.payload = data;
 		}
 	}
 
