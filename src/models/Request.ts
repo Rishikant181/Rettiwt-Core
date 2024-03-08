@@ -153,12 +153,7 @@ export class Request {
 	 * @internal
 	 */
 	private setParams(): void {
-		if (this.resource == EResourceType.MEDIA_UPLOAD && this.args.upload?.step == EUploadSteps.APPEND) {
-			this.params = new UploadQuery(this.args.upload);
-		} else if (
-			this.resource == EResourceType.MEDIA_UPLOAD &&
-			(this.args.upload?.step == EUploadSteps.INITIALIZE || this.args.upload?.step == EUploadSteps.FINALIZE)
-		) {
+		if (this.resource == EResourceType.MEDIA_UPLOAD && this.args.upload) {
 			this.params = new UploadQuery(this.args.upload);
 		} else if (this.resource == EResourceType.VIDEO_STREAM) {
 			this.params = undefined;
