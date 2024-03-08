@@ -153,13 +153,7 @@ export class Request {
 	 * @internal
 	 */
 	private setParams(): void {
-		if (
-			this.resource == EResourceType.CREATE_TWEET ||
-			this.resource == EResourceType.CREATE_RETWEET ||
-			this.resource == EResourceType.FAVORITE_TWEET
-		) {
-			this.payload = new DataQuery(this.resource, this.args);
-		} else if (this.resource == EResourceType.MEDIA_UPLOAD && this.args.upload?.step == EUploadSteps.APPEND) {
+		if (this.resource == EResourceType.MEDIA_UPLOAD && this.args.upload?.step == EUploadSteps.APPEND) {
 			this.params = new UploadQuery(this.args.upload);
 		} else if (
 			this.resource == EResourceType.MEDIA_UPLOAD &&
@@ -179,7 +173,13 @@ export class Request {
 	 * @internal
 	 */
 	private setPayload(): void {
-		if (this.resource == EResourceType.MEDIA_UPLOAD && this.args.upload?.step == EUploadSteps.APPEND) {
+		if (
+			this.resource == EResourceType.CREATE_TWEET ||
+			this.resource == EResourceType.CREATE_RETWEET ||
+			this.resource == EResourceType.FAVORITE_TWEET
+		) {
+			this.payload = new DataQuery(this.resource, this.args);
+		} else if (this.resource == EResourceType.MEDIA_UPLOAD && this.args.upload?.step == EUploadSteps.APPEND) {
 			// Appending the media to form data
 			const data = new FormData();
 			data.append(
