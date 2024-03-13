@@ -46,3 +46,21 @@ export enum EResourceType {
 	USER_TWEETS = '/i/api/graphql/H8OOoI-5ZE4NxgRr8lfyWg/UserTweets',
 	USER_TWEETS_AND_REPLIES = '/i/api/graphql/GJuqLMoVxFZOvy8Oqec_9Q/UserTweetsAndReplies',
 }
+
+/**
+ * The different types of resources related to users.
+ *
+ * @public
+ */
+export enum EUserResources {
+	USER_DETAILS,
+	USER_DETAILS_BY_ID,
+	USER_FOLLOWING,
+	USER_FOLLOWERS,
+	USER_HIGHLIGHTS,
+	USER_LIKES,
+	USER_MEDIA,
+	USER_SUBSCRIPTIONS,
+	USER_TWEETS,
+	USER_TWEETS_AND_REPLIES,
+}
