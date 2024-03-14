@@ -7,6 +7,11 @@ import { AxiosRequestConfig } from 'axios';
 import { FetchArgs } from '../models/args/FetchArgs';
 import { EUserResources } from '../enums/Resources';
 
+/**
+ * Collection of request configs related to users
+ *
+ * @public
+ */
 export const userRequests: { [key in keyof typeof EUserResources]: NonNullable<unknown> } = {
 	USER_DETAILS: (args: FetchArgs): AxiosRequestConfig => ({
 		method: 'get',

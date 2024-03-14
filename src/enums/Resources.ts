@@ -64,3 +64,18 @@ export enum EUserResources {
 	USER_TWEETS,
 	USER_TWEETS_AND_REPLIES,
 }
+
+/**
+ * The different types of resources related to tweets.
+ *
+ * @public
+ */
+export enum ETweetResources {
+	CREATE_RETWEET,
+	CREATE_TWEET,
+	FAVORITE_TWEET,
+	TWEET_SEARCH,
+	TWEET_DETAILS,
+	TWEET_FAVORITERS,
+	TWEET_RETWEETERS,
+}
