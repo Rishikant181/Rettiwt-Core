@@ -5,14 +5,24 @@ import { AxiosRequestConfig } from 'axios';
 
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
+import { PostArgs } from '../models/args/PostArgs';
 import { EUserResources } from '../enums/Resources';
+
+/**
+ * The type for the {@link userRequests} collection.
+ *
+ * @public
+ */
+export type UserRequestGenerator = {
+	[key in keyof typeof EUserResources]: (args: FetchArgs | PostArgs) => AxiosRequestConfig;
+};
 
 /**
  * Collection of request configs related to users
  *
  * @public
  */
-export const userRequests: { [key in keyof typeof EUserResources]: NonNullable<unknown> } = {
+export const userRequests: UserRequestGenerator = {
 	USER_DETAILS: (args: FetchArgs): AxiosRequestConfig => ({
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/oUZZZ8Oddwxs8Cd3iW3UEA/UserByScreenName',
