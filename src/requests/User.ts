@@ -18,7 +18,7 @@ export type UserRequestGenerator = {
 };
 
 /**
- * Collection of request configs related to users
+ * Collection of request configs related to users.
  *
  * @public
  */

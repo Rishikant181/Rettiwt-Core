@@ -19,7 +19,7 @@ export type TweetRequestGenerator = {
 };
 
 /**
- * Collection of request configs related to tweets
+ * Collection of request configs related to tweets.
  *
  * @public
  */
