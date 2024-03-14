@@ -58,6 +58,27 @@ export enum EListResources {
 }
 
 /**
+ * The different types of resources related to media.
+ *
+ * @public
+ */
+export enum EMediaResources {
+	MEDIA_UPLOAD_APPEND,
+	MEDIA_UPLOAD_FINALIZE,
+	MEDIA_UPLOAD_INIT,
+	VIDEO_STREAM,
+}
+
+/**
+ * The different types of resources related to spaces.
+ *
+ * @public
+ */
+export enum ESpaceResources {
+	SPACE_DETAILS_BY_ID,
+}
+
+/**
  * The different types of resources related to tweets.
  *
  * @public
