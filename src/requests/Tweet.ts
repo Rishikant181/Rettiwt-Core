@@ -7,7 +7,7 @@ import { AxiosRequestConfig } from 'axios';
 import { FetchArgs } from '../models/args/FetchArgs';
 import { PostArgs } from '../models/args/PostArgs';
 import { ETweetResources } from '../enums/Resources';
-import { MediaVariable } from '../models/params/Variables';
+import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 
 /**
  * The type for the {@link tweetRequests} collection.
@@ -41,7 +41,9 @@ export const tweetRequests: TweetRequestGenerator = {
 			variables: {
 				tweet_text: args.tweet?.text,
 				dark_request: false,
+				attachment_url: args.tweet?.quote ? `https://twitter.com/i/status/${args.tweet.quote}` : undefined,
 				media: args.tweet?.media ? new MediaVariable(args.tweet.media) : undefined,
+				reply: args.tweet?.replyTo ? new ReplyVariable(args.tweet.replyTo) : undefined,
 				semantic_annotation_ids: [],
 			},
 			features: {
