@@ -5,24 +5,9 @@ import { AxiosRequestConfig } from 'axios';
 
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
-import { EListResources } from '../enums/Resources';
 
-/**
- * The type for the {@link listRequests} collection.
- *
- * @public
- */
-export type ListRequestGenerator = {
-	[key in keyof typeof EListResources]: (args: FetchArgs) => AxiosRequestConfig;
-};
-
-/**
- * Collection of request configs related to lists.
- *
- * @public
- */
-export const listRequests: ListRequestGenerator = {
-	LIST_DETAILS: (args: FetchArgs): AxiosRequestConfig => ({
+export function listDetails(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
 		params: {
@@ -35,8 +20,11 @@ export const listRequests: ListRequestGenerator = {
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
 		},
-	}),
-	LIST_TWEETS: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function listTweets(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',
 		params: {
@@ -68,5 +56,5 @@ export const listRequests: ListRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-};
+	};
+}

@@ -5,25 +5,9 @@ import { AxiosRequestConfig } from 'axios';
 
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
-import { PostArgs } from '../models/args/PostArgs';
-import { EUserResources } from '../enums/Resources';
 
-/**
- * The type for the {@link userRequests} collection.
- *
- * @public
- */
-export type UserRequestGenerator = {
-	[key in keyof typeof EUserResources]: (args: FetchArgs | PostArgs) => AxiosRequestConfig;
-};
-
-/**
- * Collection of request configs related to users.
- *
- * @public
- */
-export const userRequests: UserRequestGenerator = {
-	USER_DETAILS: (args: FetchArgs): AxiosRequestConfig => ({
+export function userDetails(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/oUZZZ8Oddwxs8Cd3iW3UEA/UserByScreenName',
 		params: {
@@ -39,8 +23,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
 		},
-	}),
-	USER_DETAILS_BY_ID: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userDetailsById(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/i_0UQ54YrCyqLUvgGzXygA/UserByRestId',
 		params: {
@@ -57,8 +44,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
 		},
-	}),
-	USER_FOLLOWERS: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userFollowers(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/V8zHw0SZijWORSsb-FNrng/Following',
 		params: {
@@ -91,8 +81,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	USER_FOLLOWING: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userFollowing(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/6y5TB_HrwQM0FBGDiNfoEA/Followers',
 		params: {
@@ -125,8 +118,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	USER_HIGHLIGHTS: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userHighlights(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/Tqc024xHjye_svtpHJ236Q/UserHighlightsTweets',
 		params: {
@@ -160,8 +156,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	USER_LIKES: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userLikes(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
 		params: {
@@ -198,8 +197,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	USER_TWEETS: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userTweets(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9bXBrlmUXOHFZEq0DuvYWA/UserTweets',
 		params: {
@@ -235,8 +237,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	USER_TWEETS_AND_REPLIES: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userTweetsAndReplies(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/JFsmXeZ0h-hs934UFSfayw/UserTweetsAndReplies',
 		params: {
@@ -272,8 +277,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	USER_MEDIA: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userMedia(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/EnIWTNQ8Tum-7t1NnZHOEQ/UserMedia',
 		params: {
@@ -310,8 +318,11 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	USER_SUBSCRIPTIONS: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function userSubscriptions(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/UWlxAhUnBNK0BYmeqNPqAw/UserCreatorSubscriptions',
 		params: {
@@ -344,5 +355,5 @@ export const userRequests: UserRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-};
+	};
+}

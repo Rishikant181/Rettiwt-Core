@@ -5,24 +5,9 @@ import { AxiosRequestConfig } from 'axios';
 
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
-import { ESpaceResources } from '../enums/Resources';
 
-/**
- * The type for the {@link spaceRequests} collection.
- *
- * @public
- */
-export type SpaceRequestGenerator = {
-	[key in keyof typeof ESpaceResources]: (args: FetchArgs) => AxiosRequestConfig;
-};
-
-/**
- * Collection of request configs related to space.
- *
- * @public
- */
-export const spaceRequests: SpaceRequestGenerator = {
-	SPACE_DETAILS_BY_ID: (args: FetchArgs): AxiosRequestConfig => ({
+export function spaceDetailsById(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
 		params: {
@@ -53,5 +38,5 @@ export const spaceRequests: SpaceRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-};
+	};
+}

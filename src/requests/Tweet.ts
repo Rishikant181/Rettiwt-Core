@@ -6,25 +6,10 @@ import { AxiosRequestConfig } from 'axios';
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
 import { PostArgs } from '../models/args/PostArgs';
-import { ETweetResources } from '../enums/Resources';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 
-/**
- * The type for the {@link tweetRequests} collection.
- *
- * @public
- */
-export type TweetRequestGenerator = {
-	[key in keyof typeof ETweetResources]: (args: FetchArgs | PostArgs) => AxiosRequestConfig;
-};
-
-/**
- * Collection of request configs related to tweets.
- *
- * @public
- */
-export const tweetRequests: TweetRequestGenerator = {
-	CREATE_RETWEET: (args: PostArgs): AxiosRequestConfig => ({
+export function createRetweet(args: PostArgs): AxiosRequestConfig {
+	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
 		data: JSON.stringify({
@@ -33,8 +18,11 @@ export const tweetRequests: TweetRequestGenerator = {
 				dark_request: false,
 			},
 		}),
-	}),
-	CREATE_TWEET: (args: PostArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function createTweet(args: PostArgs): AxiosRequestConfig {
+	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
 		data: JSON.stringify({
@@ -69,8 +57,11 @@ export const tweetRequests: TweetRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		}),
-	}),
-	FAVORITE_TWEET: (args: PostArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function favoriteTweet(args: PostArgs): AxiosRequestConfig {
+	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
 		data: JSON.stringify({
@@ -78,8 +69,11 @@ export const tweetRequests: TweetRequestGenerator = {
 				tweet_id: args.id,
 			},
 		}),
-	}),
-	TWEET_SEARCH: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function tweetSearch(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
 		params: {
@@ -113,8 +107,11 @@ export const tweetRequests: TweetRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	TWEET_DETAILS: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function tweetDetails(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId',
 		params: {
@@ -152,8 +149,11 @@ export const tweetRequests: TweetRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	TWEET_FAVORITERS: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function tweetFavoriters(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
 		params: {
@@ -186,8 +186,11 @@ export const tweetRequests: TweetRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-	TWEET_RETWEETERS: (args: FetchArgs): AxiosRequestConfig => ({
+	};
+}
+
+export function tweetRetweeters(args: FetchArgs): AxiosRequestConfig {
+	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',
 		params: {
@@ -220,5 +223,5 @@ export const tweetRequests: TweetRequestGenerator = {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
-	}),
-};
+	};
+}
