@@ -13,8 +13,7 @@ import {
 } from 'class-validator';
 
 // ENUMS
-import { ETweetResources } from '../../enums/Resources';
-import { EUploadSteps } from '../../enums/Request';
+import { EMediaResources, ETweetResources } from '../../enums/Resources';
 
 // MODELS
 import { DataValidationError } from '../errors/DataValidationError';
@@ -53,7 +52,7 @@ export class PostArgs {
 	public constructor(resourceType: string, args: PostArgs) {
 		this.id = args.id;
 		this.tweet = args.tweet ? new TweetArgs(args.tweet) : undefined;
-		this.upload = args.upload ? new UploadArgs(args.upload) : undefined;
+		this.upload = args.upload ? new UploadArgs(resourceType, args.upload) : undefined;
 
 		// Validating this object
 		const validationResult = validateSync(this, { groups: [resourceType] });
@@ -171,42 +170,37 @@ export class MediaArgs {
  * @public
  */
 export class UploadArgs {
-	/** The name of the step of the upload process to be executed. */
-	@IsNotEmpty()
-	public step: EUploadSteps;
-
 	/**
 	 * The size (in bytes) of the media file to be uploaded.
 	 *
 	 * @remarks The size must be \<= 5242880 bytes.
 	 */
 	@IsOptional()
-	@IsNotEmpty({ groups: [EUploadSteps.INITIALIZE] })
-	@Max(5242880, { groups: [EUploadSteps.INITIALIZE] })
+	@IsNotEmpty({ groups: [EMediaResources.MEDIA_UPLOAD_INIT] })
+	@Max(5242880, { groups: [EMediaResources.MEDIA_UPLOAD_INIT] })
 	public size?: number;
 
 	/** The media file to be uploaded. */
 	@IsOptional()
-	@IsNotEmpty({ groups: [EUploadSteps.APPEND] })
+	@IsNotEmpty({ groups: [EMediaResources.MEDIA_UPLOAD_APPEND] })
 	public media?: string | ArrayBuffer;
 
 	/** The id allocated to the media file to be uploaded. */
 	@IsOptional()
-	@IsNotEmpty({ groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
-	@IsNumberString(undefined, { groups: [EUploadSteps.APPEND, EUploadSteps.FINALIZE] })
+	@IsNotEmpty({ groups: [EMediaResources.MEDIA_UPLOAD_APPEND, EMediaResources.MEDIA_UPLOAD_FINALIZE] })
+	@IsNumberString(undefined, { groups: [EMediaResources.MEDIA_UPLOAD_APPEND, EMediaResources.MEDIA_UPLOAD_FINALIZE] })
 	public id?: string;
 
 	/**
 	 * @param args - The upload arguments for uploading the media file.
 	 */
-	public constructor(args: UploadArgs) {
-		this.step = args.step;
+	public constructor(resourceType: string, args: UploadArgs) {
 		this.size = args.size;
 		this.media = args.media;
 		this.id = args.id;
 
 		// Validating this object
-		const validationResult = validateSync(this, { groups: [args.step] });
+		const validationResult = validateSync(this, { groups: [resourceType] });
 
 		// If validation error occured
 		if (validationResult.length) {

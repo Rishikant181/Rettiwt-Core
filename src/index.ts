@@ -1,6 +1,5 @@
 // ENUMS
 export * from './enums/Errors';
-export * from './enums/Request';
 export * from './enums/Media';
 export * from './enums/Resources';
 
