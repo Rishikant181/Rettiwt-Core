@@ -20,6 +20,7 @@ export function listDetails(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -56,5 +57,6 @@ export function listTweets(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }

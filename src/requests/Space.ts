@@ -38,5 +38,6 @@ export function spaceDetailsById(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }

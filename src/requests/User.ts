@@ -23,6 +23,7 @@ export function userDetails(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -44,6 +45,7 @@ export function userDetailsById(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -81,6 +83,7 @@ export function userFollowers(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -118,6 +121,7 @@ export function userFollowing(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -156,6 +160,7 @@ export function userHighlights(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -197,6 +202,7 @@ export function userLikes(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -237,6 +243,7 @@ export function userTweets(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -277,6 +284,7 @@ export function userTweetsAndReplies(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -318,6 +326,7 @@ export function userMedia(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -355,5 +364,6 @@ export function userSubscriptions(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }

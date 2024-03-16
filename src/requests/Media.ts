@@ -21,6 +21,7 @@ export function mediaUploadAppend(args: PostArgs): AxiosRequestConfig {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
 		params: { command: 'APPEND', media_id: args.upload?.id, segment_index: 0 },
+		paramsSerializer: { encode: encodeURIComponent },
 		data: data,
 	};
 }
@@ -30,6 +31,7 @@ export function mediaUploadFinalize(args: PostArgs): AxiosRequestConfig {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
 		params: { command: 'FINALIZE', media_id: args.upload?.id },
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -38,6 +40,7 @@ export function mediaUploadInit(args: PostArgs): AxiosRequestConfig {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
 		params: { command: 'INIT', total_bytes: args.upload?.size },
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 

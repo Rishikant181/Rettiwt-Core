@@ -107,6 +107,7 @@ export function tweetSearch(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -149,6 +150,7 @@ export function tweetDetails(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -186,6 +188,7 @@ export function tweetFavoriters(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -223,5 +226,6 @@ export function tweetRetweeters(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
