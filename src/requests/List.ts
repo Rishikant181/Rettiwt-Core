@@ -3,10 +3,14 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
+// ENUMS
+import { EListResources } from '../enums/Resources';
+
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
 
 export function listDetails(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EListResources.LIST_DETAILS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
@@ -25,6 +29,7 @@ export function listDetails(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function listTweets(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EListResources.LIST_TWEETS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',

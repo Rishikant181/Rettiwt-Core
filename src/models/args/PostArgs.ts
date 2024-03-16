@@ -13,11 +13,14 @@ import {
 } from 'class-validator';
 
 // ENUMS
-import { EResourceType } from '../../enums/Resources';
+import { ETweetResources } from '../../enums/Resources';
 import { EUploadSteps } from '../../enums/Request';
 
 // MODELS
 import { DataValidationError } from '../errors/DataValidationError';
+
+// GROUPS
+import { requireNumericId, requireUploadArgs } from '../../validation/PostGroups';
 
 /**
  * User set query parameters that are used to specify the data that is to be posted.
@@ -27,27 +30,27 @@ import { DataValidationError } from '../errors/DataValidationError';
 export class PostArgs {
 	/** The id of the target resource. */
 	@IsOptional()
-	@IsNotEmpty({ groups: [EResourceType.FAVORITE_TWEET, EResourceType.CREATE_RETWEET] })
-	@IsNumberString(undefined, { groups: [EResourceType.FAVORITE_TWEET, EResourceType.CREATE_RETWEET] })
+	@IsNotEmpty({ groups: requireNumericId })
+	@IsNumberString(undefined, { groups: requireNumericId })
 	public id?: string;
 
 	/** The tweet that is to be posted. */
 	@IsOptional()
-	@IsNotEmpty({ groups: [EResourceType.CREATE_TWEET] })
-	@IsObject({ groups: [EResourceType.CREATE_TWEET] })
+	@IsNotEmpty({ groups: [ETweetResources.CREATE_TWEET] })
+	@IsObject({ groups: [ETweetResources.CREATE_TWEET] })
 	public tweet?: TweetArgs;
 
 	/** The media file to be uploaded. */
 	@IsOptional()
-	@IsNotEmpty({ groups: [EResourceType.MEDIA_UPLOAD] })
-	@IsObject({ groups: [EResourceType.MEDIA_UPLOAD] })
+	@IsNotEmpty({ groups: requireUploadArgs })
+	@IsObject({ groups: requireUploadArgs })
 	public upload?: UploadArgs;
 
 	/**
 	 * @param resourceType - The type of resource that is targeted.
 	 * @param args - The additional user-defined arguments for posting the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: PostArgs) {
+	public constructor(resourceType: string, args: PostArgs) {
 		this.id = args.id;
 		this.tweet = args.tweet ? new TweetArgs(args.tweet) : undefined;
 		this.upload = args.upload ? new UploadArgs(args.upload) : undefined;

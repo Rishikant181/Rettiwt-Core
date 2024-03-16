@@ -3,12 +3,16 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
+// ENUMS
+import { ETweetResources } from '../enums/Resources';
+
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
 import { PostArgs } from '../models/args/PostArgs';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 
 export function createRetweet(args: PostArgs): AxiosRequestConfig {
+	args = new PostArgs(ETweetResources.CREATE_RETWEET, args);
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
@@ -22,6 +26,7 @@ export function createRetweet(args: PostArgs): AxiosRequestConfig {
 }
 
 export function createTweet(args: PostArgs): AxiosRequestConfig {
+	args = new PostArgs(ETweetResources.CREATE_TWEET, args);
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
@@ -61,6 +66,7 @@ export function createTweet(args: PostArgs): AxiosRequestConfig {
 }
 
 export function favoriteTweet(args: PostArgs): AxiosRequestConfig {
+	args = new PostArgs(ETweetResources.FAVORITE_TWEET, args);
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
@@ -73,6 +79,7 @@ export function favoriteTweet(args: PostArgs): AxiosRequestConfig {
 }
 
 export function tweetSearch(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(ETweetResources.TWEET_SEARCH, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
@@ -112,6 +119,7 @@ export function tweetSearch(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function tweetDetails(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(ETweetResources.TWEET_DETAILS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId',
@@ -155,6 +163,7 @@ export function tweetDetails(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function tweetFavoriters(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(ETweetResources.TWEET_FAVORITERS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
@@ -193,6 +202,7 @@ export function tweetFavoriters(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function tweetRetweeters(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(ETweetResources.TWEET_RETWEETERS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',

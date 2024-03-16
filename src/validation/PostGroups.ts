@@ -1,5 +1,5 @@
 // ENUMS
-import { ETweetResources } from '../enums/Resources';
+import { EMediaResources, ETweetResources } from '../enums/Resources';
 
 /**
  * Collection of resources that require a numeric id.
@@ -7,3 +7,14 @@ import { ETweetResources } from '../enums/Resources';
  * @internal
  */
 export const requireNumericId = [ETweetResources.FAVORITE_TWEET, ETweetResources.CREATE_RETWEET];
+
+/**
+ * Collection of resources that require upload args.
+ *
+ * @internal
+ */
+export const requireUploadArgs = [
+	EMediaResources.MEDIA_UPLOAD_APPEND,
+	EMediaResources.MEDIA_UPLOAD_FINALIZE,
+	EMediaResources.MEDIA_UPLOAD_INIT,
+];

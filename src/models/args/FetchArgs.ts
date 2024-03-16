@@ -14,10 +14,19 @@ import {
 } from 'class-validator';
 
 // ENUMS
-import { EResourceType } from '../../enums/Resources';
+import { ETweetResources } from '../../enums/Resources';
 
 // MODELS
 import { DataValidationError } from '../errors/DataValidationError';
+
+// GROUPS
+import {
+	max100BatchSize,
+	max20BatchSize,
+	requireAlphaNumericId,
+	requireId,
+	requireNumericId,
+} from '../../validation/FetchGroups';
 
 /**
  * User set query parameters that are used to specify the data that is to be fetched.
@@ -32,8 +41,8 @@ export class FetchArgs {
 	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
 	 */
 	@IsOptional()
-	@IsNotEmpty({ groups: [EResourceType.TWEET_SEARCH] })
-	@IsObject({ groups: [EResourceType.TWEET_SEARCH] })
+	@IsNotEmpty({ groups: [ETweetResources.TWEET_SEARCH] })
+	@IsObject({ groups: [ETweetResources.TWEET_SEARCH] })
 	public filter?: TweetFilter;
 
 	/**
@@ -44,48 +53,9 @@ export class FetchArgs {
 	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
 	 */
 	@IsOptional()
-	@IsNotEmpty({
-		groups: [
-			EResourceType.LIST_DETAILS,
-			EResourceType.LIST_TWEETS,
-			EResourceType.TWEET_DETAILS,
-			EResourceType.TWEET_FAVORITERS,
-			EResourceType.TWEET_RETWEETERS,
-			EResourceType.USER_DETAILS,
-			EResourceType.USER_DETAILS_BY_ID,
-			EResourceType.USER_FOLLOWERS,
-			EResourceType.USER_FOLLOWING,
-			EResourceType.USER_HIGHLIGHTS,
-			EResourceType.USER_LIKES,
-			EResourceType.USER_MEDIA,
-			EResourceType.USER_SUBSCRIPTIONS,
-			EResourceType.USER_TWEETS,
-			EResourceType.USER_TWEETS_AND_REPLIES,
-			EResourceType.SPACE_DETAILS_BY_ID,
-			EResourceType.VIDEO_STREAM,
-		],
-	})
-	@IsNumberString(undefined, {
-		groups: [
-			EResourceType.LIST_DETAILS,
-			EResourceType.LIST_TWEETS,
-			EResourceType.TWEET_DETAILS,
-			EResourceType.TWEET_FAVORITERS,
-			EResourceType.TWEET_RETWEETERS,
-			EResourceType.USER_DETAILS_BY_ID,
-			EResourceType.USER_FOLLOWERS,
-			EResourceType.USER_FOLLOWING,
-			EResourceType.USER_HIGHLIGHTS,
-			EResourceType.USER_LIKES,
-			EResourceType.USER_MEDIA,
-			EResourceType.USER_SUBSCRIPTIONS,
-			EResourceType.USER_TWEETS,
-			EResourceType.USER_TWEETS_AND_REPLIES,
-		],
-	})
-	@IsString({
-		groups: [EResourceType.SPACE_DETAILS_BY_ID, EResourceType.VIDEO_STREAM],
-	})
+	@IsNotEmpty({ groups: requireId })
+	@IsNumberString(undefined, { groups: requireNumericId })
+	@IsString({ groups: requireAlphaNumericId })
 	public id?: string;
 
 	/**
@@ -99,22 +69,8 @@ export class FetchArgs {
 	 * @defaultValue 20
 	 */
 	@IsOptional()
-	@Max(100, {
-		groups: [
-			EResourceType.LIST_TWEETS,
-			EResourceType.TWEET_FAVORITERS,
-			EResourceType.TWEET_RETWEETERS,
-			EResourceType.USER_FOLLOWERS,
-			EResourceType.USER_FOLLOWING,
-			EResourceType.USER_HIGHLIGHTS,
-			EResourceType.USER_LIKES,
-			EResourceType.USER_MEDIA,
-			EResourceType.USER_SUBSCRIPTIONS,
-		],
-	})
-	@Max(20, {
-		groups: [EResourceType.TWEET_SEARCH, EResourceType.USER_TWEETS, EResourceType.USER_TWEETS_AND_REPLIES],
-	})
+	@Max(100, { groups: max100BatchSize })
+	@Max(20, { groups: max20BatchSize })
 	public count?: number;
 
 	/**
@@ -132,17 +88,11 @@ export class FetchArgs {
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
-	public constructor(resourceType: EResourceType, args: FetchArgs) {
+	public constructor(resourceType: string, args: FetchArgs) {
 		this.id = args.id;
 		this.count = args.count ?? 20;
 		this.cursor = args.cursor;
-
-		/**
-		 * Initializing filter only if resource type is TWEET_SEARCH
-		 */
-		if (resourceType == EResourceType.TWEET_SEARCH && args.filter) {
-			this.filter = new TweetFilter(args.filter);
-		}
+		this.filter = args.filter ? new TweetFilter(args.filter) : undefined;
 
 		// Validating this object
 		const validationResult = validateSync(this, { groups: [resourceType] });

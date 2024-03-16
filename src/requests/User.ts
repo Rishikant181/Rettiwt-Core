@@ -3,10 +3,14 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
+// ENUMS
+import { EUserResources } from '../enums/Resources';
+
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
 
 export function userDetails(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_DETAILS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/oUZZZ8Oddwxs8Cd3iW3UEA/UserByScreenName',
@@ -28,6 +32,7 @@ export function userDetails(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userDetailsById(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_DETAILS_BY_ID, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/i_0UQ54YrCyqLUvgGzXygA/UserByRestId',
@@ -50,6 +55,7 @@ export function userDetailsById(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userFollowers(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_FOLLOWERS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/V8zHw0SZijWORSsb-FNrng/Following',
@@ -88,6 +94,7 @@ export function userFollowers(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userFollowing(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_FOLLOWING, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/6y5TB_HrwQM0FBGDiNfoEA/Followers',
@@ -126,6 +133,7 @@ export function userFollowing(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userHighlights(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_HIGHLIGHTS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/Tqc024xHjye_svtpHJ236Q/UserHighlightsTweets',
@@ -165,6 +173,7 @@ export function userHighlights(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userLikes(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_LIKES, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
@@ -207,6 +216,7 @@ export function userLikes(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userTweets(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_TWEETS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9bXBrlmUXOHFZEq0DuvYWA/UserTweets',
@@ -248,6 +258,7 @@ export function userTweets(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userTweetsAndReplies(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_TWEETS_AND_REPLIES, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/JFsmXeZ0h-hs934UFSfayw/UserTweetsAndReplies',
@@ -289,6 +300,7 @@ export function userTweetsAndReplies(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userMedia(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_MEDIA, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/EnIWTNQ8Tum-7t1NnZHOEQ/UserMedia',
@@ -331,6 +343,7 @@ export function userMedia(args: FetchArgs): AxiosRequestConfig {
 }
 
 export function userSubscriptions(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(EUserResources.USER_SUBSCRIPTIONS, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/UWlxAhUnBNK0BYmeqNPqAw/UserCreatorSubscriptions',

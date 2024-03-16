@@ -3,10 +3,14 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
+// ENUMS
+import { ESpaceResources } from '../enums/Resources';
+
 // MODELS
 import { FetchArgs } from '../models/args/FetchArgs';
 
 export function spaceDetailsById(args: FetchArgs): AxiosRequestConfig {
+	args = new FetchArgs(ESpaceResources.SPACE_DETAILS_BY_ID, args);
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
