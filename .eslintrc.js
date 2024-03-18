@@ -10,7 +10,7 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		'plugin:import/recommended',
-		'plugin:import/typescript'
+		'plugin:import/typescript',
 	],
 	root: true,
 	env: {
@@ -47,6 +47,51 @@ module.exports = {
 		'@typescript-eslint/explicit-function-return-type': 'error',
 		'@typescript-eslint/explicit-module-boundary-types': 'error',
 		'@typescript-eslint/explicit-member-accessibility': 'error',
+		'@typescript-eslint/member-ordering': [
+			'warn',
+			{
+				default: {
+					memberTypes: [
+						// FIELDS
+
+						// PRIVATE
+						'private-static-readonly-field',
+						'private-static-field',
+						'private-field',
+
+						// PROTECTED
+						'protected-static-readonly-field',
+						'protected-static-field',
+						'protected-field',
+
+						// PUBLIC
+						'public-static-readonly-field',
+						'public-static-field',
+						'public-field',
+
+						// CONSTRUCTORS
+						'private-constructor',
+						'protected-constructor',
+						'public-constructor',
+
+						// METHODS
+
+						// PRIVATE
+						'private-static-method',
+						'private-method',
+
+						// PROTECTED
+						'protected-static-method',
+						'protected-method',
+
+						// PUBLIC
+						'public-static-method',
+						'public-method',
+					],
+					order: 'alphabetically',
+				},
+			},
+		],
 		'@typescript-eslint/no-explicit-any': 'warn',
 		'@typescript-eslint/no-extraneous-class': [
 			'warn',
@@ -59,7 +104,7 @@ module.exports = {
 		'sort-imports': [
 			'warn',
 			{
-				ignoreCase: false,
+				ignoreCase: true,
 				ignoreDeclarationSort: true,
 				ignoreMemberSort: false,
 				memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
@@ -69,18 +114,11 @@ module.exports = {
 		'import/order': [
 			'warn',
 			{
-				groups: [
-					'builtin',
-					'external',
-					'internal',
-					['sibling', 'parent'],
-					'index',
-					'unknown',
-			  	],
-			  	alphabetize: {
+				groups: [['builtin', 'external'], 'internal', ['sibling', 'parent'], 'index', 'unknown'],
+				alphabetize: {
 					order: 'asc',
 					caseInsensitive: true,
-			  	},
+				},
 			},
 		],
 	},

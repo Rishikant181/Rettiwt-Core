@@ -48,8 +48,8 @@ export class MediaEntityVariable {
  */
 export class ReplyVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
-	public in_reply_to_tweet_id: string;
 	public exclude_reply_user_ids: string[];
+	public in_reply_to_tweet_id: string;
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**

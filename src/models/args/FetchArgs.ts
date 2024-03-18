@@ -16,7 +16,7 @@ import {
 // ENUMS
 import { ETweetResources } from '../../enums/Resources';
 
-// MODELS
+// GROUPS
 import {
 	max100BatchSize,
 	max20BatchSize,
@@ -24,9 +24,9 @@ import {
 	requireId,
 	requireNumericId,
 } from '../../groups/Validation';
-import { DataValidationError } from '../errors/DataValidationError';
 
-// GROUPS
+// MODELS
+import { DataValidationError } from '../errors/DataValidationError';
 
 /**
  * User set query parameters that are used to specify the data that is to be fetched.
@@ -34,30 +34,6 @@ import { DataValidationError } from '../errors/DataValidationError';
  * @public
  */
 export class FetchArgs {
-	/**
-	 * The filter for searching.
-	 *
-	 * @remarks
-	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
-	 */
-	@IsOptional()
-	@IsNotEmpty({ groups: [ETweetResources.TWEET_SEARCH] })
-	@IsObject({ groups: [ETweetResources.TWEET_SEARCH] })
-	public filter?: TweetFilter;
-
-	/**
-	 * The id of the target resource.
-	 *
-	 * @remarks
-	 * - Required for all resources except {@link EResourceType.TWEET_SEARCH}.
-	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
-	 */
-	@IsOptional()
-	@IsNotEmpty({ groups: requireId })
-	@IsNumberString(undefined, { groups: requireNumericId })
-	@IsString({ groups: requireAlphaNumericId })
-	public id?: string;
-
 	/**
 	 * The number of data items to fetch.
 	 *
@@ -85,6 +61,30 @@ export class FetchArgs {
 	public cursor?: string;
 
 	/**
+	 * The filter for searching.
+	 *
+	 * @remarks
+	 * Required when resource type is {@link EResourceType.TWEET_SEARCH}
+	 */
+	@IsOptional()
+	@IsNotEmpty({ groups: [ETweetResources.TWEET_SEARCH] })
+	@IsObject({ groups: [ETweetResources.TWEET_SEARCH] })
+	public filter?: TweetFilter;
+
+	/**
+	 * The id of the target resource.
+	 *
+	 * @remarks
+	 * - Required for all resources except {@link EResourceType.TWEET_SEARCH}.
+	 * - For {@link EResourceType.USER_DETAILS}, can be alphanumeric, while for others, is strictly numeric.
+	 */
+	@IsOptional()
+	@IsNotEmpty({ groups: requireId })
+	@IsNumberString(undefined, { groups: requireNumericId })
+	@IsString({ groups: requireAlphaNumericId })
+	public id?: string;
+
+	/**
 	 * @param resourceType - The type of resource that is requested.
 	 * @param args - The additional user-defined arguments for fetching the resource.
 	 */
@@ -110,39 +110,16 @@ export class FetchArgs {
  * @public
  */
 export class TweetFilter {
-	/** The list of words to search. */
+	/** The date upto which tweets are to be searched. */
 	@IsOptional()
-	@IsArray()
-	@IsString({ each: true })
-	public includeWords?: string[];
-
-	/** The exact phrase to search. */
-	@IsOptional()
-	@IsString()
-	public includePhrase?: string;
-
-	/** The optional words to search. */
-	@IsOptional()
-	@IsArray()
-	@IsString({ each: true })
-	public optionalWords?: string[];
+	@IsDate()
+	public endDate?: Date;
 
 	/** The list of words to exclude from search. */
 	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
 	public excludeWords?: string[];
-
-	/**
-	 * The list of hashtags to search.
-	 *
-	 * @remarks
-	 * '#' must be excluded from the hashtag!
-	 */
-	@IsOptional()
-	@IsArray()
-	@IsString({ each: true })
-	public hashtags?: string[];
 
 	/**
 	 * The list of usernames whose tweets are to be searched.
@@ -156,15 +133,45 @@ export class TweetFilter {
 	public fromUsers?: string[];
 
 	/**
-	 * The list of username to whom the tweets to be searched, are adressed.
+	 * The list of hashtags to search.
 	 *
 	 * @remarks
-	 * '\@' must be excluded from the username!
+	 * '#' must be excluded from the hashtag!
 	 */
 	@IsOptional()
 	@IsArray()
 	@IsString({ each: true })
-	public toUsers?: string[];
+	public hashtags?: string[];
+
+	/** The exact phrase to search. */
+	@IsOptional()
+	@IsString()
+	public includePhrase?: string;
+
+	/** The list of words to search. */
+	@IsOptional()
+	@IsArray()
+	@IsString({ each: true })
+	public includeWords?: string[];
+
+	/** The language of the tweets to search. */
+	@IsOptional()
+	@IsString()
+	public language?: string;
+
+	/**
+	 * Whether to fetch tweets that are links or not.
+	 *
+	 * @defaultValue true
+	 */
+	@IsOptional()
+	@IsBoolean()
+	public links?: boolean = true;
+
+	/** The id of the tweet, before which the tweets are to be searched. */
+	@IsOptional()
+	@IsNumberString()
+	public maxId?: string;
 
 	/**
 	 * The list of username mentioned in the tweets to search.
@@ -177,59 +184,31 @@ export class TweetFilter {
 	@IsString({ each: true })
 	public mentions?: string[];
 
-	/** The minimum number of replies to search by. */
-	@IsOptional()
-	@IsNumber()
-	public minReplies?: number;
-
 	/** The minimun number of likes to search by. */
 	@IsOptional()
 	@IsNumber()
 	public minLikes?: number;
+
+	/** The minimum number of replies to search by. */
+	@IsOptional()
+	@IsNumber()
+	public minReplies?: number;
 
 	/** The minimum number of retweets to search by. */
 	@IsOptional()
 	@IsNumber()
 	public minRetweets?: number;
 
-	/** The language of the tweets to search. */
+	/** The optional words to search. */
 	@IsOptional()
-	@IsString()
-	public language?: string;
-
-	/** The date starting from which tweets are to be searched. */
-	@IsOptional()
-	@IsDate()
-	public startDate?: Date;
-
-	/** The date upto which tweets are to be searched. */
-	@IsOptional()
-	@IsDate()
-	public endDate?: Date;
-
-	/** The id of the tweet, after which the tweets are to be searched. */
-	@IsOptional()
-	@IsNumberString()
-	public sinceId?: string;
-
-	/** The id of the tweet, before which the tweets are to be searched. */
-	@IsOptional()
-	@IsNumberString()
-	public maxId?: string;
+	@IsArray()
+	@IsString({ each: true })
+	public optionalWords?: string[];
 
 	/** The id of the tweet which is quoted in the tweets to search. */
 	@IsOptional()
 	@IsNumberString()
 	public quoted?: string;
-
-	/**
-	 * Whether to fetch tweets that are links or not.
-	 *
-	 * @defaultValue true
-	 */
-	@IsOptional()
-	@IsBoolean()
-	public links?: boolean = true;
 
 	/**
 	 * Whether to fetch tweets that are replies or not.
@@ -239,6 +218,27 @@ export class TweetFilter {
 	@IsOptional()
 	@IsBoolean()
 	public replies?: boolean = true;
+
+	/** The id of the tweet, after which the tweets are to be searched. */
+	@IsOptional()
+	@IsNumberString()
+	public sinceId?: string;
+
+	/** The date starting from which tweets are to be searched. */
+	@IsOptional()
+	@IsDate()
+	public startDate?: Date;
+
+	/**
+	 * The list of username to whom the tweets to be searched, are adressed.
+	 *
+	 * @remarks
+	 * '\@' must be excluded from the username!
+	 */
+	@IsOptional()
+	@IsArray()
+	@IsString({ each: true })
+	public toUsers?: string[];
 
 	/**
 	 * @param filter - The filter to use for searching tweets.
@@ -274,6 +274,38 @@ export class TweetFilter {
 	}
 
 	/**
+	 * Convert Date object to Twitter string representation.
+	 * eg - 2023-06-23_11:21:06_UTC
+	 *
+	 * @param date - The date object to convert.
+	 * @returns The Twitter string representation of the date.
+	 *
+	 * @internal
+	 */
+	private static dateToTwitterString(date: Date): string {
+		// Converting localized date to UTC date
+		const utc = new Date(
+			Date.UTC(
+				date.getUTCFullYear(),
+				date.getUTCMonth(),
+				date.getUTCDate(),
+				date.getUTCHours(),
+				date.getUTCMinutes(),
+				date.getUTCSeconds(),
+			),
+		);
+
+		/**
+		 * To convert ISO 8601 date string to Twitter date string:
+		 *
+		 * - 'T' between date and time substring is replace with '_'.
+		 * - Milliseconds substring is omitted.
+		 * - '_UTC' is appended as suffix.
+		 */
+		return utc.toISOString().replace(/T/, '_').replace(/\..+/, '') + '_UTC';
+	}
+
+	/**
 	 * @returns The string representation of 'this' object.
 	 *
 	 * @internal
@@ -304,37 +336,5 @@ export class TweetFilter {
 			(this.links == false ? ' -filter:links' : '') +
 			(this.replies == false ? ' -filter:replies' : '')
 		);
-	}
-
-	/**
-	 * Convert Date object to Twitter string representation.
-	 * eg - 2023-06-23_11:21:06_UTC
-	 *
-	 * @param date - The date object to convert.
-	 * @returns The Twitter string representation of the date.
-	 *
-	 * @internal
-	 */
-	private static dateToTwitterString(date: Date): string {
-		// Converting localized date to UTC date
-		const utc = new Date(
-			Date.UTC(
-				date.getUTCFullYear(),
-				date.getUTCMonth(),
-				date.getUTCDate(),
-				date.getUTCHours(),
-				date.getUTCMinutes(),
-				date.getUTCSeconds(),
-			),
-		);
-
-		/**
-		 * To convert ISO 8601 date string to Twitter date string:
-		 *
-		 * - 'T' between date and time substring is replace with '_'.
-		 * - Milliseconds substring is omitted.
-		 * - '_UTC' is appended as suffix.
-		 */
-		return utc.toISOString().replace(/T/, '_').replace(/\..+/, '') + '_UTC';
 	}
 }

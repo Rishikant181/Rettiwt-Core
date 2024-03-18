@@ -10,21 +10,21 @@ import { EErrors } from '../../enums/Errors';
  * @public
  */
 export class DataValidationError {
-	/** The name of the error. */
-	public name: string;
+	/** The error data. */
+	public data: ValidationError[];
 
 	/** The user-friendly error message. */
 	public message: EErrors;
 
-	/** The error data. */
-	public data: ValidationError[];
+	/** The name of the error. */
+	public name: string;
 
 	/**
 	 * @param data - The error details, as a list of type {@link ValidationError}
 	 */
 	public constructor(errorDetails: ValidationError[]) {
-		this.name = 'VALIDATION_ERROR';
-		this.message = EErrors.VALIDATION_ERROR;
 		this.data = errorDetails;
+		this.message = EErrors.VALIDATION_ERROR;
+		this.name = 'VALIDATION_ERROR';
 	}
 }
