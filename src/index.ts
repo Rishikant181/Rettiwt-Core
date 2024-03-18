@@ -1,6 +1,5 @@
 // ENUMS
 export * from './enums/Errors';
-export * from './enums/Request';
 export * from './enums/Media';
 export * from './enums/Resources';
 
@@ -14,16 +13,7 @@ export * from './models/args/PostArgs';
 export * from './models/errors/DataValidationError';
 
 // PAYLOAD MODELS
-export * from './models/params/Features';
 export * from './models/params/Variables';
-
-// QUERIY MODELS
-export * from './models/queries/BaseQuery';
-export * from './models/queries/DataQuery';
-export * from './models/queries/UploadQuery';
-
-// REQUEST MODELS
-export * from './models/Request';
 
 // RESPONSE TYPES
 
