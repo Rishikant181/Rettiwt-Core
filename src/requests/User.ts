@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
@@ -15,6 +13,7 @@ export function userDetails(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/oUZZZ8Oddwxs8Cd3iW3UEA/UserByScreenName',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: { screen_name: args.id, withSafetyModeUserFields: true },
 			features: {
 				hidden_profile_likes_enabled: false,
@@ -26,6 +25,7 @@ export function userDetails(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -37,6 +37,7 @@ export function userDetailsById(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/i_0UQ54YrCyqLUvgGzXygA/UserByRestId',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: { userId: args.id, withSafetyModeUserFields: true },
 			features: {
 				hidden_profile_likes_enabled: false,
@@ -49,6 +50,7 @@ export function userDetailsById(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -60,6 +62,7 @@ export function userFollowers(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/V8zHw0SZijWORSsb-FNrng/Following',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				userId: args.id,
 				count: args.count,
@@ -88,6 +91,7 @@ export function userFollowers(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -99,6 +103,7 @@ export function userFollowing(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/6y5TB_HrwQM0FBGDiNfoEA/Followers',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				userId: args.id,
 				count: args.count,
@@ -127,6 +132,7 @@ export function userFollowing(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -138,6 +144,7 @@ export function userHighlights(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/Tqc024xHjye_svtpHJ236Q/UserHighlightsTweets',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				userId: args.id,
 				count: args.count,
@@ -167,6 +174,7 @@ export function userHighlights(args: FetchArgs): AxiosRequestConfig {
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -178,6 +186,7 @@ export function userLikes(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				userId: args.id,
 				count: args.count,
@@ -210,6 +219,7 @@ export function userLikes(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -221,6 +231,7 @@ export function userTweets(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9bXBrlmUXOHFZEq0DuvYWA/UserTweets',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				userId: args.id,
 				count: args.count,
@@ -252,6 +263,7 @@ export function userTweets(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -263,6 +275,7 @@ export function userTweetsAndReplies(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/JFsmXeZ0h-hs934UFSfayw/UserTweetsAndReplies',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				userId: args.id,
 				count: args.count,
@@ -294,6 +307,7 @@ export function userTweetsAndReplies(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -305,6 +319,7 @@ export function userMedia(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/EnIWTNQ8Tum-7t1NnZHOEQ/UserMedia',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				userId: args.id,
 				count: args.count,
@@ -337,6 +352,7 @@ export function userMedia(args: FetchArgs): AxiosRequestConfig {
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -348,6 +364,7 @@ export function userSubscriptions(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/UWlxAhUnBNK0BYmeqNPqAw/UserCreatorSubscriptions',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				userId: args.id,
 				count: args.count,
@@ -376,6 +393,7 @@ export function userSubscriptions(args: FetchArgs): AxiosRequestConfig {
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
@@ -15,6 +13,7 @@ export function spaceDetailsById(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: { id: args.id, isMetatagsQuery: true, withReplays: true, withListeners: true },
 			features: {
 				spaces_2022_h2_spaces_communities: true,
@@ -41,6 +40,7 @@ export function spaceDetailsById(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_graphql_timeline_navigation_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};

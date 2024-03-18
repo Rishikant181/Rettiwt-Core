@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
@@ -15,6 +13,7 @@ export function listDetails(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: { listId: args.id },
 			features: {
 				rweb_lists_timeline_redesign_enabled: true,
@@ -23,6 +22,7 @@ export function listDetails(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
 				responsive_web_graphql_timeline_navigation_enabled: true,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -34,6 +34,7 @@ export function listTweets(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				listId: args.id,
 				count: args.count,
@@ -61,6 +62,7 @@ export function listTweets(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};

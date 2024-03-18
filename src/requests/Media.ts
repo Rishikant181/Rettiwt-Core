@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
@@ -24,7 +22,13 @@ export function mediaUploadAppend(args: PostArgs): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
-		params: { command: 'APPEND', media_id: args.upload?.id, segment_index: 0 },
+		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			command: 'APPEND',
+			media_id: args.upload?.id,
+			segment_index: 0,
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
 		paramsSerializer: { encode: encodeURIComponent },
 		data: data,
 	};
@@ -35,7 +39,12 @@ export function mediaUploadFinalize(args: PostArgs): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
-		params: { command: 'FINALIZE', media_id: args.upload?.id },
+		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			command: 'FINALIZE',
+			media_id: args.upload?.id,
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
@@ -45,7 +54,12 @@ export function mediaUploadInit(args: PostArgs): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
-		params: { command: 'INIT', total_bytes: args.upload?.size },
+		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			command: 'INIT',
+			total_bytes: args.upload?.size,
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
 }

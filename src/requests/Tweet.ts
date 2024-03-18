@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
@@ -18,8 +16,10 @@ export function tweetRetweet(args: PostArgs): AxiosRequestConfig {
 		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
 		data: JSON.stringify({
 			variables: {
+				/* eslint-disable @typescript-eslint/naming-convention */
 				tweet_id: args.id,
 				dark_request: false,
+				/* eslint-enable @typescript-eslint/naming-convention */
 			},
 		}),
 	};
@@ -31,6 +31,7 @@ export function tweetCreate(args: PostArgs): AxiosRequestConfig {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
 		data: JSON.stringify({
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				tweet_text: args.tweet?.text,
 				dark_request: false,
@@ -61,6 +62,7 @@ export function tweetCreate(args: PostArgs): AxiosRequestConfig {
 				responsive_web_graphql_timeline_navigation_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		}),
 	};
 }
@@ -71,9 +73,11 @@ export function tweetFavorite(args: PostArgs): AxiosRequestConfig {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
 		data: JSON.stringify({
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				tweet_id: args.id,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		}),
 	};
 }
@@ -84,6 +88,7 @@ export function tweetSearch(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				rawQuery: args.filter?.toString(),
 				count: args.count,
@@ -113,6 +118,7 @@ export function tweetSearch(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -124,6 +130,7 @@ export function tweetDetails(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				tweetId: args.id,
 				referrer: 'home',
@@ -157,6 +164,7 @@ export function tweetDetails(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -168,6 +176,7 @@ export function tweetFavoriters(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				tweetId: args.id,
 				count: args.count,
@@ -196,6 +205,7 @@ export function tweetFavoriters(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
@@ -207,6 +217,7 @@ export function tweetRetweeters(args: FetchArgs): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				tweetId: args.id,
 				count: args.count,
@@ -235,6 +246,7 @@ export function tweetRetweeters(args: FetchArgs): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
