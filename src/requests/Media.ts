@@ -1,7 +1,8 @@
 // PACKAGES
+import fs from 'fs';
+
 import { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
-import fs from 'fs';
 
 // ENUMS
 import { EMediaResources } from '../enums/Resources';

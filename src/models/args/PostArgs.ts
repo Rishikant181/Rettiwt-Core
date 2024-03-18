@@ -16,10 +16,10 @@ import {
 import { EMediaResources, ETweetResources } from '../../enums/Resources';
 
 // MODELS
+import { requireNumericId, requireUploadArgs } from '../../groups/Validation';
 import { DataValidationError } from '../errors/DataValidationError';
 
 // GROUPS
-import { requireNumericId, requireUploadArgs } from '../../groups/Validation';
 
 /**
  * User set query parameters that are used to specify the data that is to be posted.

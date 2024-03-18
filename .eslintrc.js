@@ -5,8 +5,13 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 		sourceType: 'module',
 	},
-	plugins: ['@typescript-eslint/eslint-plugin', 'eslint-plugin-tsdoc'],
-	extends: ['plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking'],
+	plugins: ['@typescript-eslint/eslint-plugin', 'eslint-plugin-tsdoc', 'import'],
+	extends: [
+		'plugin:@typescript-eslint/recommended',
+		'plugin:@typescript-eslint/recommended-requiring-type-checking',
+		'plugin:import/recommended',
+		'plugin:import/typescript'
+	],
 	root: true,
 	env: {
 		node: true,
@@ -51,5 +56,32 @@ module.exports = {
 		],
 		'@typescript-eslint/no-inferrable-types': 'off',
 		'tsdoc/syntax': 'warn',
+		'sort-imports': [
+			'warn',
+			{
+				ignoreCase: false,
+				ignoreDeclarationSort: true,
+				ignoreMemberSort: false,
+				memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+				allowSeparatedGroups: true,
+			},
+		],
+		'import/order': [
+			'warn',
+			{
+				groups: [
+					'builtin',
+					'external',
+					'internal',
+					['sibling', 'parent'],
+					'index',
+					'unknown',
+			  	],
+			  	alphabetize: {
+					order: 'asc',
+					caseInsensitive: true,
+			  	},
+			},
+		],
 	},
 };

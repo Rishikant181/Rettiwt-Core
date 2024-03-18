@@ -4,8 +4,8 @@ import {
 	IsBoolean,
 	IsDate,
 	IsNotEmpty,
-	IsNumberString,
 	IsNumber,
+	IsNumberString,
 	IsObject,
 	IsOptional,
 	IsString,
@@ -17,9 +17,6 @@ import {
 import { ETweetResources } from '../../enums/Resources';
 
 // MODELS
-import { DataValidationError } from '../errors/DataValidationError';
-
-// GROUPS
 import {
 	max100BatchSize,
 	max20BatchSize,
@@ -27,6 +24,9 @@ import {
 	requireId,
 	requireNumericId,
 } from '../../groups/Validation';
+import { DataValidationError } from '../errors/DataValidationError';
+
+// GROUPS
 
 /**
  * User set query parameters that are used to specify the data that is to be fetched.
