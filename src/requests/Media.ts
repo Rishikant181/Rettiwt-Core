@@ -51,7 +51,7 @@ export function mediaUploadInit(args: PostArgs): AxiosRequestConfig {
 }
 
 export function videoStream(args: FetchArgs): AxiosRequestConfig {
-	args = new PostArgs(EMediaResources.VIDEO_STREAM, args);
+	args = new PostArgs(EMediaResources.MEDIA_VIDEO_STREAM, args);
 	return {
 		method: 'get',
 		url: `https://twitter.com/i/api/1.1/live_video_stream/status/${args.id as string}`,

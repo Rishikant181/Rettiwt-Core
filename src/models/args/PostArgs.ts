@@ -35,8 +35,8 @@ export class PostArgs {
 
 	/** The tweet that is to be posted. */
 	@IsOptional()
-	@IsNotEmpty({ groups: [ETweetResources.CREATE_TWEET] })
-	@IsObject({ groups: [ETweetResources.CREATE_TWEET] })
+	@IsNotEmpty({ groups: [ETweetResources.TWEET_CREATE] })
+	@IsObject({ groups: [ETweetResources.TWEET_CREATE] })
 	public tweet?: TweetArgs;
 
 	/** The media file to be uploaded. */

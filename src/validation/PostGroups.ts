@@ -6,7 +6,7 @@ import { EMediaResources, ETweetResources } from '../enums/Resources';
  *
  * @internal
  */
-export const requireNumericId = [ETweetResources.FAVORITE_TWEET, ETweetResources.CREATE_RETWEET];
+export const requireNumericId = [ETweetResources.TWEET_FAVORITE, ETweetResources.TWEET_RETWEET];
 
 /**
  * Collection of resources that require upload args.

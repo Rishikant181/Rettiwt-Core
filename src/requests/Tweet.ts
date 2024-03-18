@@ -12,7 +12,7 @@ import { PostArgs } from '../models/args/PostArgs';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 
 export function createRetweet(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(ETweetResources.CREATE_RETWEET, args);
+	args = new PostArgs(ETweetResources.TWEET_RETWEET, args);
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
@@ -26,7 +26,7 @@ export function createRetweet(args: PostArgs): AxiosRequestConfig {
 }
 
 export function createTweet(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(ETweetResources.CREATE_TWEET, args);
+	args = new PostArgs(ETweetResources.TWEET_CREATE, args);
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
@@ -66,7 +66,7 @@ export function createTweet(args: PostArgs): AxiosRequestConfig {
 }
 
 export function favoriteTweet(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(ETweetResources.FAVORITE_TWEET, args);
+	args = new PostArgs(ETweetResources.TWEET_FAVORITE, args);
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',

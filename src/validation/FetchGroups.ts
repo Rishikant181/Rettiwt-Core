@@ -9,7 +9,7 @@ import { EListResources, EMediaResources, ESpaceResources, ETweetResources, EUse
 export const requireId = [
 	EListResources.LIST_DETAILS,
 	EListResources.LIST_TWEETS,
-	EMediaResources.VIDEO_STREAM,
+	EMediaResources.MEDIA_VIDEO_STREAM,
 	ESpaceResources.SPACE_DETAILS_BY_ID,
 	ETweetResources.TWEET_DETAILS,
 	ETweetResources.TWEET_FAVORITERS,
@@ -53,7 +53,7 @@ export const requireNumericId = [
  *
  * @internal
  */
-export const requireAlphaNumericId = [EMediaResources.VIDEO_STREAM, ESpaceResources.SPACE_DETAILS_BY_ID];
+export const requireAlphaNumericId = [EMediaResources.MEDIA_VIDEO_STREAM, ESpaceResources.SPACE_DETAILS_BY_ID];
 
 /**
  * Collection of cursored resources whose max batch size can be 100.
