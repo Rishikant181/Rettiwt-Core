@@ -19,7 +19,7 @@ import { EMediaResources, ETweetResources } from '../../enums/Resources';
 import { DataValidationError } from '../errors/DataValidationError';
 
 // GROUPS
-import { requireNumericId, requireUploadArgs } from '../../validation/PostGroups';
+import { requireNumericId, requireUploadArgs } from '../../groups/Validation';
 
 /**
  * User set query parameters that are used to specify the data that is to be posted.

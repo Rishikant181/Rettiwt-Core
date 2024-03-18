@@ -35,7 +35,9 @@ export const requireNumericId = [
 	EListResources.LIST_DETAILS,
 	EListResources.LIST_TWEETS,
 	ETweetResources.TWEET_DETAILS,
+	ETweetResources.TWEET_FAVORITE,
 	ETweetResources.TWEET_FAVORITERS,
+	ETweetResources.TWEET_RETWEET,
 	ETweetResources.TWEET_RETWEETERS,
 	EUserResources.USER_DETAILS_BY_ID,
 	EUserResources.USER_FOLLOWERS,
@@ -81,4 +83,15 @@ export const max20BatchSize = [
 	ETweetResources.TWEET_SEARCH,
 	EUserResources.USER_TWEETS,
 	EUserResources.USER_TWEETS_AND_REPLIES,
+];
+
+/**
+ * Collection of resources that require upload args.
+ *
+ * @internal
+ */
+export const requireUploadArgs = [
+	EMediaResources.MEDIA_UPLOAD_APPEND,
+	EMediaResources.MEDIA_UPLOAD_FINALIZE,
+	EMediaResources.MEDIA_UPLOAD_INIT,
 ];

@@ -26,7 +26,7 @@ import {
 	requireAlphaNumericId,
 	requireId,
 	requireNumericId,
-} from '../../validation/FetchGroups';
+} from '../../groups/Validation';
 
 /**
  * User set query parameters that are used to specify the data that is to be fetched.
