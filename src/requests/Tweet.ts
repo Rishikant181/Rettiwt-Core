@@ -11,7 +11,7 @@ import { FetchArgs } from '../models/args/FetchArgs';
 import { PostArgs } from '../models/args/PostArgs';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 
-export function createRetweet(args: PostArgs): AxiosRequestConfig {
+export function tweetRetweet(args: PostArgs): AxiosRequestConfig {
 	args = new PostArgs(ETweetResources.TWEET_RETWEET, args);
 	return {
 		method: 'post',
@@ -25,7 +25,7 @@ export function createRetweet(args: PostArgs): AxiosRequestConfig {
 	};
 }
 
-export function createTweet(args: PostArgs): AxiosRequestConfig {
+export function tweetCreate(args: PostArgs): AxiosRequestConfig {
 	args = new PostArgs(ETweetResources.TWEET_CREATE, args);
 	return {
 		method: 'post',
@@ -65,7 +65,7 @@ export function createTweet(args: PostArgs): AxiosRequestConfig {
 	};
 }
 
-export function favoriteTweet(args: PostArgs): AxiosRequestConfig {
+export function tweetFavorite(args: PostArgs): AxiosRequestConfig {
 	args = new PostArgs(ETweetResources.TWEET_FAVORITE, args);
 	return {
 		method: 'post',

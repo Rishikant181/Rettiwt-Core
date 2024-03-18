@@ -50,7 +50,7 @@ export function mediaUploadInit(args: PostArgs): AxiosRequestConfig {
 	};
 }
 
-export function videoStream(args: FetchArgs): AxiosRequestConfig {
+export function mediaVideoStream(args: FetchArgs): AxiosRequestConfig {
 	args = new PostArgs(EMediaResources.MEDIA_VIDEO_STREAM, args);
 	return {
 		method: 'get',
