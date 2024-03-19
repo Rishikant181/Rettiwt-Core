@@ -26,17 +26,7 @@ export class NewTweet {
 	 * @remarks
 	 * Length of the tweet must be \<= 280 characters.
 	 */
-	public text: string;
-
-	/**
-	 * @param args - The additional user-defined arguments for posting the resource.
-	 */
-	public constructor(args: NewTweet) {
-		this.text = args.text;
-		this.quote = args.quote;
-		this.media = args.media ? args.media.map((item) => new NewTweetMedia(item)) : undefined;
-		this.replyTo = args.replyTo;
-	}
+	public text: string = '';
 }
 
 /**
@@ -46,7 +36,7 @@ export class NewTweet {
  */
 export class NewTweetMedia {
 	/** The id of the media to upload. */
-	public id: string;
+	public id: string = '';
 
 	/**
 	 * The list of id of the users tagged in the media.
@@ -55,12 +45,4 @@ export class NewTweetMedia {
 	 * Maximum number of users that can be tagged is 10.
 	 */
 	public tags?: string[];
-
-	/**
-	 * @param args - The media arguments specifying the media.
-	 */
-	public constructor(args: NewTweetMedia) {
-		this.id = args.id;
-		this.tags = args.tags ?? [];
-	}
 }
