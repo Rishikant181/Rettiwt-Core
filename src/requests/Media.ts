@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
 import fs from 'fs';
 
-export function append(id: string, media: string | ArrayBuffer): AxiosRequestConfig {
+export function appendUpload(id: string, media: string | ArrayBuffer): AxiosRequestConfig {
 	const data = new FormData();
 	data.append('media', typeof media == 'string' ? fs.createReadStream(media) : Buffer.from(media));
 	return {
