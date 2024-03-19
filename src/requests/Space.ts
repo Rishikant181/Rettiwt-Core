@@ -1,7 +1,7 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-export function spaceDetailsById(id: string): AxiosRequestConfig {
+export function details(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',

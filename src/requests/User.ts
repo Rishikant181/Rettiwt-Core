@@ -1,7 +1,7 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-export function userDetails(userName: string): AxiosRequestConfig {
+export function detailsByUsername(userName: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/oUZZZ8Oddwxs8Cd3iW3UEA/UserByScreenName',
@@ -24,7 +24,7 @@ export function userDetails(userName: string): AxiosRequestConfig {
 	};
 }
 
-export function userDetailsById(id: string): AxiosRequestConfig {
+export function detailsById(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/i_0UQ54YrCyqLUvgGzXygA/UserByRestId',
@@ -48,7 +48,7 @@ export function userDetailsById(id: string): AxiosRequestConfig {
 	};
 }
 
-export function userFollowers(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function following(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/V8zHw0SZijWORSsb-FNrng/Following',
@@ -88,7 +88,7 @@ export function userFollowers(id: string, count?: number, cursor?: string): Axio
 	};
 }
 
-export function userFollowing(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function followers(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/6y5TB_HrwQM0FBGDiNfoEA/Followers',
@@ -128,7 +128,7 @@ export function userFollowing(id: string, count?: number, cursor?: string): Axio
 	};
 }
 
-export function userHighlights(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function highlights(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/Tqc024xHjye_svtpHJ236Q/UserHighlightsTweets',
@@ -169,7 +169,7 @@ export function userHighlights(id: string, count?: number, cursor?: string): Axi
 	};
 }
 
-export function userLikes(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function likes(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
@@ -213,7 +213,7 @@ export function userLikes(id: string, count?: number, cursor?: string): AxiosReq
 	};
 }
 
-export function userTweets(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function tweets(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9bXBrlmUXOHFZEq0DuvYWA/UserTweets',
@@ -256,7 +256,7 @@ export function userTweets(id: string, count?: number, cursor?: string): AxiosRe
 	};
 }
 
-export function userTweetsAndReplies(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function tweetsAndReplies(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/JFsmXeZ0h-hs934UFSfayw/UserTweetsAndReplies',
@@ -299,7 +299,7 @@ export function userTweetsAndReplies(id: string, count?: number, cursor?: string
 	};
 }
 
-export function userMedia(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function media(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/EnIWTNQ8Tum-7t1NnZHOEQ/UserMedia',
@@ -343,7 +343,7 @@ export function userMedia(id: string, count?: number, cursor?: string): AxiosReq
 	};
 }
 
-export function userSubscriptions(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function subscriptions(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/UWlxAhUnBNK0BYmeqNPqAw/UserCreatorSubscriptions',

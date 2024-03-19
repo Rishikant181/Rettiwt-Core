@@ -1,7 +1,7 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-export function listDetails(id: string): AxiosRequestConfig {
+export function details(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
@@ -21,7 +21,7 @@ export function listDetails(id: string): AxiosRequestConfig {
 	};
 }
 
-export function listTweets(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function tweets(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',

@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
 import fs from 'fs';
 
-export function mediaUploadAppend(id: string, media: string | ArrayBuffer): AxiosRequestConfig {
+export function append(id: string, media: string | ArrayBuffer): AxiosRequestConfig {
 	const data = new FormData();
 	data.append('media', typeof media == 'string' ? fs.createReadStream(media) : Buffer.from(media));
 	return {
@@ -21,7 +21,7 @@ export function mediaUploadAppend(id: string, media: string | ArrayBuffer): Axio
 	};
 }
 
-export function mediaUploadFinalize(id: string): AxiosRequestConfig {
+export function finalizeUpload(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
@@ -35,7 +35,7 @@ export function mediaUploadFinalize(id: string): AxiosRequestConfig {
 	};
 }
 
-export function mediaUploadInit(size: number): AxiosRequestConfig {
+export function initializeUpload(size: number): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
@@ -49,7 +49,7 @@ export function mediaUploadInit(size: number): AxiosRequestConfig {
 	};
 }
 
-export function mediaVideoStream(id: string): AxiosRequestConfig {
+export function videoStream(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: `https://twitter.com/i/api/1.1/live_video_stream/status/${id}`,

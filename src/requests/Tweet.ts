@@ -6,7 +6,7 @@ import { NewTweet } from '../models/args/NewTweet';
 import { TweetFilter } from '../models/args/TweetFilter';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 
-export function tweetRetweet(id: string): AxiosRequestConfig {
+export function retweet(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
@@ -21,7 +21,7 @@ export function tweetRetweet(id: string): AxiosRequestConfig {
 	};
 }
 
-export function tweetCreate(args: NewTweet): AxiosRequestConfig {
+export function create(args: NewTweet): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
@@ -62,7 +62,7 @@ export function tweetCreate(args: NewTweet): AxiosRequestConfig {
 	};
 }
 
-export function tweetFavorite(id: string): AxiosRequestConfig {
+export function favorite(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
@@ -76,7 +76,7 @@ export function tweetFavorite(id: string): AxiosRequestConfig {
 	};
 }
 
-export function tweetSearch(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
+export function search(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
@@ -117,7 +117,7 @@ export function tweetSearch(filter: TweetFilter, count?: number, cursor?: string
 	};
 }
 
-export function tweetDetails(id: string): AxiosRequestConfig {
+export function details(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId',
@@ -162,7 +162,7 @@ export function tweetDetails(id: string): AxiosRequestConfig {
 	};
 }
 
-export function tweetFavoriters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function favoriters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
@@ -202,7 +202,7 @@ export function tweetFavoriters(id: string, count?: number, cursor?: string): Ax
 	};
 }
 
-export function tweetRetweeters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function retweeters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',
