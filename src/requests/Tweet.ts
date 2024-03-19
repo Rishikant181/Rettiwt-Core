@@ -22,6 +22,7 @@ export function retweet(id: string): AxiosRequestConfig {
 }
 
 export function create(args: NewTweet): AxiosRequestConfig {
+	args = new NewTweet(args);
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
