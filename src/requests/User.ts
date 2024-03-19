@@ -1,20 +1,13 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-// ENUMS
-import { EUserResources } from '../enums/Resources';
-
-// MODELS
-import { FetchArgs } from '../models/args/FetchArgs';
-
-export function userDetails(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_DETAILS, args);
+export function userDetails(userName: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/oUZZZ8Oddwxs8Cd3iW3UEA/UserByScreenName',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: { screen_name: args.id, withSafetyModeUserFields: true },
+			variables: { screen_name: userName, withSafetyModeUserFields: true },
 			features: {
 				hidden_profile_likes_enabled: false,
 				responsive_web_graphql_exclude_directive_enabled: true,
@@ -31,14 +24,13 @@ export function userDetails(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userDetailsById(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_DETAILS_BY_ID, args);
+export function userDetailsById(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/i_0UQ54YrCyqLUvgGzXygA/UserByRestId',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: { userId: args.id, withSafetyModeUserFields: true },
+			variables: { userId: id, withSafetyModeUserFields: true },
 			features: {
 				hidden_profile_likes_enabled: false,
 				hidden_profile_subscriptions_enabled: false,
@@ -56,17 +48,16 @@ export function userDetailsById(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userFollowers(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_FOLLOWERS, args);
+export function userFollowers(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/V8zHw0SZijWORSsb-FNrng/Following',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				userId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				userId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 			},
 			features: {
@@ -97,17 +88,16 @@ export function userFollowers(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userFollowing(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_FOLLOWING, args);
+export function userFollowing(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/6y5TB_HrwQM0FBGDiNfoEA/Followers',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				userId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				userId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 			},
 			features: {
@@ -138,17 +128,16 @@ export function userFollowing(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userHighlights(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_HIGHLIGHTS, args);
+export function userHighlights(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/Tqc024xHjye_svtpHJ236Q/UserHighlightsTweets',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				userId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				userId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 				withVoice: false,
 			},
@@ -180,17 +169,16 @@ export function userHighlights(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userLikes(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_LIKES, args);
+export function userLikes(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				userId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				userId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 				withClientEventToken: false,
 				withBirdwatchNotes: false,
@@ -225,17 +213,16 @@ export function userLikes(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userTweets(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_TWEETS, args);
+export function userTweets(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9bXBrlmUXOHFZEq0DuvYWA/UserTweets',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				userId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				userId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 				withQuickPromoteEligibilityTweetFields: false,
 				withVoice: false,
@@ -269,17 +256,16 @@ export function userTweets(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userTweetsAndReplies(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_TWEETS_AND_REPLIES, args);
+export function userTweetsAndReplies(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/JFsmXeZ0h-hs934UFSfayw/UserTweetsAndReplies',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				userId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				userId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 				withCommunity: false,
 				withVoice: false,
@@ -313,17 +299,16 @@ export function userTweetsAndReplies(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userMedia(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_MEDIA, args);
+export function userMedia(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/EnIWTNQ8Tum-7t1NnZHOEQ/UserMedia',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				userId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				userId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 				withClientEventToken: false,
 				withBirdwatchNotes: false,
@@ -358,17 +343,16 @@ export function userMedia(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function userSubscriptions(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EUserResources.USER_SUBSCRIPTIONS, args);
+export function userSubscriptions(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/UWlxAhUnBNK0BYmeqNPqAw/UserCreatorSubscriptions',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				userId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				userId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 			},
 			features: {

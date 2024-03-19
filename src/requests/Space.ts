@@ -1,20 +1,13 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-// ENUMS
-import { ESpaceResources } from '../enums/Resources';
-
-// MODELS
-import { FetchArgs } from '../models/args/FetchArgs';
-
-export function spaceDetailsById(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(ESpaceResources.SPACE_DETAILS_BY_ID, args);
+export function spaceDetailsById(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: { id: args.id, isMetatagsQuery: true, withReplays: true, withListeners: true },
+			variables: { id: id, isMetatagsQuery: true, withReplays: true, withListeners: true },
 			features: {
 				spaces_2022_h2_spaces_communities: true,
 				spaces_2022_h2_clipping: true,

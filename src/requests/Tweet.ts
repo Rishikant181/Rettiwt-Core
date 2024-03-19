@@ -1,23 +1,19 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-// ENUMS
-import { ETweetResources } from '../enums/Resources';
-
 // MODELS
-import { FetchArgs } from '../models/args/FetchArgs';
-import { PostArgs } from '../models/args/PostArgs';
+import { NewTweet } from '../models/args/NewTweet';
+import { TweetFilter } from '../models/args/TweetFilter';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 
-export function tweetRetweet(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(ETweetResources.TWEET_RETWEET, args);
+export function tweetRetweet(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
 		data: JSON.stringify({
 			variables: {
 				/* eslint-disable @typescript-eslint/naming-convention */
-				tweet_id: args.id,
+				tweet_id: id,
 				dark_request: false,
 				/* eslint-enable @typescript-eslint/naming-convention */
 			},
@@ -25,19 +21,18 @@ export function tweetRetweet(args: PostArgs): AxiosRequestConfig {
 	};
 }
 
-export function tweetCreate(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(ETweetResources.TWEET_CREATE, args);
+export function tweetCreate(args: NewTweet): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
 		data: JSON.stringify({
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				tweet_text: args.tweet?.text,
+				tweet_text: args.text,
 				dark_request: false,
-				attachment_url: args.tweet?.quote ? `https://twitter.com/i/status/${args.tweet.quote}` : undefined,
-				media: args.tweet?.media ? new MediaVariable(args.tweet.media) : undefined,
-				reply: args.tweet?.replyTo ? new ReplyVariable(args.tweet.replyTo) : undefined,
+				attachment_url: args.quote ? `https://twitter.com/i/status/${args.quote}` : undefined,
+				media: args.media ? new MediaVariable(args.media) : undefined,
+				reply: args.replyTo ? new ReplyVariable(args.replyTo) : undefined,
 				semantic_annotation_ids: [],
 			},
 			features: {
@@ -67,32 +62,30 @@ export function tweetCreate(args: PostArgs): AxiosRequestConfig {
 	};
 }
 
-export function tweetFavorite(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(ETweetResources.TWEET_FAVORITE, args);
+export function tweetFavorite(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
 		data: JSON.stringify({
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				tweet_id: args.id,
+				tweet_id: id,
 			},
 			/* eslint-enable @typescript-eslint/naming-convention */
 		}),
 	};
 }
 
-export function tweetSearch(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(ETweetResources.TWEET_SEARCH, args);
+export function tweetSearch(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				rawQuery: args.filter?.toString(),
-				count: args.count,
-				cursor: args.cursor,
+				rawQuery: new TweetFilter(filter).toString(),
+				count: count,
+				cursor: cursor,
 				querySource: 'typed_query',
 				product: 'Latest',
 			},
@@ -124,15 +117,14 @@ export function tweetSearch(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function tweetDetails(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(ETweetResources.TWEET_DETAILS, args);
+export function tweetDetails(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				tweetId: args.id,
+				tweetId: id,
 				referrer: 'home',
 				with_rux_injections: false,
 				includePromotedContent: false,
@@ -170,17 +162,16 @@ export function tweetDetails(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function tweetFavoriters(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(ETweetResources.TWEET_FAVORITERS, args);
+export function tweetFavoriters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				tweetId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				tweetId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 			},
 			features: {
@@ -211,17 +202,16 @@ export function tweetFavoriters(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function tweetRetweeters(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(ETweetResources.TWEET_RETWEETERS, args);
+export function tweetRetweeters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				tweetId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				tweetId: id,
+				count: count,
+				cursor: cursor,
 				includePromotedContent: false,
 			},
 			features: {

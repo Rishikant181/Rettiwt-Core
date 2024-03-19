@@ -1,20 +1,13 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-// ENUMS
-import { EListResources } from '../enums/Resources';
-
-// MODELS
-import { FetchArgs } from '../models/args/FetchArgs';
-
-export function listDetails(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EListResources.LIST_DETAILS, args);
+export function listDetails(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: { listId: args.id },
+			variables: { listId: id },
 			features: {
 				rweb_lists_timeline_redesign_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
@@ -28,17 +21,16 @@ export function listDetails(args: FetchArgs): AxiosRequestConfig {
 	};
 }
 
-export function listTweets(args: FetchArgs): AxiosRequestConfig {
-	args = new FetchArgs(EListResources.LIST_TWEETS, args);
+export function listTweets(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				listId: args.id,
-				count: args.count,
-				cursor: args.cursor,
+				listId: id,
+				count: count,
+				cursor: cursor,
 			},
 			features: {
 				rweb_lists_timeline_redesign_enabled: true,

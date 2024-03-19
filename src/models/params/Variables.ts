@@ -1,5 +1,5 @@
 // MODELS
-import { MediaArgs } from '../args/PostArgs';
+import { NewTweetMedia } from '../args/NewTweet';
 
 /**
  * Media to be sent as payload.
@@ -15,7 +15,7 @@ export class MediaVariable {
 	/**
 	 * @param media - The list of MediaArgs objects specifying the media items to be sent in the Tweet.
 	 */
-	public constructor(media: MediaArgs[]) {
+	public constructor(media: NewTweetMedia[]) {
 		this.media_entities = media.map((item) => new MediaEntityVariable(item));
 		this.possibly_sensitive = false;
 	}
@@ -35,7 +35,7 @@ export class MediaEntityVariable {
 	/**
 	 * @param media - The MediaArgs object specifying the details of the media item to be included in the payload.
 	 */
-	public constructor(media: MediaArgs) {
+	public constructor(media: NewTweetMedia) {
 		this.media_id = media.id;
 		this.tagged_users = media.tags ?? [];
 	}

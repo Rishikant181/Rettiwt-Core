@@ -1,16 +1,12 @@
 // ENUMS
 export * from './enums/Errors';
 export * from './enums/Media';
-export * from './enums/Resources';
 
 // CLASSES
 
 // ARG MODELS
-export * from './models/args/FetchArgs';
-export * from './models/args/PostArgs';
-
-// ERROR MODELS
-export * from './models/errors/DataValidationError';
+export * from './models/args/TweetFilter';
+export * from './models/args/NewTweet';
 
 // PAYLOAD MODELS
 export * from './models/params/Variables';

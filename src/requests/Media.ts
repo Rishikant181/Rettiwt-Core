@@ -3,29 +3,16 @@ import { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
 import fs from 'fs';
 
-// ENUMS
-import { EMediaResources } from '../enums/Resources';
-
-// MODELS
-import { FetchArgs } from '../models/args/FetchArgs';
-import { PostArgs } from '../models/args/PostArgs';
-
-export function mediaUploadAppend(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(EMediaResources.MEDIA_UPLOAD_APPEND, args);
+export function mediaUploadAppend(id: string, media: string | ArrayBuffer): AxiosRequestConfig {
 	const data = new FormData();
-	data.append(
-		'media',
-		typeof args.upload?.media == 'string'
-			? fs.createReadStream(args.upload.media)
-			: Buffer.from(args.upload?.media as ArrayBuffer),
-	);
+	data.append('media', typeof media == 'string' ? fs.createReadStream(media) : Buffer.from(media));
 	return {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			command: 'APPEND',
-			media_id: args.upload?.id,
+			media_id: id,
 			segment_index: 0,
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
@@ -34,40 +21,37 @@ export function mediaUploadAppend(args: PostArgs): AxiosRequestConfig {
 	};
 }
 
-export function mediaUploadFinalize(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(EMediaResources.MEDIA_UPLOAD_FINALIZE, args);
+export function mediaUploadFinalize(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			command: 'FINALIZE',
-			media_id: args.upload?.id,
+			media_id: id,
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
-export function mediaUploadInit(args: PostArgs): AxiosRequestConfig {
-	args = new PostArgs(EMediaResources.MEDIA_UPLOAD_INIT, args);
+export function mediaUploadInit(size: number): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://upload.twitter.com/i/media/upload.json',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			command: 'INIT',
-			total_bytes: args.upload?.size,
+			total_bytes: size,
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
-export function mediaVideoStream(args: FetchArgs): AxiosRequestConfig {
-	args = new PostArgs(EMediaResources.MEDIA_VIDEO_STREAM, args);
+export function mediaVideoStream(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
-		url: `https://twitter.com/i/api/1.1/live_video_stream/status/${args.id as string}`,
+		url: `https://twitter.com/i/api/1.1/live_video_stream/status/${id}`,
 	};
 }
