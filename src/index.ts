@@ -1,5 +1,4 @@
 // ENUMS
-export * from './enums/Errors';
 export * from './enums/Media';
 
 // CLASSES
