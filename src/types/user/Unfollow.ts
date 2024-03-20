@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 /**
- * The raw data received when following a given user.
+ * The raw data received when unfollowing a given user.
  *
  * @public
  */
