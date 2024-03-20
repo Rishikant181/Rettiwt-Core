@@ -1,13 +1,11 @@
 // ENUMS
 export * from './enums/Media';
 
-// CLASSES
-
 // ARG MODELS
-export * from './models/args/TweetFilter';
 export * from './models/args/NewTweet';
+export * from './models/args/TweetFilter';
 
-// PAYLOAD MODELS
+// PARAMS MODELS
 export * from './models/params/Variables';
 
 // RESPONSE TYPES
@@ -17,23 +15,24 @@ export { Root as IListDetailsResponse } from './types/list/Details';
 export { Root as IListTweetsResponse } from './types/list/Tweets';
 
 // MEDIA
-export { Root as IMediaUploadInitializeResponse } from './types/media/InitalizeUpload';
-export { Root as IMediaUploadFinalizeResponse } from './types/media/FinalizeUpload';
+export { Root as IFinalizeMediaUploadResponse } from './types/media/FinalizeUpload';
+export { Root as IInitializeMediaUploadResponse } from './types/media/InitalizeUpload';
 export { Root as IVideoStreamResponse } from './types/media/LiveVideoStream';
 
 // SPACES
-export { Root as ISpaceDetailsResponse } from './types/space/Space';
+export { Root as ISpaceDetailsResponse } from './types/space/Details';
 
 // TWEETS
-export { Root as ITweetFavoritersResponse } from './types/tweet/Favouriters';
-export { Root as ITweetRetweetersResponse } from './types/tweet/Retweeters';
-export { Root as ITweetDetailsResponse } from './types/tweet/Tweet';
-export { Root as ITweetSearchResponse } from './types/tweet/Search';
 export { Root as ITweetCreateResponse } from './types/tweet/Create';
+export { Root as ITweetDetailsResponse } from './types/tweet/Details';
 export { Root as ITweetFavoriteResponse } from './types/tweet/Favorite';
+export { Root as ITweetFavoritersResponse } from './types/tweet/Favouriters';
 export { Root as ITweetRetweetResponse } from './types/tweet/Retweet';
+export { Root as ITweetRetweetersResponse } from './types/tweet/Retweeters';
+export { Root as ITweetSearchResponse } from './types/tweet/Search';
 
 // USERS
+export { Root as IUserDetailsResponse } from './types/user/Details';
 export { Root as IUserFollowersResponse } from './types/user/Followers';
 export { Root as IUserFollowingResponse } from './types/user/Following';
 export { Root as IUserHighlightsResponse } from './types/user/Highlights';
@@ -42,7 +41,6 @@ export { Root as IUserMediaResponse } from './types/user/Media';
 export { Root as IUserSubscriptionsResponse } from './types/user/Subscriptions';
 export { Root as IUserTweetsResponse } from './types/user/Tweets';
 export { Root as IUserTweetsAndRepliesResponse } from './types/user/TweetsAndReplies';
-export { Root as IUserDetailsResponse } from './types/user/User';
 
 // RAW TYPES
 
