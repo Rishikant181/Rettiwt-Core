@@ -284,6 +284,26 @@ export function search(filter: TweetFilter, count?: number, cursor?: string): Ax
 }
 
 /**
+ * @param id - The id of the tweet to be unliked.
+ *
+ * @public
+ */
+export function unlike(id: string): AxiosRequestConfig {
+	const data = JSON.stringify({
+		/* eslint-disable @typescript-eslint/naming-convention */
+		variables: {
+			tweet_id: id,
+		},
+		/* eslint-enable @typescript-eslint/naming-convention */
+	});
+	return {
+		method: 'post',
+		url: 'https://twitter.com/i/api/graphql/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet',
+		data: data,
+	};
+}
+
+/**
  * @param id - The id of the tweet to be unposted.
  *
  * @public
