@@ -467,3 +467,21 @@ export function tweetsAndReplies(id: string, count?: number, cursor?: string): A
 		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
+
+/**
+ * @param id - The id of the user to be unfollowed.
+ *
+ * @public
+ */
+export function unfollow(id: string): AxiosRequestConfig {
+	const data = qs.stringify({
+		/* eslint-disable @typescript-eslint/naming-convention */
+		user_id: id,
+		/* eslint-enable @typescript-eslint/naming-convention */
+	});
+	return {
+		method: 'post',
+		url: 'https://twitter.com/i/api/1.1/friendships/destroy.json',
+		data: data,
+	};
+}

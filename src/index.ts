@@ -45,6 +45,7 @@ export { Root as IUserMediaResponse } from './types/user/Media';
 export { Root as IUserSubscriptionsResponse } from './types/user/Subscriptions';
 export { Root as IUserTweetsResponse } from './types/user/Tweets';
 export { Root as IUserTweetsAndRepliesResponse } from './types/user/TweetsAndReplies';
+export { Root as IUserUnfollowResponse } from './types/user/Unfollow';
 
 // RAW TYPES
 
