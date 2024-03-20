@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 /**
- * The raw data received when unretweeting.
+ * The raw data received when unretweeting a tweet.
  *
  * @public
  */
