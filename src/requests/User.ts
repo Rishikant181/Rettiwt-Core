@@ -1,5 +1,6 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
+import qs from 'querystring';
 
 /**
  * @param id - The id of the user whose details are to be fetched.
@@ -55,6 +56,22 @@ export function detailsByUsername(userName: string): AxiosRequestConfig {
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
+	};
+}
+
+/**
+ * @param id - The id of the user to follow.
+ */
+export function follow(id: string): AxiosRequestConfig {
+	const data = qs.stringify({
+		/* eslint-disable @typescript-eslint/naming-convention */
+		user_id: id,
+		/* eslint-enable @typescript-eslint/naming-convention */
+	});
+	return {
+		method: 'post',
+		url: 'https://twitter.com/i/api/1.1/friendships/create.json',
+		data: data,
 	};
 }
 
