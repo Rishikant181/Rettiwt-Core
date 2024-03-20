@@ -302,3 +302,23 @@ export function unpost(id: string): AxiosRequestConfig {
 		data: data,
 	};
 }
+
+/**
+ * @param id - The id of the source tweet (which was retweeted), to be unretweeted.
+ *
+ * @public
+ */
+export function unretweet(id: string): AxiosRequestConfig {
+	const data = JSON.stringify({
+		/* eslint-disable @typescript-eslint/naming-convention */
+		variables: {
+			source_tweet_id: id,
+		},
+		/* eslint-enable @typescript-eslint/naming-convention */
+	});
+	return {
+		method: 'post',
+		url: 'https://twitter.com/i/api/graphql/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet',
+		data: data,
+	};
+}
