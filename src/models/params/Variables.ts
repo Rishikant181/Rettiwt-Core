@@ -13,7 +13,7 @@ export class MediaVariable {
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
-	 * @param media - The list of MediaArgs objects specifying the media items to be sent in the Tweet.
+	 * @param media - The list of NewTweetMedia objects specifying the media items to be sent in the Tweet.
 	 */
 	public constructor(media: NewTweetMedia[]) {
 		this.media_entities = media.map((item) => new MediaEntityVariable(item));
@@ -33,7 +33,7 @@ export class MediaEntityVariable {
 	/* eslint-enable @typescript-eslint/naming-convention */
 
 	/**
-	 * @param media - The MediaArgs object specifying the details of the media item to be included in the payload.
+	 * @param media - The NewTweetMedia object specifying the details of the media item to be included in the payload.
 	 */
 	public constructor(media: NewTweetMedia) {
 		this.media_id = media.id;

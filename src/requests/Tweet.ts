@@ -6,21 +6,11 @@ import { NewTweet } from '../models/args/NewTweet';
 import { TweetFilter } from '../models/args/TweetFilter';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 
-export function retweet(id: string): AxiosRequestConfig {
-	return {
-		method: 'post',
-		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
-		data: JSON.stringify({
-			variables: {
-				/* eslint-disable @typescript-eslint/naming-convention */
-				tweet_id: id,
-				dark_request: false,
-				/* eslint-enable @typescript-eslint/naming-convention */
-			},
-		}),
-	};
-}
-
+/**
+ * @param args - The configuration object for the tweet to be posted.
+ *
+ * @public
+ */
 export function create(args: NewTweet): AxiosRequestConfig {
 	return {
 		method: 'post',
@@ -62,61 +52,11 @@ export function create(args: NewTweet): AxiosRequestConfig {
 	};
 }
 
-export function favorite(id: string): AxiosRequestConfig {
-	return {
-		method: 'post',
-		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
-		data: JSON.stringify({
-			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
-				tweet_id: id,
-			},
-			/* eslint-enable @typescript-eslint/naming-convention */
-		}),
-	};
-}
-
-export function search(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
-	return {
-		method: 'get',
-		url: 'https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
-		params: {
-			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
-				rawQuery: new TweetFilter(filter).toString(),
-				count: count,
-				cursor: cursor,
-				querySource: 'typed_query',
-				product: 'Latest',
-			},
-			features: {
-				rweb_lists_timeline_redesign_enabled: true,
-				responsive_web_graphql_exclude_directive_enabled: true,
-				verified_phone_label_enabled: true,
-				creator_subscriptions_tweet_preview_api_enabled: true,
-				responsive_web_graphql_timeline_navigation_enabled: true,
-				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
-				tweetypie_unmention_optimization_enabled: true,
-				responsive_web_edit_tweet_api_enabled: true,
-				graphql_is_translatable_rweb_tweet_is_translatable_enabled: true,
-				view_counts_everywhere_api_enabled: true,
-				longform_notetweets_consumption_enabled: true,
-				responsive_web_twitter_article_tweet_consumption_enabled: false,
-				tweet_awards_web_tipping_enabled: false,
-				freedom_of_speech_not_reach_fetch_enabled: true,
-				standardized_nudges_misinfo: true,
-				tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled: true,
-				longform_notetweets_rich_text_read_enabled: true,
-				longform_notetweets_inline_media_enabled: true,
-				responsive_web_media_download_video_enabled: false,
-				responsive_web_enhance_cards_enabled: false,
-			},
-			/* eslint-enable @typescript-eslint/naming-convention */
-		},
-		paramsSerializer: { encode: encodeURIComponent },
-	};
-}
-
+/**
+ * @param id - The id of the tweet whose details are to be fetched.
+ *
+ * @public
+ */
 export function details(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
@@ -162,6 +102,32 @@ export function details(id: string): AxiosRequestConfig {
 	};
 }
 
+/**
+ * @param id - The id of the tweet to be favorited.
+ *
+ * @public
+ */
+export function favorite(id: string): AxiosRequestConfig {
+	return {
+		method: 'post',
+		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
+		data: JSON.stringify({
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: {
+				tweet_id: id,
+			},
+			/* eslint-enable @typescript-eslint/naming-convention */
+		}),
+	};
+}
+
+/**
+ * @param id - The id of the tweet whose favoriters are to be fetched.
+ * @param count - The number of favoriters to fetch. Must be \<= 100.
+ * @param cursor - The cursor to the batch of favoriters to fetch.
+ *
+ * @public
+ */
 export function favoriters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
@@ -202,6 +168,33 @@ export function favoriters(id: string, count?: number, cursor?: string): AxiosRe
 	};
 }
 
+/**
+ * @param id - The id of the tweet which is to be retweeted.
+ *
+ * @public
+ */
+export function retweet(id: string): AxiosRequestConfig {
+	return {
+		method: 'post',
+		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
+		data: JSON.stringify({
+			variables: {
+				/* eslint-disable @typescript-eslint/naming-convention */
+				tweet_id: id,
+				dark_request: false,
+				/* eslint-enable @typescript-eslint/naming-convention */
+			},
+		}),
+	};
+}
+
+/**
+ * @param id - The id of the tweet whose retweeters are to be fetched.
+ * @param count - The number of retweeters to fetch. Must be \<= 100.
+ * @param cursor - The cursor to the batch of retweeters to fetch.
+ *
+ * @public
+ */
 export function retweeters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
@@ -213,6 +206,54 @@ export function retweeters(id: string, count?: number, cursor?: string): AxiosRe
 				count: count,
 				cursor: cursor,
 				includePromotedContent: false,
+			},
+			features: {
+				rweb_lists_timeline_redesign_enabled: true,
+				responsive_web_graphql_exclude_directive_enabled: true,
+				verified_phone_label_enabled: true,
+				creator_subscriptions_tweet_preview_api_enabled: true,
+				responsive_web_graphql_timeline_navigation_enabled: true,
+				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
+				tweetypie_unmention_optimization_enabled: true,
+				responsive_web_edit_tweet_api_enabled: true,
+				graphql_is_translatable_rweb_tweet_is_translatable_enabled: true,
+				view_counts_everywhere_api_enabled: true,
+				longform_notetweets_consumption_enabled: true,
+				responsive_web_twitter_article_tweet_consumption_enabled: false,
+				tweet_awards_web_tipping_enabled: false,
+				freedom_of_speech_not_reach_fetch_enabled: true,
+				standardized_nudges_misinfo: true,
+				tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled: true,
+				longform_notetweets_rich_text_read_enabled: true,
+				longform_notetweets_inline_media_enabled: true,
+				responsive_web_media_download_video_enabled: false,
+				responsive_web_enhance_cards_enabled: false,
+			},
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
+		paramsSerializer: { encode: encodeURIComponent },
+	};
+}
+
+/**
+ * @param filter - The filter to use for searching tweets.
+ * @param count - The number of tweets to fetch. Must be \<= 20.
+ * @param cursor - The cursor to the batch of tweets to fetch.
+ *
+ * @public
+ */
+export function search(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
+	return {
+		method: 'get',
+		url: 'https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
+		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: {
+				rawQuery: new TweetFilter(filter).toString(),
+				count: count,
+				cursor: cursor,
+				querySource: 'typed_query',
+				product: 'Latest',
 			},
 			features: {
 				rweb_lists_timeline_redesign_enabled: true,

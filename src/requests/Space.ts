@@ -1,6 +1,11 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
+/**
+ * @param id - The id of the space whose details are to be fetched.
+ *
+ * @public
+ */
 export function details(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',

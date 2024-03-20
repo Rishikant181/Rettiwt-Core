@@ -1,5 +1,5 @@
 /**
- * The filter to be used for fetching tweets from Twitter.
+ * The filter to be used for searching tweets.
  *
  * @public
  */
@@ -90,7 +90,7 @@ export class TweetFilter {
 	public toUsers?: string[];
 
 	/**
-	 * @param filter - The filter to use for searching tweets.
+	 * @param filter - The filter configuration.
 	 */
 	public constructor(filter: TweetFilter) {
 		this.endDate = filter.endDate;
@@ -147,7 +147,7 @@ export class TweetFilter {
 	}
 
 	/**
-	 * @returns The string representation of 'this' object.
+	 * @returns The string representation of 'this' filter.
 	 *
 	 * @internal
 	 */

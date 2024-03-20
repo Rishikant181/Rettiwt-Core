@@ -3,6 +3,12 @@ import { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
 import fs from 'fs';
 
+/**
+ * @param id - The allocated id of the media item to be uploaded.
+ * @param media - The media item to upload.
+ *
+ * @public
+ */
 export function appendUpload(id: string, media: string | ArrayBuffer): AxiosRequestConfig {
 	const data = new FormData();
 	data.append('media', typeof media == 'string' ? fs.createReadStream(media) : Buffer.from(media));
@@ -21,6 +27,11 @@ export function appendUpload(id: string, media: string | ArrayBuffer): AxiosRequ
 	};
 }
 
+/**
+ * @param id - The allocated id of the media item.
+ *
+ * @public
+ */
 export function finalizeUpload(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
@@ -35,6 +46,11 @@ export function finalizeUpload(id: string): AxiosRequestConfig {
 	};
 }
 
+/**
+ * @param size - The size (in bytes) of the media item to be uploaded.
+ *
+ * @public
+ */
 export function initializeUpload(size: number): AxiosRequestConfig {
 	return {
 		method: 'post',
@@ -49,6 +65,11 @@ export function initializeUpload(size: number): AxiosRequestConfig {
 	};
 }
 
+/**
+ * @param id - The id of video stream to fetch.
+ *
+ * @public
+ */
 export function videoStream(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',

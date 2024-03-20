@@ -1,6 +1,11 @@
 // PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
+/**
+ * @param id - The id of the list whose details are to be fetched.
+ *
+ * @public
+ */
 export function details(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
@@ -21,6 +26,13 @@ export function details(id: string): AxiosRequestConfig {
 	};
 }
 
+/**
+ * @param id - The id of the list whose tweets are to be fetched.
+ * @param count - The number of tweets to fetch. Must be \<= 100.
+ * @param cursor - The cursor to the batch of tweets to fetch.
+ *
+ * @public
+ */
 export function tweets(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
