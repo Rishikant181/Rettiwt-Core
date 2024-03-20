@@ -11,7 +11,7 @@ import { MediaVariable, ReplyVariable } from '../models/params/Variables';
  *
  * @public
  */
-export function create(args: NewTweet): AxiosRequestConfig {
+export function post(args: NewTweet): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
@@ -103,11 +103,11 @@ export function details(id: string): AxiosRequestConfig {
 }
 
 /**
- * @param id - The id of the tweet to be favorited.
+ * @param id - The id of the tweet to be liked.
  *
  * @public
  */
-export function favorite(id: string): AxiosRequestConfig {
+export function like(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
@@ -122,13 +122,13 @@ export function favorite(id: string): AxiosRequestConfig {
 }
 
 /**
- * @param id - The id of the tweet whose favoriters are to be fetched.
- * @param count - The number of favoriters to fetch. Must be \<= 100.
- * @param cursor - The cursor to the batch of favoriters to fetch.
+ * @param id - The id of the tweet whose likers are to be fetched.
+ * @param count - The number of likers to fetch. Must be \<= 100.
+ * @param cursor - The cursor to the batch of likers to fetch.
  *
  * @public
  */
-export function favoriters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function likers(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://twitter.com/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',

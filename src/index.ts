@@ -25,8 +25,8 @@ export { Root as ISpaceDetailsResponse } from './types/space/Details';
 // TWEETS
 export { Root as ITweetCreateResponse } from './types/tweet/Create';
 export { Root as ITweetDetailsResponse } from './types/tweet/Details';
-export { Root as ITweetFavoriteResponse } from './types/tweet/Favorite';
-export { Root as ITweetFavoritersResponse } from './types/tweet/Favouriters';
+export { Root as ITweetLikeResponse } from './types/tweet/Like';
+export { Root as ITweetLikersResponse } from './types/tweet/Likers';
 export { Root as ITweetRetweetResponse } from './types/tweet/Retweet';
 export { Root as ITweetRetweetersResponse } from './types/tweet/Retweeters';
 export { Root as ITweetSearchResponse } from './types/tweet/Search';
