@@ -33,6 +33,7 @@ export { Root as ITweetSearchResponse } from './types/tweet/Search';
 
 // USERS
 export { Root as IUserDetailsResponse } from './types/user/Details';
+export { Root as IUserFollowResponse } from './types/user/Follow';
 export { Root as IUserFollowersResponse } from './types/user/Followers';
 export { Root as IUserFollowingResponse } from './types/user/Following';
 export { Root as IUserHighlightsResponse } from './types/user/Highlights';
