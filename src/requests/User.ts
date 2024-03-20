@@ -61,6 +61,8 @@ export function detailsByUsername(userName: string): AxiosRequestConfig {
 
 /**
  * @param id - The id of the user to follow.
+ *
+ * @public
  */
 export function follow(id: string): AxiosRequestConfig {
 	const data = qs.stringify({

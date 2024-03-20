@@ -282,3 +282,23 @@ export function search(filter: TweetFilter, count?: number, cursor?: string): Ax
 		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
+
+/**
+ * @param id - The id of the tweet to be unposted.
+ *
+ * @public
+ */
+export function unpost(id: string): AxiosRequestConfig {
+	const data = JSON.stringify({
+		/* eslint-disable @typescript-eslint/naming-convention */
+		variables: {
+			tweet_id: id,
+		},
+		/* eslint-enable @typescript-eslint/naming-convention */
+	});
+	return {
+		method: 'post',
+		url: 'https://twitter.com/i/api/graphql/VaenaVgh5q5ih7kvyVjgtg/DeleteTweet',
+		data: data,
+	};
+}

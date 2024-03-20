@@ -30,6 +30,7 @@ export { Root as ITweetPostResponse } from './types/tweet/Post';
 export { Root as ITweetRetweetResponse } from './types/tweet/Retweet';
 export { Root as ITweetRetweetersResponse } from './types/tweet/Retweeters';
 export { Root as ITweetSearchResponse } from './types/tweet/Search';
+export { Root as ITweetUnpostResponse } from './types/tweet/Unpost';
 
 // USERS
 export { Root as IUserDetailsResponse } from './types/user/Details';
