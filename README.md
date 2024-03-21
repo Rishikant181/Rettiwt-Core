@@ -207,7 +207,7 @@ Where,
 
 ## Authenticating Requests
 
-In order to actually be able to send the generated requests, you need to authenticate them, by following the steps described [here](https://github.com/Rishikant181/Rettiwt-Auth?tab=readme-ov-file#2-generating-credentials-as-http-headers-for-use-with-third-party-scripts).
+In order to actually be able to send the generated requests, you need to authenticate them, by following the steps described [here](https://github.com/Rishikant181/Rettiwt-Auth/tree/release?tab=readme-ov-file#2-generating-credentials-as-http-headers-for-use-with-third-party-scripts).
 
 ## Next steps
 
