@@ -4,7 +4,7 @@ import { NewTweetMedia } from '../args/NewTweet';
 /**
  * Media to be sent as payload.
  *
- * @public
+ * @internal
  */
 export class MediaVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
@@ -24,7 +24,7 @@ export class MediaVariable {
 /**
  * Each media item in the media payload.
  *
- * @public
+ * @internal
  */
 export class MediaEntityVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
@@ -44,7 +44,7 @@ export class MediaEntityVariable {
 /**
  * Reply specific details to be sent in payload.
  *
- * @public
+ * @internal
  */
 export class ReplyVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */

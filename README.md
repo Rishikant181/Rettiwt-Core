@@ -205,6 +205,10 @@ Where,
 -   'id_1', 'id_2', ... are the allocated 'media_id' of the uploaded media.
 -   'user_id_1', 'user_id_2', ... are the 'rest_id' of the users to be tagged in the media.
 
+## Authenticating Requests
+
+In order to actually be able to send the generated requests, you need to authenticate them, by following the steps described [here](https://github.com/Rishikant181/Rettiwt-Auth?tab=readme-ov-file#2-generating-credentials-as-http-headers-for-use-with-third-party-scripts).
+
 ## Next steps
 
 After generating the respective, the request configuration can be used to make HTTP requests in order to access that specific resource.
