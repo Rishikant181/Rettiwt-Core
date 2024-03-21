@@ -1,3 +1,6 @@
+// MAIN
+export * from './Request';
+
 // ENUMS
 export * from './enums/Media';
 
