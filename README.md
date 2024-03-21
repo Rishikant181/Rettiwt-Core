@@ -1,6 +1,6 @@
 # Rettiwt-Core
 
-A library for generating request configurations to various Twitter API resources.
+A library for generating requests for Twitter API
 
 ## Prerequisites
 
