@@ -12,14 +12,14 @@ export function details(id: string): AxiosRequestConfig {
 		url: 'https://twitter.com/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: { listId: id },
-			features: {
+			variables: JSON.stringify({ listId: id }),
+			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
 				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
 				responsive_web_graphql_timeline_navigation_enabled: true,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -39,12 +39,12 @@ export function tweets(id: string, count?: number, cursor?: string): AxiosReques
 		url: 'https://twitter.com/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				listId: id,
 				count: count,
 				cursor: cursor,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
@@ -65,7 +65,7 @@ export function tweets(id: string, count?: number, cursor?: string): AxiosReques
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
