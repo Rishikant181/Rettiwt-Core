@@ -22,7 +22,6 @@ export function appendUpload(id: string, media: string | ArrayBuffer): AxiosRequ
 			segment_index: 0,
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
-		paramsSerializer: { encode: encodeURIComponent },
 		data: data,
 	};
 }
@@ -42,7 +41,6 @@ export function finalizeUpload(id: string): AxiosRequestConfig {
 			media_id: id,
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
-		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -61,7 +59,6 @@ export function initializeUpload(size: number): AxiosRequestConfig {
 			total_bytes: size,
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
-		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 

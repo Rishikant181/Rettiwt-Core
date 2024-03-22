@@ -13,8 +13,8 @@ export function detailsById(id: string): AxiosRequestConfig {
 		url: 'https://twitter.com/i/api/graphql/i_0UQ54YrCyqLUvgGzXygA/UserByRestId',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: { userId: id, withSafetyModeUserFields: true },
-			features: {
+			variables: JSON.stringify({ userId: id, withSafetyModeUserFields: true }),
+			features: JSON.stringify({
 				hidden_profile_likes_enabled: false,
 				hidden_profile_subscriptions_enabled: false,
 				responsive_web_graphql_exclude_directive_enabled: true,
@@ -24,7 +24,7 @@ export function detailsById(id: string): AxiosRequestConfig {
 				creator_subscriptions_tweet_preview_api_enabled: true,
 				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
 				responsive_web_graphql_timeline_navigation_enabled: true,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -42,8 +42,8 @@ export function detailsByUsername(userName: string): AxiosRequestConfig {
 		url: 'https://twitter.com/i/api/graphql/oUZZZ8Oddwxs8Cd3iW3UEA/UserByScreenName',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: { screen_name: userName, withSafetyModeUserFields: true },
-			features: {
+			variables: JSON.stringify({ screen_name: userName, withSafetyModeUserFields: true }),
+			features: JSON.stringify({
 				hidden_profile_likes_enabled: false,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
@@ -52,7 +52,7 @@ export function detailsByUsername(userName: string): AxiosRequestConfig {
 				creator_subscriptions_tweet_preview_api_enabled: true,
 				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
 				responsive_web_graphql_timeline_navigation_enabled: true,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -90,13 +90,13 @@ export function followers(id: string, count?: number, cursor?: string): AxiosReq
 		url: 'https://twitter.com/i/api/graphql/6y5TB_HrwQM0FBGDiNfoEA/Followers',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				userId: id,
 				count: count,
 				cursor: cursor,
 				includePromotedContent: false,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
@@ -117,7 +117,7 @@ export function followers(id: string, count?: number, cursor?: string): AxiosReq
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -137,13 +137,13 @@ export function following(id: string, count?: number, cursor?: string): AxiosReq
 		url: 'https://twitter.com/i/api/graphql/V8zHw0SZijWORSsb-FNrng/Following',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				userId: id,
 				count: count,
 				cursor: cursor,
 				includePromotedContent: false,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
@@ -164,7 +164,7 @@ export function following(id: string, count?: number, cursor?: string): AxiosReq
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -184,14 +184,14 @@ export function highlights(id: string, count?: number, cursor?: string): AxiosRe
 		url: 'https://twitter.com/i/api/graphql/Tqc024xHjye_svtpHJ236Q/UserHighlightsTweets',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				userId: id,
 				count: count,
 				cursor: cursor,
 				includePromotedContent: false,
 				withVoice: false,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
 				creator_subscriptions_tweet_preview_api_enabled: true,
@@ -212,7 +212,7 @@ export function highlights(id: string, count?: number, cursor?: string): AxiosRe
 				longform_notetweets_rich_text_read_enabled: true,
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -232,7 +232,7 @@ export function likes(id: string, count?: number, cursor?: string): AxiosRequest
 		url: 'https://twitter.com/i/api/graphql/kgZtsNyE46T3JaEf2nF9vw/Likes',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				userId: id,
 				count: count,
 				cursor: cursor,
@@ -241,8 +241,8 @@ export function likes(id: string, count?: number, cursor?: string): AxiosRequest
 				withBirdwatchNotes: false,
 				withVoice: false,
 				withV2Timeline: false,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
@@ -263,7 +263,7 @@ export function likes(id: string, count?: number, cursor?: string): AxiosRequest
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -283,7 +283,7 @@ export function media(id: string, count?: number, cursor?: string): AxiosRequest
 		url: 'https://twitter.com/i/api/graphql/EnIWTNQ8Tum-7t1NnZHOEQ/UserMedia',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				userId: id,
 				count: count,
 				cursor: cursor,
@@ -292,8 +292,8 @@ export function media(id: string, count?: number, cursor?: string): AxiosRequest
 				withBirdwatchNotes: false,
 				withVoice: false,
 				withV2Timeline: false,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
 				creator_subscriptions_tweet_preview_api_enabled: true,
@@ -314,7 +314,7 @@ export function media(id: string, count?: number, cursor?: string): AxiosRequest
 				longform_notetweets_rich_text_read_enabled: true,
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -334,13 +334,13 @@ export function subscriptions(id: string, count?: number, cursor?: string): Axio
 		url: 'https://twitter.com/i/api/graphql/UWlxAhUnBNK0BYmeqNPqAw/UserCreatorSubscriptions',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				userId: id,
 				count: count,
 				cursor: cursor,
 				includePromotedContent: false,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
 				creator_subscriptions_tweet_preview_api_enabled: true,
@@ -361,7 +361,7 @@ export function subscriptions(id: string, count?: number, cursor?: string): Axio
 				longform_notetweets_rich_text_read_enabled: true,
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -381,7 +381,7 @@ export function tweets(id: string, count?: number, cursor?: string): AxiosReques
 		url: 'https://twitter.com/i/api/graphql/9bXBrlmUXOHFZEq0DuvYWA/UserTweets',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				userId: id,
 				count: count,
 				cursor: cursor,
@@ -389,8 +389,8 @@ export function tweets(id: string, count?: number, cursor?: string): AxiosReques
 				withQuickPromoteEligibilityTweetFields: false,
 				withVoice: false,
 				withV2Timeline: false,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
 				responsive_web_home_pinned_timelines_enabled: false,
@@ -411,7 +411,7 @@ export function tweets(id: string, count?: number, cursor?: string): AxiosReques
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
@@ -431,7 +431,7 @@ export function tweetsAndReplies(id: string, count?: number, cursor?: string): A
 		url: 'https://twitter.com/i/api/graphql/JFsmXeZ0h-hs934UFSfayw/UserTweetsAndReplies',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: {
+			variables: JSON.stringify({
 				userId: id,
 				count: count,
 				cursor: cursor,
@@ -439,8 +439,8 @@ export function tweetsAndReplies(id: string, count?: number, cursor?: string): A
 				withCommunity: false,
 				withVoice: false,
 				withV2Timeline: false,
-			},
-			features: {
+			}),
+			features: JSON.stringify({
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
 				responsive_web_home_pinned_timelines_enabled: true,
@@ -461,7 +461,7 @@ export function tweetsAndReplies(id: string, count?: number, cursor?: string): A
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
