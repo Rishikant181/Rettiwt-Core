@@ -12,8 +12,8 @@ export function details(id: string): AxiosRequestConfig {
 		url: 'https://twitter.com/i/api/graphql/s2tz6GAie-O1tdZx873PLA/AudioSpaceById',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: { id: id, isMetatagsQuery: true, withReplays: true, withListeners: true },
-			features: {
+			variables: JSON.stringify({ id: id, isMetatagsQuery: true, withReplays: true, withListeners: true }),
+			features: JSON.stringify({
 				spaces_2022_h2_spaces_communities: true,
 				spaces_2022_h2_clipping: true,
 				creator_subscriptions_tweet_preview_api_enabled: true,
@@ -37,7 +37,7 @@ export function details(id: string): AxiosRequestConfig {
 				responsive_web_media_download_video_enabled: false,
 				responsive_web_graphql_timeline_navigation_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
-			},
+			}),
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
