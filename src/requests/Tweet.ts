@@ -133,15 +133,15 @@ export function post(args: NewTweet): AxiosRequestConfig {
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
 		data: JSON.stringify({
 			/* eslint-disable @typescript-eslint/naming-convention */
-			variables: JSON.stringify({
+			variables: {
 				tweet_text: args.text,
 				dark_request: false,
 				attachment_url: args.quote ? `https://twitter.com/i/status/${args.quote}` : undefined,
 				media: args.media ? new MediaVariable(args.media) : undefined,
 				reply: args.replyTo ? new ReplyVariable(args.replyTo) : undefined,
 				semantic_annotation_ids: [],
-			}),
-			features: JSON.stringify({
+			},
+			features: {
 				c9s_tweet_anatomy_moderator_badge_enabled: true,
 				tweetypie_unmention_optimization_enabled: true,
 				responsive_web_edit_tweet_api_enabled: true,
@@ -162,7 +162,7 @@ export function post(args: NewTweet): AxiosRequestConfig {
 				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
 				responsive_web_graphql_timeline_navigation_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
-			}),
+			},
 			/* eslint-enable @typescript-eslint/naming-convention */
 		}),
 	};
