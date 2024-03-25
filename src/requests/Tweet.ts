@@ -142,7 +142,6 @@ export function post(args: NewTweet): AxiosRequestConfig {
 				semantic_annotation_ids: [],
 			},
 			features: {
-				c9s_tweet_anatomy_moderator_badge_enabled: true,
 				tweetypie_unmention_optimization_enabled: true,
 				responsive_web_edit_tweet_api_enabled: true,
 				graphql_is_translatable_rweb_tweet_is_translatable_enabled: true,
@@ -152,7 +151,6 @@ export function post(args: NewTweet): AxiosRequestConfig {
 				tweet_awards_web_tipping_enabled: false,
 				longform_notetweets_rich_text_read_enabled: true,
 				longform_notetweets_inline_media_enabled: true,
-				rweb_video_timestamps_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
 				freedom_of_speech_not_reach_fetch_enabled: true,
