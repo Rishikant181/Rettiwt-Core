@@ -65,13 +65,13 @@ export function like(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
-		data: JSON.stringify({
+		data: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				tweet_id: id,
 			},
 			/* eslint-enable @typescript-eslint/naming-convention */
-		}),
+		},
 	};
 }
 
@@ -131,7 +131,7 @@ export function post(args: NewTweet): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
-		data: JSON.stringify({
+		data: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				tweet_text: args.text,
@@ -162,7 +162,7 @@ export function post(args: NewTweet): AxiosRequestConfig {
 				responsive_web_enhance_cards_enabled: false,
 			},
 			/* eslint-enable @typescript-eslint/naming-convention */
-		}),
+		},
 	};
 }
 
@@ -175,14 +175,14 @@ export function retweet(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
-		data: JSON.stringify({
+		data: {
 			variables: {
 				/* eslint-disable @typescript-eslint/naming-convention */
 				tweet_id: id,
 				dark_request: false,
 				/* eslint-enable @typescript-eslint/naming-convention */
 			},
-		}),
+		},
 	};
 }
 
@@ -287,17 +287,16 @@ export function search(filter: TweetFilter, count?: number, cursor?: string): Ax
  * @public
  */
 export function unlike(id: string): AxiosRequestConfig {
-	const data = JSON.stringify({
-		/* eslint-disable @typescript-eslint/naming-convention */
-		variables: {
-			tweet_id: id,
-		},
-		/* eslint-enable @typescript-eslint/naming-convention */
-	});
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet',
-		data: data,
+		data: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: {
+				tweet_id: id,
+			},
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
 	};
 }
 
@@ -307,17 +306,16 @@ export function unlike(id: string): AxiosRequestConfig {
  * @public
  */
 export function unpost(id: string): AxiosRequestConfig {
-	const data = JSON.stringify({
-		/* eslint-disable @typescript-eslint/naming-convention */
-		variables: {
-			tweet_id: id,
-		},
-		/* eslint-enable @typescript-eslint/naming-convention */
-	});
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/VaenaVgh5q5ih7kvyVjgtg/DeleteTweet',
-		data: data,
+		data: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: {
+				tweet_id: id,
+			},
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
 	};
 }
 
@@ -327,16 +325,15 @@ export function unpost(id: string): AxiosRequestConfig {
  * @public
  */
 export function unretweet(id: string): AxiosRequestConfig {
-	const data = JSON.stringify({
-		/* eslint-disable @typescript-eslint/naming-convention */
-		variables: {
-			source_tweet_id: id,
-		},
-		/* eslint-enable @typescript-eslint/naming-convention */
-	});
 	return {
 		method: 'post',
 		url: 'https://twitter.com/i/api/graphql/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet',
-		data: data,
+		data: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: {
+				source_tweet_id: id,
+			},
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
 	};
 }
