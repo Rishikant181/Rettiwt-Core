@@ -1,6 +1,6 @@
-// PACKAGES
-import { AxiosRequestConfig } from 'axios';
 import qs from 'querystring';
+
+import { AxiosRequestConfig } from 'axios';
 
 /**
  * @param id - The id of the user whose details are to be fetched.

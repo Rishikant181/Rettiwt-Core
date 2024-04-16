@@ -1,7 +1,5 @@
-// PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-// MODELS
 import { NewTweet } from '../models/args/NewTweet';
 import { TweetFilter } from '../models/args/TweetFilter';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';

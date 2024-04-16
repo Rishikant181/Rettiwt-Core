@@ -1,4 +1,3 @@
-// PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
 /**

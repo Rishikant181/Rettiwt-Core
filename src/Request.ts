@@ -1,4 +1,3 @@
-// REQUESTS
 import * as listRequests from './requests/List';
 import * as mediaRequests from './requests/Media';
 import * as spaceRequests from './requests/Space';

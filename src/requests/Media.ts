@@ -1,7 +1,7 @@
-// PACKAGES
+import fs from 'fs';
+
 import { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
-import fs from 'fs';
 
 /**
  * @param id - The allocated id of the media item to be uploaded.

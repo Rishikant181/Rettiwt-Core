@@ -1,4 +1,3 @@
-// MODELS
 import { NewTweetMedia } from '../args/NewTweet';
 
 /**
