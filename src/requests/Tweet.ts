@@ -75,7 +75,7 @@ export function like(id: string): AxiosRequestConfig {
 
 /**
  * @param id - The id of the tweet whose likers are to be fetched.
- * @param count - The number of likers to fetch. Must be \<= 100.
+ * @param count - The number of likers to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of likers to fetch.
  *
  * @public
@@ -188,7 +188,7 @@ export function retweet(id: string): AxiosRequestConfig {
 
 /**
  * @param id - The id of the tweet whose retweeters are to be fetched.
- * @param count - The number of retweeters to fetch. Must be \<= 100.
+ * @param count - The number of retweeters to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of retweeters to fetch.
  *
  * @public
@@ -235,7 +235,7 @@ export function retweeters(id: string, count?: number, cursor?: string): AxiosRe
 
 /**
  * @param filter - The filter to use for searching tweets.
- * @param count - The number of tweets to fetch. Must be \<= 20.
+ * @param count - The number of tweets to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of tweets to fetch.
  *
  * @public

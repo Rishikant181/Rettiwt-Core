@@ -78,7 +78,7 @@ export function follow(id: string): AxiosRequestConfig {
 
 /**
  * @param id - The id of the user whose followers are to be fetched.
- * @param count - The number of followers to fetch. Must be \<= 100.
+ * @param count - The number of followers to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of followers to fetch.
  *
  * @public
@@ -125,7 +125,7 @@ export function followers(id: string, count?: number, cursor?: string): AxiosReq
 
 /**
  * @param id - The id of the user whose followings are to be fetched.
- * @param count - The number of followings to fetch. Must be \<= 100.
+ * @param count - The number of followings to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of followings to fetch.
  *
  * @public
@@ -172,7 +172,7 @@ export function following(id: string, count?: number, cursor?: string): AxiosReq
 
 /**
  * @param id - The id of the user whose highlights are to be fetched.
- * @param count - The number of highlights to fetch. Must be \<= 100.
+ * @param count - The number of highlights to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of highlights to fetch.
  *
  * @public
@@ -220,7 +220,7 @@ export function highlights(id: string, count?: number, cursor?: string): AxiosRe
 
 /**
  * @param id - The id of the user whose likes are to be fetched.
- * @param count - The number of likes to fetch. Must be \<= 100.
+ * @param count - The number of likes to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of likes to fetch.
  *
  * @public
@@ -271,7 +271,7 @@ export function likes(id: string, count?: number, cursor?: string): AxiosRequest
 
 /**
  * @param id - The id of the user whose media is to be fetched.
- * @param count - The number of media to fetch. Must be \<= 100.
+ * @param count - The number of media to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of media to fetch.
  *
  * @public
@@ -322,7 +322,7 @@ export function media(id: string, count?: number, cursor?: string): AxiosRequest
 
 /**
  * @param id - The id of the user whose subscriptions are to be fetched.
- * @param count - The number of subscriptions to fetch. Must be \<= 100.
+ * @param count - The number of subscriptions to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of subscriptions to fetch.
  *
  * @public
@@ -369,7 +369,7 @@ export function subscriptions(id: string, count?: number, cursor?: string): Axio
 
 /**
  * @param id - The id of the user whose timeline tweets are to be fetched.
- * @param count - The number of timeline tweets to fetch. Must be \<= 20.
+ * @param count - The number of timeline tweets to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of timeline tweets to fetch.
  *
  * @public
@@ -419,7 +419,7 @@ export function tweets(id: string, count?: number, cursor?: string): AxiosReques
 
 /**
  * @param id - The id of the user whose timeline tweets and replies are to be fetched.
- * @param count - The number of timeline tweets and replies to fetch. Must be \<= 20.
+ * @param count - The number of timeline tweets and replies to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of timeline tweets and replies to fetch.
  *
  * @public
