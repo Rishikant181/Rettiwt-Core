@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-// TYPES
 import { IUrl } from './Tweet';
 
 /**

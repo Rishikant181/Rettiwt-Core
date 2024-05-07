@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-// TYPES
 import { IDataResult } from './DataResult';
 import { ITweet } from '../base/Tweet';
 
