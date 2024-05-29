@@ -64,15 +64,3 @@ export function initializeUpload(size: number): AxiosRequestConfig {
 		},
 	};
 }
-
-/**
- * @param id - The id of video stream to fetch.
- *
- * @public
- */
-export function videoStream(id: string): AxiosRequestConfig {
-	return {
-		method: 'get',
-		url: `https://twitter.com/i/api/1.1/live_video_stream/status/${id}`,
-	};
-}
