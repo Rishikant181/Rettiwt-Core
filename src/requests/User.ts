@@ -77,6 +77,57 @@ export function follow(id: string): AxiosRequestConfig {
 }
 
 /**
+ * @param count - The number of timeline items to fetch. Only works as a lower limit when used with a cursor.
+ * @param cursor - The cursor to the batch of followed timeline items to fetch.
+ *
+ * @public
+ */
+export function followed(count?: number, cursor?: string): AxiosRequestConfig {
+	return {
+		method: 'get',
+		url: 'https://x.com/i/api/graphql/q1x0puFIVMzsbx2Yoh-usA/HomeTimeline',
+		params: {
+			variables: JSON.stringify({
+				count: count,
+				cursor: cursor,
+				includePromotedContent: false,
+				latestControlAvailable: true,
+				withCommunity: false,
+			}),
+			features: JSON.stringify({
+				/* eslint-disable @typescript-eslint/naming-convention */
+				rweb_tipjar_consumption_enabled: true,
+				responsive_web_graphql_exclude_directive_enabled: true,
+				verified_phone_label_enabled: true,
+				creator_subscriptions_tweet_preview_api_enabled: true,
+				responsive_web_graphql_timeline_navigation_enabled: true,
+				responsive_web_graphql_skip_user_profile_image_extensions_enabled: false,
+				communities_web_enable_tweet_community_results_fetch: true,
+				c9s_tweet_anatomy_moderator_badge_enabled: true,
+				articles_preview_enabled: false,
+				tweetypie_unmention_optimization_enabled: true,
+				responsive_web_edit_tweet_api_enabled: true,
+				graphql_is_translatable_rweb_tweet_is_translatable_enabled: true,
+				view_counts_everywhere_api_enabled: true,
+				longform_notetweets_consumption_enabled: true,
+				responsive_web_twitter_article_tweet_consumption_enabled: true,
+				tweet_awards_web_tipping_enabled: false,
+				creator_subscriptions_quote_tweet_preview_enabled: false,
+				freedom_of_speech_not_reach_fetch_enabled: true,
+				standardized_nudges_misinfo: true,
+				tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled: true,
+				tweet_with_visibility_results_prefer_gql_media_interstitial_enabled: false,
+				rweb_video_timestamps_enabled: true,
+				longform_notetweets_rich_text_read_enabled: true,
+				longform_notetweets_inline_media_enabled: true,
+				responsive_web_enhance_cards_enabled: false,
+				/* eslint-enable @typescript-eslint/naming-convention */
+			}),
+		},
+	};
+}
+
+/**
  * @param id - The id of the user whose followers are to be fetched.
  * @param count - The number of followers to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of followers to fetch.
@@ -320,6 +371,12 @@ export function media(id: string, count?: number, cursor?: string): AxiosRequest
 	};
 }
 
+/**
+ * @param count - The number of timeline items to fetch. Only works as a lower limit when used with a cursor.
+ * @param cursor - The cursor to the batch of recommended timeline items to fetch.
+ *
+ * @public
+ */
 export function recommended(count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'post',
