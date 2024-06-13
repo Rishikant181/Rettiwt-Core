@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-// ENUMS
 import { EMediaType } from '../../enums/Media';
 
 /**

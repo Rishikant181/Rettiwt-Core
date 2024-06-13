@@ -211,7 +211,7 @@ In order to actually be able to send the generated requests, you need to authent
 
 ## Next steps
 
-After generating the respective, the request configuration can be used to make HTTP requests in order to access that specific resource.
+After generating the respective request configuration, the same can be used to make HTTP requests in order to access that specific resource.
 
 ## API Reference
 

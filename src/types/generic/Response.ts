@@ -1,4 +1,3 @@
-// TYPES
 import { IError } from './Error';
 
 /**

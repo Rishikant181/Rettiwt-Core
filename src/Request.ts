@@ -1,7 +1,5 @@
-// REQUESTS
 import * as listRequests from './requests/List';
 import * as mediaRequests from './requests/Media';
-import * as spaceRequests from './requests/Space';
 import * as tweetRequests from './requests/Tweet';
 import * as userRequests from './requests/User';
 
@@ -16,9 +14,6 @@ export class Request {
 
 	/** Collection of requests related to media. */
 	public media = mediaRequests;
-
-	/** Collection of requests related to spaces. */
-	public space = spaceRequests;
 
 	/** Collection of requests related to tweets. */
 	public tweet = tweetRequests;

@@ -1,7 +1,5 @@
-// PACKAGES
 import { AxiosRequestConfig } from 'axios';
 
-// MODELS
 import { NewTweet } from '../models/args/NewTweet';
 import { TweetFilter } from '../models/args/TweetFilter';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
@@ -14,7 +12,7 @@ import { MediaVariable, ReplyVariable } from '../models/params/Variables';
 export function details(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
-		url: 'https://twitter.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId',
+		url: 'https://x.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({
@@ -64,7 +62,7 @@ export function details(id: string): AxiosRequestConfig {
 export function like(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
-		url: 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
+		url: 'https://x.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
 		data: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
@@ -77,7 +75,7 @@ export function like(id: string): AxiosRequestConfig {
 
 /**
  * @param id - The id of the tweet whose likers are to be fetched.
- * @param count - The number of likers to fetch. Must be \<= 100.
+ * @param count - The number of likers to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of likers to fetch.
  *
  * @public
@@ -85,7 +83,7 @@ export function like(id: string): AxiosRequestConfig {
 export function likers(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
-		url: 'https://twitter.com/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
+		url: 'https://x.com/i/api/graphql/9XKD3EWWC2BKpIFyDj4KKQ/Favoriters',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({
@@ -130,13 +128,13 @@ export function likers(id: string, count?: number, cursor?: string): AxiosReques
 export function post(args: NewTweet): AxiosRequestConfig {
 	return {
 		method: 'post',
-		url: 'https://twitter.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
+		url: 'https://x.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
 		data: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
 				tweet_text: args.text,
 				dark_request: false,
-				attachment_url: args.quote ? `https://twitter.com/i/status/${args.quote}` : undefined,
+				attachment_url: args.quote ? `https://x.com/i/status/${args.quote}` : undefined,
 				media: args.media ? new MediaVariable(args.media) : undefined,
 				reply: args.replyTo ? new ReplyVariable(args.replyTo) : undefined,
 				semantic_annotation_ids: [],
@@ -176,7 +174,7 @@ export function post(args: NewTweet): AxiosRequestConfig {
 export function retweet(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
-		url: 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
+		url: 'https://x.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
 		data: {
 			variables: {
 				/* eslint-disable @typescript-eslint/naming-convention */
@@ -190,7 +188,7 @@ export function retweet(id: string): AxiosRequestConfig {
 
 /**
  * @param id - The id of the tweet whose retweeters are to be fetched.
- * @param count - The number of retweeters to fetch. Must be \<= 100.
+ * @param count - The number of retweeters to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of retweeters to fetch.
  *
  * @public
@@ -198,7 +196,7 @@ export function retweet(id: string): AxiosRequestConfig {
 export function retweeters(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
-		url: 'https://twitter.com/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',
+		url: 'https://x.com/i/api/graphql/v5h-KLmyl-wqZ8i-a_q73w/Retweeters',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({
@@ -237,7 +235,7 @@ export function retweeters(id: string, count?: number, cursor?: string): AxiosRe
 
 /**
  * @param filter - The filter to use for searching tweets.
- * @param count - The number of tweets to fetch. Must be \<= 20.
+ * @param count - The number of tweets to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of tweets to fetch.
  *
  * @public
@@ -245,7 +243,7 @@ export function retweeters(id: string, count?: number, cursor?: string): AxiosRe
 export function search(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
-		url: 'https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
+		url: 'https://x.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({
@@ -291,7 +289,7 @@ export function search(filter: TweetFilter, count?: number, cursor?: string): Ax
 export function unlike(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
-		url: 'https://twitter.com/i/api/graphql/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet',
+		url: 'https://x.com/i/api/graphql/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet',
 		data: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
@@ -310,7 +308,7 @@ export function unlike(id: string): AxiosRequestConfig {
 export function unpost(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
-		url: 'https://twitter.com/i/api/graphql/VaenaVgh5q5ih7kvyVjgtg/DeleteTweet',
+		url: 'https://x.com/i/api/graphql/VaenaVgh5q5ih7kvyVjgtg/DeleteTweet',
 		data: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
@@ -329,7 +327,7 @@ export function unpost(id: string): AxiosRequestConfig {
 export function unretweet(id: string): AxiosRequestConfig {
 	return {
 		method: 'post',
-		url: 'https://twitter.com/i/api/graphql/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet',
+		url: 'https://x.com/i/api/graphql/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet',
 		data: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {

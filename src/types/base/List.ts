@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-// TYPES
 import { IDataResult } from '../composite/DataResult';
 import { IUser } from './User';
 
