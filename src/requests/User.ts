@@ -87,6 +87,7 @@ export function followed(count?: number, cursor?: string): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://x.com/i/api/graphql/q1x0puFIVMzsbx2Yoh-usA/HomeTimeline',
 		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({
 				count: count,
 				cursor: cursor,
@@ -95,7 +96,6 @@ export function followed(count?: number, cursor?: string): AxiosRequestConfig {
 				withCommunity: false,
 			}),
 			features: JSON.stringify({
-				/* eslint-disable @typescript-eslint/naming-convention */
 				rweb_tipjar_consumption_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
@@ -121,9 +121,10 @@ export function followed(count?: number, cursor?: string): AxiosRequestConfig {
 				longform_notetweets_rich_text_read_enabled: true,
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
-				/* eslint-enable @typescript-eslint/naming-convention */
 			}),
+			/* eslint-enable @typescript-eslint/naming-convention */
 		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
@@ -379,19 +380,19 @@ export function media(id: string, count?: number, cursor?: string): AxiosRequest
  */
 export function recommended(count?: number, cursor?: string): AxiosRequestConfig {
 	return {
-		method: 'post',
+		method: 'get',
 		url: 'https://x.com/i/api/graphql/q1x0puFIVMzsbx2Yoh-usA/HomeTimeline',
-		data: JSON.stringify({
-			variables: {
+		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: JSON.stringify({
 				count: count,
 				cursor: cursor,
 				includePromotedContent: false,
 				latestControlAvailable: true,
 				withCommunity: false,
 				seenTweetIds: [],
-			},
-			features: {
-				/* eslint-disable @typescript-eslint/naming-convention */
+			}),
+			features: JSON.stringify({
 				rweb_tipjar_consumption_enabled: true,
 				responsive_web_graphql_exclude_directive_enabled: true,
 				verified_phone_label_enabled: true,
@@ -417,9 +418,10 @@ export function recommended(count?: number, cursor?: string): AxiosRequestConfig
 				longform_notetweets_rich_text_read_enabled: true,
 				longform_notetweets_inline_media_enabled: true,
 				responsive_web_enhance_cards_enabled: false,
-				/* eslint-enable @typescript-eslint/naming-convention */
-			},
-		}),
+			}),
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
+		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
 
