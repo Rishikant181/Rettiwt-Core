@@ -8,7 +8,7 @@ import { AxiosRequestConfig } from 'axios';
 export function details(id: string): AxiosRequestConfig {
 	return {
 		method: 'get',
-		url: 'https://twitter.com/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
+		url: 'https://x.com/i/api/graphql/gO1_eYPohKYHwCG2m-1ZnQ/ListByRestId',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({ listId: id }),
@@ -35,7 +35,7 @@ export function details(id: string): AxiosRequestConfig {
 export function tweets(id: string, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
-		url: 'https://twitter.com/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',
+		url: 'https://x.com/i/api/graphql/naCjgapXCSCsbZ7qnnItQA/ListLatestTweetsTimeline',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({

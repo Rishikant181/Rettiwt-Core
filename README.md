@@ -37,6 +37,7 @@ Currently, generation of request configuration for the following resources/actio
     -   Like
     -   Likers
     -   Post
+    -   Replies
     -   Retweet
     -   Retweeters
     -   Search
@@ -48,11 +49,13 @@ Currently, generation of request configuration for the following resources/actio
     -   Details (by id)
     -   Details (by username)
     -   Follow
+    -   Followed Feed
     -   Followers
     -   Following
     -   Highlights
     -   Likes
     -   Media
+    -   Recommended Feed
     -   Subscriptions
     -   Tweets
     -   Tweets and Replies
