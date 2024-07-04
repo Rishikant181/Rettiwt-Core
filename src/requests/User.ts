@@ -85,7 +85,7 @@ export function follow(id: string): AxiosRequestConfig {
 export function followed(count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
-		url: 'https://x.com/i/api/graphql/q1x0puFIVMzsbx2Yoh-usA/HomeTimeline',
+		url: 'https://x.com/i/api/graphql/9EwYy8pLBOSFlEoSP2STiQ/HomeLatestTimeline',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({
