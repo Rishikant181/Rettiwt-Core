@@ -129,6 +129,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Asdf
+.tool-versions
+
 # VSCode
 .vscode
 
