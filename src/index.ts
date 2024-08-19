@@ -33,6 +33,7 @@ export { Root as ITweetPostResponse } from './types/tweet/Post';
 export { Root as ITweetRepliesResponse } from './types/tweet/Replies';
 export { Root as ITweetRetweetResponse } from './types/tweet/Retweet';
 export { Root as ITweetRetweetersResponse } from './types/tweet/Retweeters';
+export { Root as ITweetScheduleResponse } from './types/tweet/Schedule';
 export { Root as ITweetSearchResponse } from './types/tweet/Search';
 export { Root as ITweetUnlikeResponse } from './types/tweet/Unlike';
 export { Root as ITweetUnpostResponse } from './types/tweet/Unpost';
