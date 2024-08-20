@@ -49,6 +49,7 @@ export { Root as IUserHighlightsResponse } from './types/user/Highlights';
 export { Root as IUserLikesResponse } from './types/user/Likes';
 export { Root as IUserMediaResponse } from './types/user/Media';
 export { Root as IUserRecommendedResponse } from './types/user/Recommended';
+export { Root as IUserScheduledResponse } from './types/user/Scheduled';
 export { Root as IUserSubscriptionsResponse } from './types/user/Subscriptions';
 export { Root as IUserTweetsResponse } from './types/user/Tweets';
 export { Root as IUserTweetsAndRepliesResponse } from './types/user/TweetsAndReplies';
