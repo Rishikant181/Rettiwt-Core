@@ -421,3 +421,23 @@ export function unretweet(id: string): AxiosRequestConfig {
 		},
 	};
 }
+
+/**
+ * @param id - The id of the scheduled tweet to be unscheduled.
+ *
+ * @public
+ */
+export function unschedule(id: string): AxiosRequestConfig {
+	return {
+		method: 'post',
+		url: 'https://x.com/i/api/graphql/CTOVqej0JBXAZSwkp1US0g/DeleteScheduledTweet',
+		data: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: {
+				scheduled_tweet_id: id,
+			},
+			queryId: 'CTOVqej0JBXAZSwkp1US0g',
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
+	};
+}

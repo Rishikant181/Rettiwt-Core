@@ -38,6 +38,7 @@ export { Root as ITweetSearchResponse } from './types/tweet/Search';
 export { Root as ITweetUnlikeResponse } from './types/tweet/Unlike';
 export { Root as ITweetUnpostResponse } from './types/tweet/Unpost';
 export { Root as ITweetUnretweetResponse } from './types/tweet/Unretweet';
+export { Root as ITweetUnscheduleResponse } from './types/tweet/Unschedule';
 
 // USERS
 export { Root as IUserDetailsResponse } from './types/user/Details';
