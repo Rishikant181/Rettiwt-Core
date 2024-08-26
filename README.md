@@ -40,10 +40,12 @@ Currently, generation of request configuration for the following resources/actio
     -   Replies
     -   Retweet
     -   Retweeters
+    -   Schedule
     -   Search
     -   Unlike
     -   Unpost
     -   Unretweet
+    -   Unschedule
 
 -   ### Users:
     -   Details (by id)
@@ -56,6 +58,7 @@ Currently, generation of request configuration for the following resources/actio
     -   Likes
     -   Media
     -   Recommended Feed
+    -   Scheduled Tweets
     -   Subscriptions
     -   Tweets
     -   Tweets and Replies

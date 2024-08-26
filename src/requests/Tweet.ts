@@ -289,6 +289,35 @@ export function retweeters(id: string, count?: number, cursor?: string): AxiosRe
 }
 
 /**
+ * @param tweet - The configuration object for the tweet to be posted.
+ * @param time - A `Date` object representing the date and time at which the tweet is to be posted.
+ *
+ * @remarks - Only `text` and `media.id` parameters are supported.
+ *
+ * @public
+ */
+export function schedule(tweet: NewTweet, time: Date): AxiosRequestConfig {
+	return {
+		method: 'post',
+		maxBodyLength: Infinity,
+		url: 'https://x.com/i/api/graphql/LCVzRQGxOaGnOnYH01NQXg/CreateScheduledTweet',
+		data: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: {
+				post_tweet_request: {
+					auto_populate_reply_metadata: false,
+					status: tweet.text,
+					exclude_reply_user_ids: [],
+					media_ids: tweet.media?.map((item) => item.id) ?? [],
+				},
+				execute_at: Math.floor(time.getTime() / 1000),
+			},
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
+	};
+}
+
+/**
  * @param filter - The filter to use for searching tweets.
  * @param count - The number of tweets to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of tweets to fetch.
@@ -388,6 +417,26 @@ export function unretweet(id: string): AxiosRequestConfig {
 			variables: {
 				source_tweet_id: id,
 			},
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
+	};
+}
+
+/**
+ * @param id - The id of the scheduled tweet to be unscheduled.
+ *
+ * @public
+ */
+export function unschedule(id: string): AxiosRequestConfig {
+	return {
+		method: 'post',
+		url: 'https://x.com/i/api/graphql/CTOVqej0JBXAZSwkp1US0g/DeleteScheduledTweet',
+		data: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: {
+				scheduled_tweet_id: id,
+			},
+			queryId: 'CTOVqej0JBXAZSwkp1US0g',
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 	};

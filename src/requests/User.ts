@@ -426,6 +426,22 @@ export function recommended(count?: number, cursor?: string): AxiosRequestConfig
 }
 
 /**
+ * @public
+ */
+export function scheduled(): AxiosRequestConfig {
+	return {
+		method: 'get',
+		url: 'https://x.com/i/api/graphql/ITtjAzvlZni2wWXwf295Qg/FetchScheduledTweets?variables=%7B%22ascending%22%3Atrue%7D',
+		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			variables: JSON.stringify({ ascending: true }),
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
+		paramsSerializer: { encode: encodeURIComponent },
+	};
+}
+
+/**
  * @param id - The id of the user whose subscriptions are to be fetched.
  * @param count - The number of subscriptions to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of subscriptions to fetch.

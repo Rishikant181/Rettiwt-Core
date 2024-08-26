@@ -33,10 +33,12 @@ export { Root as ITweetPostResponse } from './types/tweet/Post';
 export { Root as ITweetRepliesResponse } from './types/tweet/Replies';
 export { Root as ITweetRetweetResponse } from './types/tweet/Retweet';
 export { Root as ITweetRetweetersResponse } from './types/tweet/Retweeters';
+export { Root as ITweetScheduleResponse } from './types/tweet/Schedule';
 export { Root as ITweetSearchResponse } from './types/tweet/Search';
 export { Root as ITweetUnlikeResponse } from './types/tweet/Unlike';
 export { Root as ITweetUnpostResponse } from './types/tweet/Unpost';
 export { Root as ITweetUnretweetResponse } from './types/tweet/Unretweet';
+export { Root as ITweetUnscheduleResponse } from './types/tweet/Unschedule';
 
 // USERS
 export { Root as IUserDetailsResponse } from './types/user/Details';
@@ -48,6 +50,7 @@ export { Root as IUserHighlightsResponse } from './types/user/Highlights';
 export { Root as IUserLikesResponse } from './types/user/Likes';
 export { Root as IUserMediaResponse } from './types/user/Media';
 export { Root as IUserRecommendedResponse } from './types/user/Recommended';
+export { Root as IUserScheduledResponse } from './types/user/Scheduled';
 export { Root as IUserSubscriptionsResponse } from './types/user/Subscriptions';
 export { Root as IUserTweetsResponse } from './types/user/Tweets';
 export { Root as IUserTweetsAndRepliesResponse } from './types/user/TweetsAndReplies';

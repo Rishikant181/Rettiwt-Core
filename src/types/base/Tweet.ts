@@ -18,6 +18,7 @@ export interface ITweet {
 	is_translatable: boolean;
 	views: ITweetViews;
 	source: string;
+	quoted_status_result: IDataResult<ITweet>;
 	note_tweet: ITweetNote;
 	legacy: ITweetLegacy;
 	quick_promote_eligibility: ITweetQuickPromoteEligibilityInfo;
