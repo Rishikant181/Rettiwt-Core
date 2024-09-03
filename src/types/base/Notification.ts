@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+import { ENotificationType } from '../../enums/Notification';
+
 /**
  * Represents the raw data of a single Notification.
  *
@@ -14,7 +16,7 @@ export interface INotification {
 }
 
 export interface INotificationIcon {
-	id: string;
+	id: ENotificationType;
 }
 
 export interface INotificationMessage {
