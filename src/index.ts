@@ -3,6 +3,7 @@ export * from './Request';
 
 // ENUMS
 export * from './enums/Media';
+export * from './enums/Notification';
 
 // ARG MODELS
 export * from './models/args/NewTweet';
@@ -49,6 +50,7 @@ export { Root as IUserFollowingResponse } from './types/user/Following';
 export { Root as IUserHighlightsResponse } from './types/user/Highlights';
 export { Root as IUserLikesResponse } from './types/user/Likes';
 export { Root as IUserMediaResponse } from './types/user/Media';
+export { Root as IUserNotifications } from './types/user/Notifications';
 export { Root as IUserRecommendedResponse } from './types/user/Recommended';
 export { Root as IUserScheduledResponse } from './types/user/Scheduled';
 export { Root as IUserSubscriptionsResponse } from './types/user/Subscriptions';
@@ -66,6 +68,7 @@ export * from './types/generic/Response';
 export * from './types/base/Cursor';
 export * from './types/base/List';
 export * from './types/base/Media';
+export * from './types/base/Notification';
 export * from './types/base/Space';
 export * from './types/base/Tweet';
 export * from './types/base/User';
