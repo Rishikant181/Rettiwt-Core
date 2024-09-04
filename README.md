@@ -57,6 +57,7 @@ Currently, generation of request configuration for the following resources/actio
     -   Highlights
     -   Likes
     -   Media
+    -   Notifications
     -   Recommended Feed
     -   Scheduled Tweets
     -   Subscriptions
