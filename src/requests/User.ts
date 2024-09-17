@@ -12,7 +12,7 @@ import { EGranularity, EMetric } from '../enums/Analytic';
  *
  * @public
  */
-export function analyticOverview(
+export function analytics(
 	fromTime: Date,
 	toTime: Date,
 	granularity: EGranularity,
