@@ -2,6 +2,7 @@
 export * from './Request';
 
 // ENUMS
+export * from './enums/Analytic';
 export * from './enums/Media';
 export * from './enums/Notification';
 
@@ -42,6 +43,7 @@ export { Root as ITweetUnretweetResponse } from './types/tweet/Unretweet';
 export { Root as ITweetUnscheduleResponse } from './types/tweet/Unschedule';
 
 // USERS
+export { Root as IUserAnalyticsResponse } from './types/user/Analytics';
 export { Root as IUserDetailsResponse } from './types/user/Details';
 export { Root as IUserFollowResponse } from './types/user/Follow';
 export { Root as IUserFollowedResponse } from './types/user/Followed';
@@ -72,6 +74,7 @@ export * from './types/base/Notification';
 export * from './types/base/Space';
 export * from './types/base/Tweet';
 export * from './types/base/User';
+export * from './types/base/Analytic';
 
 // COMPOSITE
 export * from './types/composite/DataResult';
