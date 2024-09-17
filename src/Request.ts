@@ -1,4 +1,3 @@
-import * as analyticRequests from './requests/Analytic';
 import * as listRequests from './requests/List';
 import * as mediaRequests from './requests/Media';
 import * as tweetRequests from './requests/Tweet';
@@ -10,9 +9,6 @@ import * as userRequests from './requests/User';
  * @public
  */
 export class Request {
-	/** Collection of requests related to analytics. */
-	public analytic = analyticRequests;
-
 	/** Collection of requests related to lists. */
 	public list = listRequests;
 

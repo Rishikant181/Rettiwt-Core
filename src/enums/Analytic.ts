@@ -1,4 +1,15 @@
 /**
+ * Granularity types for analytics.
+ *
+ * @public
+ */
+export enum EGranularity {
+	DAILY = 'Daily',
+	WEEKLY = 'Weekly',
+	MONTHLY = 'Monthly',
+}
+
+/**
  * The different types of metric someone can request.
  *
  * @public

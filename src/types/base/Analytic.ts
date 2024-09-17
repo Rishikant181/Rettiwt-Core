@@ -1,10 +1,4 @@
 /* eslint-disable */
-
-export interface IAnalytic {
-	result: IAnalyticResult;
-	id: string;
-}
-
 export interface IAnalyticResult {
 	__typename: string;
 	organic_metrics_time_series: Array<IAnalyticMetric>;
@@ -17,7 +11,7 @@ export interface IAnalyticMetric {
 }
 
 export interface IAnalyticMetricValue {
-	metric_value: string;
+	metric_value: number;
 	metric_type: string;
 }
 
