@@ -1,12 +1,18 @@
 /* eslint-disable */
-export interface IAnalyticResult {
+
+/**
+ * Represents the raw data of the analytic result of the User.
+ *
+ * @public
+ */
+export interface IAnalytic {
 	__typename: string;
-	organic_metrics_time_series: Array<IAnalyticMetric>;
+	organic_metrics_time_series: IAnalyticMetric[];
 	id: string;
 }
 
 export interface IAnalyticMetric {
-	metric_value: Array<IAnalyticMetricValue>;
+	metric_value: IAnalyticMetricValue[];
 	timestamp: IAnalyticTimeStamp;
 }
 

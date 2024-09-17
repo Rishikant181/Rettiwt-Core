@@ -2,9 +2,9 @@
 export * from './Request';
 
 // ENUMS
+export * from './enums/Analytic';
 export * from './enums/Media';
 export * from './enums/Notification';
-export * from './enums/Analytic';
 
 // ARG MODELS
 export * from './models/args/NewTweet';

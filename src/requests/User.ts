@@ -3,6 +3,36 @@ import qs from 'querystring';
 import { AxiosRequestConfig } from 'axios';
 
 import { EGranularity, EMetric } from '../enums/Analytic';
+
+/**
+ * @param fromTime - The start time of the analytic data to be fetched.
+ * @param toTime - The end time of the analytic data to be fetched.
+ * @param granularity - The granularity of the analytic data to be fetched.
+ * @param requestedMetrics - The metrics to be fetched.
+ *
+ * @public
+ */
+export function analyticOverview(
+	fromTime: Date,
+	toTime: Date,
+	granularity: EGranularity,
+	requestedMetrics: EMetric[],
+): AxiosRequestConfig {
+	return {
+		method: 'get',
+		url: 'https://x.com/i/api/graphql/NlJ6RM-hgHxt-iu9cPQz7A/overviewDataUserQuery',
+		params: {
+			/* eslint-disable @typescript-eslint/naming-convention */
+			from_time: fromTime,
+			to_time: toTime,
+			granularity: granularity,
+			requested_metrics: requestedMetrics,
+			/* eslint-enable @typescript-eslint/naming-convention */
+		},
+		paramsSerializer: { encode: encodeURIComponent },
+	};
+}
+
 /**
  * @param id - The id of the user whose details are to be fetched.
  *
@@ -651,33 +681,5 @@ export function unfollow(id: string): AxiosRequestConfig {
 			user_id: id,
 			/* eslint-enable @typescript-eslint/naming-convention */
 		}),
-	};
-}
-
-/**
- * @param fromTime - The start time of the analytic data to be fetched.
- * @param toTime - The end time of the analytic data to be fetched.
- * @param granularity - The granularity of the analytic data to be fetched.
- * @param requestedMetrics - The metrics to be fetched.
- *
- * @public
- */
-export function analyticOverview(
-	fromTime: Date,
-	toTime: Date,
-	granularity: EGranularity,
-	requestedMetrics: EMetric[],
-): AxiosRequestConfig {
-	return {
-		method: 'get',
-		url: 'https://x.com/i/api/graphql/NlJ6RM-hgHxt-iu9cPQz7A/overviewDataUserQuery',
-		params: {
-			/* eslint-disable @typescript-eslint/naming-convention */
-			from_time: fromTime,
-			to_time: toTime,
-			granularity: granularity,
-			requested_metrics: requestedMetrics,
-		},
-		paramsSerializer: { encode: encodeURIComponent },
 	};
 }
