@@ -4,6 +4,8 @@ export * from './Request';
 // ENUMS
 export * from './enums/Media';
 export * from './enums/Notification';
+export * from './enums/Metric';
+export * from './enums/Granularity';
 
 // ARG MODELS
 export * from './models/args/NewTweet';
@@ -11,6 +13,7 @@ export * from './models/args/TweetFilter';
 
 // PARAMS MODELS
 export * from './models/params/Variables';
+export * from './models/params/AnalyticOverviewParams';
 
 // RESPONSE TYPES
 
@@ -72,6 +75,7 @@ export * from './types/base/Notification';
 export * from './types/base/Space';
 export * from './types/base/Tweet';
 export * from './types/base/User';
+export * from './types/base/Analytic';
 
 // COMPOSITE
 export * from './types/composite/DataResult';
