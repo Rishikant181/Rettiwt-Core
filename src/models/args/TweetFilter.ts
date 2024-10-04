@@ -42,6 +42,9 @@ export class TweetFilter {
 	 */
 	public links?: boolean = true;
 
+	/** The list from which tweets are to be searched. */
+	public list?: string;
+
 	/** The id of the tweet, before which the tweets are to be searched. */
 	public maxId?: string;
 
@@ -100,6 +103,7 @@ export class TweetFilter {
 		this.includePhrase = filter.includePhrase;
 		this.language = filter.language;
 		this.links = filter.links;
+		this.list = filter.list;
 		this.replies = filter.replies;
 		this.mentions = filter.mentions;
 		this.quoted = filter.quoted;
@@ -161,6 +165,7 @@ export class TweetFilter {
 				this.hashtags ? `(${this.hashtags.map((hashtag) => '#' + hashtag).join(' OR ')})` : '',
 				this.fromUsers ? `(${this.fromUsers.map((user) => `from:${user}`).join(' OR ')})` : '',
 				this.toUsers ? `(${this.toUsers.map((user) => `to:${user}`).join(' OR ')})` : '',
+				this.list ? `list:${this.list}` : '',
 				this.mentions ? `(${this.mentions.map((mention) => '@' + mention).join(' OR ')})` : '',
 				this.minReplies ? `min_replies:${this.minReplies}` : '',
 				this.minLikes ? `min_faves:${this.minLikes}` : '',
