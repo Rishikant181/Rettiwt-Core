@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
 
+import { ESearchResultType } from '../enums/Search';
 import { NewTweet } from '../models/args/NewTweet';
 import { TweetFilter } from '../models/args/TweetFilter';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
@@ -321,10 +322,16 @@ export function schedule(tweet: NewTweet, time: Date): AxiosRequestConfig {
  * @param filter - The filter to use for searching tweets.
  * @param count - The number of tweets to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of tweets to fetch.
+ * @param results - The type of results to fetch. Default is {@link ESearchResultType.LATEST}.
  *
  * @public
  */
-export function search(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
+export function search(
+	filter: TweetFilter,
+	count?: number,
+	cursor?: string,
+	results: ESearchResultType = ESearchResultType.LATEST,
+): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://x.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
@@ -335,7 +342,7 @@ export function search(filter: TweetFilter, count?: number, cursor?: string): Ax
 				count: count,
 				cursor: cursor,
 				querySource: 'typed_query',
-				product: 'Latest',
+				product: results,
 			}),
 			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,
