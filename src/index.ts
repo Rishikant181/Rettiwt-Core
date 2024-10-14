@@ -5,6 +5,7 @@ export * from './Request';
 export * from './enums/Analytic';
 export * from './enums/Media';
 export * from './enums/Notification';
+export * from './enums/Search';
 
 // ARG MODELS
 export * from './models/args/NewTweet';
