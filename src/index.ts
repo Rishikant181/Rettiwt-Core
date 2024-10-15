@@ -45,6 +45,7 @@ export { Root as ITweetUnscheduleResponse } from './types/tweet/Unschedule';
 
 // USERS
 export { Root as IUserAnalyticsResponse } from './types/user/Analytics';
+export { Root as IUserBookmarksResponse } from './types/user/Bookmarks';
 export { Root as IUserDetailsResponse } from './types/user/Details';
 export { Root as IUserFollowResponse } from './types/user/Follow';
 export { Root as IUserFollowedResponse } from './types/user/Followed';
