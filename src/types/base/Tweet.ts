@@ -3,6 +3,7 @@
 import { IDataResult } from '../composite/DataResult';
 import { IUser } from './User';
 import { IMedia, IExtendedMedia } from './Media';
+import { ILimitedVisibilityTweet } from './LimitedVisibilityTweet';
 
 /**
  * Represents the raw data of a single Tweet.
@@ -18,7 +19,7 @@ export interface ITweet {
 	is_translatable: boolean;
 	views: ITweetViews;
 	source: string;
-	quoted_status_result: IDataResult<ITweet>;
+	quoted_status_result: IDataResult<ITweet | ILimitedVisibilityTweet>;
 	note_tweet: ITweetNote;
 	legacy: ITweetLegacy;
 	quick_promote_eligibility: ITweetQuickPromoteEligibilityInfo;
