@@ -66,6 +66,7 @@ export * from './types/generic/Response';
 
 // BASE
 export * from './types/base/Cursor';
+export * from './types/base/LimitedVisibilityTweet';
 export * from './types/base/List';
 export * from './types/base/Media';
 export * from './types/base/Notification';
