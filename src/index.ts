@@ -45,6 +45,7 @@ export { Root as ITweetUnscheduleResponse } from './types/tweet/Unschedule';
 
 // USERS
 export { Root as IUserAnalyticsResponse } from './types/user/Analytics';
+export { Root as IUserBookmarksResponse } from './types/user/Bookmarks';
 export { Root as IUserDetailsResponse } from './types/user/Details';
 export { Root as IUserFollowResponse } from './types/user/Follow';
 export { Root as IUserFollowedResponse } from './types/user/Followed';
@@ -69,6 +70,7 @@ export * from './types/generic/Response';
 
 // BASE
 export * from './types/base/Cursor';
+export * from './types/base/LimitedVisibilityTweet';
 export * from './types/base/List';
 export * from './types/base/Media';
 export * from './types/base/Notification';
