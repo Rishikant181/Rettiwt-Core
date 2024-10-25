@@ -18,6 +18,7 @@ export * from './models/params/Variables';
 
 // LISTS
 export { Root as IListDetailsResponse } from './types/list/Details';
+export { Root as IListMembersResponse } from './types/list/Members';
 export { Root as IListTweetsResponse } from './types/list/Tweets';
 
 // MEDIA
