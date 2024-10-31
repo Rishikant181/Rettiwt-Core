@@ -100,7 +100,7 @@ export interface ITweetLegacy {
 	retweeted: boolean;
 	user_id_str: string;
 	id_str: string;
-	retweeted_status_result: IRetweetedStatusResult;
+	retweeted_status_result: IDataResult<ITweet | ILimitedVisibilityTweet>;
 }
 
 export interface IEntities {
@@ -132,10 +132,6 @@ export interface IHashtag {
 
 export interface IExtendedEntities {
 	media: IExtendedMedia[];
-}
-
-export interface IRetweetedStatusResult {
-	result: ITweet;
 }
 
 export interface ITweetQuickPromoteEligibilityInfo {
