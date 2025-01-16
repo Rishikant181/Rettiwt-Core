@@ -33,7 +33,37 @@ export interface Result {
 	is_profile_translatable: boolean;
 }
 
-export interface AffiliatesHighlightedLabel {}
+export interface AffiliatesHighlightedLabel {
+	label: {
+		badge: {
+			url: string;
+		}
+		description: string;
+		longDescription: {
+			text: string;
+			entities: AffiliatesHighlightedLabelEntity[]
+		}
+	}
+}
+
+export interface AffiliatesHighlightedLabelEntity {
+	fromIndex: number; 
+	toIndex: number;
+	ref: AffiliatesHighlightedMention;
+}
+
+export interface AffiliatesHighlightedMention {
+	type: string;
+	screen_name; string;
+	mention_results: {
+		result: {
+			__typename: "User";
+			legacy: {
+				screen_name: string;
+			}
+			rest_id: string;
+	}
+}
 
 export interface Legacy {
 	blocked_by: boolean;
