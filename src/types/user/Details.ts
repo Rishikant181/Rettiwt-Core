@@ -34,35 +34,48 @@ export interface Result {
 }
 
 export interface AffiliatesHighlightedLabel {
-	label: {
-		badge: {
-			url: string;
-		}
-		description: string;
-		longDescription: {
-			text: string;
-			entities: AffiliatesHighlightedLabelEntity[]
-		}
-	}
+	label: AffiliatesHighlightedLabelDetails;
+}
+
+export interface AffiliatesHighlightedLabelDetails {
+	badge: AffiliatesHighlightedLabelBadge;
+	description: string;
+	longDescription: AffiliatesHighlightedLabelDescription;
+}
+
+export interface AffiliatesHighlightedLabelBadge {
+	url: string;
+}
+
+export interface AffiliatesHighlightedLabelDescription {
+	text: string;
+	entities: AffiliatesHighlightedLabelEntity[];
 }
 
 export interface AffiliatesHighlightedLabelEntity {
-	fromIndex: number; 
+	fromIndex: number;
 	toIndex: number;
 	ref: AffiliatesHighlightedMention;
 }
 
 export interface AffiliatesHighlightedMention {
 	type: string;
-	screen_name; string;
-	mention_results: {
-		result: {
-			__typename: "User";
-			legacy: {
-				screen_name: string;
-			}
-			rest_id: string;
-	}
+	screen_name: string;
+	mention_results: AffiliatesHighlightedMentionResults;
+}
+
+export interface AffiliatesHighlightedMentionResults {
+	result: AffiliatesHighlightedMentionResult;
+}
+
+export interface AffiliatesHighlightedMentionResult {
+	__typename: string;
+	legacy: AffiliatesHighlightedMentionResultLegacy;
+	rest_id: string;
+}
+
+export interface AffiliatesHighlightedMentionResultLegacy {
+	screen_name: string;
 }
 
 export interface Legacy {
