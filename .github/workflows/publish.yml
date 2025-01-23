@@ -17,11 +17,8 @@ jobs:
                   node-version: '20.x'
                   registry-url: https://registry.npmjs.org/
 
-            # Enabling CorePack
-            - run: corepack enable
-
             # Installing dependencies
-            - run: yarn
+            - run: npm install
 
             # Publishing to NPM
             - run: npm publish

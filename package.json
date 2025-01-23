@@ -1,6 +1,6 @@
 {
 	"name": "rettiwt-core",
-	"version": "4.3.3",
+	"version": "4.4.0",
 	"description": "A library for generating requests for Twitter API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
 	"scripts": {
 		"build": "tsc",
 		"prepare": "tsc",
-		"lint": "eslint .",
+		"lint": "eslint --fix .",
 		"format": "prettier --write .",
 		"docs": "typedoc --excludePrivate --excludeProtected --excludeInternal src/index.ts",
 		"debug": "nodemon ./dist/index.js --inspect=0.0.0.0:9229"
@@ -28,7 +28,6 @@
 	"engines": {
 		"node": "^20.11.1"
 	},
-	"packageManager": "yarn@4.4.0",
 	"devDependencies": {
 		"@types/node": "20.2.5",
 		"@typescript-eslint/eslint-plugin": "5.59.8",

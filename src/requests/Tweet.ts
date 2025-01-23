@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
 
+import { ESearchResultType } from '../enums/Search';
 import { NewTweet } from '../models/args/NewTweet';
 import { TweetFilter } from '../models/args/TweetFilter';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
@@ -335,7 +336,7 @@ export function search(filter: TweetFilter, count?: number, cursor?: string): Ax
 				count: count,
 				cursor: cursor,
 				querySource: 'typed_query',
-				product: 'Latest',
+				product: filter.top ? ESearchResultType.TOP : ESearchResultType.LATEST,
 			}),
 			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,
