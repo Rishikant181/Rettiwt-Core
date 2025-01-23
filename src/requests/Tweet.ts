@@ -322,16 +322,10 @@ export function schedule(tweet: NewTweet, time: Date): AxiosRequestConfig {
  * @param filter - The filter to use for searching tweets.
  * @param count - The number of tweets to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of tweets to fetch.
- * @param results - The type of results to fetch. Default is {@link ESearchResultType.LATEST}.
  *
  * @public
  */
-export function search(
-	filter: TweetFilter,
-	count?: number,
-	cursor?: string,
-	results: ESearchResultType = ESearchResultType.LATEST,
-): AxiosRequestConfig {
+export function search(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://x.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
@@ -342,7 +336,7 @@ export function search(
 				count: count,
 				cursor: cursor,
 				querySource: 'typed_query',
-				product: results,
+				product: filter.top ? ESearchResultType.TOP : ESearchResultType.LATEST,
 			}),
 			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,

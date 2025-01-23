@@ -10,7 +10,7 @@
 	"scripts": {
 		"build": "tsc",
 		"prepare": "tsc",
-		"lint": "eslint .",
+		"lint": "eslint --fix .",
 		"format": "prettier --write .",
 		"docs": "typedoc --excludePrivate --excludeProtected --excludeInternal src/index.ts",
 		"debug": "nodemon ./dist/index.js --inspect=0.0.0.0:9229"
