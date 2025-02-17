@@ -92,6 +92,9 @@ export class TweetFilter {
 	 */
 	public toUsers?: string[];
 
+	/** Whether to fetch top tweets or not. */
+	public top?: boolean = false;
+
 	/**
 	 * @param filter - The filter configuration.
 	 */
@@ -115,6 +118,7 @@ export class TweetFilter {
 		this.optionalWords = filter.optionalWords;
 		this.startDate = filter.startDate;
 		this.toUsers = filter.toUsers;
+		this.top = filter.top;
 		this.includeWords = filter.includeWords;
 	}
 

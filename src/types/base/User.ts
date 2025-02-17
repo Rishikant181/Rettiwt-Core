@@ -36,6 +36,7 @@ export interface IAffiliateLabel {
 	url: IAffiliateUrl;
 	badge: IAffiliateBadge;
 	description: string;
+	longDescription: IAffiliateDescription;
 	userLabelType: string;
 	userLabelDisplayType: string;
 }
@@ -47,6 +48,37 @@ export interface IAffiliateUrl {
 
 export interface IAffiliateBadge {
 	url: string;
+}
+
+export interface IAffiliateDescription {
+	text: string;
+	entities: IAffiliateDescriptionEntity[];
+}
+
+export interface IAffiliateDescriptionEntity {
+	fromIndex: number;
+	toIndex: number;
+	ref: IAffiliateHighlightedMention;
+}
+
+export interface IAffiliateHighlightedMention {
+	type: string;
+	screen_name: string;
+	mention_results: IAffiliateHighlightedMentionResults;
+}
+
+export interface IAffiliateHighlightedMentionResults {
+	result: IAffiliateHighlightedMentionResult;
+}
+
+export interface IAffiliateHighlightedMentionResult {
+	__typename: string;
+	legacy: IAffiliateHighlightedMentionResultLegacy;
+	rest_id: string;
+}
+
+export interface IAffiliateHighlightedMentionResultLegacy {
+	screen_name: string;
 }
 
 export interface IUserLegacy {

@@ -4,66 +4,66 @@ A library for generating requests for Twitter API
 
 ## Prerequisites
 
--   NodeJS 20.x
+- NodeJS 20.x
 
 ## Installation
 
 1.  Initialize a new npm project using the command **npm init**
 2.  Install the package either via npm or yarn
-    -   For **npm**, use the command **npm install --save rettiwt-core**
-    -   For **yarn**, use the command **yarn add rettiwt-core**
+    - For **npm**, use the command **npm install --save rettiwt-core**
+    - For **yarn**, use the command **yarn add rettiwt-core**
 
 ## Available Resources
 
 Currently, generation of request configuration for the following resources/actions is supported:
 
--   ### Lists:
+- ### Lists:
 
-    -   Details
-    -   Tweets
+    - Details
+    - Tweets
 
--   ### Media:
+- ### Media:
 
-    -   Upload
-    -   Video Stream
+    - Upload
+    - Video Stream
 
--   ### Spaces:
+- ### Spaces:
 
-    -   Details (by id)
+    - Details (by id)
 
--   ### Tweets:
+- ### Tweets:
 
-    -   Details
-    -   Like
-    -   Likers
-    -   Post
-    -   Replies
-    -   Retweet
-    -   Retweeters
-    -   Schedule
-    -   Search
-    -   Unlike
-    -   Unpost
-    -   Unretweet
-    -   Unschedule
+    - Details
+    - Like
+    - Likers
+    - Post
+    - Replies
+    - Retweet
+    - Retweeters
+    - Schedule
+    - Search
+    - Unlike
+    - Unpost
+    - Unretweet
+    - Unschedule
 
--   ### Users:
-    -   Details (by id)
-    -   Details (by username)
-    -   Follow
-    -   Followed Feed
-    -   Followers
-    -   Following
-    -   Highlights
-    -   Likes
-    -   Media
-    -   Notifications
-    -   Recommended Feed
-    -   Scheduled Tweets
-    -   Subscriptions
-    -   Tweets
-    -   Tweets and Replies
-    -   Unfollow
+- ### Users:
+    - Details (by id)
+    - Details (by username)
+    - Follow
+    - Followed Feed
+    - Followers
+    - Following
+    - Highlights
+    - Likes
+    - Media
+    - Notifications
+    - Recommended Feed
+    - Scheduled Tweets
+    - Subscriptions
+    - Tweets
+    - Tweets and Replies
+    - Unfollow
 
 ## Getting started
 
@@ -79,7 +79,7 @@ const request = new Request().user.detailsByUsername(user_name);
 
 Where,
 
--   `user_name` is the user name of the Twitter user whose details are to be fetched.
+- `user_name` is the user name of the Twitter user whose details are to be fetched.
 
 ### 2. Getting the request to fetch the list of users who liked a given tweet
 
@@ -91,9 +91,9 @@ const request = new Request().tweet.likers(tweet_id, count, cursor);
 
 Where,
 
--   `tweet_id` is the 'rest_id' of the Tweet whose likes are to be fetched.
--   `count` is the number of likers to fetch.
--   `cursor` is the cursor to the batch of likers to fetch.
+- `tweet_id` is the 'rest_id' of the Tweet whose likes are to be fetched.
+- `count` is the number of likers to fetch.
+- `cursor` is the cursor to the batch of likers to fetch.
 
 ### 3. Getting the request to fetch tweets using a filter to get tweets from specific users and containing specific words
 
@@ -112,10 +112,10 @@ const request = new Request().tweet.search(
 
 Where,
 
--   `user_name_1`, `user_name_2`, .......... are the different usernames whose tweets are requried.
--   `word_1`, `word_2`, ........... are the different words that must be in the tweets.
--   `count` is the number of tweets to fetch.
--   `cursor` is the cursor to the batch of tweets to fetch.
+- `user_name_1`, `user_name_2`, .......... are the different usernames whose tweets are requried.
+- `word_1`, `word_2`, ........... are the different words that must be in the tweets.
+- `count` is the number of tweets to fetch.
+- `cursor` is the cursor to the batch of tweets to fetch.
 
 Apart from this, other filters are also available (see [here](https://rishikant181.github.io/Rettiwt-Core/classes/TweetFilter.html)).
 
@@ -129,7 +129,7 @@ const request = new Request().tweet.post({ text: 'text_to_tweet' });
 
 Where,
 
--   `text_to_tweet` is the text which you want to tweet.
+- `text_to_tweet` is the text which you want to tweet.
 
 ### 5. Getting a request to upload a media for a Tweet
 
@@ -149,7 +149,7 @@ const request = new Request().media.initializeUpload(size);
 
 Where,
 
--   `size` is the size (in bytes) of the media to be uploaded.
+- `size` is the size (in bytes) of the media to be uploaded.
 
 Sending this request allocates a `media_id` to the media to be uploaded, which will be used for successive steps.
 
@@ -163,14 +163,14 @@ const request = new Request().media.appendUpload(media_id, media_path);
 
 Where,
 
--   `media_id` is the ID allocated to the media by sending the previous request.
--   `media_path` is the path to the media to be uploaded.
+- `media_id` is the ID allocated to the media by sending the previous request.
+- `media_path` is the path to the media to be uploaded.
 
 Sending this request uploads the media file to Twitter.
 
 Notes:
 
--   Instead of a path to a locally stored file, an `ArrayBuffer` containing the media can also be uploaded
+- Instead of a path to a locally stored file, an `ArrayBuffer` containing the media can also be uploaded
 
 #### 3. Finalization
 
@@ -182,7 +182,7 @@ const request = new Request().media.finalizeUpload(media_id);
 
 Where,
 
--   `media_id` is the ID allocated to the media uploaded using the previous reqeust.
+- `media_id` is the ID allocated to the media uploaded using the previous reqeust.
 
 Sending this request finalizes the upload process of the media and makes the media ready to be included in Tweets, via the media's allocated ID.
 
@@ -208,9 +208,9 @@ const request = new Request().tweet.post({
 
 Where,
 
--   'text_to_tweet' is the text which you want to tweet.
--   'id_1', 'id_2', ... are the allocated 'media_id' of the uploaded media.
--   'user_id_1', 'user_id_2', ... are the 'rest_id' of the users to be tagged in the media.
+- 'text_to_tweet' is the text which you want to tweet.
+- 'id_1', 'id_2', ... are the allocated 'media_id' of the uploaded media.
+- 'user_id_1', 'user_id_2', ... are the 'rest_id' of the users to be tagged in the media.
 
 ## Authenticating Requests
 
