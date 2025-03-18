@@ -35,11 +35,7 @@ export interface ITweetFilter {
 	/** The language of the tweets to search. */
 	language?: string;
 
-	/**
-	 * Whether to fetch tweets that are links or not.
-	 *
-	 * @defaultValue true
-	 */
+	/** Whether to fetch tweets that are links or not. */
 	links?: boolean;
 
 	/** The list from which tweets are to be searched. */
@@ -71,11 +67,7 @@ export interface ITweetFilter {
 	/** The id of the tweet which is quoted in the tweets to search. */
 	quoted?: string;
 
-	/**
-	 * Whether to fetch tweets that are replies or not.
-	 *
-	 * @defaultValue true
-	 */
+	/** Whether to fetch tweets that are replies or not. */
 	replies?: boolean;
 
 	/** The id of the tweet, after which the tweets are to be searched. */
