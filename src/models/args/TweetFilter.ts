@@ -1,104 +1,37 @@
+import { ITweetFilter } from '../../types/args/TweetFilter';
+
 /**
  * The filter to be used for searching tweets.
  *
  * @public
  */
-export class TweetFilter {
-	/** The date upto which tweets are to be searched. */
+export class TweetFilter implements ITweetFilter {
 	public endDate?: Date;
-
-	/** The list of words to exclude from search. */
 	public excludeWords?: string[];
-
-	/**
-	 * The list of usernames whose tweets are to be searched.
-	 *
-	 * @remarks
-	 * '\@' must be excluded from the username!
-	 */
 	public fromUsers?: string[];
-
-	/**
-	 * The list of hashtags to search.
-	 *
-	 * @remarks
-	 * '#' must be excluded from the hashtag!
-	 */
 	public hashtags?: string[];
-
-	/** The exact phrase to search. */
 	public includePhrase?: string;
-
-	/** The list of words to search. */
 	public includeWords?: string[];
-
-	/** The language of the tweets to search. */
 	public language?: string;
-
-	/**
-	 * Whether to fetch tweets that are links or not.
-	 *
-	 * @defaultValue true
-	 */
-	public links?: boolean = true;
-
-	/** The list from which tweets are to be searched. */
+	public links?: boolean;
 	public list?: string;
-
-	/** The id of the tweet, before which the tweets are to be searched. */
 	public maxId?: string;
-
-	/**
-	 * The list of username mentioned in the tweets to search.
-	 *
-	 * @remarks
-	 * '\@' must be excluded from the username!
-	 */
 	public mentions?: string[];
-
-	/** The minimun number of likes to search by. */
 	public minLikes?: number;
-
-	/** The minimum number of replies to search by. */
 	public minReplies?: number;
-
-	/** The minimum number of retweets to search by. */
 	public minRetweets?: number;
-
-	/** The optional words to search. */
 	public optionalWords?: string[];
-
-	/** The id of the tweet which is quoted in the tweets to search. */
 	public quoted?: string;
-
-	/**
-	 * Whether to fetch tweets that are replies or not.
-	 *
-	 * @defaultValue true
-	 */
-	public replies?: boolean = true;
-
-	/** The id of the tweet, after which the tweets are to be searched. */
+	public replies?: boolean;
 	public sinceId?: string;
-
-	/** The date starting from which tweets are to be searched. */
 	public startDate?: Date;
-
-	/**
-	 * The list of username to whom the tweets to be searched, are adressed.
-	 *
-	 * @remarks
-	 * '\@' must be excluded from the username!
-	 */
 	public toUsers?: string[];
-
-	/** Whether to fetch top tweets or not. */
-	public top?: boolean = false;
+	public top?: boolean;
 
 	/**
 	 * @param filter - The filter configuration.
 	 */
-	public constructor(filter: TweetFilter) {
+	public constructor(filter: ITweetFilter) {
 		this.endDate = filter.endDate;
 		this.excludeWords = filter.excludeWords;
 		this.fromUsers = filter.fromUsers;

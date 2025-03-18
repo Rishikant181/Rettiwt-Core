@@ -1,32 +1,25 @@
+import { INewTweet, INewTweetMedia } from '../../types/args/NewTweet';
+
 /**
  * Configuration for the new tweet to be posted.
  *
  * @public
  */
-export class NewTweet {
-	/**
-	 * The list of media to be uploaded.
-	 *
-	 * @remarks
-	 * - The media first needs to be uploaded.
-	 * - After uploading, the returned id(s) can be used to reference the media here.
-	 * - Maximum number of media items that can be posted is 4.
-	 */
+export class NewTweet implements INewTweet {
 	public media?: NewTweetMedia[];
-
-	/** The id of the tweet to quote. */
 	public quote?: string;
-
-	/** The id of the Tweet to which the given Tweet must be a reply. */
 	public replyTo?: string;
+	public text: string;
 
 	/**
-	 * The text for the tweet to be created.
-	 *
-	 * @remarks
-	 * Length of the tweet must be \<= 280 characters.
+	 * @param newTweet - The args specifying the new tweet to be posted.
 	 */
-	public text: string = '';
+	public constructor(newTweet: INewTweet) {
+		this.media = newTweet.media;
+		this.quote = newTweet.quote;
+		this.replyTo = newTweet.replyTo;
+		this.text = newTweet.text ?? '';
+	}
 }
 
 /**
@@ -34,15 +27,15 @@ export class NewTweet {
  *
  * @public
  */
-export class NewTweetMedia {
-	/** The id of the media to upload. */
-	public id: string = '';
+export class NewTweetMedia implements INewTweetMedia {
+	public id: string;
+	public tags?: string[];
 
 	/**
-	 * The list of id of the users to tag in the media.
-	 *
-	 * @remarks
-	 * Maximum number of users that can be tagged is 10.
+	 * @param newTweetMedia - The args specifying the new media to be posted along with the tweet.
 	 */
-	public tags?: string[];
+	public constructor(newTweetMedia: INewTweetMedia) {
+		this.id = newTweetMedia.id;
+		this.tags = newTweetMedia.tags;
+	}
 }
