@@ -1,35 +1,27 @@
-// MAIN
 export * from './Request';
 
-// ENUMS
 export * from './enums/Analytic';
 export * from './enums/Media';
 export * from './enums/Notification';
 export * from './enums/Search';
 
-// ARG MODELS
 export * from './models/args/NewTweet';
 export * from './models/args/TweetFilter';
-
-// PARAMS MODELS
 export * from './models/params/Variables';
 
-// RESPONSE TYPES
+export * from './types/args/NewTweet';
+export * from './types/args/TweetFilter';
 
-// LISTS
 export { Root as IListDetailsResponse } from './types/data/list/Details';
 export { Root as IListMembersResponse } from './types/data/list/Members';
 export { Root as IListTweetsResponse } from './types/data/list/Tweets';
 
-// MEDIA
 export { Root as IFinalizeMediaUploadResponse } from './types/data/media/FinalizeUpload';
 export { Root as IInitializeMediaUploadResponse } from './types/data/media/InitalizeUpload';
 export { Root as IVideoStreamResponse } from './types/data/media/LiveVideoStream';
 
-// SPACES
 export { Root as ISpaceDetailsResponse } from './types/data/space/Details';
 
-// TWEETS
 export { Root as ITweetDetailsResponse } from './types/data/tweet/Details';
 export { Root as ITweetLikeResponse } from './types/data/tweet/Like';
 export { Root as ITweetLikersResponse } from './types/data/tweet/Likers';
@@ -44,7 +36,6 @@ export { Root as ITweetUnpostResponse } from './types/data/tweet/Unpost';
 export { Root as ITweetUnretweetResponse } from './types/data/tweet/Unretweet';
 export { Root as ITweetUnscheduleResponse } from './types/data/tweet/Unschedule';
 
-// USERS
 export { Root as IUserAffiliatesResponse } from './types/data/user/Affiliates';
 export { Root as IUserAnalyticsResponse } from './types/data/user/Analytics';
 export { Root as IUserBookmarksResponse } from './types/data/user/Bookmarks';
@@ -64,13 +55,9 @@ export { Root as IUserTweetsResponse } from './types/data/user/Tweets';
 export { Root as IUserTweetsAndRepliesResponse } from './types/data/user/TweetsAndReplies';
 export { Root as IUserUnfollowResponse } from './types/data/user/Unfollow';
 
-// RAW TYPES
-
-// GENERICS
 export * from './types/data/generic/Error';
 export * from './types/data/generic/Response';
 
-// BASE
 export * from './types/data/base/Cursor';
 export * from './types/data/base/LimitedVisibilityTweet';
 export * from './types/data/base/List';
@@ -81,7 +68,8 @@ export * from './types/data/base/Tweet';
 export * from './types/data/base/User';
 export * from './types/data/base/Analytic';
 
-// COMPOSITE
 export * from './types/data/composite/DataResult';
 export * from './types/data/composite/TimelineTweet';
 export * from './types/data/composite/TimelineUser';
+
+export * from './types/params/Variables';
