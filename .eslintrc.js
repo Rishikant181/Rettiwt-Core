@@ -17,7 +17,7 @@ module.exports = {
 		node: true,
 		jest: true,
 	},
-	ignorePatterns: ['.eslintrc.js'],
+	ignorePatterns: ['.eslintrc.js', 'eslint.config.mjs'],
 	rules: {
 		'@typescript-eslint/naming-convention': [
 			'warn',
