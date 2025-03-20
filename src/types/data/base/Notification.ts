@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { ENotificationType } from '../../enums/Notification';
+import { ENotificationType } from '../../../enums/Notification';
 
 /**
  * Represents the raw data of a single Notification.
