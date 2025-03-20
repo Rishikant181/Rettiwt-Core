@@ -619,9 +619,7 @@ export function scheduled(): AxiosRequestConfig {
 		method: 'get',
 		url: 'https://x.com/i/api/graphql/ITtjAzvlZni2wWXwf295Qg/FetchScheduledTweets?variables=%7B%22ascending%22%3Atrue%7D',
 		params: {
-			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({ ascending: true }),
-			/* eslint-enable @typescript-eslint/naming-convention */
 		},
 		paramsSerializer: { encode: encodeURIComponent },
 	};

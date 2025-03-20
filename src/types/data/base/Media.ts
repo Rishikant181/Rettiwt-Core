@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { EMediaType } from '../../enums/Media';
+import { EMediaType } from '../../../enums/Media';
 
 /**
  * Represents the raw data of a single Media.

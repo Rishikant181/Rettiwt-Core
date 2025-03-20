@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /**
  * Represents inner data result of either a Tweet or User.
  *

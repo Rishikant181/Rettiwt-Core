@@ -1,3 +1,4 @@
+import { IMediaEntityVariable, IMediaVariable, IReplyVariable } from '../../types/params/Variables';
 import { NewTweetMedia } from '../args/NewTweet';
 
 /**
@@ -5,7 +6,7 @@ import { NewTweetMedia } from '../args/NewTweet';
  *
  * @internal
  */
-export class MediaVariable {
+export class MediaVariable implements IMediaVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public media_entities: MediaEntityVariable[];
 	public possibly_sensitive: boolean;
@@ -25,7 +26,7 @@ export class MediaVariable {
  *
  * @internal
  */
-export class MediaEntityVariable {
+export class MediaEntityVariable implements IMediaEntityVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public media_id: string;
 	public tagged_users: string[];
@@ -45,7 +46,7 @@ export class MediaEntityVariable {
  *
  * @internal
  */
-export class ReplyVariable {
+export class ReplyVariable implements IReplyVariable {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	public exclude_reply_user_ids: string[];
 	public in_reply_to_tweet_id: string;
