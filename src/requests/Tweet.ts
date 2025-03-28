@@ -304,7 +304,7 @@ export function retweeters(id: string, count?: number, cursor?: string): AxiosRe
 export function schedule(args: INewTweet): AxiosRequestConfig {
 	// Parsing the args
 	const parsedArgs = new NewTweet(args);
-	
+
 	return {
 		method: 'post',
 		maxBodyLength: Infinity,
@@ -335,7 +335,7 @@ export function schedule(args: INewTweet): AxiosRequestConfig {
 export function search(filter: ITweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
 	// Parsing the filter
 	const parsedFilter = new TweetFilter(filter);
-	
+
 	return {
 		method: 'get',
 		url: 'https://x.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
