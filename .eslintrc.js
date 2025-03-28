@@ -135,13 +135,7 @@ module.exports = {
 			},
 		],
 		'@typescript-eslint/no-explicit-any': 'warn',
-		'@typescript-eslint/no-extraneous-class': [
-			'warn',
-			{
-				allowEmpty: true,
-			},
-		],
-		'@typescript-eslint/no-inferrable-types': 'off',
+		'@typescript-eslint/no-inferrable-types': 'warn',
 		'tsdoc/syntax': 'warn',
 		'sort-imports': [
 			'warn',
