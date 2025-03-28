@@ -20,6 +20,9 @@ export interface INewTweet {
 	/** The id of the Tweet to which the given Tweet must be a reply. */
 	replyTo?: string;
 
+	/** The date/time at which the tweet is to be scheduled for posting. */
+	scheduleFor?: Date;
+
 	/**
 	 * The text for the tweet to be created.
 	 *

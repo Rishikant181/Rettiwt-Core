@@ -9,6 +9,7 @@ export class NewTweet implements INewTweet {
 	public media?: NewTweetMedia[];
 	public quote?: string;
 	public replyTo?: string;
+	public scheduleFor?: Date;
 	public text: string;
 
 	/**
@@ -18,6 +19,7 @@ export class NewTweet implements INewTweet {
 		this.media = newTweet.media;
 		this.quote = newTweet.quote;
 		this.replyTo = newTweet.replyTo;
+		this.scheduleFor = newTweet.scheduleFor;
 		this.text = newTweet.text ?? '';
 	}
 }
