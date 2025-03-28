@@ -4,6 +4,8 @@ import { ESearchResultType } from '../enums/Search';
 import { NewTweet } from '../models/args/NewTweet';
 import { TweetFilter } from '../models/args/TweetFilter';
 import { MediaVariable, ReplyVariable } from '../models/params/Variables';
+import { INewTweet } from '../types/args/NewTweet';
+import { ITweetFilter } from '../types/args/TweetFilter';
 
 /**
  * @param id - The id of the tweet whose details are to be fetched.
@@ -126,18 +128,21 @@ export function likers(id: string, count?: number, cursor?: string): AxiosReques
  *
  * @public
  */
-export function post(args: NewTweet): AxiosRequestConfig {
+export function post(args: INewTweet): AxiosRequestConfig {
+	// Parsing the args
+	const parsedArgs = new NewTweet(args);
+
 	return {
 		method: 'post',
 		url: 'https://x.com/i/api/graphql/bDE2rBtZb3uyrczSZ_pI9g/CreateTweet',
 		data: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: {
-				tweet_text: args.text,
+				tweet_text: parsedArgs.text,
 				dark_request: false,
-				attachment_url: args.quote ? `https://x.com/i/status/${args.quote}` : undefined,
-				media: args.media ? new MediaVariable(args.media) : undefined,
-				reply: args.replyTo ? new ReplyVariable(args.replyTo) : undefined,
+				attachment_url: parsedArgs.quote ? `https://x.com/i/status/${parsedArgs.quote}` : undefined,
+				media: parsedArgs.media ? new MediaVariable(parsedArgs.media) : undefined,
+				reply: parsedArgs.replyTo ? new ReplyVariable(parsedArgs.replyTo) : undefined,
 				semantic_annotation_ids: [],
 			},
 			features: {
@@ -290,14 +295,16 @@ export function retweeters(id: string, count?: number, cursor?: string): AxiosRe
 }
 
 /**
- * @param tweet - The configuration object for the tweet to be posted.
- * @param time - A `Date` object representing the date and time at which the tweet is to be posted.
+ * @param args - The configuration object for the tweet to be posted.
  *
  * @remarks - Only `text` and `media.id` parameters are supported.
  *
  * @public
  */
-export function schedule(tweet: NewTweet, time: Date): AxiosRequestConfig {
+export function schedule(args: INewTweet): AxiosRequestConfig {
+	// Parsing the args
+	const parsedArgs = new NewTweet(args);
+	
 	return {
 		method: 'post',
 		maxBodyLength: Infinity,
@@ -307,11 +314,11 @@ export function schedule(tweet: NewTweet, time: Date): AxiosRequestConfig {
 			variables: {
 				post_tweet_request: {
 					auto_populate_reply_metadata: false,
-					status: tweet.text,
+					status: parsedArgs.text,
 					exclude_reply_user_ids: [],
-					media_ids: tweet.media?.map((item) => item.id) ?? [],
+					media_ids: parsedArgs.media?.map((item) => item.id) ?? [],
 				},
-				execute_at: Math.floor(time.getTime() / 1000),
+				execute_at: Math.floor((parsedArgs.scheduleFor ?? new Date()).getTime() / 1000),
 			},
 			/* eslint-enable @typescript-eslint/naming-convention */
 		},
@@ -325,18 +332,21 @@ export function schedule(tweet: NewTweet, time: Date): AxiosRequestConfig {
  *
  * @public
  */
-export function search(filter: TweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
+export function search(filter: ITweetFilter, count?: number, cursor?: string): AxiosRequestConfig {
+	// Parsing the filter
+	const parsedFilter = new TweetFilter(filter);
+	
 	return {
 		method: 'get',
 		url: 'https://x.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline',
 		params: {
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({
-				rawQuery: new TweetFilter(filter).toString(),
+				rawQuery: new TweetFilter(parsedFilter).toString(),
 				count: count,
 				cursor: cursor,
 				querySource: 'typed_query',
-				product: filter.top ? ESearchResultType.TOP : ESearchResultType.LATEST,
+				product: parsedFilter.top ? ESearchResultType.TOP : ESearchResultType.LATEST,
 			}),
 			features: JSON.stringify({
 				rweb_lists_timeline_redesign_enabled: true,
