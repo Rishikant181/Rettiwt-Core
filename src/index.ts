@@ -4,7 +4,6 @@ export * from './enums/Analytic';
 export * from './enums/Media';
 export * from './enums/Notification';
 export * from './enums/Search';
-export * from './enums/Tweet';
 
 export * from './models/args/NewTweet';
 export * from './models/args/TweetFilter';
