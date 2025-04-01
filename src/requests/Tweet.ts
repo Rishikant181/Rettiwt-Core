@@ -174,12 +174,11 @@ export function post(args: INewTweet): AxiosRequestConfig {
 
 /**
  * @param id - The id of the tweet whose replies are to be fetched.
- * @param count - The number of replies to fetch. Only works as a lower limit when used with a cursor.
  * @param cursor - The cursor to the batch of replies to fetch.
  *
  * @public
  */
-export function replies(id: string, count?: number, cursor?: string): AxiosRequestConfig {
+export function replies(id: string, cursor?: string): AxiosRequestConfig {
 	return {
 		method: 'get',
 		url: 'https://x.com/i/api/graphql/B9_KmbkLhXt6jRwGjJrweg/TweetDetail',
@@ -187,7 +186,7 @@ export function replies(id: string, count?: number, cursor?: string): AxiosReque
 			/* eslint-disable @typescript-eslint/naming-convention */
 			variables: JSON.stringify({
 				focalTweetId: id,
-				cursor: count,
+				cursor: cursor,
 				referrer: 'tweet',
 				controller_data: cursor,
 				with_rux_injections: false,
